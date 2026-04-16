@@ -1,0 +1,31 @@
+{
+  "name": "@agent-lab/pod1",
+  "version": "0.1.0",
+  "description": "Kraken OS Integration Layer for Agent Lab",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "dependencies": {
+    "@agent-lab/shared": "workspace:*",
+    "@opencode/ultra": "workspace:*",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "ws": "^8.18.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.6",
+    "@types/ws": "^8.5.12",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

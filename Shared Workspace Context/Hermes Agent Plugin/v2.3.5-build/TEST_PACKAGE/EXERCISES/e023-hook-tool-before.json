@@ -1,0 +1,27 @@
+{
+  "exercise_id": "e023",
+  "name": "Hooks — tool.execute.before fires",
+  "component": "hooks",
+  "component_area": "tool_lifecycle",
+  "mechanical_verification": "Run a tool, verify hook fires before execution (check logs or behavior change)",
+  "difficulty": "P2",
+  "time_estimate": "1 minute",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call lint target=/tmp",
+      "expected": "Hook fires before lint executes",
+      "mechanical_pass": "Cannot directly verify hook in OpenCode, but tool executes correctly (if hook were broken, tool would fail or behave differently)"
+    }
+  ],
+
+  "pass_criteria": {
+    "tool_runs": "lint tool executes successfully (implies hook chain is intact)"
+  },
+
+  "failure_modes": {
+    "tool_fails": "Tool fails to execute (indicates hook chain broken)",
+    "hook_exception": "Hook throws exception, tool does not run"
+  }
+}

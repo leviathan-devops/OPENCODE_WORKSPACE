@@ -1,0 +1,8 @@
+{
+  "plugin": [
+    "file:///root/.config/opencode/plugins/shark-agent-v4.8.3/index.js"
+  ],
+  "permission": {
+    "*": {"*": "allow"}
+  }
+}

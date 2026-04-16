@@ -1,0 +1,36 @@
+{
+  "exercise_id": "e026",
+  "name": "Session — phase_complete tool",
+  "component": "session_management",
+  "component_area": "phase_tracking",
+  "mechanical_verification": "Run phase_complete for phase 1, verify phase advancement confirmed",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call phase_complete phase=1",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call phase_complete phase=1",
+      "expected": "Phase advancement confirmation",
+      "mechanical_pass": "Returns non-empty string confirming phase 1 complete"
+    },
+    {
+      "step": 2,
+      "action": "call phase_complete phase=2",
+      "expected": "Phase advancement confirmation for phase 2",
+      "mechanical_pass": "Returns non-empty string confirming phase 2"
+    }
+  ],
+
+  "pass_criteria": {
+    "phase_1_confirmed": "phase_complete phase=1 returns confirmation",
+    "phase_2_confirmed": "phase_complete phase=2 returns confirmation"
+  },
+
+  "failure_modes": {
+    "empty_response": "phase_complete returns empty",
+    "crashes": "phase_complete throws exception"
+  }
+}

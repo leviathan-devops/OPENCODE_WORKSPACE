@@ -1,0 +1,12 @@
+{
+  "id": "e006",
+  "name": "checkpoint-creation-check",
+  "component": "state",
+  "difficulty": "P0",
+  "prompt": "call checkpoint message='v4.5-smoke-test'",
+  "expected_output_contains": ["checkpoint", "cp_"],
+  "verification": {
+    "type": "output_contains",
+    "required_strings": ["checkpoint"]
+  }
+}

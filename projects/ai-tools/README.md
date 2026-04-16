@@ -1,0 +1,1 @@
+# AI Tools Directory\n\nContains AI-related scripts, tools, and utilities for OpenCode workspace.\n\n- Python scripts for AI model interaction\n- Bridge scripts between different AI services\n- Testing and debugging tools\n\n**Primary workspace**: /home/leviathan/OPENCODE_WORKSPACE/

@@ -1,0 +1,52 @@
+{
+  "exercise_id": "e002",
+  "name": "Gate Criteria — shark-gate action=criteria",
+  "component": "tools",
+  "component_area": "shark-gate tool (criteria action)",
+  "mechanical_verification": "Call shark-gate criteria action, verify it returns blocking criteria and evidence required for each gate",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call shark-gate action=criteria gate=plan",
+
+  "expected_behavior": "Returns JSON with gate, blockingCriteria array, evidenceRequired array for the specified gate",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=criteria gate=plan",
+      "expected": "blockingCriteria array with 4+ items",
+      "mechanical_pass": "blockingCriteria contains SPEC.md requirement"
+    },
+    {
+      "step": 2,
+      "action": "call shark-gate action=criteria gate=build",
+      "expected": "blockingCriteria includes scope violations check",
+      "mechanical_pass": "build criteria mentions no scope violations"
+    },
+    {
+      "step": 3,
+      "action": "call shark-gate action=criteria gate=test",
+      "expected": "blockingCriteria includes 80% coverage requirement",
+      "mechanical_pass": "test criteria mentions coverage threshold"
+    },
+    {
+      "step": 4,
+      "action": "call shark-gate action=criteria gate=verify",
+      "expected": "blockingCriteria includes SPEC.md alignment",
+      "mechanical_pass": "verify criteria mentions SPEC.md alignment"
+    }
+  ],
+
+  "pass_criteria": {
+    "criteria_returns": "shark-gate criteria returns JSON without error",
+    "criteria_complete": "All 6 gates have blocking criteria defined",
+    "evidence_required": "All 6 gates have evidenceRequired array",
+    "plan_has_spec": "Plan gate requires SPEC.md in evidenceRequired"
+  },
+
+  "failure_modes": {
+    "criteria_empty": "Criteria returns empty or missing blocking criteria",
+    "evidence_missing": "Evidence required array missing for some gates"
+  }
+}

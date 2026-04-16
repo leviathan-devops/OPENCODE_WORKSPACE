@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775634690219,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:sleep 10 && docker ps --filter \"name=shark-verify\" --format \"{{.Names}} {{.Status}}\""
+  }
+}

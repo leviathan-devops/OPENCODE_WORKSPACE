@@ -1,0 +1,31 @@
+{
+  "exercise_id": "e011",
+  "name": "CLI — /Hermes memory",
+  "component": "cli_commands",
+  "component_area": "/Hermes command handler",
+  "mechanical_verification": "Execute /Hermes memory, verify memory system status returned",
+  "difficulty": "P0",
+  "time_estimate": "10 seconds",
+
+  "prompt": "/Hermes memory",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "/Hermes memory",
+      "expected": "Output shows memory system status (topic count, last save, etc.)",
+      "mechanical_pass": "Output is non-empty string mentioning memory or topics"
+    }
+  ],
+
+  "pass_criteria": {
+    "returns_status": "Output shows memory system status",
+    "not_empty": "Non-empty string returned",
+    "no_vanilla_response": "Not a generic OpenCode agent response"
+  },
+
+  "failure_modes": {
+    "empty_output": "/Hermes memory returns empty",
+    "vanilla_response": "Returns generic response"
+  }
+}

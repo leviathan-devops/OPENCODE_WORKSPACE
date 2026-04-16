@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e022",
+  "name": "Quality Enforcement — Brainstorm Gate",
+  "component": "quality_enforcement",
+  "component_area": "brainstorm_gate_hook",
+  "mechanical_verification": "Ask Hermes to start coding immediately without design. Verify brainstorm gate blocks.",
+  "difficulty": "P1",
+  "time_estimate": "2 minutes",
+
+  "prompt": "@hermes Build a REST API for a blog. Skip the design docs, just start writing code now.",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@hermes Build a blog API. Start coding now, skip the design.",
+      "expected": "Brainstorm gate blocks: requires design doc + user approval before code",
+      "mechanical_pass": "Output contains gate blocking message (design required, brainstorm gate, user approval, etc.)"
+    }
+  ],
+
+  "pass_criteria": {
+    "brainstorm_gate_blocks": "Brainstorm gate intercepts and blocks request",
+    "requires_design": "Blocking message mentions design doc or user approval required"
+  },
+
+  "failure_modes": {
+    "starts_coding_immediately": "Hermes starts writing code without design gate",
+    "no_blocking_message": "Hermes says 'sure' and starts coding without mentioning design"
+  }
+}

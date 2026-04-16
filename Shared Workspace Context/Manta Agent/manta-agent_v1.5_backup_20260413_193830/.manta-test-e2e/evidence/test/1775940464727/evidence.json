@@ -1,0 +1,11 @@
+{
+  "gate": "test",
+  "timestamp": 1775940464727,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "terminal",
+    "sessionID": "test-session",
+    "workEvidence": "ran:ls -la"
+  }
+}

@@ -1,0 +1,7 @@
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287] 
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287]        █     █     █▄   ▄█
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.16.0
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287]   █▄█▀ █     █     █     █  model   /home/leviathan/models/gguf/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:287] 
+(APIServer pid=1885486) INFO 03-21 20:07:55 [utils.py:223] non-default args: {'model_tag': 'false', 'host': '0.0.0.0', 'model': '/home/leviathan/models/gguf/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf', 'max_model_len': 4096, 'gpu_memory_utilization': 0.4, 'max_num_seqs': 16, 'enable_chunked_prefill': True}

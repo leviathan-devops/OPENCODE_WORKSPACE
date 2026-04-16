@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775932253342,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_282363bf4ffeyt4NeJeJkXuyBH",
+    "workEvidence": "ran:ls -la /home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent-v4/src/"
+  }
+}

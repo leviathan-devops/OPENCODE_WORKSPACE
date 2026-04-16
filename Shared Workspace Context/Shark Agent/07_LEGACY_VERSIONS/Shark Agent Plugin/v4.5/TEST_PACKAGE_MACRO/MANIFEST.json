@@ -1,0 +1,52 @@
+{
+  "package_id": "shark-macro-test-package-v1",
+  "version": "1.0",
+  "date": "2026-04-07",
+  "agent": "shark-macro",
+  "plugin": "shark-agent-v4.5",
+  "description": "Mechanical exercise package for Shark Macro Agent (Single Primary Brain: Execution Mode). Each exercise tests a core component via real-time execution in OpenCode. Output is structured JSON data for DevOps Manager review.",
+
+  "agent_characteristics": {
+    "mode": "Single primary brain",
+    "brains": ["Execution Brain"],
+    "gate_chain": ["plan", "build", "test", "verify", "audit", "delivery"],
+    "tools": ["shark-status", "shark-gate", "shark-evidence"],
+    "key_features": [
+      "MANDATORY SELF-REJECTION on Guardian-flagged commands",
+      "Gate auto-advance on file write/build/test pass",
+      "Iteration loop (3 VERIFY failures → escalate)",
+      "Evidence collection at each gate",
+      "System prompt injection via experimental.chat.system.transform"
+    ]
+  },
+
+  "how_to_use": {
+    "executor": "Any OpenCode agent (plan/build/default)",
+    "method": "Run each exercise in OpenCode. Capture actual output. Fill EXERCISE_RESULTS array.",
+    "output_target": "TEST_PACKAGE_MACRO/EXERCISE_RESULTS.json",
+    "delivery": "Send completed JSON to DevOps Manager for analysis"
+  },
+
+  "exercises": [
+    "EXERCISES/e001-status-macro.json",
+    "EXERCISES/e002-gate-criteria.json",
+    "EXERCISES/e003-guardian-dangerous-command.json",
+    "EXERCISES/e004-guardian-zone-check.json",
+    "EXERCISES/e005-gate-auto-advance-build.json",
+    "EXERCISES/e006-gate-auto-advance-test.json",
+    "EXERCISES/e007-evidence-collection.json",
+    "EXERCISES/e008-iteration-loop-init.json",
+    "EXERCISES/e009-self-rejection-t1-prompt.json",
+    "EXERCISES/e010-execution-brain-role.json",
+    "EXERCISES/e011-gate-manual-evaluate.json",
+    "EXERCISES/e012-gate-manual-advance.json",
+    "EXERCISES/e013-iteration-escalation-detect.json",
+    "EXERCISES/e014-system-transform-hook.json",
+    "EXERCISES/e015-state-persistence-checkpoint.json",
+    "EXERCISES/e016-evidence-latest-gate.json",
+    "EXERCISES/e017-verify-attempts-counter.json",
+    "EXERCISES/e018-gate-status-all.json",
+    "EXERCISES/e019-guardrails-enforcement.json",
+    "EXERCISES/e020-error-handling-complete.json"
+  ]
+}

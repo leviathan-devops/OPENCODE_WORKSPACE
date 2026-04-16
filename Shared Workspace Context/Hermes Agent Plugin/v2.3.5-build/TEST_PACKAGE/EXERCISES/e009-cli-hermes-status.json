@@ -1,0 +1,38 @@
+{
+  "exercise_id": "e009",
+  "name": "CLI — /Hermes status",
+  "component": "cli_commands",
+  "component_area": "/Hermes command handler",
+  "mechanical_verification": "Execute /Hermes status, verify status text returned with session/agent/memory info",
+  "difficulty": "P0",
+  "time_estimate": "10 seconds",
+
+  "prompt": "/Hermes status",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "/Hermes status",
+      "expected": "Status output text mentioning agents, memory, or session info",
+      "mechanical_pass": "Output is a non-empty string containing 'status' or agent/memory info"
+    }
+  ],
+
+  "pass_criteria": {
+    "returns_text": "Output is a non-empty string (not an error)",
+    "mentions_hermes": "Output references Hermes or its components",
+    "no_vanilla_response": "Output is NOT a vanilla plan/build agent response"
+  },
+
+  "failure_modes": {
+    "command_not_found": "/Hermes command not recognized",
+    "vanilla_response": "Returns plan/build agent generic response instead",
+    "empty_output": "/Hermes status returns empty"
+  },
+
+  "spillover_check": {
+    "description": "Vanilla agent must NOT respond to /Hermes status",
+    "test": "As a plan agent, type /Hermes status",
+    "expected": "Plan agent should ignore /Hermes, not respond with Hermes output"
+  }
+}

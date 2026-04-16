@@ -1,0 +1,25 @@
+{
+  "package_id": "shark-v4.5-mechanical-validation",
+  "version": "1.0",
+  "date": "2026-04-07",
+  "description": "Mechanical validation of Shark Agent V4.5 — tests coordinator initialization, brain switching, gate system, evidence collection, and iteration escalation",
+  "agent_variant": "both",
+  "test_mode": "mechanical",
+  "exercises": [
+    {"id": "e001", "name": "shark-status-variant-check", "component": "tools", "difficulty": "P0", "expected": "variant matches agent"},
+    {"id": "e002", "name": "coordinator-initialization", "component": "coordinator", "difficulty": "P0", "expected": "Plan Brain for micro, triple-brain for macro"},
+    {"id": "e003", "name": "brain-context-injection", "component": "system-transform", "difficulty": "P0", "expected": "[SHARK BRAIN CONTEXT] in system prompt"},
+    {"id": "e004", "name": "gate-criteria-check", "component": "gates", "difficulty": "P0", "expected": "all 6 gates with blocking criteria"},
+    {"id": "e005", "name": "guardian-dangerous-command", "component": "guardian", "difficulty": "P1", "expected": "warning logged"},
+    {"id": "e006", "name": "evidence-collection-write", "component": "evidence", "difficulty": "P0", "expected": "evidence files created"},
+    {"id": "e007", "name": "checkpoint-creation", "component": "state", "difficulty": "P0", "expected": "checkpoint ID returned"},
+    {"id": "e008", "name": "gate-manual-evaluate", "component": "gates", "difficulty": "P0", "expected": "gate marked passed"},
+    {"id": "e009", "name": "verify-attempts-counter", "component": "iteration", "difficulty": "P1", "expected": "counter increments 0->1->2->3"},
+    {"id": "e010", "name": "iteration-escalation", "component": "iteration", "difficulty": "P1", "expected": "V1.0 -> V1.1 after 3 failures"}
+  ],
+  "verification": {
+    "strict_mode": true,
+    "require_evidence": true,
+    "mechanical_enforcement": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "e381ef9b-6a54-4d5b-8126-157d7cb65741",
+  "receipt_type": "approved",
+  "verdict": "approved",
+  "reviewer": {
+    "agent": "curator"
+  },
+  "reviewed_at": "2026-04-05T05:48:31.899Z",
+  "scope_fingerprint": {
+    "hash": "bc0c47f831a0a95c1146ecf7151e51c2f90172890f2996a37e08003a8240aa27",
+    "scope_description": "curator-init-briefing",
+    "content_length": 917
+  },
+  "checked_aspects": [
+    "knowledge_entries",
+    "prior_phase_summaries",
+    "contradiction_detection"
+  ],
+  "validated_claims": [
+    "knowledge_entries_reviewed: 0",
+    "prior_phases_covered: 0",
+    "contradictions: 0"
+  ]
+}

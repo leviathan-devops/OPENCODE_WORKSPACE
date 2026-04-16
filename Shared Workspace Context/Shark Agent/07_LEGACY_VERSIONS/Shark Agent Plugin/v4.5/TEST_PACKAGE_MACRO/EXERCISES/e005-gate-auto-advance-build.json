@@ -1,0 +1,45 @@
+{
+  "exercise_id": "e005",
+  "name": "Gate Auto-Advance — BUILD→TEST",
+  "component": "hooks",
+  "component_area": "gate-hook (tool.execute.after auto-advance)",
+  "mechanical_verification": "Write a file while at BUILD gate, verify gate auto-advances to TEST",
+  "difficulty": "P0",
+  "time_estimate": "45 seconds",
+
+  "prompt": "call shark-gate action=advance gate=build then write_file path=/tmp/shark-test/build-test.txt content='test' then call shark-status",
+
+  "expected_behavior": "After file write at BUILD gate, gate auto-advances to TEST",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=status to verify current gate",
+      "expected": "currentGate is 'build'",
+      "mechanical_pass": "Starting at build gate"
+    },
+    {
+      "step": 2,
+      "action": "call write_file path=/tmp/shark-test/file.txt content='test'",
+      "expected": "File write succeeds",
+      "mechanical_pass": "File created at build gate"
+    },
+    {
+      "step": 3,
+      "action": "call shark-status to check gate",
+      "expected": "currentGate is now 'test' (auto-advanced)",
+      "mechanical_pass": "Gate auto-advanced from build to test"
+    }
+  ],
+
+  "pass_criteria": {
+    "gate_advances": "BUILD → TEST auto-advance triggers on file write",
+    "evidence_collected": "Evidence recorded for build gate",
+    "previous_gate_passed": "build gate status changes to 'passed'"
+  },
+
+  "failure_modes": {
+    "gate_stays": "Gate does not advance after file write",
+    "no_evidence": "No evidence collected for build gate"
+  }
+}

@@ -1,0 +1,16 @@
+FROM leviathan/opencode:python3-enabled-1.4.3
+USER root
+
+RUN mkdir -p ~/.config/opencode/plugins/kraken-agent/dist \
+    && mkdir -p ~/.config/opencode/plugins/kraken-agent/wrappers \
+    && mkdir -p ~/.config/opencode/plugins/subagent-manager/dist \
+    && mkdir -p ~/.config/opencode/plugins/subagent-manager/wrappers
+
+COPY build/dist/ /root/.config/opencode/plugins/kraken-agent/dist/
+COPY subagent-manager/dist/index.js /root/.config/opencode/plugins/subagent-manager/dist/
+COPY kraken-agent-source/wrappers/ /root/.config/opencode/plugins/kraken-agent/wrappers/
+COPY subagent-manager/wrappers/ /root/.config/opencode/plugins/subagent-manager/wrappers/
+
+RUN chmod -R 755 /root/.config/opencode/plugins/
+
+USER opencode

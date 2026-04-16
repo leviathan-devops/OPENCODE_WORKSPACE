@@ -1,0 +1,16 @@
+[2026-04-07T09:48:16.267Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing
+[2026-04-07T09:48:16.267Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {"toolCount":3,"tools":["route","gemma","qwen"],"route":"task routing - use when unsure which sub-agent to use","gemma":"gemma-4-31b-it (documentation, boilerplate, explanations)","qwen":"qwen3-coder (code completion, prototypes, free)"}
+[2026-04-07T09:48:16.267Z] INFO OpenCodePluginEngineering initializing 
+[0m
+> build · minimax-m2.7
+[0m
+[Shark] Session created: unknown
+[Shark] .shark directory initialized at /home/leviathan/OPENCODE_WORKSPACE/.shark
+No skill found for `"@shark-micro"`. Did you mean one of these?
+
+- **Tool**: `shark-status-micro` — show Shark V4 micro state
+- **Tool**: `shark-status` — show Shark V4 full state  
+- **Tool**: `shark-gate` — evaluate or check gate criteria
+- **Tool**: `shark-evidence` — view evidence collection status
+
+Or load a skill: `paperclip`, `coding-subagents`, `paperclip-create-agent`, `paperclip-create-plugin`, `para-memory-files`

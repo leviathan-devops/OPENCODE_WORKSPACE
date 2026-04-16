@@ -1,0 +1,8 @@
+# Copy this one line to start agent self-migration:
+cd "/home/leviathan/OPENCODE_WORKSPACE" && ./tools/validators/validate-workspace.sh && ./tools/migrators/agent-migration-assistant.sh
+
+# Or use this if you want to see what happens first:
+echo "Validating workspace..." && "/home/leviathan/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh" && echo "Starting migration..." && "/home/leviathan/OPENCODE_WORKSPACE/tools/migrators/agent-migration-assistant.sh"
+
+# Quick check if workspace exists:
+[ -d "/home/leviathan/OPENCODE_WORKSPACE" ] && echo "Workspace ready for migration" || echo "Workspace not found, run: bash /home/leviathan/Handover\ Documents/implement-migration.sh"

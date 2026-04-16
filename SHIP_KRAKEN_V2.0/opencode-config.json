@@ -1,0 +1,29 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {}
+  },
+  "plugin": [
+    "file:///home/leviathan/agent-swarm/spider-agent",
+    "hive-mind-plugin",
+    "file:///home/leviathan/.config/opencode/plugins/kraken-agent-v2.0/dist/index.js",
+    "file:///home/leviathan/.config/opencode/plugins/subagent-manager/dist/index.js",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/plugins/shark-agent-v481/dist/index.js",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/plugins/manta-agent-v1.5/dist/index.js"
+  ],
+  "agent": {
+    "kraken": {
+      "color": "#F5F0E8",
+      "disable": false,
+      "name": "kraken",
+      "description": "Kraken - Central orchestrator with full Hive access",
+      "mode": "primary",
+      "permission": { "task": "allow" }
+    }
+  },
+  "permission": {
+    "*": {
+      "*": "allow"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+=== DIST FIX VERIFICATION ===
+Generated: Tue Apr  7 11:07:17 PM +04 2026
+
+1. lint combinedOutput:
+15145:      const combinedOutput = (result.stdout || "") + (result.stderr || "");
+15146:      if (combinedOutput.includes("couldn't find an eslint.config") || combinedOutput.includes("Cannot find module")) {
+
+2. grill scanForVulnerabilities:
+15597:function scanForVulnerabilities(content, findings, filePath) {
+15646:                  scanForVulnerabilities(fileContent, findings, entryPath.replace(context.directory + "/", ""));
+15655:        scanForVulnerabilities(content, findings, args.target);
+
+3. complexity nested loop pattern:
+15350:      { pattern: /\bfor\s*\([^)]*\)[^}]*for\s*\(/, name: "nested loop (possible O(n\xB2))", severity: "MEDIUM" },
+
+4. complexity chained filters:
+15351:      { pattern: /\.filter\([^)]*\)\.filter\(/, name: "chained filters (O(n\xB2) memory)", severity: "HIGH" },
+
+5. symbols Python ext:
+15519:      if (ext === "py") {
+
+6. symbols defMatch:
+15522:          const defMatch = trimmed.match(/^(?:async\s+)?def\s+(\w+)/);
+15523:          if (defMatch) {
+15524:            symbols2.push({ name: defMatch[1], type: "function", line: idx + 1 });
+
+7. CLI createHermesCommandHook:
+13356:function createHermesCommandHook() {
+16089:    "command.execute.before": createHermesCommandHook()
+
+8. Path containment startsWith:
+15133:    if (!resolved.startsWith(allowedRoot)) {
+15338:    if (!resolvedTarget.startsWith(allowedRoot)) {
+15473:      if (!resolved.startsWith(allowedRoot)) {
+15510:    if (!resolved.startsWith(allowedRoot)) {
+15626:    if (!resolved.startsWith(allowedRoot)) {
+
+9. dist/index.js metadata:
+-rw-r--r-- 1 leviathan leviathan 562059 Apr  7 23:07 dist/index.js

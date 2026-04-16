@@ -1,0 +1,33 @@
+{
+  "name": "@agent-lab/pod5",
+  "version": "0.1.0",
+  "description": "Testing & Deployment Infrastructure for Agent Lab",
+  "type": "module",
+  "scripts": {
+    "dev": "docker-compose up",
+    "build": "tsc && docker build -t agent-lab-pod5 .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "build:containers": "./scripts/build-containers.sh"
+  },
+  "dependencies": {
+    "@agent-lab/shared": "workspace:*",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/exporter-prometheus": "^0.57.0",
+    "@opentelemetry/sdk-node": "^0.57.0",
+    "dockerode": "^4.0.2",
+    "express": "^4.21.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/dockerode": "^3.3.31",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.6",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

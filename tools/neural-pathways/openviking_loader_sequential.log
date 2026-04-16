@@ -1,0 +1,218 @@
+OPENVIKING LOADER — Phase 3
+Source: /home/leviathan/OPENCODE_WORKSPACE/knowledge-base/AGI_Neural_Pathways/T2_SYNTHESIZED
+Target: viking://resources/hive-mind/shared/knowledge
+Total files: 195
+  architecture: 16 files
+  build: 9 files
+  gold_standard: 4 files
+  integration: 9 files
+  investigation: 15 files
+  orchestration: 11 files
+  planning: 123 files
+  review: 8 files
+
+[architecture] Ingesting 16 files...
+  ✓ ses_2bf032752ffe_Explore shark plugin architecture __explore subagent_.md
+  ✓ ses_2bf0fd18cffe_Shark Plugin V2.md
+  ✓ ses_2c91cf408ffe_Shark CLI build status review.md
+  ✓ ses_2c8d44adbffe_Shark CLI Ultra _ AGI DeepSeek Terminal.md
+  ✓ ses_2c2c26eb8ffe_Firewall Crash Testing.md
+  ✓ ses_2c9e51ba5ffe_Shark Agent CLI.md
+  ✓ ses_2c4945ba3ffe_Echo shark test command.md
+  ✓ ses_2bdc2fb22ffe_Swarm Plugin Setup.md
+  ✓ ses_2bf0cb6d5ffe_Plugin load test greeting.md
+  ✓ ses_2bd41cef7ffe_Hive Mind Plugin.md
+  ✓ ses_2c2a8dda9ffe_Execute Shark Plugin Realignment __hephaestus subagent_.md
+  ✓ ses_2bf0c5b33ffe_Shark_toggle tool usage guidance.md
+  ✓ ses_2bf832cd9ffe_Flowspec Planning Plugin.md
+  ✓ ses_2c2cf68daffe_Build Shark Agent Plugin __hephaestus subagent_.md
+  ✓ ses_2d9de9488ffe_Analyze opencode-ultra plugin structure and capabilities __e.md
+  ✓ ses_2c33f2594ffe_Shark Agent Plugin.md
+[build] Ingesting 9 files...
+  ✓ ses_2beeeacbdffe_Pokemon game build workflow.md
+  ✓ ses_2bef58c43ffe_Pokemon game build workflow.md
+  ✓ ses_2c2a39703ffe_Kraken Hive Migration Build __sisyphus subagent_.md
+  ✓ ses_2bf7ac862ffe_Analyze build issues __explore subagent_.md
+  ✓ ses_2beeffbc3ffe_Local Pokemon game build workflow.md
+  ✓ ses_2e2e9a995ffe_Sieve of Eratosthenes implementation.md
+  ✓ ses_2bedeba84ffe_REST API authentication build workflow.md
+  ✓ ses_2e2ea1e9effe_Sieve of Eratosthenes Python implementation.md
+  ✓ ses_2bf017fbfffe_New feature build workflow.md
+[gold_standard] Ingesting 4 files...
+  ✓ ses_2bd37a488ffe_OmniCoder Space Invaders Test.md
+  ✓ ses_2bc4540c6ffe_SME_ OmniCoder 9B local setup __sme subagent_.md
+  ✓ ses_2bc277482ffe_Omnicoder Debug.md
+  ✓ ses_2d86e28ecffe_Building Space Invaders replica plan.md
+[integration] Ingesting 9 files...
+  ✓ ses_2e2ee867affe_GLM-5 model details and creator.md
+  ✓ ses_2e2eec0e9ffe_GLM-5 full name and creator.md
+  ✓ ses_2e3246cdbffe_VLLM_SUCCESS.md
+  ✓ ses_2e3e9a69cffe_VLLM setup with local Qwen2_5-Coder 7B model integration for.md
+  ✓ ses_2e2e58d2cffe_GLM-5 model specifications inquiry.md
+  ✓ ses_2e2eed76cffe_GLM model questions.md
+  ✓ ses_2e2eda6b7ffe_GLM-5 context window limit.md
+  ✓ ses_2ca4a6af2ffe_GLM 5_1 opencode model integration plan.md
+  ✓ ses_2e2ef1597ffe_GLM model architecture _ details.md
+[investigation] Ingesting 15 files...
+  ✓ ses_2e3f6958bffe_Find Vosk Go API examples __explore subagent_.md
+  ✓ ses_2e2a5869affe_Auto-switch investigation __explore subagent_.md
+  ✓ ses_2e2bd8ca8ffe_Explore auto-switch logic __explore subagent_.md
+  ✓ ses_2d9cecd8effe_Analyze opencode-ultra tool interfaces and current integrati.md
+  ✓ ses_2e3771dafffe_Explore OpenCode auth __explore subagent_.md
+  ✓ ses_2c9f21f64ffe_Explore opencode TUI status bar __explore subagent_.md
+  ✓ ses_2e3f55bc2ffe_Check robotgo API for keyboard events __explore subagent_.md
+  ✓ ses_2c9f21f60ffe_Explore opencode state and events __explore subagent_.md
+  ✓ ses_2bd8f4597ffe_Find minimax API config __explore subagent_.md
+  ✓ ses_2e2b23772ffe_Investigate auto-switch logic __explore subagent_.md
+  ✓ ses_2e319f7e4ffe_Research GLM model specs __explore subagent_.md
+  ✓ ses_2d3b7b218ffe_Read anchor documents __explore subagent_.md
+  ✓ ses_2e3f20ef7ffe_Check keyboard package API __explore subagent_.md
+  ✓ ses_2d8df3b17ffe_Analyze system for bloatware __explore subagent_.md
+  ✓ ses_2bec3c77bffe_Explore OpenViking integration __explore subagent_.md
+[orchestration] Ingesting 11 files...
+  ✓ ses_2bc5f7341ffe_Review OpenCode adapter code __reviewer subagent_.md
+  ✓ ses_2bc27800cffe_Review index_ts adapter switch __reviewer subagent_.md
+  ✓ ses_2bc291a6fffe_Test opencode adapter __test_engineer subagent_.md
+  ✓ ses_2bc4ea9b4ffe_Review opencode-adapter timeout __reviewer subagent_.md
+  ✓ ses_2bd9698f3ffe_Agent Swarm Setup.md
+  ✓ ses_2bc72846fffe_Review OpenCode adapter __reviewer subagent_.md
+  ✓ ses_2e303d4baffe_Opencode Workspace Migration.md
+  ✓ ses_2bc509cb0ffe_Write Hive Mind OS architecture spec __coder subagent_.md
+  ✓ ses_2c25042ebffe_OpenDev Swarm Setup.md
+  ✓ ses_2bc66c52dffe_Review OpenCode adapter __reviewer subagent_.md
+  ✓ ses_2bc18f452ffe_Review opencode adapter __reviewer subagent_.md
+[planning] Ingesting 123 files...
+  ✓ ses_2e2e8bf05ffe_Large Python file for context testing.md
+  ✓ ses_2bef0780bffe_New session - 2026-03-30T23_23_50_132Z.md
+  ✓ ses_2bd9ffe0cffe_New session - 2026-03-31T05_31_21_459Z.md
+  ✓ ses_2c86e2d13ffe_New session - 2026-03-29T03_09_56_844Z.md
+  ✓ ses_2bd81b2b0ffe_New session - 2026-03-31T06_04_26_831Z.md
+  ✓ ses_2e3ce90eeffe_Test.md
+  ✓ ses_2c85f8b6dffe_Blog database schema design.md
+  ✓ ses_2bf09ee6dffe_My available tools inquiry.md
+  ✓ ses_2c860612bffe_Blog database schema design.md
+  ✓ ses_2e36e62d4ffe_Greeting.md
+  ✓ ses_2c8619336ffe_List current directory files.md
+  ✓ ses_2e3c69f24ffe_New session - 2026-03-23T19_43_35_643Z.md
+  ✓ ses_2e2fbf078ffe_New session - 2026-03-23T23_24_58_631Z.md
+  ✓ ses_2bf0765baffe_Greeting.md
+  ✓ ses_2bf15c31effe_Conversation quick check-in.md
+  ✓ ses_2e36bd33effe_Greeting.md
+  ✓ ses_2bd3bf823ffe_New session - 2026-03-31T07_20_36_572Z.md
+  ✓ ses_2bf0eb8f9ffe_Test message conversation.md
+  ✓ ses_2c86e6c4cffe_Blog database schema design.md
+  ✓ ses_2c4911e9bffe_Echo integration successful.md
+  ✓ ses_2bf0be53fffe_Flowspec_assess usage for test feature assessment.md
+  ✓ ses_2e2f8e731ffe_Python function to add two numbers.md
+  ✓ ses_2c4828dbdffe_Blog database schema design.md
+  ✓ ses_2c9bbc353ffe_Greeting message.md
+  ✓ ses_2e2fa1fb5ffe_New session - 2026-03-23T23_26_57_610Z.md
+  ✓ ses_2c49e754fffe_Kraken Ultra.md
+  ✓ ses_2e2d8093effe_New session - 2026-03-24T00_04_11_585Z.md
+  ✓ ses_2e2ee7ff4ffe_New session - 2026-03-23T23_39_39_403Z.md
+  ✓ ses_2e2e5db1affe_New session - 2026-03-23T23_49_05_893Z.md
+  ✓ ses_2c482e1e5ffe_List files in current directory.md
+  ✓ ses_2c4954805ffe_New session - 2026-03-29T21_05_42_906Z.md
+  ✓ ses_2bf1e9606ffe_Greeting and quick check-in.md
+  ✓ ses_2c870b8b3ffe_List files in current directory.md
+  ✓ ses_2bf069634ffe_Greeting.md
+  ✓ ses_2c86d976effe_Blog database schema design.md
+  ✓ ses_2e2fc17b7ffe_New session - 2026-03-23T23_24_48_584Z.md
+  ✓ ses_2e2f5d154ffe_System test.md
+  ✓ ses_2bf0c7d69ffe_Tool list request and capabilities discussion.md
+  ✓ ses_2bd735801ffe_Test message.md
+  ✓ ses_2d9949677ffe_Mattermost desktop setup.md
+  ✓ ses_2c86149beffe_Blog database schema design.md
+  ✓ ses_2bedc24b6ffe_Flowspec REST API assessment.md
+  ✓ ses_2c86de121ffe_List files in current directory.md
+  ✓ ses_2bf37235cffe_Quick test.md
+  ✓ ses_2e2e60a24ffe_New session - 2026-03-23T23_48_53_851Z.md
+  ✓ ses_2e2e9346bffe_Python Sieve of Eratosthenes prime number function.md
+  ✓ ses_2e2d82a17ffe_Context window size inquiry.md
+  ✓ ses_2c47b8d1effe_New session - 2026-03-29T21_33_49_153Z.md
+  ✓ ses_2bf043765ffe_Greeting.md
+  ✓ ses_2bd3c5280ffe_New session - 2026-03-31T07_20_13_439Z.md
+  ✓ ses_2c870416effe_REST API design for todo app.md
+  ✓ ses_2bd3a7471ffe_New session - 2026-03-31T07_22_15_822Z.md
+  ✓ ses_2e3c8a5a1ffe_Greeting and check-in.md
+  ✓ ses_2bc32a532ffe_Phase 1_ session_extractor_py __coder subagent_.md
+  ✓ ses_2e2ff1660ffe_New session - 2026-03-23T23_21_32_319Z.md
+  ✓ ses_2bf084da3ffe_Flowspec_assess test feature.md
+  ✓ ses_2e46e5c0effe_Model details and page labeling questions.md
+  ✓ ses_2e4624f06ffe_YOLO mode status query.md
+  ✓ ses_2bf01f835ffe_Flows_assess test feature.md
+  ✓ ses_2c493e948ffe_List files in current directory.md
+  ✓ ses_2ca2b94a8ffe_Coordinator overhaul execution __sisyphus subagent_.md
+  ✓ ses_2e3e53d9affe_Test.md
+  ✓ ses_2e2fa0ee9ffe_New session - 2026-03-23T23_27_01_910Z.md
+  ✓ ses_2bc36c112ffe_Write session_extractor_py __coder subagent_.md
+  ✓ ses_2e369e1feffe_Greeting.md
+  ✓ ses_2e2ff2773ffe_New session - 2026-03-23T23_21_27_948Z.md
+  ✓ ses_2c483c561ffe_Echo test verification.md
+  ✓ ses_2bc263ebdffe_Hermes Local.md
+  ✓ ses_2c86361e9ffe_List files in current directory.md
+  ✓ ses_2e2fa2d4cffe_New session - 2026-03-23T23_26_54_131Z.md
+  ✓ ses_2c9bc3417ffe_Test conversation.md
+  ✓ ses_2d8ae879cffe_TurboQuant Setup.md
+  ✓ ses_2bf03c894ffe_Greeting.md
+  ✓ ses_2bf02355cffe_New session - 2026-03-30T23_04_27_555Z.md
+  ✓ ses_2bd7569bdffe_Saying hello.md
+  ✓ ses_2bc8d69d6ffe_Test message.md
+  ✓ ses_2e2d3791fffe_Test message.md
+  ✓ ses_2bc193135ffe_Test sme agent __sme subagent_.md
+  ✓ ses_2e2ff4ea6ffe_Basic math question.md
+  ✓ ses_2bf05e9a7ffe_Greeting.md
+  ✓ ses_2bf04bc45ffe_Greeting.md
+  ✓ ses_2c2783566ffe_Hive installation.md
+  ✓ ses_2e2fa7b3cffe_Basic math question.md
+  ✓ ses_2e2f9e5b0ffe_Python hello world.md
+  ✓ ses_2e2eeeadbffe_New session - 2026-03-23T23_39_12_036Z.md
+  ✓ ses_2e3010ab6ffe_Write Python calculator __general subagent_.md
+  ✓ ses_2e2fa87d9ffe_Simple math question.md
+  ✓ ses_2e2da96d7ffe_Test message.md
+  ✓ ses_2bdb36502ffe_New session - 2026-03-31T05_10_09_918Z.md
+  ✓ ses_2bedb0c9effe_New session - 2026-03-30T23_47_13_889Z.md
+  ✓ ses_2e324a61effe_New session - 2026-03-23T22_40_30_689Z.md
+  ✓ ses_2e2d7ecdbffe_Context window size query.md
+  ✓ ses_2e2ff8068ffe_Greeting.md
+  ✓ ses_2bf0ab647ffe_Greeting.md
+  ✓ ses_2becf64c1ffe_Inra Overhaul.md
+  ✓ ses_2c86ff025ffe_New session - 2026-03-29T03_08_01_370Z.md
+  ✓ ses_2e325e3b3ffe_New session - 2026-03-23T22_39_09_388Z.md
+  ✓ ses_2bece4725ffe_DeerFlow local development setup.md
+  ✓ ses_2e2efec07ffe_New session - 2026-03-23T23_38_06_201Z.md
+  ✓ ses_2c8ba8c8bffe_Sisyphus availability check.md
+  ✓ ses_2e32bee71ffe_Kraken Brain.md
+  ✓ ses_2e409e026ffe_VTT Workshop.md
+  ✓ ses_2bf372356ffe_Title generation request.md
+  ✓ ses_2bf1f25deffe_Quick check-in_ test conversation.md
+  ✓ ses_2bf0b3512ffe_List available tools.md
+  ✓ ses_2e2e5ed38ffe_New session - 2026-03-23T23_49_01_255Z.md
+  ✓ ses_2bd7da2f0ffe_New session - 2026-03-31T06_08_53_007Z.md
+  ✓ ses_2bf053f2effe_Greeting.md
+  ✓ ses_2e2e6d02affe_New session - 2026-03-23T23_48_03_157Z.md
+  ✓ ses_2bf00dcc4ffe_Greeting.md
+  ✓ ses_2e2fa408fffe_New session - 2026-03-23T23_26_49_201Z.md
+  ✓ ses_2e3016ae3ffe_Simple Python calculator.md
+  ✓ ses_2bc47cd53ffe_SME_ MiniMax M2_7 synthesis API __sme subagent_.md
+  ✓ ses_2bf07d485ffe_Greeting.md
+  ✓ ses_2c86ebdfaffe_List current directory files.md
+  ✓ ses_2bc3ae017ffe_Phase 1_ session_extractor_py __coder subagent_.md
+  ✓ ses_2c339241bffe_Integration testing.md
+  ✓ ses_2e3239742ffe_New session - 2026-03-23T22_41_40_029Z.md
+  ✓ ses_2c85fd2abffe_List files in current directory.md
+  ✓ ses_2c493b919ffe_Blog database schema design.md
+  ✓ ses_2ca08d9fcffe_Quick test.md
+  ✓ ses_2e3023764ffe_New session - 2026-03-23T23_18_07_260Z.md
+  ✓ ses_2c860bc4fffe_List files in current directory.md
+[review] Ingesting 8 files...
+  ✓ ses_2bc2cb2b7ffe_QA_ session_extractor_py __reviewer subagent_.md
+  ✓ ses_2bc44567bffe_Review opencode timeout fix __reviewer subagent_.md
+  ✓ ses_2c33c844dffe_Python file review.md
+  ✓ ses_2bc1fdedeffe_QA_ session_extractor_py __reviewer subagent_.md
+  ✓ ses_2c3378eb7ffe_Shell script review.md
+  ✓ ses_2bc1e1c7effe_Simple code review __reviewer subagent_.md
+  ✓ ses_2bc1a6bc1ffe_Critic review request __critic subagent_.md
+  ✓ ses_2bc3cc7f6ffe_Review timeout code __reviewer subagent_.md
+
+DONE — Success: 195 | Failed: 0

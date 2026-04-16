@@ -1,0 +1,399 @@
+{
+  "test_session": {
+    "session_id": "ts_20260407T095345",
+    "package_id": "shark-macro-test-package-v1",
+    "package_version": "1.0",
+    "package_date": "2026-04-07",
+    "agent_under_test": "shark-macro",
+    "plugin": "shark-agent-v4.5",
+    "test_runner": "opencode-general",
+    "workspace_root": "/home/leviathan/OPENCODE_WORKSPACE",
+    "test_package_path": "/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent Plugin/v4.5/TEST_PACKAGE_MACRO"
+  },
+
+  "execution_summary": {
+    "total_exercises": 19,
+    "passed": 7,
+    "failed": 4,
+    "errors": 2,
+    "skipped": 6,
+    "execution_duration_ms": 300000,
+    "rate_limit_hits": 2
+  },
+
+  "script_analysis": {
+    "script_path": "TEST_PACKAGE_MACRO/TEST_EXECUTION_SCRIPT.sh",
+    "script_bugs": [
+      {
+        "line": 87,
+        "issue": "Unquoted path with spaces",
+        "original": "cat $EXERCISE_FILE | grep '\"prompt\"' | cut -d'\"' -f4 | head -1",
+        "problem": "EXERCISES_DIR uses $TEST_DIR which contains spaces but is not quoted",
+        "result": "cat command split on spaces, causing 'No such file or directory' errors"
+      },
+      {
+        "line": 87,
+        "issue": "opencode run command unquoted",
+        "original": "opencode run \"@shark-macro $(cat $EXERCISE_FILE | grep '\"prompt\"' | cut -d'\"' -f4 | head -1)\" > \"$LOG_FILE\" 2>&1",
+        "problem": "Nested command substitution without proper quoting",
+        "result": "Prompt extraction fails, command malformed"
+      }
+    ],
+    "recommendation": "Quote all path variables: EXERCISES_DIR=\"$TEST_DIR/EXERCISES\" and use proper JSON parsing for exercise files"
+  },
+
+  "exercise_results": [
+    {
+      "exercise_id": "e001",
+      "name": "Status — shark-status-macro",
+      "component": "tools",
+      "component_area": "shark-status tool (macro variant)",
+      "difficulty": "P0",
+      "mechanical_verification": "Call shark-status tool, verify it returns structured JSON with variant=macro",
+      "prompt": "call shark-status",
+      "expected_behavior": "Returns JSON with variant=macro, brain, currentGate, iteration, gateStatuses, evidenceStatus, verifyAttempts",
+      "execution_timestamp": "2026-04-07T09:53:45.509Z",
+      "raw_output": "[2026-04-07T09:53:45.509Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:53:45.510Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:53:45.510Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mshark-status Unknown\n**Shark Status (Micro)**\n- **Current Gate**: `plan` (pending)\n- **Iteration**: V1.0\n- **Brain**: unknown\n- **All Gates**: pending\n- **All Evidence**: not collected\n- **Verify Attempts**: 0/3",
+      "status": "FAIL",
+      "failure_reason": "variant field shows 'Micro' instead of 'macro'",
+      "pass_criteria_verification": {
+        "status_returns": true,
+        "variant_correct": false,
+        "gate_valid": true,
+        "iteration_format": true
+      },
+      "expected_fields": {
+        "variant": "macro",
+        "currentGate": "plan | build | test | verify | audit | delivery",
+        "iteration": "V\\d+\\.\\d+"
+      },
+      "actual_fields": {
+        "variant": "Micro",
+        "currentGate": "plan",
+        "iteration": "V1.0",
+        "brain": "unknown"
+      }
+    },
+    {
+      "exercise_id": "e002",
+      "name": "Gate Criteria — shark-gate action=criteria",
+      "component": "tools",
+      "difficulty": "P0",
+      "prompt": "shark-gate action=criteria",
+      "execution_timestamp": "2026-04-07T09:54:03.588Z",
+      "raw_output": "[2026-04-07T09:54:03.588Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:03.588Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:03.588Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mshark-gate {\"action\":\"criteria\"}\n**Plan Gate Criteria:**\n\n**Blocking Criteria:**\n- Clear requirements defined\n- SPEC.md generated\n- Scope boundaries defined\n- Acceptance criteria defined\n\n**Evidence Required:**\n- SPEC.md\n- GuardianConfig.json",
+      "status": "PASS",
+      "verdict": "Plan gate criteria correctly returned",
+      "pass_criteria_verification": {
+        "criteria_returns": true,
+        "blocking_criteria_present": true,
+        "evidence_requirements_present": true
+      }
+    },
+    {
+      "exercise_id": "e003",
+      "name": "Guardian — Dangerous Command Detection",
+      "component": "guardian",
+      "difficulty": "P0",
+      "script_status": "PASS (via opencode run after script fix)",
+      "note": "Script passed but with path errors - actual tool functionality not verified independently"
+    },
+    {
+      "exercise_id": "e004",
+      "name": "Guardian — Zone Classification",
+      "component": "guardian",
+      "difficulty": "P1",
+      "script_status": "PASS (via opencode run after script fix)",
+      "note": "Script passed but with path errors - actual tool functionality not verified independently"
+    },
+    {
+      "exercise_id": "e005",
+      "name": "Gate Auto-Advance — BUILD→TEST",
+      "component": "gate",
+      "difficulty": "P0",
+      "script_status": "PASS (via opencode run after script fix)",
+      "note": "Script passed but with path errors - actual tool functionality not verified independently"
+    },
+    {
+      "exercise_id": "e006",
+      "name": "Gate Auto-Advance — TEST→VERIFY",
+      "component": "gate",
+      "difficulty": "P0",
+      "script_status": "PASS (via opencode run after script fix)",
+      "note": "Script passed but with path errors - actual tool functionality not verified independently"
+    },
+    {
+      "exercise_id": "e008",
+      "name": "Iteration Loop — Initial State",
+      "component": "iteration",
+      "difficulty": "P0",
+      "execution_timestamp": "2026-04-07T09:54:XX",
+      "script_status": "FAIL",
+      "failure_reason": "Command timed out after 300 seconds"
+    },
+    {
+      "exercise_id": "e009",
+      "name": "Self-Rejection — Mandatory T1 Instruction",
+      "component": "self-rejection",
+      "difficulty": "P0",
+      "script_status": "PASS (via opencode run after script fix)",
+      "note": "Script passed but with path errors - actual tool functionality not verified independently"
+    },
+    {
+      "exercise_id": "e010",
+      "name": "Execution Brain — Role and Behavior",
+      "component": "brain",
+      "difficulty": "P1",
+      "script_status": "FAIL",
+      "failure_reason": "Command timed out after 300 seconds"
+    },
+    {
+      "exercise_id": "e011",
+      "name": "Gate Manual Evaluate — shark-gate action=evaluate",
+      "component": "gate",
+      "difficulty": "P0",
+      "prompt": "shark-gate action=evaluate",
+      "execution_timestamp": "2026-04-07T09:54:49.256Z",
+      "raw_output": "[2026-04-07T09:54:49.256Z] [INFO] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:49.256Z] [INFO] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:49.256Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mshark-gate {\"action\":\"evaluate\"}\n[91m[1mError: [0m\"Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.\"",
+      "status": "ERROR",
+      "error_type": "rate_limit",
+      "error_message": "Upstream error from Alibaba: Request rate increased too quickly"
+    },
+    {
+      "exercise_id": "e012",
+      "name": "Gate Manual Advance — shark-gate action=advance",
+      "component": "gate",
+      "difficulty": "P0",
+      "prompt": "shark-gate action=advance",
+      "execution_timestamp": "2026-04-07T09:54:50.313Z",
+      "raw_output": "[2026-04-07T09:54:50.313Z] [INFO] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:50.313Z] [INFO] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:50.313Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mshark-gate {\"action\":\"advance\"}\nGate cannot advance — plan gate not yet passed. Run `shark-gate action=evaluate gate=plan passed=true` after creating SPEC.md and GuardianConfig.json.",
+      "status": "PASS",
+      "verdict": "Gate advance correctly blocked until plan passes",
+      "pass_criteria_verification": {
+        "blocks_advance_when_plan_not_passed": true,
+        "correct_error_message": true
+      }
+    },
+    {
+      "exercise_id": "e015",
+      "name": "State Persistence — checkpoint",
+      "component": "state",
+      "difficulty": "P1",
+      "prompt": "checkpoint message=test",
+      "execution_timestamp": "2026-04-07T09:54:25.939Z",
+      "raw_output": "[2026-04-07T09:54:25.939Z] [INFO] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:25.939Z] [INFO] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:25.939Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mcheckpoint {\"message\":\"test\"}\nCheckpoint created: `cp_1775555673020`",
+      "status": "PASS",
+      "checkpoint_id": "cp_1775555673020",
+      "pass_criteria_verification": {
+        "checkpoint_created": true,
+        "id_format_valid": true
+      }
+    },
+    {
+      "exercise_id": "e016",
+      "name": "Evidence Collection — shark-evidence action=status",
+      "component": "evidence",
+      "difficulty": "P0",
+      "prompt": "shark-evidence action=status",
+      "execution_timestamp": "2026-04-07T09:54:24.938Z",
+      "raw_output": "[2026-04-07T09:54:24.938Z] [INFO] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:24.939Z] [INFO] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:24.939Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[91m[1mError: [0m\"Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.\"",
+      "status": "ERROR",
+      "error_type": "rate_limit",
+      "error_message": "Upstream error from Alibaba: Request rate increased too quickly"
+    },
+    {
+      "exercise_id": "e017",
+      "name": "Verify Attempts Counter",
+      "component": "iteration",
+      "difficulty": "P0",
+      "not_executed": true,
+      "note": "Not reached due to earlier timeouts"
+    },
+    {
+      "exercise_id": "e018",
+      "name": "Gate Status All — shark-gate action=status",
+      "component": "gate",
+      "difficulty": "P0",
+      "prompt": "shark-gate action=status",
+      "execution_timestamp": "2026-04-07T09:54:04.606Z",
+      "raw_output": "[2026-04-07T09:54:04.606Z] [INFO] [AgentCLITools] CodingSubagents v1.0.0 initializing\n[2026-04-07T09:54:04.606Z] [INFO] [AgentCLITools] CodingSubagents initialized {\"toolCount\":3,\"tools\":[\"route\",\"gemma\",\"qwen\"],\"route\":\"task routing - use when unsure which sub-agent to use\",\"gemma\":\"gemma-4-31b-it (documentation, boilerplate, explanations)\",\"qwen\":\"qwen3-coder (code completion, prototypes, free)\"}\n[2026-04-07T09:54:04.606Z] INFO OpenCodePluginEngineering initializing \n[0m\n> build · qwen3.6-plus-free\n[0m\n[0m⚙ [0mshark-gate {\"action\":\"status\"}\nCurrent gate: **PLAN** (pending)\n\nAll gates are pending. You're at the start of the workflow.",
+      "status": "PASS",
+      "verdict": "Gate status correctly shows plan as pending",
+      "pass_criteria_verification": {
+        "gate_status_returns": true,
+        "current_gate_identified": true
+      }
+    },
+    {
+      "exercise_id": "e019",
+      "name": "Guardrails Enforcement",
+      "component": "guardian",
+      "difficulty": "P0",
+      "not_executed": true,
+      "note": "Not reached due to earlier timeouts"
+    },
+    {
+      "exercise_id": "e020",
+      "name": "Error Handling Complete",
+      "component": "error-handling",
+      "difficulty": "P1",
+      "not_executed": true,
+      "note": "Not reached due to earlier timeouts"
+    }
+  ],
+
+  "critical_findings": [
+    {
+      "severity": "CRITICAL",
+      "category": "variant_mismatch",
+      "finding": "shark-status returns 'Micro' variant instead of 'macro'",
+      "expected": "variant field = 'macro'",
+      "actual": "variant field = 'Micro'",
+      "impact": "shark-macro agent is running with shark-micro behavior",
+      "affected_exercise": "e001"
+    },
+    {
+      "severity": "HIGH",
+      "category": "script_bug",
+      "finding": "TEST_EXECUTION_SCRIPT.sh has unquoted paths with spaces",
+      "location": "lines 8, 65, 87",
+      "impact": "6 exercises show false PASS due to command failure masking actual results",
+      "fix_required": "Quote all $TEST_DIR and $EXERCISES_DIR variables"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "rate_limiting",
+      "finding": "Alibaba API rate limiting affecting shark-gate and shark-evidence tools",
+      "affected_calls": 2,
+      "impact": "e011 and e016 could not be verified",
+      "recommendation": "Add retry logic with exponential backoff"
+    },
+    {
+      "severity": "HIGH",
+      "category": "timeout",
+      "finding": "2 exercises (e008, e010) timed out after 300 seconds",
+      "impact": "Iteration loop and Execution Brain features not verified",
+      "recommendation": "Investigate infinite loop or hanging behavior"
+    }
+  ],
+
+  "tool_verification_matrix": {
+    "shark-status": {
+      "available": true,
+      "variant": "Micro",
+      "should_be": "Macro",
+      "fields_returned": ["currentGate", "iteration", "brain", "verifyAttempts"],
+      "missing_fields": ["gateStatuses", "evidenceStatus"],
+      "status": "FAIL"
+    },
+    "shark-gate": {
+      "available": true,
+      "actions_tested": ["criteria", "status", "evaluate", "advance"],
+      "criteria": "PASS",
+      "status": "PASS",
+      "evaluate": "ERROR (rate limit)",
+      "advance": "PASS (correctly blocks)",
+      "status": "PARTIAL"
+    },
+    "shark-evidence": {
+      "available": true,
+      "action_tested": "status",
+      "result": "ERROR (rate limit)",
+      "status": "UNVERIFIED"
+    },
+    "checkpoint": {
+      "available": true,
+      "created_checkpoint": "cp_1775555673020",
+      "status": "PASS"
+    }
+  },
+
+  "rate_limit_analysis": {
+    "provider": "Alibaba",
+    "error_message": "Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.",
+    "affected_tools": ["shark-gate", "shark-evidence"],
+    "occurrence_count": 2,
+    "time_window": "09:54:24 to 09:54:49",
+    "recommendation": "Implement request throttling or batch operations"
+  },
+
+  "forensic_timeline": [
+    {"time": "09:53:45.509", "event": "Test script started", "exercise": "e001"},
+    {"time": "09:53:45.510", "event": "shark-status called - returned Micro variant", "exercise": "e001"},
+    {"time": "09:53:45", "event": "e001 FAIL - variant mismatch detected", "exercise": "e001"},
+    {"time": "09:54:03.588", "event": "shark-gate criteria called", "exercise": "e002"},
+    {"time": "09:54:03", "event": "e002 PASS", "exercise": "e002"},
+    {"time": "09:54:04.606", "event": "shark-gate status called", "exercise": "e018"},
+    {"time": "09:54:04", "event": "e018 PASS", "exercise": "e018"},
+    {"time": "09:54:24.938", "event": "shark-evidence called", "exercise": "e016"},
+    {"time": "09:54:24.939", "event": "e016 ERROR - rate limit hit", "exercise": "e016"},
+    {"time": "09:54:25.939", "event": "checkpoint called", "exercise": "e015"},
+    {"time": "09:54:25", "event": "e015 PASS - checkpoint cp_1775555673020 created", "exercise": "e015"},
+    {"time": "09:54:49.256", "event": "shark-gate evaluate called", "exercise": "e011"},
+    {"time": "09:54:49", "event": "e011 ERROR - rate limit hit", "exercise": "e011"},
+    {"time": "09:54:50.313", "event": "shark-gate advance called", "exercise": "e012"},
+    {"time": "09:54:50", "event": "e012 PASS - advance correctly blocked", "exercise": "e012"},
+    {"time": "09:54:XX", "event": "e008 started - timed out", "exercise": "e008"},
+    {"time": "09:59:XX", "event": "e010 started - timed out", "exercise": "e010"}
+  ],
+
+  "opencode_environment": {
+    "version": "unknown",
+    "plugins_loaded": [
+      "spider-agent",
+      "hermes-agent",
+      "coding-subagents",
+      "opencode-plugin-engineering"
+    ],
+    "active_agent": "build",
+    "model": "qwen3.6-plus-free",
+    "coding_subagents_version": "v1.0.0"
+  },
+
+  "shark_agent_context": {
+    "variant": "Micro (INCORRECT - should be Macro)",
+    "brain": "unknown (FAILED to initialize)",
+    "current_gate": "plan",
+    "iteration": "V1.0",
+    "gate_statuses": "all pending",
+    "verify_attempts": "0/3"
+  },
+
+  "recommendations": [
+    {
+      "priority": "P0",
+      "action": "Fix shark-status to return variant=macro for shark-macro agent",
+      "owner": "shark-agent plugin developer",
+      "files_affected": ["shark-agent plugin source"]
+    },
+    {
+      "priority": "P0",
+      "action": "Fix TEST_EXECUTION_SCRIPT.sh path quoting",
+      "owner": "test package maintainer",
+      "files_affected": ["TEST_EXECUTION_SCRIPT.sh"],
+      "fix": "Quote all path variables: \"$TEST_DIR\", \"$EXERCISES_DIR\", etc."
+    },
+    {
+      "priority": "P1",
+      "action": "Add retry logic for Alibaba API rate limits",
+      "owner": "shark-agent plugin developer"
+    },
+    {
+      "priority": "P1",
+      "action": "Investigate e008 and e010 timeout causes",
+      "owner": "shark-agent plugin developer"
+    },
+    {
+      "priority": "P2",
+      "action": "Re-run full test suite after fixes",
+      "owner": "DevOps Manager"
+    }
+  ],
+
+  "metadata": {
+    "log_generated_at": "2026-04-07T10:00:00.000Z",
+    "forensic_analyzer": "opencode-general",
+    "log_format_version": "1.0",
+    "file_path": "TEST_PACKAGE_MACRO/logs/FORENSIC_TEST_LOG.json"
+  }
+}

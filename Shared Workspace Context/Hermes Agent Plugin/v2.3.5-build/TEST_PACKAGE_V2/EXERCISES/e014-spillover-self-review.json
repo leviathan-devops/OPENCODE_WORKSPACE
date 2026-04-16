@@ -1,0 +1,34 @@
+{
+  "exercise_id": "e014",
+  "name": "Spillover — self-review hook only fires for Hermes agents",
+  "component": "spillover_defense",
+  "component_area": "self-review hook guard",
+  "mechanical_verification": "As Hermes agent, say 'looks good'. Verify self-review warning injected. As vanilla agent, same phrase should NOT inject warning.",
+  "difficulty": "P1",
+  "time_estimate": "1 minute",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "As Hermes agent, include 'looks good' or 'approved' in message",
+      "expected": "Self-review warning injected into response",
+      "mechanical_pass": "Output contains '[SELF-REVIEW CHECK]' or similar warning"
+    },
+    {
+      "step": 2,
+      "action": "As vanilla agent, include 'looks good' in message",
+      "expected": "NO self-review warning injected",
+      "mechanical_pass": "Output does NOT contain self-review warning markers"
+    }
+  ],
+
+  "pass_criteria": {
+    "hermes_gets_warning": "Hermes agent message gets self-review check injected",
+    "vanilla_not_polluted": "Vanilla agent message does NOT get self-review warning"
+  },
+
+  "failure_modes": {
+    "vanilla_polluted": "CRITICAL — Vanilla agents get spurious self-review warnings",
+    "hermes_no_warning": "Hermes agent does not get self-review warning"
+  }
+}

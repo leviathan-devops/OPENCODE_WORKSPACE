@@ -1,0 +1,13 @@
+{
+  "gate": "verify",
+  "timestamp": 1775950844930,
+  "passed": true,
+  "files": [
+    "SPEC.md"
+  ],
+  "metadata": {
+    "tool": "read",
+    "sessionID": "test-session",
+    "workEvidence": "read:SPEC.md"
+  }
+}

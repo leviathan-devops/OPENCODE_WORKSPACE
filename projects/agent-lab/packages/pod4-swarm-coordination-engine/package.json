@@ -1,0 +1,30 @@
+{
+  "name": "@agent-lab/pod4",
+  "version": "0.1.0",
+  "description": "Swarm Coordination Engine for Agent Lab",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "dependencies": {
+    "@agent-lab/shared": "workspace:*",
+    "bullmq": "^5.34.10",
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
+    "opentelemetry-api": "^1.9.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.6",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

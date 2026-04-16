@@ -1,0 +1,43 @@
+{
+  "exercise_id": "e003",
+  "name": "Memory — Persistence across sessions",
+  "component": "memory_system",
+  "component_area": "2nd-brain persistence",
+  "mechanical_verification": "Store memory, simulate restart (or verify file persisted), recall and verify",
+  "difficulty": "P1",
+  "time_estimate": "2 minutes",
+
+  "prompt": "call hermes_remember topic=e003-persist value=\"persist-test-$(date +%s)\"",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call hermes_remember topic=e003-persist value=\"persist-test-1234567890\"",
+      "expected": "Confirmation of storage"
+    },
+    {
+      "step": 2,
+      "action": "cat ~/hermes-workspace/memory/*.json 2>/dev/null | grep -c 'e003-persist'",
+      "expected": "Count >= 1 (memory file contains the topic)",
+      "mechanical_pass": "grep finds e003-persist in memory files"
+    },
+    {
+      "step": 3,
+      "action": "call hermes_recall topic=e003-persist",
+      "expected": "Returns 'persist-test-1234567890'",
+      "mechanical_pass": "Exact value match, no truncation"
+    }
+  ],
+
+  "pass_criteria": {
+    "file_written": "Memory file exists at ~/hermes-workspace/memory/",
+    "json_valid": "Memory file is valid JSON (python3 -m json.tool succeeds)",
+    "value_intact": "Stored value === retrieved value (no truncation, no corruption)"
+  },
+
+  "failure_modes": {
+    "file_not_created": "No memory file written to ~/hermes-workspace/",
+    "json_corrupt": "Memory file is not valid JSON",
+    "value_truncated": "Retrieved value is truncated or garbled"
+  }
+}

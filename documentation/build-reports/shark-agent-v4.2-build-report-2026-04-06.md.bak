@@ -1,0 +1,144 @@
+# Shark Agent V4.2 — Build Report
+**Date:** 2026-04-06  
+**Build Status:** ✅ COMPLETE
+
+---
+
+## Executive Summary
+Shark Agent V4.2 successfully applied 4 fixes from the V4.1 audit. The plugin is now type-safe, has honest documentation about Guardian's advisory-only behavior, and removed lying coordinator stubs.
+
+---
+
+## Fixes Applied
+
+### Fix-01: Guardian Advisory Documentation ✅
+**File:** `src/hooks/v4.1/guardian-hook.ts`
+
+**Changes:**
+- Removed misleading "blocking is impossible" comment
+- Changed `console.log` to `console.error` for dangerous commands
+- Added `ADVISORY` markers to clarify Guardian is audit-only
+- Agent is responsible for self-rejection
+
+**Verification:**
+```bash
+grep -c "ADVISORY" src/hooks/v4.1/guardian-hook.ts
+# Result: 3
+```
+
+---
+
+### Fix-02: Coordinator Stub Removal ✅
+**File:** `src/index.ts`
+
+**Changes:**
+- Removed `getMicroCoordinator()` stub that threw
+- Removed `getMacroDispatcher()` stub that threw
+- Removed unused imports of `MicroCoordinator` and `MacroPeerDispatch`
+- Added honest TODO placeholder for future wiring
+
+**Verification:**
+```bash
+grep -c "throw new Error" src/index.ts
+# Result: 0 (stubs removed)
+
+grep -c "TODO: Wire coordinator" src/index.ts
+# Result: 1 (placeholder exists)
+```
+
+---
+
+### Fix-03: TypeScript Verification ✅
+**Severity:** MEDIUM
+
+**Changes:**
+- Integrated `npx tsc --noEmit` into build verification
+- V4.2 build requires 0 TypeScript errors
+
+**Verification:**
+```bash
+npx tsc --noEmit 2>&1
+# Result: 0 errors (clean)
+```
+
+---
+
+### Fix-04: Documentation Correction ✅
+**File:** `documentation/build-reports/shark-agent-v4.1-build-report-2026-04-06.md`
+
+**Changes:**
+- Corrected "GateName defined in gates.ts" to accurate "GateName IS exported from evidence.ts"
+- Build report now correctly states import works for the right reason
+
+---
+
+## Build Verification Results
+
+### TypeScript Check
+```
+npx tsc --noEmit
+Result: PASS (0 errors)
+```
+
+### Bundle Build
+```
+bun build src/index.ts --outdir dist --target bun --format esm --bundle
+Result: PASS (90 modules, 0.48 MB)
+```
+
+### Bundle Audit
+| Check | Result | Status |
+|-------|--------|--------|
+| `tool.execute.before` | 1 | ✅ |
+| `tool.execute.after` | 1 | ✅ |
+| `experimental.session.compacting` | 1 | ✅ |
+| `experimental.chat.system.transform` | 1 | ✅ |
+| Guardian references | 10 | ✅ |
+| `process.cwd()` usage | 3 | ✅ |
+| TypeScript errors | 0 | ✅ |
+
+---
+
+## Files Modified
+
+### Source Files
+```
+src/hooks/v4.1/guardian-hook.ts  # Fix-01: Guardian advisory documentation
+src/index.ts                      # Fix-02: Removed coordinator stubs, version bump to V4.2
+```
+
+### Documentation
+```
+documentation/build-reports/shark-agent-v4.1-build-report-2026-04-06.md  # Fix-04: GateName rationale corrected
+```
+
+---
+
+## V4.2 Status
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| Hooks wired | ✅ | All 5 hooks functional |
+| Guardian advisory | ✅ | Logs dangerous commands, cannot block |
+| Gate advancement | ✅ | Auto-advances on build/test tools |
+| Evidence collection | ✅ | Stamps work evidence |
+| State persistence | ✅ | Snapshots on compaction |
+| System prompt injection | ✅ | Injects enforcement context |
+| TypeScript | ✅ | 0 errors |
+| Coordinators | ⚠️ | Stubs removed, not wired (V4.3 item) |
+
+---
+
+## Restoration Instructions
+
+To restore V4.1:
+```bash
+cd /home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent-v4
+cp src/index.ts src/index.v4.2.ts
+cp ../shark-agent-v4.1-backup/src/index.ts src/index.ts
+bun build src/index.ts --outdir dist --target bun --format esm --bundle
+```
+
+---
+
+*Build report generated: 2026-04-06*

@@ -1,0 +1,378 @@
+2026-03-31 04:39:46,020 - openviking.server.app - INFO - Bot API proxy disabled (use --with-bot to enable)
+OpenViking HTTP Server is running on 0.0.0.0:1933
+2026-03-31 04:39:46,076 - uvicorn.error - INFO - Started server process [1503945]
+2026-03-31 04:39:46,076 - uvicorn.error - INFO - Waiting for application startup.
+2026-03-31 04:39:46,081 - openviking.utils.agfs_utils - INFO - [AGFSUtils] Created AGFSBindingClient (lib_path=/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/lib/libagfsbinding.so)
+time="2026-03-31T04:39:46+04:00" level=info msg="mounted serverinfofs at /serverinfo"
+time="2026-03-31T04:39:46+04:00" level=info msg="[queuefs] Recovered 10 in-flight message(s) from previous run"
+time="2026-03-31T04:39:46+04:00" level=info msg="[queuefs] SQLite backend initialized"
+time="2026-03-31T04:39:46+04:00" level=info msg="[queuefs] Initialized with backend: sqlite"
+time="2026-03-31T04:39:46+04:00" level=info msg="mounted queuefs at /queue"
+time="2026-03-31T04:39:46+04:00" level=info msg="[localfs] Initialized with base path: /home/leviathan/openviking_workspace/viking"
+time="2026-03-31T04:39:46+04:00" level=info msg="mounted localfs at /local"
+2026-03-31 04:39:46,084 - openviking.storage.queuefs.queue_manager - INFO - [QueueManager] Initialized with agfs=AGFSBindingClient, mount_point=/queue
+2026-03-31 04:39:46,084 - openviking.storage.viking_vector_index_backend - INFO - VikingVectorIndexBackend facade initialized
+2026-03-31 04:39:46,093 - openviking.storage.queuefs.queue_manager - INFO - Embedding queue initialized with TextEmbeddingHandler
+2026-03-31 04:39:46,093 - openviking.storage.queuefs.queue_manager - INFO - Semantic queue initialized with SemanticProcessor
+2026-03-31 04:39:46,097 - openviking.service.core - INFO - Initialized embedder (dim 1536, sparse False)
+2026-03-31 04:39:46,097 - openviking.crypto.config - INFO - Encryption is disabled
+2026-03-31 04:39:46,097 - openviking.service.core - INFO - Encryption module not enabled
+2026-03-31 04:39:46,097 - openviking.storage.viking_vector_index_backend - INFO - _SingleAccountBackend initialized (bound_account_id=default, mode=local)
+time="2026-03-31T04:39:46+04:00" level=info msg="[queuefs] Created queue 'Embedding' (SQLite)"
+2026-03-31 04:39:46,111 - openviking.storage.queuefs.queue_manager - INFO - [QueueManager] Started
+2026-03-31 04:39:46,111 - openviking.service.core - INFO - QueueManager workers started
+time="2026-03-31T04:39:46+04:00" level=info msg="[queuefs] Created queue 'Semantic' (SQLite)"
+2026-03-31 04:39:46,112 - openviking.service.core - INFO - Initialized preset directories account=0 user=0
+2026-03-31 04:39:46,115 - openviking.session - INFO - Using v1 memory compressor (legacy)
+2026-03-31 04:39:46,119 - openviking.service.core - INFO - LockManager started
+2026-03-31 04:39:46,119 - openviking.resource.watch_manager - INFO - [WatchManager] Loaded 0 tasks from storage
+2026-03-31 04:39:46,119 - openviking.resource.watch_manager - INFO - [WatchManager] Initialized with 0 tasks
+2026-03-31 04:39:46,119 - openviking.resource.watch_scheduler - INFO - [WatchScheduler] WatchManager initialized
+2026-03-31 04:39:46,119 - openviking.resource.watch_scheduler - INFO - [WatchScheduler] Started with check interval 60.0s
+2026-03-31 04:39:46,119 - openviking.service.core - INFO - WatchScheduler started
+2026-03-31 04:39:46,119 - openviking.service.core - INFO - OpenVikingService initialized
+2026-03-31 04:39:46,119 - openviking.server.app - INFO - OpenVikingService initialized
+2026-03-31 04:39:46,119 - openviking.server.api_keys - INFO - APIKeyManager loaded: 1 accounts, 0 user keys
+2026-03-31 04:39:46,119 - openviking.server.app - INFO - APIKeyManager initialized with encryption_enabled=False
+2026-03-31 04:39:46,119 - openviking.service.task_tracker - INFO - [TaskTracker] Initialized (in-memory, max_tasks=10000)
+2026-03-31 04:39:46,119 - openviking.resource.watch_scheduler - INFO - [WatchScheduler] Scheduler loop started
+2026-03-31 04:39:46,119 - uvicorn.error - INFO - Application startup complete.
+2026-03-31 04:39:46,120 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:1933 (Press CTRL+C to quit)
+2026-03-31 04:39:46,691 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,691 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,693 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,693 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,694 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,694 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,694 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,694 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,696 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,696 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,705 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,705 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,709 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,710 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 83e0516a-b641-4fdd-8d24-3d30f606b400
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: e01244fd-ec81-4789-8475-280aa273e02b
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 4a8bd70b-df10-4c5a-99a0-538a467b97f5
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 51ed1cf2-73d5-4eae-9647-33b7f6d6f91e
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: c22a88cf-c621-4367-90f0-db34c6fd1745
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 03b888a2-d655-496e-9015-d4cc3a15fedf
+2026-03-31 04:39:46,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ae24925f-cd54-4a94-b3d7-efe65b315eb8
+2026-03-31 04:39:46,727 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,727 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,735 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,735 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,791 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,791 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:39:46,918 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: e5a63240-72dc-49df-ac0a-acebf3e139fc
+2026-03-31 04:39:46,918 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 968c758c-6deb-42f4-b0af-7925b872f048
+2026-03-31 04:39:46,918 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: a310f9c5-898a-49d7-8150-9eb802ec9af2
+2026-03-31 04:39:49,752 - uvicorn.access - INFO - 127.0.0.1:51130 - "GET /health HTTP/1.1" 200
+2026-03-31 04:40:16,773 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: eec425ca-d99e-4c6f-959b-c47233835ffe
+2026-03-31 04:40:16,773 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 13c212a6-0585-447f-ad50-ab2b0ea59575
+2026-03-31 04:40:16,773 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: e9b2861f-d983-48c7-9547-d99296824169
+2026-03-31 04:40:16,773 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 1151cfe6-6c60-45bc-9493-729534a71053
+2026-03-31 04:40:16,774 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: f57edee3-6e91-45b2-9bd2-a4c7a2bd0393
+2026-03-31 04:40:16,774 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 20f80060-943e-4938-9e0f-03066fa6587a
+2026-03-31 04:40:16,774 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b10cba2c-4881-43fa-82ce-59a274bac99f
+2026-03-31 04:40:16,975 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ee92d0a2-bd6e-47c1-a876-66ea13f5d717
+2026-03-31 04:40:16,975 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: f8af7f31-f8b4-40b0-83be-58e2028e394d
+2026-03-31 04:40:16,975 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 057134cb-cdd2-447c-bcb3-e54a1dfbbca1
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 3fda96d7-d7af-41c9-8592-05f1f489ce1a
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ece10317-b209-4496-91f0-0a1bd8d5c4e3
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 419d4671-c148-4c5d-ba80-a53f2efefed8
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 41199e7f-3db6-4fe2-90ab-bd7cae7f6926
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8de6da3c-1cbc-488c-a91a-37d6b6405b82
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b58101d1-f4a9-4b0b-b0c3-5f1bdc669a9d
+2026-03-31 04:40:46,824 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 852b70e4-1d9c-4bbb-aa11-16019b613ecf
+2026-03-31 04:40:47,025 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 39681993-bf90-411b-8752-6ac6831e695d
+2026-03-31 04:40:47,025 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ab4fb120-3a67-4d39-83a8-f922210601c6
+2026-03-31 04:40:47,025 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: c80c78cf-835d-4970-9b9f-3dd0f2110dc9
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: aa7ef234-5051-4bd3-99e2-5c43bb9a762c
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: a4762e99-d9a6-452b-84a4-8b428c233f90
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 2e10b5c7-4736-48ca-bfc9-a43bb85f8d1d
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8aed2638-f13f-4ca1-b213-9d721239e786
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 6db2b438-e8de-4f74-b19a-25f350507119
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 62ce79d5-a815-4287-b66a-93a7e5d28b39
+2026-03-31 04:41:16,876 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: afeeec5f-a120-4592-b00d-9adb245a3636
+2026-03-31 04:41:17,078 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ccbce283-c33c-46a9-bef9-6fa90c1e754f
+2026-03-31 04:41:17,078 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 61f5f1d6-b87e-48f8-86be-63a6aaafb15a
+2026-03-31 04:41:17,078 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: bf76cbb4-6970-4575-8298-9ae118686914
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 974baf4e-57ad-4d92-9154-7fc07e9b60ae
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 30c959b5-4116-4963-83ee-ae9598022480
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 3f18751d-cbff-45a6-893c-36cd72b91e47
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: f813e3b8-d9c6-478d-903c-6de8a73c2283
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 2529e8ea-9de9-440c-b9b5-64bbeb2d8507
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8b859ac7-1640-4948-83b3-98aaa7348636
+2026-03-31 04:41:46,930 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8957ea52-98ef-4226-9343-2867b27a384b
+2026-03-31 04:41:47,131 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ffdf07e4-2180-4253-9a55-650579380e85
+2026-03-31 04:41:47,131 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 2a9b0548-996f-48a1-b771-8ce19f1cbdda
+2026-03-31 04:41:47,131 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 0ab43c9a-cf8d-457a-ad0f-9083d9281ac6
+2026-03-31 04:42:16,984 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 4f798aae-6ada-4b56-9fc4-39feefbbc77c
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 573b8e42-dea6-4372-b931-234f5d9e6821
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 98fa2c82-fc39-4838-9067-0de3383f52b4
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 9f7d11d5-cefd-4b40-9974-1f30a676f35e
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: af058016-88a6-4e00-ba7c-8828f2cf3a7a
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: e9da45a9-7a8b-4b18-bd16-de4695af7750
+2026-03-31 04:42:16,985 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 712537cb-6f97-4385-9b41-4fb4a992fda7
+2026-03-31 04:42:17,187 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b82cd750-5129-4d4a-81db-738364622e22
+2026-03-31 04:42:17,187 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 65ecfe93-5635-4079-b5be-56ce9b55f6f5
+2026-03-31 04:42:17,187 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 0a8af6fb-7cf3-4c3a-b9f9-b000ae7ad939
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: c76ed79d-52fb-433d-8cee-8abe0d64d032
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 99e22051-4f9c-41ff-a70e-d4f0e0503a77
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 03bc2740-d759-41ab-a3ab-965e88df45b3
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b07a6c72-06af-4ecb-a09d-03f59efc80d0
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 6a904407-d171-4f2d-a693-b792c35f9b23
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: a16f8dd2-e4b7-4fda-9dbb-7f026fae403b
+2026-03-31 04:42:47,038 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 998298ff-4c86-46b8-ab58-3fdbf84ea20a
+2026-03-31 04:42:47,239 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8455bcfe-839c-4ca1-97e7-68753edfb1e9
+2026-03-31 04:42:47,239 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 71f35195-dfb7-43ba-90db-539fe3a44c39
+2026-03-31 04:42:47,239 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b660a769-8fbf-4502-9d8f-86118af6ff7d
+2026-03-31 04:43:17,087 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 95721298-5a6d-46b6-8426-576b31b4008c
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 63fce6eb-7943-4bde-987b-03a5c8ed7ee9
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 7e967c3d-302f-4e1b-969c-77da12f59f92
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 981ef74d-8b62-44c3-b720-ca6847aaf277
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 94f474ca-a92b-4f0c-a7c8-f89e699301cd
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 47fcc488-6699-4de7-af6c-b273f594331d
+2026-03-31 04:43:17,088 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: d387e108-a758-4978-a832-0213878651e2
+2026-03-31 04:43:17,288 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b9e09a65-b014-4e21-bd2a-8a7b236d332b
+2026-03-31 04:43:17,288 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: bc7beb04-b7b0-4542-8659-2170f62d59d0
+2026-03-31 04:43:17,288 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 4b5ffbfe-81b5-40e3-ac27-3b306da356e7
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 63c2b77d-df49-4e30-8429-fc4438f4810c
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: fcbbc037-3968-487a-a903-9b293357a90f
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 1c9f3b3f-53ee-4400-9764-9d5c32eb048d
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: d8485945-b05b-4bce-9e49-494587a5fffc
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 24bce43a-9dd9-44e8-8e9a-9571bc66be29
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 599659af-03bb-4681-a31e-a8acd56f332e
+2026-03-31 04:43:47,140 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 6da4bcda-b5bc-4e0f-a956-bcfba59410a8
+2026-03-31 04:43:47,341 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 63467611-1fe0-4903-9db6-a2d0f7ada94a
+2026-03-31 04:43:47,341 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 7b6ae87f-7a46-4493-b725-8cd081d0313a
+2026-03-31 04:43:47,341 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b500e953-1daf-497f-b051-f12967476eb3
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: c731c5bf-f673-4a92-9b43-9e64508d5dfe
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: ac2a23c0-32f5-4ff5-a674-20264bac6ad9
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8b40fddb-4ca7-4184-9a6d-232a0e0077f2
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 2807dc40-0a9b-4879-8ce9-b19051a56fa1
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 0d200848-e307-4709-954a-2390bf86fbc8
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 8d358343-4126-45e3-b455-7f9fa8a44fa0
+2026-03-31 04:44:17,192 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 4a4dbce5-4e72-4702-bf81-c522b7359834
+2026-03-31 04:44:17,393 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: b441fea3-8a01-4bf6-b9ae-6d3a5c3fc5ee
+2026-03-31 04:44:17,393 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 344d0a1f-8a39-4ab5-95e6-4fd9cb0703fb
+2026-03-31 04:44:17,393 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: e4008153-1e6d-4ef8-8e0f-bbac57e73ff3
+2026-03-31 04:44:46,841 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning OPEN -> HALF_OPEN (timeout elapsed)
+2026-03-31 04:44:47,611 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,611 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning HALF_OPEN -> OPEN (probe failed: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}})
+2026-03-31 04:44:47,627 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,627 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,629 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,629 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,630 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,630 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,631 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,631 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,633 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,633 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,633 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,633 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,643 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,643 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,643 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: fd87d5ea-2c1f-4d97-bbfe-f39917f928c8
+2026-03-31 04:44:47,666 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,666 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,693 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:44:47,693 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:45:17,716 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: eb6e2b4c-f840-4256-934d-cf3fef616139
+2026-03-31 04:45:47,793 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: cf8488fd-933a-4ba1-8a5f-fb5af1eb8619
+2026-03-31 04:46:17,865 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 9f2b3499-6deb-449c-b1c5-c44a83ad7739
+2026-03-31 04:46:47,936 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 64c67e84-14bb-4c62-9318-027b459c02af
+2026-03-31 04:47:18,011 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 6ba15d0a-90f8-47c4-80e3-6b5b6d06fcd0
+2026-03-31 04:47:48,086 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: dab65ec6-a8b4-4db9-8aec-0eef269d3dab
+2026-03-31 04:48:18,163 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: a78a1c2c-642b-4439-8171-72f54d0be435
+2026-03-31 04:48:48,227 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 1e420ca3-1c83-4e99-b583-2b6b6ebd5a15
+2026-03-31 04:49:18,299 - openviking.storage.collection_schemas - WARNING - Circuit breaker is open, re-enqueueing embedding: 2774c250-44d3-4ea2-9480-28090662fa8c
+2026-03-31 04:49:47,769 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning OPEN -> HALF_OPEN (timeout elapsed)
+2026-03-31 04:49:48,352 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 04:49:48,352 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning HALF_OPEN -> OPEN (probe failed: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}})
+2026-03-31 07:46:46,502 - uvicorn.access - INFO - 127.0.0.1:41366 - "GET /health HTTP/1.1" 200
+2026-03-31 07:47:00,719 - uvicorn.access - INFO - 127.0.0.1:50230 - "GET /api/v1/fs/tree?uri=viking%3A%2F%2Fresources%2Fhive-mind%2F&output=agent&abs_limit=128&show_all_hidden=false&node_limit=256&level_limit=2 HTTP/1.1" 200
+2026-03-31 07:48:34,857 - uvicorn.access - INFO - 127.0.0.1:39546 - "POST /api/v1/resources/temp_upload HTTP/1.1" 200
+2026-03-31 07:48:34,861 - openviking.parse.parsers.markdown - INFO - [MarkdownParser] Found 13 headings
+2026-03-31 07:48:34,862 - openviking.parse.parsers.markdown - INFO - [MarkdownParser] Document size: 680 tokens
+2026-03-31 07:48:34,862 - openviking.parse.parsers.markdown - INFO - [MarkdownParser] Parse completed in 0.00s
+2026-03-31 07:48:34,866 - openviking.utils.summarizer - INFO - Enqueued semantic generation for: viking://resources/hive-mind/shared/skills/shark-enforcement.md (skip_vectorization=False)
+2026-03-31 07:48:34,866 - uvicorn.access - INFO - 127.0.0.1:39546 - "POST /api/v1/resources HTTP/1.1" 200
+2026-03-31 07:48:34,960 - openviking.storage.queuefs.semantic_processor - INFO - Processing semantic generation for: viking://resources/hive-mind/shared/skills/shark-enforcement.md (recursive=True)
+2026-03-31 07:48:34,960 - openviking.storage.queuefs.semantic_processor - INFO - Processing semantic generation for: SemanticMsg(id='33aac9ff-8699-47ee-946e-fe18d21ae55b', uri='viking://resources/hive-mind/shared/skills/shark-enforcement.md', context_type='resource', status='pending', timestamp=1774917584, recursive=True, account_id='default', user_id='hive-mind', agent_id='default', role='root', skip_vectorization=False, telemetry_id='tm_b0e3bb35d51246939cccba7f7d77186d', target_uri=None, lifecycle_lock_handle_id='e587b162-2415-4996-b034-ba6670fd437a', is_code_repo=False, changes=None))
+2026-03-31 07:48:35,421 - openviking.storage.queuefs.semantic_dag - WARNING - Failed to generate summary for viking://resources/hive-mind/shared/skills/shark-enforcement.md/upload_d02d4f236e2341c7a2b8a91ccbb5bf1b.md: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:35,822 - openviking.storage.queuefs.semantic_processor - ERROR - Failed to generate overview for viking://resources/hive-mind/shared/skills/shark-enforcement.md: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+Traceback (most recent call last):
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/storage/queuefs/semantic_processor.py", line 1014, in _single_generate_overview
+    overview = await vlm.get_completion_async(prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking_cli/utils/config/vlm_config.py", line 195, in get_completion_async
+    return await self.get_vlm_instance().get_completion_async(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/models/vlm/backends/openai_vlm.py", line 365, in get_completion_async
+    raise last_error
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/models/vlm/backends/openai_vlm.py", line 342, in get_completion_async
+    response = await client.chat.completions.create(**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2714, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1884, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1669, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:35,824 - openviking.storage.queuefs.embedding_tracker - INFO - Registered embedding tracker for SemanticMsg 33aac9ff-8699-47ee-946e-fe18d21ae55b: 3 tasks
+2026-03-31 07:48:35,824 - openviking.storage.queuefs.semantic_processor - INFO - Completed semantic generation for: viking://resources/hive-mind/shared/skills/shark-enforcement.md
+2026-03-31 07:48:35,824 - openviking.storage.queuefs.semantic_processor - INFO - [SemanticProcessor] Safety-net released lifecycle lock e587b162-2415-4996-b034-ba6670fd437a
+2026-03-31 07:48:35,962 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning OPEN -> HALF_OPEN (timeout elapsed)
+2026-03-31 07:48:36,345 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:36,345 - openviking.utils.circuit_breaker - INFO - Circuit breaker transitioning HALF_OPEN -> OPEN (probe failed: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}})
+2026-03-31 07:48:36,346 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:36,346 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:36,409 - openviking.storage.collection_schemas - CRITICAL - Failed to generate embedding: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:36,409 - openviking.utils.circuit_breaker - INFO - Circuit breaker tripped immediately on permanent error: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:48:36,409 - openviking.storage.queuefs.embedding_tracker - INFO - All embedding tasks(3) completed for SemanticMsg 33aac9ff-8699-47ee-946e-fe18d21ae55b
+2026-03-31 07:49:37,377 - openviking.retrieve.hierarchical_retriever - INFO - [HierarchicalRetriever] Rerank not configured, using vector search only with threshold=0.1
+2026-03-31 07:49:37,866 - openviking.server.app - WARNING - Unhandled exception: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:49:37,866 - uvicorn.access - INFO - 127.0.0.1:51188 - "POST /api/v1/search/find HTTP/1.1" 500
+2026-03-31 07:49:37,867 - uvicorn.error - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/models/embedder/openai_embedders.py", line 245, in embed
+    response = self.client.embeddings.create(**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 136, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/_utils.py", line 87, in collapse_excgroups
+    raise exc
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/server/app.py", line 159, in add_timing
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/server/routers/search.py", line 87, in find
+    execution = await run_operation(
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/server/telemetry.py", line 29, in run_operation
+    return await run_with_telemetry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/telemetry/execution.py", line 91, in run_with_telemetry
+    result = await fn()
+             ^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/service/search_service.py", line 100, in find
+    result = await viking_fs.find(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/storage/viking_fs.py", line 906, in find
+    result = await retriever.retrieve(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/retrieve/hierarchical_retriever.py", line 132, in retrieve
+    result: EmbedResult = self.embedder.embed(query.query, is_query=True)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/models/embedder/openai_embedders.py", line 251, in embed
+    raise RuntimeError(f"OpenAI API error: {e.message}") from e
+RuntimeError: OpenAI API error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****ccf5 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-03-31 07:50:10,025 - uvicorn.error - ERROR - Traceback (most recent call last):
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/uvicorn/_compat.py", line 30, in asyncio_run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 1898, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/openviking/utils/process_lock.py", line 107, in <lambda>
+    signal.SIGTERM, lambda sig, frame: (_cleanup(), signal.default_int_handler(sig, frame))
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/starlette/routing.py", line 701, in lifespan
+    await receive()
+  File "/home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking/.venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/leviathan/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/asyncio/queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+2026-03-31 07:50:10,026 - openviking.resource.watch_scheduler - INFO - [WatchScheduler] Scheduler loop ended
+2026-03-31 07:50:10,203 - openviking.storage.queuefs.queue_manager - INFO - [QueueManager] Stopped

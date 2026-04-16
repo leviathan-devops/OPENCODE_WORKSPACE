@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775636146853,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:# Add v4.6 tags for easy restore\ncd /home/leviathan/tmp/manta-agent-git && git tag v4.6 -m \"v4.6 - l"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "exercise_id": "e008",
+  "name": "Tool — symbols",
+  "component": "analysis_tools",
+  "component_area": "code_symbol_extraction",
+  "mechanical_verification": "Run symbols on a real .ts file, verify symbol list returned",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call symbols target=/tmp/test.ts",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call symbols target=/tmp/test.ts",
+      "expected": "Non-empty string output (symbol list or 'no symbols')",
+      "mechanical_pass": "Output is a string, not undefined"
+    }
+  ],
+
+  "pass_criteria": {
+    "runs_successfully": "symbols tool executes without throwing",
+    "returns_string": "Output is a string",
+    "graceful_missing_file": "Handles non-existent file gracefully"
+  },
+
+  "failure_modes": {
+    "crashes": "Tool throws on missing file",
+    "returns_undefined": "Returns undefined"
+  }
+}

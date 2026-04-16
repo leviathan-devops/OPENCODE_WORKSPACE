@@ -1,0 +1,41 @@
+{
+  "exercise_id": "e006",
+  "name": "Tool — grill (security testing)",
+  "component": "security_tools",
+  "component_area": "adversarial_testing",
+  "mechanical_verification": "Run grill on a file with SQL injection, verify attack vector identified",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "path_model": "relative — uses 'src' not '/tmp'",
+  "path_model_explanation": "Tools use path containment. grill now supports directories via scanDir().",
+
+  "prompt": "call grill target=src",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call grill target=src",
+      "expected": "Non-empty security report, not 'Could not analyze'",
+      "mechanical_pass": "Tool completes without throwing, returns report"
+    },
+    {
+      "step": 2,
+      "action": "call grill target=src/tools",
+      "expected": "Directory scan completes, finds vulnerabilities",
+      "mechanical_pass": "Tool handles directory (scanDir fix)"
+    }
+  ],
+
+  "pass_criteria": {
+    "no_crash": "grill completes without throwing",
+    "returns_report": "Output is a non-empty string (security report)",
+    "no_could_not_analyze": "Does not return 'Could not analyze' error"
+  },
+
+  "failure_modes": {
+    "crashes": "grill throws unhandled exception",
+    "could_not_analyze": "Returns 'Could not analyze' (fix: statSync directory check)",
+    "empty_output": "grill returns empty string"
+  }
+}

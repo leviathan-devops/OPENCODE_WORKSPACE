@@ -1,0 +1,45 @@
+{
+  "exercise_id": "e020",
+  "name": "Error Handling — Complete",
+  "component": "gates",
+  "component_area": "Gate failure and recovery",
+  "mechanical_verification": "Trigger gate failures and verify proper error handling, evidence collection, and recovery path",
+  "difficulty": "P1",
+  "time_estimate": "45 seconds",
+
+  "prompt": "call shark-gate action=evaluate gate=test passed=false to fail test gate, then check status and evidence",
+
+  "expected_behavior": "Failed gate status changes to 'failed', evidence collected with passed=false, subsequent evaluation still works",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Fail test gate: call shark-gate action=evaluate gate=test passed=false notes='Tests failed'",
+      "expected": "test gate status changes to 'failed'",
+      "mechanical_pass": "Failure recorded correctly"
+    },
+    {
+      "step": 2,
+      "action": "Check evidence: call shark-evidence action=gate-evidence gate=test",
+      "expected": "Evidence shows passed: false for test gate",
+      "mechanical_pass": "Failure evidence stored"
+    },
+    {
+      "step": 3,
+      "action": "Retry evaluation: call shark-gate action=evaluate gate=test passed=true notes='Tests fixed'",
+      "expected": "test gate now shows passed: true",
+      "mechanical_pass": "Can recover from failure"
+    }
+  ],
+
+  "pass_criteria": {
+    "failure_recorded": "test gate shows failed status after failure",
+    "evidence_stored": "Evidence shows passed: false",
+    "recovery_possible": "Can evaluate to passed after failure"
+  },
+
+  "failure_modes": {
+    "failure_ignored": "Gate failure not recorded",
+    "stuck_in_failed": "Cannot recover from failure state"
+  }
+}

@@ -1,0 +1,113 @@
+# 🦈 SHARK + KRAKEN KNOWLEDGE BASE (Compaction-Surviving)
+
+## 🎯 **MISSION ESSENCE**
+Integrate Shark Agent's mechanical enforcement into Opencode TypeScript as OS-level enhancement. Preserve 100% Opencode UI/UX. Add Guardian, Workflow, AutoDebug, DualBrain. 5 parallel GLM 4.7 engineers, ~1 week timeline. Kraken Brain (DeepSeek) coordinates via Nemotron 1M token context bridge.
+
+## 📊 **CRITICAL DISCOVERIES (SURVIVE COMPACTION)**
+1. **Opencode = TypeScript** (55.3% TS, 40.7% MDX) - NOT Go
+2. **Shark Frankenstein CLI exists** (~50% Qwen level) - theatrical code identified
+3. **Shark-agent skill exists** (`~/.config/opencode/skills/shark-agent/SKILL.md`)
+4. **vLLM local setup working** (Qwen 2.5 Coder 7B AWQ)
+5. **GLM 4.7 endpoint working** (`api.z.ai/api/coding/paas/v4/`)
+6. **Auto-switch demonstrated** (Mar 24 2026) - real example captured
+7. **GLM OpenCode integration verified** - plugin installed, skill functional
+8. **Kraken Brain architecture** - Nemotron bridge prevents token overflow
+
+## 🏗️ **INTEGRATION STRATEGY (CORE)**
+- **DO NOT replace** Opencode code - only enhance/add
+- **Build on plan/build toggle** - add autonomous switching
+- **Hardcode into CLI core** - Guardian, Workflow, AutoDebug as OS-level
+- **Sandbox development** - forked Opencode at `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration/`
+- **5 GLM engineers parallel** - ~1 week total
+- **MVP**: Mode switching + Guardian + 5-step workflow
+- **V2**: Add Crash Test (Step 6)
+
+## 🦑 **KRAKEN BRAIN ARCHITECTURE**
+```
+DeepSeek Reasoner Kraken Brain (128K) ← Nemotron Bridge (1M+) ← 5 GLM Engineers
+                              ↳ Surgical Debugging Agents (deployed on-demand)
+```
+- **Nemotron**: Free model with 1M+ token context, intelligent hybrid filtering
+- **Kraken Brain**: DeepSeek Reasoner with 128K context, receives 20-40K token context slices
+- **GLM Engineers**: Report to Nemotron, receive commands via Nemotron
+- **Context Views**: Dynamic views based on focus (strategic, module, integration, debug, architecture)
+- **Surgical Debugging**: Debug agents deployed directly to engineer containers when bugs detected
+
+## 📁 **CRITICAL FILES (PATHS)**
+- **Shark Frankenstein**: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-frankenstein/`
+- **Forked Opencode**: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration/`
+- **Fixed CLI Reference**: `shark-frankenstein/GLM Engineer Shared Workspace/FIXED-cli.ts`
+- **Build Prompts**: `SHARK_OPENCODE_MASTER_BUILD_PROMPT_KRAKEN.md`
+- **Orchestration Plan**: `KRAKEN_BRAIN_ORCHESTRATION_PLAN.md`
+- **Auto-Switch Demo**: `SHARK_AUTO_SWITCH_DEMONSTRATION.md`
+- **GLM Integration Guide**: `GLM_OPENCODE_INTEGRATION_COMPLETE_GUIDE.md`
+
+## 🛠️ **SHARK SYSTEMS (ALL TYPESCRIPT)**
+1. **Guardian** (`src/guardian/index.ts` ~800L) - File protection
+2. **Workflow State Machine** (`src/workflow/state-machine.ts` ~862L) - 5-step enforcement
+3. **AutoDebug** (`src/debug/autodebug.ts` ~530L) - Pattern error fixing
+4. **DualBrainCoordinator** (`src/brain/coordinator.ts`) - Micro/Macro switching
+5. **ToolExecutor** (`src/tools/executor.ts`) - Protected tool execution
+
+## 🎯 **OPENCODE INTEGRATION POINTS**
+1. **Mode Switching**: `packages/opencode/src/agent/agent.ts`
+2. **Command Pipeline**: `packages/opencode/src/session/processor.ts`
+3. **Tool Execution**: `packages/opencode/src/tool/registry.ts`
+4. **Error Handling**: `packages/opencode/src/session/status.ts`
+5. **Permission System**: `packages/opencode/src/permission/index.ts`
+
+## 🔄 **6-STEP WORKFLOW (V2)**
+1. PLAN → 2. BUILD → 3. TEST → 4. VERIFY → 5. SHIP → **6. CRASH TEST**
+
+## 🚨 **ANTI-HALLUCINATION CORE**
+- **Mechanical compilation** from scratch validation
+- **Workflow step evidence** required (not just statements)
+- **Cross-validation** between systems
+- **Satisfaction firewall** at SHIP stage
+- **Detects theatrical code** (fake tests, simulated completion)
+
+## ⏱️ **TIMELINE (1 WEEK)**
+- **Days 1-2**: Foundation setup
+- **Days 3-5**: Parallel module development (5 engineers)
+- **Day 6**: Integration testing
+- **Day 7**: Final verification
+
+## 📋 **GLM ENGINEER ASSIGNMENTS**
+1. **Engineer #1**: Guardian module
+2. **Engineer #2**: Workflow State Machine
+3. **Engineer #3**: AutoDebug module
+4. **Engineer #4**: DualBrain Coordinator
+5. **Engineer #5**: Integration testing & verification
+
+## 🔗 **CRITICAL URLS (GITHUB)**
+- Shark Frankenstein: `github.com/leviathan-devops/shark-frankenstein`
+- Context docs in repo root (SHARK-MASTER-PROMPT.md, etc.)
+
+## 🎯 **COMPLETION CRITERIA**
+1. ✅ All 4 Shark systems integrated into Opencode
+2. ✅ Dual-brain architecture functioning (auto-switch working)
+3. ✅ Mechanical enforcement verified (no bypass possible)
+4. ✅ Anti-hallucination systems catch fake outputs
+5. ✅ Build passes integration tests
+6. ✅ User approval before git push
+
+## ⚠️ **CRITICAL CONSTRAINTS**
+- **NEVER remove/replace** Opencode code
+- **Preserve manual toggle** alongside auto-switch
+- **No theatrical code** - mechanical validation required
+- **Report via Nemotron** - Kraken Brain token limited
+- **1 week timeline** with 5 parallel GLM engineers
+
+## 🆘 **RECOVERY FROM COMPACTION**
+If context lost, read:
+1. This knowledge base first
+2. `SHARK_OPENCODE_MASTER_BUILD_PROMPT_KRAKEN.md`
+3. `KRAKEN_BRAIN_ORCHESTRATION_PLAN.md`
+4. Check `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration/` for progress
+
+---
+
+**LAST UPDATED**: Mar 24 2026  
+**STATUS**: Planning complete, ready for GLM engineer deployment  
+**NEXT**: Deploy Nemotron bridge, launch 5 GLM engineers via opencode-ultra  
+**TIMELINE**: ~1 week total with parallel development

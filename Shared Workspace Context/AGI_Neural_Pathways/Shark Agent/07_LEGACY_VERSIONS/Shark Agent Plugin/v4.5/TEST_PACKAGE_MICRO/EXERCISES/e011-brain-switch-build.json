@@ -1,0 +1,52 @@
+{
+  "exercise_id": "e011",
+  "name": "Brain Switch — Build Brain Role",
+  "component": "brains",
+  "component_area": "shark-micro dual-brain (Build Brain)",
+  "mechanical_verification": "Query agent about Build Brain role, verify it describes execution, code writing, SPEC.md compliance",
+  "difficulty": "P1",
+  "time_estimate": "15 seconds",
+
+  "prompt": "You are the Build Brain. Explain your role and what you can and cannot do.",
+
+  "expected_behavior": "Agent identifies as Build Brain, describes execution role, code implementation, SPEC.md compliance. States it works after Plan Brain.",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Ask: What is your role?",
+      "expected": "Response identifies as 'Build Brain'",
+      "mechanical_pass": "Build Brain identity confirmed"
+    },
+    {
+      "step": 2,
+      "action": "Ask: What can you do?",
+      "expected": "Mentions code writing, file creation, implementation",
+      "mechanical_pass": "Build capabilities listed"
+    },
+    {
+      "step": 3,
+      "action": "Ask: What must you comply with?",
+      "expected": "Mentions SPEC.md, Plan Brain output",
+      "mechanical_pass": "SPEC.md compliance required"
+    },
+    {
+      "step": 4,
+      "action": "Ask: When do you work?",
+      "expected": "After Plan Brain completes planning",
+      "mechanical_pass": "Sequential brain switch understood"
+    }
+  ],
+
+  "pass_criteria": {
+    "identifies_build_brain": "Agent calls itself Build Brain",
+    "execution_role": "Mentions code writing, implementation",
+    "spec_compliance": "Knows it must follow SPEC.md",
+    "sequential_work": "Understands it works after Plan Brain"
+  },
+
+  "failure_modes": {
+    "no_brain_identity": "Agent does not identify as Build Brain",
+    "no_spec_awareness": "Agent doesn't know about SPEC.md compliance"
+  }
+}

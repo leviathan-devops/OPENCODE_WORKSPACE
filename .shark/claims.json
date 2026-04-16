@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "created": "2026-03-30T09:25:00Z",
+  "project": "Kraken Ultra Integration - Next Steps",
+  "claims": [
+    {
+      "id": "CLAIM-001",
+      "description": "API keys are configured in environment",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testApiKeyConfiguration",
+      "expectedEvidence": "GLM_API_KEY and DEEPSEEK_API_KEY environment variables exist and are non-empty",
+      "verificationMethod": "Check process.env for key existence"
+    },
+    {
+      "id": "CLAIM-002",
+      "description": "System-wide symlink to shark CLI exists",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testSymlinkCreation",
+      "expectedEvidence": "/usr/local/bin/shark is a symlink pointing to ~/OPENCODE_WORKSPACE/.shark/shark",
+      "verificationMethod": "fs.lstatSync to verify symlink, fs.readlink to verify target"
+    },
+    {
+      "id": "CLAIM-003",
+      "description": "Surgical debug protocol triggers on tool failure escalation",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testSurgicalDebugInjection",
+      "expectedEvidence": "DebugInjector.injectDebugger() is called when stagnation alert type is 'escalation'",
+      "verificationMethod": "Mock DebugInjector and verify method call"
+    },
+    {
+      "id": "CLAIM-004",
+      "description": "Nemotron service event bus is operational",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testNemotronEventBus",
+      "expectedEvidence": "Event can be published and received by subscriber",
+      "verificationMethod": "Create event bus, subscribe, publish, verify receipt"
+    },
+    {
+      "id": "CLAIM-005",
+      "description": "Nemotron message classifier correctly sizes messages",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testNemotronMessageClassification",
+      "expectedEvidence": "Messages classified as 2k/4k/6k/8k based on token count",
+      "verificationMethod": "Test classifier with various message sizes"
+    },
+    {
+      "id": "CLAIM-006",
+      "description": "Shark CLI detects micro mode correctly",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testSharkMicroMode",
+      "expectedEvidence": "shark --micro outputs 'Mode: Micro' and generates micro config",
+      "verificationMethod": "Execute shark script with --micro flag, parse output"
+    },
+    {
+      "id": "CLAIM-007",
+      "description": "Shark CLI detects macro mode correctly",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testSharkMacroMode",
+      "expectedEvidence": "shark --macro outputs 'Mode: Macro' and generates macro config",
+      "verificationMethod": "Execute shark script with --macro flag, parse output"
+    },
+    {
+      "id": "CLAIM-008",
+      "description": "Shark CLI detects direct mode correctly",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testSharkDirectMode",
+      "expectedEvidence": "shark --direct outputs 'Mode: Direct' and launches standard OpenCode",
+      "verificationMethod": "Execute shark script with --direct flag, parse output"
+    },
+    {
+      "id": "CLAIM-009",
+      "description": "Fragment files exist and contain valid instructions",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testFragmentFiles",
+      "expectedEvidence": "4 fragment files exist with non-empty content containing agent instructions",
+      "verificationMethod": "Read each fragment file, verify content structure"
+    },
+    {
+      "id": "CLAIM-010",
+      "description": "OpenCode Zen provider is configured",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testZenProviderConfiguration",
+      "expectedEvidence": "opencode.json contains 0-opencode-zen provider with free models",
+      "verificationMethod": "Parse opencode.json, verify provider exists with correct models"
+    },
+    {
+      "id": "CLAIM-011",
+      "description": "AutoDebugEngine integration is functional",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testAutoDebugEngineIntegration",
+      "expectedEvidence": "AutoDebugEngine can be instantiated and has getDebugInjector method",
+      "verificationMethod": "Import and instantiate AutoDebugEngine, verify method exists"
+    },
+    {
+      "id": "CLAIM-012",
+      "description": "End-to-end micro mode workflow completes",
+      "testFile": "test/kraken-ultra-integration.test.ts",
+      "testFunction": "testE2EMicroMode",
+      "expectedEvidence": "shark --micro launches successfully and loads Shark Agent fragment",
+      "verificationMethod": "Execute shark --micro with simple task, verify output contains expected markers"
+    }
+  ],
+  "verificationProtocol": {
+    "stage1": {
+      "description": "Docker sandbox tests - isolated unit tests",
+      "command": "npm run test:stage1",
+      "expectedOutput": ".shark/test-results/stage1.json with success: true"
+    },
+    "stage2": {
+      "description": "Local device tests - integration tests requiring local environment",
+      "command": "npm run test:stage2",
+      "expectedOutput": ".shark/test-results/stage2.json with success: true"
+    }
+  },
+  "gates": {
+    "functional": {
+      "description": "Do all tests actually pass?",
+      "criteria": "All test functions return true, exit code 0"
+    },
+    "intent": {
+      "description": "Does implementation match the plan?",
+      "criteria": "All claims have corresponding tests, all planned features implemented"
+    },
+    "security": {
+      "description": "Guardian scan passed - no violations",
+      "criteria": "No modifications to SYSTEM or PERSONAL zones, no secrets in code"
+    }
+  }
+}

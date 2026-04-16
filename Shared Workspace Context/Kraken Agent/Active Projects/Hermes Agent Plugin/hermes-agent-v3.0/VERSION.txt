@@ -1,0 +1,3 @@
+hermes-agent-v3.0
+hermes-v3-overhaul
+2026-04-14

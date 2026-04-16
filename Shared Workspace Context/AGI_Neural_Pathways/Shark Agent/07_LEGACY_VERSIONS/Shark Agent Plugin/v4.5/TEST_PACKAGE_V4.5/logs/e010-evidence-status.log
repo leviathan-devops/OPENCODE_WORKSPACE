@@ -1,0 +1,23 @@
+[2026-04-07T14:55:09.356Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing
+[2026-04-07T14:55:09.356Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {"toolCount":3,"tools":["route","gemma","qwen"],"route":"task routing - use when unsure which sub-agent to use","gemma":"gemma-4-31b-it (documentation, boilerplate, explanations)","qwen":"qwen3-coder (code completion, prototypes, free)"}
+[2026-04-07T14:55:09.356Z] INFO OpenCodePluginEngineering initializing 
+[0m
+> build · qwen3.6-plus-free
+[0m
+[Shark] Session created: unknown
+[MicroCoordinator] Initialized with Plan Brain
+[MacroPeerDispatch] Triple-brain initialized: Execution + Reasoning + System
+[Shark] .shark directory initialized at /home/leviathan/OPENCODE_WORKSPACE/.shark
+[0m⚙ [0mshark-evidence {"action":"status"}
+Evidence collection status:
+
+| Gate | Evidence Count | Latest |
+|------|---------------|--------|
+| plan | 4 | 2026-04-07 14:53 |
+| build | 4 | 2026-04-07 14:54 |
+| test | 0 | — |
+| verify | 0 | — |
+| audit | 0 | — |
+| delivery | 0 | — |
+
+Collection is incomplete. Plan and build gates have 4 evidence items each; test, verify, audit, and delivery have none yet.

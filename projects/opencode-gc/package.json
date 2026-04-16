@@ -1,0 +1,24 @@
+{
+  "name": "opencode-gc",
+  "version": "2.0.0",
+  "description": "OpenCode Garbage Collector - Auto-cleanup system to prevent memory/disk bloat",
+  "main": "opencode-gc.sh",
+  "scripts": {
+    "start": "./opencode-gc.sh",
+    "status": "./opencode-gc.sh status",
+    "cleanup": "./opencode-gc.sh cleanup"
+  },
+  "keywords": [
+    "opencode",
+    "garbage-collector",
+    "cleanup",
+    "memory-management"
+  ],
+  "author": "Trident Brain",
+  "license": "MIT",
+  "files": [
+    "opencode-gc.sh",
+    "README.md",
+    "SYSTEM_GC_SPEC.md"
+  ]
+}

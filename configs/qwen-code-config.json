@@ -1,0 +1,18 @@
+{
+  "model": "qwen-coder-7b-local",
+  "api_base": "http://localhost:8001/v1",
+  "api_key": "qwen-local-execution",
+  "temperature": 0.1,
+  "max_tokens": 2048,
+  "top_p": 0.95,
+  "timeout": 60,
+  "retry_attempts": 3,
+  "architecture": "dual-brain",
+  "brain_separation": {
+    "deepseek_r1": "thinking_reasoning",
+    "qwen_coder": "execution_motor"
+  },
+  "local_execution": true,
+  "safety_commands": ["rm -rf", "mkfs", "dd ", "format"],
+  "command_timeout": 30
+}

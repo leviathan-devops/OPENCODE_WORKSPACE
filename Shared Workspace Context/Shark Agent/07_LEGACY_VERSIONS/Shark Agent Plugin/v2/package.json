@@ -1,0 +1,41 @@
+{
+  "name": "shark-agent-plugin-v2",
+  "version": "2.0.0",
+  "description": "Shark Agent v2 - MiniMax M2.7 executive brain + GLM mechanical executor with 5-step workflow enforcement",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm && tsc --emitDeclarationOnly --outDir dist 2>/dev/null || true",
+    "dev": "bun run --watch src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "shark",
+    "minimax",
+    "glm",
+    "dual-brain",
+    "safety",
+    "agent"
+  ],
+  "author": "Shark Agent Team",
+  "license": "MIT",
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.3.6",
+    "@opencode-ai/sdk": "^1.3.6",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.11",
+    "@types/node": "^22.19.15",
+    "typescript": "^5.9.3"
+  },
+  "oc-plugin": ["tui"],
+  "opencode": {
+    "plugin": true,
+    "compatibility": ">=1.2.0",
+    "requires": []
+  }
+}

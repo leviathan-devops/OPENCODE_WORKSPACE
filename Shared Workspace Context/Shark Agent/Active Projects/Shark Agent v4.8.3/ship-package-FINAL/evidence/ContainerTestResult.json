@@ -1,0 +1,23 @@
+{
+  "testSuite": "shark-agent-v4.8.3 Container Test Suite",
+  "timestamp": "2026-04-14T17:54:41Z",
+  "container": "shark-v483",
+  "pluginVersion": "v4.8.3",
+  "buildMD5": "65add5d2039fb3b5acd363002246fd2f",
+  "testResults": {
+    "build-succeeds": "PASS",
+    "dist-file-exists": "PASS",
+    "tools-registered-in-config": "PASS",
+    "hooks-have-agent-checks": "PASS",
+    "guardian-has-source-protection": "PASS",
+    "system-transform-has-ironclad": "PASS",
+    "delivery-gate-requires-tests": "PASS",
+    "no-manta-in-shark-hooks": "PASS"
+  },
+  "overallPassed": true,
+  "totalTests": 8,
+  "passedTests": 8,
+  "failedTests": 0,
+  "testCommand": "docker exec shark-v483 opencode run \"shark-test-runner action=run\" --agent shark --model opencode/big-pickle",
+  "verified": true
+}

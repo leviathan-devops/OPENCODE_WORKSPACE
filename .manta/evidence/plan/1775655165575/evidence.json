@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775655165575,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:grep -c \"DELIVERY GATE BLOCKED\\|ContainerTestResult\\|shark-test-runner\" /home/leviathan/OPENCODE_WOR"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "manta-agent",
+  "version": "4.6.0",
+  "description": "MANTA Agent - Dual-brain sequential with mechanical coordinator",
+  "type": "module",
+  "main": "dist/manta-index.js",
+  "scripts": {
+    "build": "bun build src/manta/index.ts --outdir dist --target bun --format esm --bundle"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^5.3.0",
+    "zod": "^4.1.8"
+  }
+}

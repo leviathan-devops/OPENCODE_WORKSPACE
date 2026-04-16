@@ -1,0 +1,74 @@
+{
+  "model": "deepseek-reasoner",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are DeepSeek R1. Qwen Code executes your commands. Output bash in ```bash blocks. YOLO mode - no permissions needed. Be concise. Chain commands. Build stuff."
+    },
+    {
+      "role": "user", 
+      "content": "GLM AGENT MISSION: Get a working local vLLM server with Qwen2.5-Coder-7B that can serve as the execution layer for Shark Agent with tool/function calling support.
+
+HARDWARE:
+- GPU: RTX 4080 Laptop 12GB VRAM (compute 8.9)  
+- 11.8GB VRAM typically free before starting
+
+CRITICAL CONSTRAINTS:
+1. MUST use vLLM - ollama banned, llama.cpp unnecessary
+2. MUST use Qwen2.5-Coder-7B (any working quantization: AWQ, GPTQ, or FP8 if possible)
+3. MUST support tool/function calling for Shark Agent
+4. MUST work on 12GB VRAM  
+5. DeepSeek R1 does ALL thinking - local model ONLY executes
+
+WHAT HAS BEEN TRIED (ALL FAILED):
+
+1. NeuralMagic 7B FP8 model:
+   - Command: vllm serve NeuralMagic/Qwen2.5-Coder-7B-Instruct-FP8-Dynamic --dtype auto --gpu-memory-utilization 0.5-0.9 --max-model-len 1024-8192
+   - Error: torch.OutOfMemoryError - tried to allocate 260 MiB but only 185 MiB free
+   - Both V0 and V1 engines fail
+   - VLLM_USE_V1=0 and enforce-eager didn't help
+
+2. dtype float8_e4m3fn:
+   - Error: invalid choice (not supported in vLLM 0.17.1)
+
+3. Qwen2.5-Coder-3B-Instruct (FP16):
+   - Hangs during model load, no error, process disappears
+   - Log stops at 'Starting to load model...' then nothing
+
+4. Qwen2.5-Coder-1.5B-Instruct (FP16):
+   - Works! Successfully loaded and serving
+   - BUT: tool calling setup fails with:
+     - 'auto tool choice requires --enable-auto-tool-choice and --tool-call-parser'
+     - With tool-call-parser flag: vLLM hangs/crashes during load
+
+KEY FINDINGS:
+- NeuralMagic FP8 models require NeuralMagic's vLLM fork - standard vLLM doesn't support FP8
+- vLLM 0.17.1 does not support the FP8 quantization used by NeuralMagic models. A fork (nm-vllm) or a different quantization (AWQ, GPTQ) is required.
+- vLLM dtype options are limited: auto, bfloat16, float, float16, float32, half - no float8 support  
+- The 185 MiB free error despite 11.8GB free suggests memory fragmentation or other GPU processes
+- 1.5B model works but tool calling setup breaks it
+- vLLM version: 0.17.1 (installed via pip)
+- After repeated failures, GPU memory becomes fragmented - full system reboot may be required
+- vLLM tool-calling parser (--tool-call-parser qwen3_coder) is known to be unstable with smaller models and may require the NeuralMagic fork or a different model
+- GPU may be using memory for display (common on laptops), causing fragmentation
+
+REMAINING OPTIONS:
+1. Install NeuralMagic vLLM fork (nm-vllm) which has proper FP8 support
+2. Try Qwen2.5-Coder-3B or 7B without FP8 - use base model with quantization flag
+3. Check for GPU memory conflicts - is display using GPU? Run nvidia-smi dmon during vLLM startup
+4. Try vLLM with explicit memory allocation: --block-size 16 --swap-space 0 --num-gpu-blocks-override  
+5. Try different vLLM version - 0.17.1 may have bugs
+6. Check if running in WSL/subsystem - may affect GPU access
+7. Try running vLLM interactively to see real-time errors instead of nohup
+8. Try AWQ quantization: Qwen/Qwen2.5-Coder-7B-Instruct-AWQ with --quantization awq flag
+
+FILES TO UPDATE:
+1. /home/leviathan/qwen-local - update model name and startup command
+2. ~/.shark-agent/config.json - update model name
+3. Create systemd service for persistent vLLM server
+
+MISSION:
+Reason through all failed attempts and memory issues, then provide a concrete working vLLM startup command that will load Qwen2.5-Coder-7B with tool calling support on 12GB VRAM. Execute any commands I provide and iterate until we have a working server at localhost:8000/v1."
+    }
+  ]
+}

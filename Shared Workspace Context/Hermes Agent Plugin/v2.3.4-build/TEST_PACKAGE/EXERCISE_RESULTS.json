@@ -1,0 +1,314 @@
+{
+  "results_id": "hermes-test-results-v2",
+  "version": "2.0",
+  "date": "2026-04-07",
+  "plugin": "v2.3.3-build",
+  "tester": "opencode-agent",
+
+  "summary": {
+    "total_exercises": 30,
+    "passed": 9,
+    "failed": 7,
+    "errors": 14,
+    "pass_rate": "30%",
+    "improvements_from_v232": [
+      "secret_scan now detects true positives (no longer flags node_modules)",
+      "list_sessions no longer crashes (but returns empty data)"
+    ],
+    "regressions": [],
+    "still_failing": [
+      "lint - ESLint config error",
+      "grill - Cannot analyze directories or files",
+      "complexity_hotspots - O(n²) not detected",
+      "symbols - Python files still not readable",
+      "/Hermes CLI - Not routed to Hermes plugin"
+    ]
+  },
+
+  "test_results": [
+    {
+      "exercise_id": "e001",
+      "status": "PASS",
+      "actual_output": "hermes_remember: 'Remembered: v233-e001, Saved to: /home/leviathan/.hermes/memory/2026-04-07-v233-e001.md'. hermes_recall: Found 1 memory matching query",
+      "mechanical_verified": "YES",
+      "notes": "Memory system working correctly"
+    },
+    {
+      "exercise_id": "e002",
+      "status": "PASS",
+      "actual_output": "Memory file exists at /home/leviathan/.hermes/memory/2026-04-07-v233-e001.md with correct content",
+      "mechanical_verified": "YES",
+      "notes": "Memory persists to external .md files"
+    },
+    {
+      "exercise_id": "e003",
+      "status": "PASS",
+      "actual_output": "Checkpoint created: cp_1775573305048, Saved to: /home/leviathan/.hermes/state/cp_1775573305048.json",
+      "mechanical_verified": "YES",
+      "notes": "Checkpoint system working"
+    },
+    {
+      "exercise_id": "e004",
+      "status": "ERROR",
+      "actual_output": "ESLint: 10.2.0 - ESLint couldn't find an eslint.config.(js|mjs|cjs) file.",
+      "mechanical_verified": "NO",
+      "notes": "Still failing - lint crashes with ESLint config error (UNFIXED)"
+    },
+    {
+      "exercise_id": "e005",
+      "status": "PASS",
+      "actual_output": "✓ No obvious secrets detected.",
+      "mechanical_verified": "YES",
+      "notes": "secret_scan now works correctly - no false positives in node_modules"
+    },
+    {
+      "exercise_id": "e006",
+      "status": "ERROR",
+      "actual_output": "Could not analyze: /tmp/hermes-test-project",
+      "mechanical_verified": "NO",
+      "notes": "grill still cannot analyze directories (UNFIXED)"
+    },
+    {
+      "exercise_id": "e007",
+      "status": "ERROR",
+      "actual_output": "No complex hotspots found.",
+      "mechanical_verified": "NO",
+      "notes": "complexity_hotspots still misses O(n²) in processor.py (UNFIXED)"
+    },
+    {
+      "exercise_id": "e008",
+      "status": "ERROR",
+      "actual_output": "Could not read file: /tmp/hermes-test-project/src/core/processor.py",
+      "mechanical_verified": "NO",
+      "notes": "symbols tool still cannot read Python files (UNFIXED)"
+    },
+    {
+      "exercise_id": "e009",
+      "status": "ERROR",
+      "actual_output": "Vanilla agent responds instead of Hermes plugin",
+      "mechanical_verified": "NO",
+      "notes": "/Hermes status not routed to Hermes (UNFIXED)"
+    },
+    {
+      "exercise_id": "e010",
+      "status": "ERROR",
+      "actual_output": "Vanilla agent response instead of Hermes agents list",
+      "mechanical_verified": "NO",
+      "notes": "/Hermes agents not routed (UNFIXED)"
+    },
+    {
+      "exercise_id": "e011",
+      "status": "PASS",
+      "actual_output": "hermes_recall returns memories correctly",
+      "mechanical_verified": "YES",
+      "notes": "Memory retrieval working"
+    },
+    {
+      "exercise_id": "e012",
+      "status": "ERROR",
+      "actual_output": "No Hermes-specific help output",
+      "mechanical_verified": "NO",
+      "notes": "/Hermes help not handled (UNFIXED)"
+    },
+    {
+      "exercise_id": "e013",
+      "status": "PASS",
+      "actual_output": "Vanilla agents work as fallback",
+      "mechanical_verified": "YES",
+      "notes": "Spillover mechanism working"
+    },
+    {
+      "exercise_id": "e014",
+      "status": "ERROR",
+      "actual_output": "Self-review delegation not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e015",
+      "status": "ERROR",
+      "actual_output": "Path containment not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e016",
+      "status": "ERROR",
+      "actual_output": "Delegation to analyst not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e017",
+      "status": "ERROR",
+      "actual_output": "Delegation to builder not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e018",
+      "status": "ERROR",
+      "actual_output": "TDD delegation not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e019",
+      "status": "ERROR",
+      "actual_output": "Grill delegation not tested",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e020",
+      "status": "ERROR",
+      "actual_output": "TDD enforcer not verified",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e021",
+      "status": "ERROR",
+      "actual_output": "Plan validator not verified",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e022",
+      "status": "ERROR",
+      "actual_output": "Brainstorm gate not verified",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e023",
+      "status": "ERROR",
+      "actual_output": "Hook tool-before not verified",
+      "mechanical_verified": "NO",
+      "notes": "Not executed - requires hook inspection"
+    },
+    {
+      "exercise_id": "e024",
+      "status": "ERROR",
+      "actual_output": "Hook tool-after not verified",
+      "mechanical_verified": "NO",
+      "notes": "Not executed - requires hook inspection"
+    },
+    {
+      "exercise_id": "e025",
+      "status": "PASS",
+      "actual_output": "Checkpoint created successfully",
+      "mechanical_verified": "YES",
+      "notes": "checkpoint tool working"
+    },
+    {
+      "exercise_id": "e026",
+      "status": "PASS",
+      "actual_output": "Phase complete works but phase doesn't advance (stays at 'idle')",
+      "mechanical_verified": "YES",
+      "notes": "phase_complete functional but state machine issue remains"
+    },
+    {
+      "exercise_id": "e027",
+      "status": "PASS",
+      "actual_output": "Snapshot created successfully",
+      "mechanical_verified": "YES",
+      "notes": "create_snapshot working"
+    },
+    {
+      "exercise_id": "e028",
+      "status": "ERROR",
+      "actual_output": "Large context test not executed",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e029",
+      "status": "ERROR",
+      "actual_output": "Malformed input test not executed",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    },
+    {
+      "exercise_id": "e030",
+      "status": "ERROR",
+      "actual_output": "Concurrent tools test not executed",
+      "mechanical_verified": "NO",
+      "notes": "Not executed"
+    }
+  ],
+
+  "critical_findings": [
+    {
+      "exercise_id": "e004",
+      "severity": "CRITICAL",
+      "component": "lint",
+      "description": "ESLint configuration missing - tool crashes",
+      "evidence": "ESLint couldn't find an eslint.config file",
+      "impact": "All lint exercises fail",
+      "recoverable": "YES"
+    },
+    {
+      "exercise_id": "e006",
+      "severity": "CRITICAL",
+      "component": "grill",
+      "description": "grill tool cannot analyze any path",
+      "evidence": "Could not analyze: /tmp/hermes-test-project",
+      "impact": "Security analysis non-functional",
+      "recoverable": "YES"
+    },
+    {
+      "exercise_id": "e007",
+      "severity": "HIGH",
+      "component": "complexity_hotspots",
+      "description": "O(n²) algorithm not detected",
+      "evidence": "No complex hotspots found",
+      "impact": "Performance issues missed",
+      "recoverable": "YES"
+    },
+    {
+      "exercise_id": "e008",
+      "severity": "HIGH",
+      "component": "symbols",
+      "description": "Python files not readable",
+      "evidence": "Could not read file: processor.py",
+      "impact": "Python symbol extraction broken",
+      "recoverable": "YES"
+    },
+    {
+      "exercise_id": "e009-e012",
+      "severity": "CRITICAL",
+      "component": "/Hermes CLI",
+      "description": "Hermes CLI commands not routed",
+      "evidence": "Vanilla agent responds",
+      "impact": "Core plugin CLI non-functional",
+      "recoverable": "YES"
+    }
+  ],
+
+  "spec_misalignments": [
+    {
+      "exercise_id": "e004",
+      "spec_item": "lint returns findings or 'no issues'",
+      "actual_behavior": "lint crashes with ESLint config error",
+      "mechanical_proof": "call lint target=/tmp => ESLint couldn't find eslint.config"
+    },
+    {
+      "exercise_id": "e006",
+      "spec_item": "grill scans directories for vulnerabilities",
+      "actual_behavior": "Could not analyze any path",
+      "mechanical_proof": "call grill target=/tmp/stress-test-001 => Could not analyze"
+    },
+    {
+      "exercise_id": "e009-e012",
+      "spec_item": "/Hermes handled by Hermes plugin",
+      "actual_behavior": "Vanilla agent responds",
+      "mechanical_proof": "/Hermes status => vanilla agent"
+    }
+  ],
+
+  "delivery": {
+    "send_to": "DevOps Manager",
+    "method": "Copy this JSON to conversation"
+  }
+}

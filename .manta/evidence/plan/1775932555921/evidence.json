@@ -1,0 +1,13 @@
+{
+  "gate": "plan",
+  "timestamp": 1775932555921,
+  "passed": true,
+  "files": [
+    "/home/leviathan/OPENCODE_WORKSPACE/DEBUG LOGS/KRAKEN_PARALLEL_EXECUTION_FAILURE_2026-04-11.md"
+  ],
+  "metadata": {
+    "tool": "write",
+    "sessionID": "ses_282363bf4ffeyt4NeJeJkXuyBH",
+    "workEvidence": "wrote:/home/leviathan/OPENCODE_WORKSPACE/DEBUG LOGS/KRAKEN_PARALLEL_EXECUTION_FAILURE_2026-04-11.md (# KRAKEN PARALLEL EXECUTION FA...)"
+  }
+}

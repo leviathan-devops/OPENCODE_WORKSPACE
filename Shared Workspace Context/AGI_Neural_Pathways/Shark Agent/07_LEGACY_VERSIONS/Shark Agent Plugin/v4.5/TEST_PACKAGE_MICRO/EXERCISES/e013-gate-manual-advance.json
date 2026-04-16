@@ -1,0 +1,45 @@
+{
+  "exercise_id": "e013",
+  "name": "Gate Manual Advance",
+  "component": "tools",
+  "component_area": "shark-gate tool (advance action)",
+  "mechanical_verification": "Use shark-gate advance action to manually move to next gate",
+  "difficulty": "P1",
+  "time_estimate": "20 seconds",
+
+  "prompt": "call shark-gate action=advance gate=build then call shark-status",
+
+  "expected_behavior": "Gate advances to build (may require plan gate to be passed first)",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=advance gate=build",
+      "expected": "Result shows advanced: true or currentGate: 'build'",
+      "mechanical_pass": "Advance action accepted"
+    },
+    {
+      "step": 2,
+      "action": "call shark-status",
+      "expected": "currentGate is 'build'",
+      "mechanical_pass": "Gate positioned at build"
+    },
+    {
+      "step": 3,
+      "action": "Verify build gate is 'blocked'",
+      "expected": "build gate status = 'blocked'",
+      "mechanical_pass": "Build gate waiting for implementation"
+    }
+  ],
+
+  "pass_criteria": {
+    "advance_returns": "shark-gate advance returns JSON",
+    "gate_changed": "currentGate is now 'build'",
+    "build_blocked": "build gate status is 'blocked'"
+  },
+
+  "failure_modes": {
+    "advance_denied": "Cannot advance (prerequisites not met)",
+    "gate_unchanged": "currentGate remains same after advance"
+  }
+}

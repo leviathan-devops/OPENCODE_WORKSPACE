@@ -1,0 +1,29 @@
+{
+  "name": "kraken-ultra",
+  "version": "1.0.0",
+  "description": "Kraken Ultra Anti-Hallucination Validator System",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest --coverage",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "anti-hallucination",
+    "validator",
+    "mechanical-validation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "dependencies": {
+    "glob": "^10.0.0"
+  }
+}

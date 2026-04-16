@@ -1,0 +1,9 @@
+# Cloud Hermes - Using pre-built ghcr.io image
+FROM ghcr.io/leviathan-devops/cloud-hermes:latest
+
+ENV PYTHONUNBUFFERED=1
+ENV HERMES_HOME=/opt/data
+ENV PORT=8080
+
+# This image is already configured, just run the gateway
+CMD ["hermes", "gateway", "run"]

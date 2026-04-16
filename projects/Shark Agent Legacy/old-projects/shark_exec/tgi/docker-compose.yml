@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  tgi-qwen:
+    image: ghcr.io/huggingface/text-generation-inference:2.0.1
+    container_name: tgi-qwen
+    ports:
+      - "8080:80"
+    volumes:
+      - ./models:/data
+    environment:
+      - MODEL_ID=Qwen/Qwen2.5-Coder-7B-Instruct
+      - QUANTIZE=bitsandbytes-nf4
+      - MAX_BATCH_PREFILL_TOKENS=4096
+      - MAX_INPUT_LENGTH=4096
+      - MAX_TOTAL_TOKENS=8192
+      - NUM_SHARD=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: --model-id ${MODEL_ID} --quantize ${QUANTIZE} --max-batch-prefill-tokens ${MAX_BATCH_PREFILL_TOKENS} --max-input-length ${MAX_INPUT_LENGTH} --max-total-tokens ${MAX_TOTAL_TOKENS} --num-shard ${NUM_SHARD}
+    restart: unless-stopped
+
+  tgi-deepseek:
+    image: ghcr.io/huggingface/text-generation-inference:2.0.1
+    container_name: tgi-deepseek
+    ports:
+      - "8081:80"
+    volumes:
+      - ./models:/data
+    environment:
+      - MODEL_ID=deepseek-ai/deepseek-coder-6.7b-instruct
+      - QUANTIZE=bitsandbytes-nf4
+      - MAX_BATCH_PREFILL_TOKENS=4096
+      - MAX_INPUT_LENGTH=4096
+      - MAX_TOTAL_TOKENS=8192
+      - NUM_SHARD=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: --model-id ${MODEL_ID} --quantize ${QUANTIZE} --max-batch-prefill-tokens ${MAX_BATCH_PREFILL_TOKENS} --max-input-length ${MAX_INPUT_LENGTH} --max-total-tokens ${MAX_TOTAL_TOKENS} --num-shard ${NUM_SHARD}
+    restart: unless-stopped

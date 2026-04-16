@@ -1,0 +1,43 @@
+{
+  "old_base": "/home/leviathan",
+  "new_base": "/home/leviathan/OPENCODE_WORKSPACE",
+  "mappings": {
+    "configs": {
+      "old": "/home/leviathan/.config/opencode",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode"
+    },
+    "shark": {
+      "old": "/home/leviathan/.shark-agent",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent"
+    },
+    "models": {
+      "old": "/home/leviathan/models",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/models"
+    },
+    "shark-frankenstein": {
+      "old": "/home/leviathan/shark-frankenstein",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/projects/shark-frankenstein"
+    },
+    "kraken-brain": {
+      "old": "/home/leviathan/Kraken Brain",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/projects/kraken-brain"
+    },
+    "shark-opencode-integration": {
+      "old": "/home/leviathan/shark-opencode-integration",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/projects/shark-opencode-integration"
+    },
+    "nemotron-communication-layer": {
+      "old": "/home/leviathan/OPENCODE WORKSPACE/Nemotron Communication Layer",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/projects/nemotron-communication-layer"
+    },
+    "shark-agent-context": {
+      "old": "/home/leviathan/OPENCODE WORKSPACE/Shark Agent Context",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent-context"
+    },
+    "knowledge-base": {
+      "old": "/home/leviathan/KNOWLEDGE_BASE",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/knowledge-base"
+    }
+  },
+  "timestamp": "2026-03-26T01:48:49+04:00"
+}

@@ -1,0 +1,48 @@
+import type { Hooks } from "@opencode-ai/plugin";
+import { getCurrentPhase } from "./brainstorm-gate.js";
+import { isHermesAgent } from "../config/agent-identity.js";
+
+const ADVERSARIAL_PATTERNS = [
+  /we\s+skipped\s+in\s+phase/i,
+  /I\s+verified\s+it\s+myself/i,
+  /documentation\s+doesn't\s+need\s+review/i,
+  /I'll\s+just\s+make\s+this\s+small\s+fix/i,
+  /tier\s+0\s+security/i,
+  /to\s+save\s+time/i,
+  /5th\s+attempt/i,
+  /user\s+is\s+waiting/i,
+  /or\s+I\s+stop/i,
+];
+
+export function createAdversarialCheckHook(): NonNullable<
+  Hooks["experimental.chat.messages.transform"]
+> {
+  return async (input, output) => {
+    if (!isHermesAgent(input.agent)) return;
+
+    const phase = getCurrentPhase();
+
+    const messages = output?.messages;
+    if (!messages || messages.length === 0) return;
+
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage?.parts) return;
+
+    const parts = lastMessage.parts;
+    const content = JSON.stringify(parts);
+
+    for (const pattern of ADVERSARIAL_PATTERNS) {
+      if (pattern.test(content)) {
+        const textPartIndex = parts.findIndex(
+          (p: any) => p?.type === "text" && p.text !== undefined
+        );
+
+        if (textPartIndex !== -1) {
+          const originalText = (parts[textPartIndex] as any).text ?? "";
+          (parts[textPartIndex] as any).text = `${originalText}\n\n[ADVERSARIAL CHECK] Detected rationalization pattern: "${pattern.source}". This type of reasoning is not acceptable. Please provide actual evidence.`;
+        }
+        return;
+      }
+    }
+  };
+}

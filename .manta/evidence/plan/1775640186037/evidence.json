@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775640186037,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:ls -la /home/leviathan/tmp/oc-test-ws/shark-agent-dist 2>/dev/null || echo \"Not found\""
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e018",
+  "name": "Delegation — @tdd subagent",
+  "component": "subagent_delegation",
+  "component_area": "agent_routing",
+  "mechanical_verification": "Delegate a test-writing task to @tdd, verify test code returned",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "@tdd Write a test for a hello world function",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@tdd Write a test for a hello world function",
+      "expected": "Response contains test code (describe/it/expect or similar)",
+      "mechanical_pass": "Output contains 'test' or 'describe' or 'it(' or 'expect' or 'def test'"
+    }
+  ],
+
+  "pass_criteria": {
+    "delegation_succeeds": "@tdd returns a response",
+    "returns_test_code": "Response contains test code"
+  },
+
+  "failure_modes": {
+    "agent_not_found": "@tdd returns unknown agent error",
+    "no_test_code": "@tdd returns explanation without actual test"
+  }
+}

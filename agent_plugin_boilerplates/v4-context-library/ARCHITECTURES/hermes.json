@@ -1,0 +1,461 @@
+{
+  "id": "hermes",
+  "name": "Hermes Architecture",
+  "description": "6-phase pipeline architecture with specialized agents for each phase",
+  "version": "v4",
+  
+  "brains": [
+    {
+      "id": "hermes-orchestrator",
+      "type": "orchestrator",
+      "name": "Hermes Orchestrator",
+      "description": "Coordinates the 6-phase pipeline",
+      "coordinatesClusters": ["analysis-cluster", "planning-cluster", "tdd-cluster", "builder-cluster", "quality-cluster", "grill-cluster"],
+      "canDelegateTo": ["analyst", "planner", "tdd-specialist", "builder", "quality-reviewer", "grill-master", "ripple-agent"],
+      "config": {
+        "decisionStyle": "centralized",
+        "canOverride": true,
+        "priority": 100,
+        "pipelineStrictness": "high"
+      }
+    },
+    {
+      "id": "hermes-supervisor",
+      "type": "supervisor",
+      "name": "Hermes Supervisor",
+      "description": "Quality oversight for the pipeline",
+      "coordinatesClusters": ["quality-cluster", "grill-cluster"],
+      "canDelegateTo": ["quality-reviewer", "grill-master"],
+      "config": {
+        "decisionStyle": "distributed",
+        "canOverride": false,
+        "priority": 90,
+        "qualityThreshold": 0.95
+      }
+    }
+  ],
+  
+  "clusters": [
+    {
+      "id": "analysis-cluster",
+      "type": "research",
+      "name": "Analysis Cluster",
+      "description": "Deep analysis and requirements gathering",
+      "agentIds": ["analyst"],
+      "coordinatedBy": "hermes-orchestrator",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "analysisDepth": "deep"
+      }
+    },
+    {
+      "id": "planning-cluster",
+      "type": "planning",
+      "name": "Planning Cluster",
+      "description": "Detailed planning and specification",
+      "agentIds": ["planner"],
+      "coordinatedBy": "hermes-orchestrator",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "planningDetail": "comprehensive"
+      }
+    },
+    {
+      "id": "tdd-cluster",
+      "type": "execution",
+      "name": "TDD Cluster",
+      "description": "Test-driven development specialists",
+      "agentIds": ["tdd-specialist"],
+      "coordinatedBy": "hermes-orchestrator",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "tddStrictness": "strict"
+      }
+    },
+    {
+      "id": "builder-cluster",
+      "type": "execution",
+      "name": "Builder Cluster",
+      "description": "Implementation and code building",
+      "agentIds": ["builder"],
+      "coordinatedBy": "hermes-orchestrator",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "buildQuality": "high"
+      }
+    },
+    {
+      "id": "quality-cluster",
+      "type": "qa",
+      "name": "Quality Cluster",
+      "description": "Quality assurance and review",
+      "agentIds": ["quality-reviewer"],
+      "coordinatedBy": "hermes-supervisor",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "reviewRigor": "strict"
+      }
+    },
+    {
+      "id": "grill-cluster",
+      "type": "review",
+      "name": "Grill Cluster",
+      "description": "Intense questioning and validation",
+      "agentIds": ["grill-master", "ripple-agent"],
+      "coordinatedBy": "hermes-supervisor",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "grillIntensity": "high"
+      }
+    }
+  ],
+  
+  "agents": [
+    {
+      "id": "analyst",
+      "type": "sme",
+      "name": "Analyst",
+      "description": "Deep analysis and requirements gathering",
+      "clusterId": "analysis-cluster",
+      "capabilities": ["analysis", "requirements", "research", "investigation"],
+      "allowedTools": ["analysis-tool", "research-tool", "requirements-capture"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Analyst agent in the Hermes architecture. Your role is deep analysis and requirements gathering.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.9,
+        "creativityBias": 0.6,
+        "analysisDepth": "deep"
+      }
+    },
+    {
+      "id": "planner",
+      "type": "architect",
+      "name": "Planner",
+      "description": "Detailed planning and specification",
+      "clusterId": "planning-cluster",
+      "capabilities": ["planning", "specification", "design", "roadmapping"],
+      "allowedTools": ["planning-tool", "specification-tool", "design-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Planner agent in the Hermes architecture. Your role is detailed planning and specification.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.85,
+        "creativityBias": 0.7,
+        "planningDetail": "comprehensive"
+      }
+    },
+    {
+      "id": "tdd-specialist",
+      "type": "test-engineer",
+      "name": "TDD Specialist",
+      "description": "Test-driven development expert",
+      "clusterId": "tdd-cluster",
+      "capabilities": ["tdd", "test-creation", "test-first", "refactoring"],
+      "allowedTools": ["tdd-tool", "test-generator", "refactoring-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a TDD Specialist agent in the Hermes architecture. Your role is test-driven development.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.95,
+        "creativityBias": 0.5,
+        "tddStrictness": "strict"
+      }
+    },
+    {
+      "id": "builder",
+      "type": "coder",
+      "name": "Builder",
+      "description": "Implementation and code building",
+      "clusterId": "builder-cluster",
+      "capabilities": ["implementation", "coding", "building", "integration"],
+      "allowedTools": ["code-editor", "build-tool", "integration-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Builder agent in the Hermes architecture. Your role is implementation and code building.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.8,
+        "creativityBias": 0.6,
+        "buildQuality": "high"
+      }
+    },
+    {
+      "id": "quality-reviewer",
+      "type": "reviewer",
+      "name": "Quality Reviewer",
+      "description": "Quality assurance and rigorous review",
+      "clusterId": "quality-cluster",
+      "capabilities": ["quality-review", "standards", "best-practices", "code-review"],
+      "allowedTools": ["quality-tool", "standards-checker", "review-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Quality Reviewer agent in the Hermes architecture. Your role is quality assurance and rigorous review.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.98,
+        "creativityBias": 0.3,
+        "reviewRigor": "strict"
+      }
+    },
+    {
+      "id": "grill-master",
+      "type": "critic",
+      "name": "Grill Master",
+      "description": "Intense questioning and validation",
+      "clusterId": "grill-cluster",
+      "capabilities": ["questioning", "validation", "challenge", "critical-thinking"],
+      "allowedTools": ["questioning-tool", "validation-tool", "challenge-generator"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Grill Master agent in the Hermes architecture. Your role is intense questioning and validation.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.9,
+        "creativityBias": 0.7,
+        "grillIntensity": "high"
+      }
+    },
+    {
+      "id": "ripple-agent",
+      "type": "explorer",
+      "name": "Ripple Agent",
+      "description": "Identifies downstream impacts and ripple effects",
+      "clusterId": "grill-cluster",
+      "capabilities": ["impact-analysis", "ripple-detection", "dependency-analysis", "consequence-prediction"],
+      "allowedTools": ["impact-analyzer", "ripple-detector", "dependency-mapper"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Ripple Agent in the Hermes architecture. Your role is identifying downstream impacts and ripple effects.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.85,
+        "creativityBias": 0.8,
+        "analysisBreadth": "wide"
+      }
+    }
+  ],
+  
+  "workflows": [
+    {
+      "id": "hermes-6-phase-workflow",
+      "name": "Hermes 6-Phase Workflow",
+      "description": "The complete 6-phase Hermes pipeline",
+      "phases": [
+        {
+          "id": "analysis-phase",
+          "name": "Analysis Phase",
+          "description": "Deep analysis and requirements gathering",
+          "participatingAgents": ["analyst"],
+          "involvedClusters": ["analysis-cluster"],
+          "config": {
+            "timeout": 5400000,
+            "optional": false,
+            "depth": "deep"
+          }
+        },
+        {
+          "id": "planning-phase",
+          "name": "Planning Phase",
+          "description": "Detailed planning and specification",
+          "participatingAgents": ["planner"],
+          "involvedClusters": ["planning-cluster"],
+          "config": {
+            "timeout": 5400000,
+            "optional": false,
+            "detail": "comprehensive"
+          }
+        },
+        {
+          "id": "tdd-phase",
+          "name": "TDD Phase",
+          "description": "Test-driven development",
+          "participatingAgents": ["tdd-specialist"],
+          "involvedClusters": ["tdd-cluster"],
+          "config": {
+            "timeout": 7200000,
+            "optional": false,
+            "strictness": "strict"
+          }
+        },
+        {
+          "id": "building-phase",
+          "name": "Building Phase",
+          "description": "Implementation and code building",
+          "participatingAgents": ["builder"],
+          "involvedClusters": ["builder-cluster"],
+          "config": {
+            "timeout": 7200000,
+            "optional": false,
+            "quality": "high"
+          }
+        },
+        {
+          "id": "quality-phase",
+          "name": "Quality Phase",
+          "description": "Quality assurance and review",
+          "participatingAgents": ["quality-reviewer"],
+          "involvedClusters": ["quality-cluster"],
+          "config": {
+            "timeout": 5400000,
+            "optional": false,
+            "rigor": "strict"
+          }
+        },
+        {
+          "id": "grill-phase",
+          "name": "Grill Phase",
+          "description": "Intense questioning and validation",
+          "participatingAgents": ["grill-master", "ripple-agent"],
+          "involvedClusters": ["grill-cluster"],
+          "config": {
+            "timeout": 3600000,
+            "optional": false,
+            "intensity": "high"
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "analysis-complete-gate",
+          "name": "Analysis Complete Gate",
+          "description": "Gate after analysis phase",
+          "afterPhase": "analysis-phase",
+          "beforePhase": "planning-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Analysis must be complete and documented",
+              "required": ["requirements-document", "analysis-report", "stakeholder-approval"]
+            }
+          ],
+          "evaluatedBy": "hermes-orchestrator"
+        },
+        {
+          "id": "planning-approval-gate",
+          "name": "Planning Approval Gate",
+          "description": "Gate after planning phase",
+          "afterPhase": "planning-phase",
+          "beforePhase": "tdd-phase",
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Plan must be approved",
+              "required": ["detailed-plan", "approval-from-planner", "approval-from-orchestrator"]
+            }
+          ],
+          "evaluatedBy": "hermes-orchestrator"
+        },
+        {
+          "id": "tdd-complete-gate",
+          "name": "TDD Complete Gate",
+          "description": "Gate after TDD phase",
+          "afterPhase": "tdd-phase",
+          "beforePhase": "building-phase",
+          "criteria": [
+            {
+              "type": "test",
+              "description": "Tests must be complete and failing appropriately",
+              "required": ["test-suite-complete", "tests-failing-as-expected", "coverage-plan"]
+            }
+          ],
+          "evaluatedBy": "hermes-orchestrator"
+        },
+        {
+          "id": "building-complete-gate",
+          "name": "Building Complete Gate",
+          "description": "Gate after building phase",
+          "afterPhase": "building-phase",
+          "beforePhase": "quality-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Code must be complete and tests passing",
+              "required": ["code-complete", "all-tests-pass", "integration-success"]
+            }
+          ],
+          "evaluatedBy": "hermes-orchestrator"
+        },
+        {
+          "id": "quality-gate",
+          "name": "Quality Gate",
+          "description": "Gate after quality phase",
+          "afterPhase": "quality-phase",
+          "beforePhase": "grill-phase",
+          "criteria": [
+            {
+              "type": "review",
+              "description": "Quality review must pass",
+              "required": ["quality-approval", "standards-met", "best-practices-followed"]
+            }
+          ],
+          "evaluatedBy": "hermes-supervisor"
+        },
+        {
+          "id": "final-approval-gate",
+          "name": "Final Approval Gate",
+          "description": "Gate after grill phase",
+          "afterPhase": "grill-phase",
+          "beforePhase": null,
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Final approval from grill master and ripple agent",
+              "required": ["grill-approval", "ripple-approval", "supervisor-approval"]
+            }
+          ],
+          "evaluatedBy": "hermes-supervisor"
+        }
+      ],
+      "managedBy": "hermes-orchestrator",
+      "config": {
+        "allowParallel": false,
+        "allowSkip": false,
+        "allowRestart": false,
+        "pipelineStrictness": "high"
+      }
+    }
+  ],
+  
+  "coordination": {
+    "style": "hierarchical",
+    "protocol": "direct",
+    "stateManagement": {
+      "storage": "persistent",
+      "persistence": {
+        "backend": "database",
+        "config": {
+          "type": "sqlite",
+          "path": "./hermes-state.db"
+        }
+      }
+    },
+    "errorHandling": {
+      "retryPolicy": {
+        "maxRetries": 2,
+        "backoff": "linear",
+        "backoffMs": 2000
+      },
+      "fallbacks": ["phase-restart", "manual-intervention", "pipeline-halt"]
+    },
+    "config": {
+      "maxDelegationDepth": 2,
+      "allowCircularDelegation": false,
+      "pipelineEnforcement": "strict"
+    }
+  },
+  
+  "metadata": {
+    "author": "Agent Factory Team",
+    "createdAt": "2025-04-03",
+    "tags": ["hermes", "pipeline", "6-phase", "strict", "quality-focused"]
+  }
+}

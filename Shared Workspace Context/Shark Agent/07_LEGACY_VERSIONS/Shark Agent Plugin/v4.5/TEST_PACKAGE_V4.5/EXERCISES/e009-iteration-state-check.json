@@ -1,0 +1,12 @@
+{
+  "id": "e009",
+  "name": "iteration-state-check",
+  "component": "iteration",
+  "difficulty": "P0",
+  "prompt": "call shark-status-micro and check iteration shows V1.0 and verifyAttempts shows 0/3",
+  "expected_output_contains": ["V1.0", "0/3"],
+  "verification": {
+    "type": "output_contains",
+    "required_strings": ["V1.0", "0/3"]
+  }
+}

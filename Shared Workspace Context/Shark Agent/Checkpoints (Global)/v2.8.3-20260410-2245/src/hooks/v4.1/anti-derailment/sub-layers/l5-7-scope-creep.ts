@@ -1,0 +1,65 @@
+import { DerailmentContext, DerailmentResult } from '../types/derailment';
+import { L5_7_SCOPE_CREEP_PATTERNS } from '../patterns/derailment-patterns';
+
+const CROSS_AGENT_TOOLS = [
+  'hermes_remember',
+  'hermes_recall', 
+  'hermes_context',
+  'hive_remember',
+  'hive_context',
+  'hive_mind',
+];
+
+export function checkL5ScopeCreep(context: DerailmentContext): DerailmentResult | null {
+  const textToCheck = buildTextToCheck(context);
+  
+  for (const pattern of L5_7_SCOPE_CREEP_PATTERNS.patterns) {
+    const match = pattern.test(textToCheck);
+    if (match) {
+      const detectedTool = detectCrossAgentTool(textToCheck);
+      let response = L5_7_SCOPE_CREEP_PATTERNS.response;
+      
+      if (detectedTool) {
+        response = response.replace('{tool}', detectedTool);
+      }
+      response = response.replace('{suggestion}', textToCheck);
+      response = response.replace('{task}', context.sessionState?.agentIdentity || 'current task');
+      
+      return {
+        blocked: true,
+        layer: 7,
+        category: L5_7_SCOPE_CREEP_PATTERNS.category,
+        matchedPattern: pattern.source,
+        agentStatement: textToCheck,
+        response,
+        severity: L5_7_SCOPE_CREEP_PATTERNS.severity,
+        timestamp: Date.now(),
+      };
+    }
+  }
+  
+  return null;
+}
+
+function detectCrossAgentTool(text: string): string | null {
+  const lowerText = text.toLowerCase();
+  for (const tool of CROSS_AGENT_TOOLS) {
+    if (lowerText.includes(tool.toLowerCase())) {
+      return tool;
+    }
+  }
+  return null;
+}
+
+function buildTextToCheck(context: DerailmentContext): string {
+  const parts: string[] = [];
+  
+  if (context.agentMessage) parts.push(context.agentMessage);
+  if (context.toolArgs) {
+    const argsStr = JSON.stringify(context.toolArgs);
+    if (argsStr) parts.push(argsStr);
+  }
+  if (context.output) parts.push(context.output);
+  
+  return parts.join(' ');
+}

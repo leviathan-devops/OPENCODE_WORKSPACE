@@ -1,0 +1,16 @@
+{
+  "name": "guardian-test-module",
+  "version": "1.0.0",
+  "description": "Guardian safety rail test module",
+  "main": "guardian-test-module.ts",
+  "scripts": {
+    "test": "ts-node guardian-test-runner.ts",
+    "build": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

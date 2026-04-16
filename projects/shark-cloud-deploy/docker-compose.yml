@@ -1,0 +1,29 @@
+# Shark Cloud - Docker Compose (Local Development)
+version: '3.8'
+
+services:
+  shark-cloud:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - MATTERMOST_WEBHOOK_URL=${MATTERMOST_WEBHOOK_URL}
+      - SHARK_WORKSPACE=/workspace
+      - SESSION_TIMEOUT_MS=300000
+      - MAX_CONCURRENT_TASKS=3
+      - LOG_LEVEL=info
+    volumes:
+      - shark-workspace:/workspace
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  shark-workspace:
+    driver: local

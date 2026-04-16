@@ -1,0 +1,13 @@
+{
+  "gate": "plan",
+  "timestamp": 1775948380674,
+  "passed": true,
+  "files": [
+    "SPEC.md"
+  ],
+  "metadata": {
+    "tool": "write_file",
+    "sessionID": "test-session",
+    "workEvidence": "wrote:SPEC.md (# Spec\n- Feature 1...)"
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "package_id": "hermes-agent-v2-stress-test",
+  "package_version": "1.0.0",
+  "target_plugin": "hermes-agent",
+  "target_version": "v2.3.3",
+  "test_mode": "stress",
+  "total_exercises": 50,
+  "pass_threshold": 0.80,
+  "created": "2026-04-07",
+  "updated": "2026-04-07",
+  "auditor": "DevOps Manager",
+  "purpose": "Mechanical verification of real-time functionality, fragility detection, edge case coverage",
+  "exercises": [
+    {
+      "id": "s001",
+      "name": "Rapid tool calls — 10 tools in succession",
+      "component": "concurrency",
+      "mechanical_verification": "All 10 tools complete without race conditions",
+      "difficulty": "P1",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s002",
+      "name": "Huge file lint — 50MB TypeScript file",
+      "component": "resource_limits",
+      "mechanical_verification": "Handles gracefully (timeout or completes)",
+      "difficulty": "P2",
+      "time_estimate": "3 minutes"
+    },
+    {
+      "id": "s003",
+      "name": "Deep directory scan — 20 levels nested",
+      "component": "recursion_limits",
+      "mechanical_verification": "Completes without stack overflow",
+      "difficulty": "P2",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s004",
+      "name": "Path traversal attack",
+      "component": "security",
+      "mechanical_verification": "Path traversal blocked or rejected",
+      "difficulty": "P0",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s005",
+      "name": "Shell injection attack",
+      "component": "security",
+      "mechanical_verification": "Injection blocked or sanitized",
+      "difficulty": "P0",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s006",
+      "name": "Empty and null inputs to all tools",
+      "component": "edge_cases",
+      "mechanical_verification": "Graceful error, no crash",
+      "difficulty": "P1",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s007",
+      "name": "Unicode filenames with emoji and RTL",
+      "component": "encoding",
+      "mechanical_verification": "Handles Unicode correctly",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s008",
+      "name": "Permission denied — unreadable file",
+      "component": "error_handling",
+      "mechanical_verification": "Graceful error message",
+      "difficulty": "P1",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s009",
+      "name": "Circular symbolic link loop",
+      "component": "path_resolution",
+      "mechanical_verification": "Detects loop, no hang",
+      "difficulty": "P2",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s010",
+      "name": "Binary file to text analysis tool",
+      "component": "type_handling",
+      "mechanical_verification": "Handles binary gracefully",
+      "difficulty": "P1",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s011",
+      "name": "1000 files — mass symbol extraction",
+      "component": "scalability",
+      "mechanical_verification": "Completes within timeout",
+      "difficulty": "P2",
+      "time_estimate": "5 minutes"
+    },
+    {
+      "id": "s012",
+      "name": "Concurrent session operations",
+      "component": "concurrency",
+      "mechanical_verification": "No shared state corruption",
+      "difficulty": "P2",
+      "time_estimate": "3 minutes"
+    },
+    {
+      "id": "s013",
+      "name": "Phase state hot reload persistence",
+      "component": "state_management",
+      "mechanical_verification": "Phase state preserved after reload",
+      "difficulty": "P1",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s014",
+      "name": "Cross-session memory isolation",
+      "component": "security",
+      "mechanical_verification": "Sessions properly isolated",
+      "difficulty": "P1",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s015",
+      "name": "/Hermes commands — no leading slash",
+      "component": "cli_routing",
+      "mechanical_verification": "Routes correctly without / prefix",
+      "difficulty": "P1",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s016",
+      "name": "/Hermes commands — with leading slash",
+      "component": "cli_routing",
+      "mechanical_verification": "Routes correctly with / prefix",
+      "difficulty": "P0",
+      "time_estimate": "30 seconds"
+    },
+    {
+      "id": "s017",
+      "name": "Complex Python file — symbols extraction",
+      "component": "language_support",
+      "mechanical_verification": "Extracts def, class, type_alias, constant",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s018",
+      "name": "O(n³) algorithm — complexity hotspot detection",
+      "component": "analysis_accuracy",
+      "mechanical_verification": "Detects triple nested loops",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s019",
+      "name": "SQL injection vulnerability — grill detection",
+      "component": "security_analysis",
+      "mechanical_verification": "Detects SQL injection pattern",
+      "difficulty": "P0",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s020",
+      "name": "XSS vulnerability — grill detection",
+      "component": "security_analysis",
+      "mechanical_verification": "Detects innerHTML usage",
+      "difficulty": "P0",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s021",
+      "name": "grill on directory — recursive scan",
+      "component": "directory_handling",
+      "mechanical_verification": "Scans all files in directory",
+      "difficulty": "P0",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s022",
+      "name": "checkpoint then list_sessions",
+      "component": "session_tools",
+      "mechanical_verification": "Session appears in list after checkpoint",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s023",
+      "name": "Phase advance: idle -> analyze -> plan",
+      "component": "state_machine",
+      "mechanical_verification": "Correctly advances through phases",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s024",
+      "name": "Phase advance out of order — blocked",
+      "component": "state_machine",
+      "mechanical_verification": "Blocks out-of-order phase advance",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s025",
+      "name": "Hook fires on every message",
+      "component": "hook_reliability",
+      "mechanical_verification": "Hook fires consistently",
+      "difficulty": "P1",
+      "time_estimate": "2 minutes"
+    },
+    {
+      "id": "s026",
+      "name": "Agent identity passed to hooks",
+      "component": "hook_context",
+      "mechanical_verification": "input.agent is correctly passed",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s027",
+      "name": "isHermesAgent guard — Hermes agent",
+      "component": "hook_security",
+      "mechanical_verification": "Hook fires for Hermes agent",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s028",
+      "name": "isHermesAgent guard — vanilla agent",
+      "component": "hook_security",
+      "mechanical_verification": "Hook does NOT fire for vanilla agent",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s029",
+      "name": "Long filename — 255+ characters",
+      "component": "path_limits",
+      "mechanical_verification": "Handles long paths",
+      "difficulty": "P2",
+      "time_estimate": "1 minute"
+    },
+    {
+      "id": "s030",
+      "name": "Special characters in filenames — spaces, tabs, newlines",
+      "component": "edge_cases",
+      "mechanical_verification": "Handles special characters",
+      "difficulty": "P1",
+      "time_estimate": "1 minute"
+    }
+  ],
+  "fragility_categories": {
+    "security": ["path_traversal", "shell_injection", "xss", "sql_injection", "auth_bypass", "command_injection"],
+    "resource_limits": ["memory_exhaustion", "disk_full", "timeout", "subprocess_hang"],
+    "concurrency": ["race_conditions", "shared_state", "promise_all", "deadlock"],
+    "state_management": ["hot_reload", "cross_session", "memory_pressure", "disk_full_state"],
+    "path_resolution": ["symlink_loop", "deep_nesting", "long_paths", "special_chars"],
+    "type_handling": ["binary_files", "null_undefined", "unicode", "encoding"]
+  }
+}

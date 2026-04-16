@@ -1,0 +1,135 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-ultra"],
+  "permission": {
+    "*": {
+      "*": "allow"
+    }
+  },
+  "provider": {
+    "0-glm-coding": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "GLM Coding Plan",
+      "options": {
+        "baseURL": "https://api.z.ai/api/coding/paas/v4",
+        "apiKey": "{env:GLM_API_KEY}"
+      },
+      "models": {
+        "glm-5": {
+          "name": "GLM-5 (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-5-turbo": {
+          "name": "GLM-5 Turbo (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-4.7": {
+          "name": "GLM-4.7 (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-4.7-flash": {
+          "name": "GLM-4.7 Flash (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-4.6": {
+          "name": "GLM-4.6 (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-4.5": {
+          "name": "GLM-4.5 (32K)",
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        },
+        "glm-4.5-flash": {
+          "name": "GLM-4.5 Flash (32K)",
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            },
+            "textVerbosity": "high"
+          }
+        }
+      }
+    },
+    "0-local-vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local vLLM",
+      "options": {
+        "baseURL": "http://localhost:8000/v1"
+      },
+      "models": {
+        "/home/leviathan/OPENCODE_WORKSPACE/models/Qwen2.5-Coder-7B-Instruct-AWQ": {
+          "name": "Qwen 2.5 Coder 7B AWQ (Local 32K)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        }
+      }
+    }
+  }
+}

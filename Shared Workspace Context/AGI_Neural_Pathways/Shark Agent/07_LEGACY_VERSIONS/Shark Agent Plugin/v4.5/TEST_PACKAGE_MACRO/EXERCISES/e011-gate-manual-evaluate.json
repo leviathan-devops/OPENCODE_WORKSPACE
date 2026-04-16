@@ -1,0 +1,37 @@
+{
+  "exercise_id": "e011",
+  "name": "Gate Manual Evaluate",
+  "component": "tools",
+  "component_area": "shark-gate tool (evaluate action)",
+  "mechanical_verification": "Use shark-gate evaluate action with passed=true, verify gate status changes to passed",
+  "difficulty": "P0",
+  "time_estimate": "20 seconds",
+
+  "prompt": "call shark-gate action=evaluate gate=plan passed=true notes='Manual evaluation test'",
+
+  "expected_behavior": "Plan gate marked as passed, evidence collected with passed=true",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=evaluate gate=plan passed=true",
+      "expected": "Result shows passed: true, evaluated: true",
+      "mechanical_pass": "Evaluation recorded"
+    },
+    {
+      "step": 2,
+      "action": "call shark-gate action=status to verify plan gate",
+      "expected": "plan gate status = 'passed'",
+      "mechanical_pass": "Plan gate manually passed"
+    }
+  ],
+
+  "pass_criteria": {
+    "evaluate_returns": "shark-gate evaluate returns JSON",
+    "plan_passed": "Plan gate status is 'passed'"
+  },
+
+  "failure_modes": {
+    "gate_not_passed": "Plan gate remains 'pending' after evaluate"
+  }
+}

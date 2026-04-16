@@ -1,0 +1,502 @@
+{
+  "id": "shark",
+  "name": "Shark Architecture",
+  "description": "Triple-brain architecture with aggressive execution and coordinated decision-making",
+  "version": "v4",
+  
+  "brains": [
+    {
+      "id": "hunter-brain",
+      "type": "orchestrator",
+      "name": "Hunter Brain",
+      "description": "Aggressive target identification and pursuit",
+      "coordinatesClusters": ["hunting-cluster", "tracking-cluster"],
+      "canDelegateTo": ["hunter", "tracker", "striker"],
+      "config": {
+        "decisionStyle": "aggressive",
+        "canOverride": true,
+        "priority": 100,
+        "aggressionLevel": "high",
+        "focus": "target-acquisition"
+      }
+    },
+    {
+      "id": "tactician-brain",
+      "type": "coordinator",
+      "name": "Tactician Brain",
+      "description": "Strategic planning and coordination",
+      "coordinatesClusters": ["strategy-cluster", "planning-cluster"],
+      "canDelegateTo": ["strategist", "planner", "analyst"],
+      "config": {
+        "decisionStyle": "strategic",
+        "canOverride": false,
+        "priority": 90,
+        "strategyDepth": "deep",
+        "coordinationStyle": "precise"
+      }
+    },
+    {
+      "id": "sentinel-brain",
+      "type": "monitor",
+      "name": "Sentinel Brain",
+      "description": "Vigilant monitoring and threat detection",
+      "coordinatesClusters": ["monitoring-cluster", "defense-cluster"],
+      "canDelegateTo": ["sentinel", "defender", "auditor"],
+      "config": {
+        "decisionStyle": "defensive",
+        "canOverride": true,
+        "priority": 80,
+        "vigilanceLevel": "maximum",
+        "threatSensitivity": "high"
+      }
+    }
+  ],
+  
+  "clusters": [
+    {
+      "id": "hunting-cluster",
+      "type": "execution",
+      "name": "Hunting Cluster",
+      "description": "Aggressive target acquisition and execution",
+      "agentIds": ["hunter", "striker"],
+      "coordinatedBy": "hunter-brain",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "executionSpeed": "fast",
+        "aggression": "high"
+      }
+    },
+    {
+      "id": "tracking-cluster",
+      "type": "research",
+      "name": "Tracking Cluster",
+      "description": "Target tracking and intelligence gathering",
+      "agentIds": ["tracker"],
+      "coordinatedBy": "hunter-brain",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "trackingPrecision": "high",
+        "intelligenceDepth": "deep"
+      }
+    },
+    {
+      "id": "strategy-cluster",
+      "type": "planning",
+      "name": "Strategy Cluster",
+      "description": "Strategic planning and analysis",
+      "agentIds": ["strategist"],
+      "coordinatedBy": "tactician-brain",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "strategyHorizon": "long",
+        "planningDetail": "comprehensive"
+      }
+    },
+    {
+      "id": "planning-cluster",
+      "type": "planning",
+      "name": "Planning Cluster",
+      "description": "Tactical planning and coordination",
+      "agentIds": ["planner", "analyst"],
+      "coordinatedBy": "tactician-brain",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "tacticalPrecision": "high",
+        "coordinationLevel": "detailed"
+      }
+    },
+    {
+      "id": "monitoring-cluster",
+      "type": "qa",
+      "name": "Monitoring Cluster",
+      "description": "Continuous monitoring and surveillance",
+      "agentIds": ["sentinel"],
+      "coordinatedBy": "sentinel-brain",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 1,
+        "monitoringFrequency": "continuous",
+        "alertSensitivity": "high"
+      }
+    },
+    {
+      "id": "defense-cluster",
+      "type": "review",
+      "name": "Defense Cluster",
+      "description": "Defensive measures and security",
+      "agentIds": ["defender", "auditor"],
+      "coordinatedBy": "sentinel-brain",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "defensePosture": "active",
+        "securityLevel": "maximum"
+      }
+    }
+  ],
+  
+  "agents": [
+    {
+      "id": "hunter",
+      "type": "coder",
+      "name": "Hunter",
+      "description": "Aggressive target acquisition and execution",
+      "clusterId": "hunting-cluster",
+      "capabilities": ["execution", "targeting", "aggressive-coding", "fast-implementation"],
+      "allowedTools": ["execution-tool", "targeting-tool", "fast-code-editor"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Hunter agent in the Shark architecture. Your role is aggressive target acquisition and execution.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.7,
+        "creativityBias": 0.8,
+        "speedBias": 0.9,
+        "aggressionLevel": "high"
+      }
+    },
+    {
+      "id": "tracker",
+      "type": "explorer",
+      "name": "Tracker",
+      "description": "Target tracking and intelligence gathering",
+      "clusterId": "tracking-cluster",
+      "capabilities": ["tracking", "intelligence", "pattern-recognition", "target-analysis"],
+      "allowedTools": ["tracking-tool", "intelligence-gatherer", "pattern-analyzer"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Tracker agent in the Shark architecture. Your role is target tracking and intelligence gathering.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.85,
+        "creativityBias": 0.7,
+        "precisionBias": 0.9,
+        "trackingDepth": "deep"
+      }
+    },
+    {
+      "id": "striker",
+      "type": "test-engineer",
+      "name": "Striker",
+      "description": "Precision testing and validation strikes",
+      "clusterId": "hunting-cluster",
+      "capabilities": ["precision-testing", "validation", "targeted-testing", "quality-strikes"],
+      "allowedTools": ["precision-tester", "validation-tool", "targeted-test-generator"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Striker agent in the Shark architecture. Your role is precision testing and validation strikes.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.9,
+        "creativityBias": 0.6,
+        "precisionBias": 0.95,
+        "strikeAccuracy": "high"
+      }
+    },
+    {
+      "id": "strategist",
+      "type": "architect",
+      "name": "Strategist",
+      "description": "Strategic planning and high-level design",
+      "clusterId": "strategy-cluster",
+      "capabilities": ["strategy", "high-level-design", "roadmapping", "vision-planning"],
+      "allowedTools": ["strategy-tool", "design-tool", "roadmap-planner"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Strategist agent in the Shark architecture. Your role is strategic planning and high-level design.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.9,
+        "creativityBias": 0.8,
+        "strategicDepth": "deep",
+        "visionBreadth": "wide"
+      }
+    },
+    {
+      "id": "planner",
+      "type": "architect",
+      "name": "Planner",
+      "description": "Tactical planning and detailed coordination",
+      "clusterId": "planning-cluster",
+      "capabilities": ["tactical-planning", "coordination", "detail-design", "execution-planning"],
+      "allowedTools": ["planning-tool", "coordination-tool", "detail-designer"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Planner agent in the Shark architecture. Your role is tactical planning and detailed coordination.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.95,
+        "creativityBias": 0.6,
+        "detailOrientation": "high",
+        "coordinationPrecision": "exact"
+      }
+    },
+    {
+      "id": "analyst",
+      "type": "sme",
+      "name": "Analyst",
+      "description": "Deep analysis and risk assessment",
+      "clusterId": "planning-cluster",
+      "capabilities": ["analysis", "risk-assessment", "data-interpretation", "scenario-planning"],
+      "allowedTools": ["analysis-tool", "risk-assessor", "data-analyzer"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Analyst agent in the Shark architecture. Your role is deep analysis and risk assessment.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.9,
+        "creativityBias": 0.5,
+        "analysisDepth": "deep",
+        "riskSensitivity": "high"
+      }
+    },
+    {
+      "id": "sentinel",
+      "type": "reviewer",
+      "name": "Sentinel",
+      "description": "Vigilant monitoring and threat detection",
+      "clusterId": "monitoring-cluster",
+      "capabilities": ["monitoring", "threat-detection", "surveillance", "alert-generation"],
+      "allowedTools": ["monitoring-tool", "threat-detector", "surveillance-system"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Sentinel agent in the Shark architecture. Your role is vigilant monitoring and threat detection.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.98,
+        "creativityBias": 0.3,
+        "vigilanceLevel": "maximum",
+        "alertThreshold": "low"
+      }
+    },
+    {
+      "id": "defender",
+      "type": "critic",
+      "name": "Defender",
+      "description": "Active defense and security enforcement",
+      "clusterId": "defense-cluster",
+      "capabilities": ["defense", "security", "protection", "vulnerability-assessment"],
+      "allowedTools": ["defense-tool", "security-enforcer", "protection-system"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Defender agent in the Shark architecture. Your role is active defense and security enforcement.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.95,
+        "creativityBias": 0.4,
+        "defensePosture": "active",
+        "securityStrictness": "maximum"
+      }
+    },
+    {
+      "id": "auditor",
+      "type": "critic",
+      "name": "Auditor",
+      "description": "Comprehensive auditing and compliance checking",
+      "clusterId": "defense-cluster",
+      "capabilities": ["auditing", "compliance", "verification", "validation"],
+      "allowedTools": ["audit-tool", "compliance-checker", "verification-system"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Auditor agent in the Shark architecture. Your role is comprehensive auditing and compliance checking.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.99,
+        "creativityBias": 0.2,
+        "auditThoroughness": "comprehensive",
+        "complianceStrictness": "absolute"
+      }
+    }
+  ],
+  
+  "workflows": [
+    {
+      "id": "shark-hunt-workflow",
+      "name": "Shark Hunt Workflow",
+      "description": "Aggressive execution workflow with triple-brain coordination",
+      "phases": [
+        {
+          "id": "target-identification-phase",
+          "name": "Target Identification Phase",
+          "description": "Identify and analyze targets",
+          "participatingAgents": ["tracker", "analyst"],
+          "involvedClusters": ["tracking-cluster", "planning-cluster"],
+          "config": {
+            "timeout": 3600000,
+            "optional": false,
+            "identificationPrecision": "high"
+          }
+        },
+        {
+          "id": "strategy-formulation-phase",
+          "name": "Strategy Formulation Phase",
+          "description": "Develop comprehensive strategy",
+          "participatingAgents": ["strategist", "planner"],
+          "involvedClusters": ["strategy-cluster", "planning-cluster"],
+          "config": {
+            "timeout": 5400000,
+            "optional": false,
+            "strategyDepth": "deep"
+          }
+        },
+        {
+          "id": "execution-phase",
+          "name": "Execution Phase",
+          "description": "Aggressive target execution",
+          "participatingAgents": ["hunter", "striker"],
+          "involvedClusters": ["hunting-cluster"],
+          "config": {
+            "timeout": 7200000,
+            "optional": false,
+            "executionSpeed": "fast"
+          }
+        },
+        {
+          "id": "defense-activation-phase",
+          "name": "Defense Activation Phase",
+          "description": "Activate defensive measures",
+          "participatingAgents": ["defender", "auditor"],
+          "involvedClusters": ["defense-cluster"],
+          "config": {
+            "timeout": 3600000,
+            "optional": false,
+            "defenseLevel": "maximum"
+          }
+        },
+        {
+          "id": "monitoring-phase",
+          "name": "Monitoring Phase",
+          "description": "Continuous monitoring and validation",
+          "participatingAgents": ["sentinel"],
+          "involvedClusters": ["monitoring-cluster"],
+          "config": {
+            "timeout": 1800000,
+            "optional": false,
+            "monitoringIntensity": "continuous"
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "target-approval-gate",
+          "name": "Target Approval Gate",
+          "description": "Gate after target identification",
+          "afterPhase": "target-identification-phase",
+          "beforePhase": "strategy-formulation-phase",
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Target must be approved by all three brains",
+              "required": ["target-analysis", "hunter-brain-approval", "tactician-brain-approval", "sentinel-brain-approval"]
+            }
+          ],
+          "evaluatedBy": "hunter-brain"
+        },
+        {
+          "id": "strategy-approval-gate",
+          "name": "Strategy Approval Gate",
+          "description": "Gate after strategy formulation",
+          "afterPhase": "strategy-formulation-phase",
+          "beforePhase": "execution-phase",
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Strategy must be approved by tactician and sentinel brains",
+              "required": ["strategy-document", "tactician-brain-approval", "sentinel-brain-approval"]
+            }
+          ],
+          "evaluatedBy": "tactician-brain"
+        },
+        {
+          "id": "execution-complete-gate",
+          "name": "Execution Complete Gate",
+          "description": "Gate after execution phase",
+          "afterPhase": "execution-phase",
+          "beforePhase": "defense-activation-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Execution must be complete and validated",
+              "required": ["execution-complete", "striker-validation", "basic-tests-pass"]
+            }
+          ],
+          "evaluatedBy": "hunter-brain"
+        },
+        {
+          "id": "defense-ready-gate",
+          "name": "Defense Ready Gate",
+          "description": "Gate after defense activation",
+          "afterPhase": "defense-activation-phase",
+          "beforePhase": "monitoring-phase",
+          "criteria": [
+            {
+              "type": "review",
+              "description": "Defenses must be active and validated",
+              "required": ["defenses-active", "auditor-approval", "security-check-pass"]
+            }
+          ],
+          "evaluatedBy": "sentinel-brain"
+        },
+        {
+          "id": "final-validation-gate",
+          "name": "Final Validation Gate",
+          "description": "Final gate after monitoring phase",
+          "afterPhase": "monitoring-phase",
+          "beforePhase": null,
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Final approval from all three brains",
+              "required": ["monitoring-report", "hunter-brain-final-approval", "tactician-brain-final-approval", "sentinel-brain-final-approval"]
+            }
+          ],
+          "evaluatedBy": "sentinel-brain"
+        }
+      ],
+      "managedBy": "hunter-brain",
+      "config": {
+        "allowParallel": true,
+        "allowSkip": false,
+        "allowRestart": true,
+        "tripleBrainCoordination": "required"
+      }
+    }
+  ],
+  
+  "coordination": {
+    "style": "federated",
+    "protocol": "broadcast",
+    "stateManagement": {
+      "storage": "distributed",
+      "persistence": {
+        "backend": "redis",
+        "config": {
+          "host": "localhost",
+          "port": 6379,
+          "db": 0
+        }
+      }
+    },
+    "errorHandling": {
+      "retryPolicy": {
+        "maxRetries": 1,
+        "backoff": "fixed",
+        "backoffMs": 1000
+      },
+      "fallbacks": ["brain-switch", "aggressive-retry", "system-halt"]
+    },
+    "config": {
+      "maxDelegationDepth": 4,
+      "allowCircularDelegation": false,
+      "tripleBrainVoting": "required",
+      "emergencyOverride": "enabled"
+    }
+  },
+  
+  "metadata": {
+    "author": "Agent Factory Team",
+    "createdAt": "2025-04-03",
+    "tags": ["shark", "triple-brain", "aggressive", "federated", "security-focused"]
+  }
+}

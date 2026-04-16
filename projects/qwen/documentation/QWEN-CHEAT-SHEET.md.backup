@@ -1,0 +1,145 @@
+# Qwen Model Toggle System - Cheat Sheet
+
+## 🎯 QUICK START
+
+### **Your Primary Commands:**
+
+```bash
+qwen--yolo      # Smart auto-select (YOLO mode)
+qwen-yolo       # Same as qwen--yolo  
+qwen-local      # Force local Qwen Coder (dual-brain)
+qwen-glm        # Force GLM cloud API
+```
+
+### **Examples:**
+```bash
+qwen--yolo "write a python script"         # Auto-selects best model
+qwen-local "execute: ls -la"              # Forces local execution  
+qwen-glm "help me with this code"         # Forces GLM cloud
+```
+
+## 🧠 ARCHITECTURE EXPLANATION
+
+### **Dual-Brain Mode (qwen-local):**
+- **DeepSeek R1**: Thinking/Reasoning (when needed)
+- **Qwen Coder**: Local Execution 100% of the time
+- **Cost**: 100% FREE execution tokens
+- **Speed**: Instant local response
+- **Privacy**: All processing stays local
+
+### **GLM Mode (qwen-glm):**
+- **GLM Flash**: Cloud API processing
+- **Cost**: Standard API pricing
+- **Speed**: Cloud dependent
+- **Features**: Full GLM capabilities
+
+### **YOLO Mode (qwen--yolo):**
+- **Smart Selection**: Automatically chooses best model
+- **Logic**: 
+  - Uses local Qwen Coder if fast and available (<100ms response)
+  - Falls back to GLM if local is slow/unavailable
+  - Perfect balance of speed and cost
+
+## 💰 COST COMPARISON
+
+| Command | Execution Cost | Speed | Privacy |
+|---------|---------------|-------|---------|
+| `qwen-local` | **FREE** | Instant | Local ✅ |
+| `qwen--yolo` | **Smart** | Fast | Smart ✅ |
+| `qwen-glm` | Standard | Cloud | Cloud 🌐 |
+
+## 🔧 MANAGEMENT COMMANDS
+
+```bash
+# Check system status
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh status
+
+# Start/stop/restart agents
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh start
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh stop
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh restart
+
+# Test all agents
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh test
+
+# View logs
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh logs
+```
+
+## 📡 API CONFIGURATION
+
+### **For Qwen Code Integration:**
+
+**Local Mode (qwen-local):**
+```json
+{
+  "model": "qwen-coder-7b-local",
+  "api_base": "http://localhost:8001/v1", 
+  "api_key": "qwen-local-execution"
+}
+```
+
+**Multiple Ports Available:**
+- `http://localhost:8001/v1` (Primary)
+- `http://localhost:8002/v1` (Agent 2)
+- `http://localhost:8003/v1` (Agent 3)
+- `http://localhost:8004/v1` (Agent 4)
+- `http://localhost:8005/v1` (Agent 5)
+
+## 🚀 PERFECT WORKFLOW
+
+### **Daily Use:**
+```bash
+# Most of the time - let YOLO decide
+qwen--yolo "help me debug this code"
+
+# When you need local execution (cheaper)
+qwen-local "execute: npm test && echo tests complete"
+
+# When you need GLM features
+qwen-glm "explain quantum computing"
+```
+
+### **Development:**
+```bash
+# Code generation (local saves tokens)
+qwen--yolo "write a React component for file upload"
+
+# Debugging (GLM might be better for complex analysis)  
+qwen-glm "analyze this stack trace and suggest fixes"
+
+# System tasks (local is perfect)
+qwen-local "execute: git status && git add ."
+```
+
+## 🎯 PRO TIPS
+
+1. **Use `qwen--yolo` as your default** - Let AI choose the best model
+2. **Use `qwen-local` for repetitive tasks** - Saves tokens on executions
+3. **Use `qwen-glm` for complex reasoning** - GLM might handle better
+4. **Local agents auto-start on boot** - No maintenance needed
+5. **All 5 agent ports work** - Load balance if needed
+
+## 🔍 TROUBLESHOOTING
+
+### **If `qwen--yolo` uses GLM instead of local:**
+- Local agents might be slow: Check with `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh test`
+- Restart agents: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh restart`
+
+### **If local commands don't work:**
+- Check agent status: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/qwen-agents-status.sh status`
+- Systemd service should auto-restart: `sudo systemctl status qwen-coders.service`
+
+### **To permanently use GLM:**
+```bash
+qwen-glm "your question here"
+```
+
+### **To permanently use local:**
+```bash
+qwen-local "your question here" 
+```
+
+---
+
+**🎉 You now have perfect control over your AI models!**

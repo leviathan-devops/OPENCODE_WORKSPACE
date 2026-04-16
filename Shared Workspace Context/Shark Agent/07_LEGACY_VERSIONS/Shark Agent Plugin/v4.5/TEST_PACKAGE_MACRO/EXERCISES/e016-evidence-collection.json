@@ -1,0 +1,37 @@
+{
+  "exercise_id": "e016",
+  "name": "Evidence Collection — Latest Gate Evidence",
+  "component": "evidence",
+  "component_area": "EvidenceCollector getLatestEvidence",
+  "mechanical_verification": "Collect evidence for different gates, verify getLatestEvidence returns correct gate evidence",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "prompt": "Evaluate plan gate as passed, then call shark-evidence action=gate-evidence gate=plan",
+
+  "expected_behavior": "Evidence shows timestamp, passed status, metadata for gate",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=evaluate gate=plan passed=true",
+      "expected": "Plan gate marked as passed",
+      "mechanical_pass": "Evidence generated for plan"
+    },
+    {
+      "step": 2,
+      "action": "call shark-evidence action=gate-evidence gate=plan",
+      "expected": "Evidence returned with passed: true, gate: plan",
+      "mechanical_pass": "Latest evidence for plan gate correct"
+    }
+  ],
+
+  "pass_criteria": {
+    "plan_evidence": "Plan gate evidence shows passed: true",
+    "evidence_has_timestamp": "Evidence includes timestamp field"
+  },
+
+  "failure_modes": {
+    "evidence_missing": "No evidence returned for evaluated gate"
+  }
+}

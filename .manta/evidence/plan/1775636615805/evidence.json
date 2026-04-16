@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775636615805,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:ls /home/leviathan/OPENCODE_WORKSPACE/projects/*/README.md 2>/dev/null | head -5"
+  }
+}

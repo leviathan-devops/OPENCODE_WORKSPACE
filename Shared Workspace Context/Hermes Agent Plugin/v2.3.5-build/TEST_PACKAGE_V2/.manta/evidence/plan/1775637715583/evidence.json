@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775637715583,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_293bec320ffeq3dncGtJJKg5xC",
+    "workEvidence": "ran:ls -la"
+  }
+}

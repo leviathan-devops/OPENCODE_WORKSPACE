@@ -1,0 +1,65 @@
+{
+  "name": "plugin-agent-factory-v4",
+  "version": "4.0.0",
+  "description": "V4 Agent Factory Edition - Meta-configurable agent architecture system",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "migrate": "./MIGRATION/migrate.sh",
+    "example": "ts-node examples/basic-usage.ts"
+  },
+  "keywords": [
+    "agent",
+    "factory",
+    "architecture",
+    "configurable",
+    "multi-agent",
+    "coordination",
+    "spider",
+    "hermes",
+    "shark"
+  ],
+  "author": "Agent Factory Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/agent-factory-edition.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/agent-factory-edition/issues"
+  },
+  "homepage": "https://github.com/your-org/agent-factory-edition#readme",
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "ARCHITECTURES",
+    "FACTORY",
+    "MIGRATION",
+    "REFERENCE",
+    "examples",
+    "templates"
+  ]
+}

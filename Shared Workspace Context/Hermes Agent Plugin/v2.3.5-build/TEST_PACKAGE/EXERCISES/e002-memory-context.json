@@ -1,0 +1,37 @@
+{
+  "exercise_id": "e002",
+  "name": "Memory — hermes_context topic search",
+  "component": "memory_system",
+  "component_area": "2nd-brain context retrieval",
+  "mechanical_verification": "Store 3 memories with different topics, query with one topic, verify only relevant memories returned",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "call hermes_remember topic=project-auth value=\"auth module uses bcrypt\" && call hermes_remember topic=project-db value=\"postgresql connection pooling\" && call hermes_remember topic=project-api value=\"REST endpoints on port 3000\"",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call hermes_context topic=project",
+      "expected": "Returns auth, db, and api memories (all matching 'project' prefix)",
+      "mechanical_pass": "Response contains at least 2 of the 3 stored memories"
+    },
+    {
+      "step": 2,
+      "action": "call hermes_context topic=nonexistent-xyz",
+      "expected": "Returns empty or no results (not an error)",
+      "mechanical_pass": "No crash, no error, graceful empty response"
+    }
+  ],
+
+  "pass_criteria": {
+    "partial_match": "topic=project returns all 3 stored 'project-*' memories",
+    "empty_query": "nonexistent topic returns empty gracefully",
+    "no_crash": "hermes_context handles empty result without error"
+  },
+
+  "failure_modes": {
+    "returns_all": "Returns ALL memories ignoring topic filter",
+    "crashes": "Empty topic query causes crash or exception"
+  }
+}

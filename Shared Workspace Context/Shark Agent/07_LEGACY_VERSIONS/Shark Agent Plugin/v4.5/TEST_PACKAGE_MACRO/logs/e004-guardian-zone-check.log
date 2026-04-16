@@ -1,0 +1,7 @@
+[2026-04-07T09:51:01.506Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing
+[2026-04-07T09:51:01.506Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {"toolCount":3,"tools":["route","gemma","qwen"],"route":"task routing - use when unsure which sub-agent to use","gemma":"gemma-4-31b-it (documentation, boilerplate, explanations)","qwen":"qwen3-coder (code completion, prototypes, free)"}
+[2026-04-07T09:51:01.506Z] INFO OpenCodePluginEngineering initializing 
+[0m
+> build · qwen3.6-plus-free
+[0m
+[91m[1mError: [0m"Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time."

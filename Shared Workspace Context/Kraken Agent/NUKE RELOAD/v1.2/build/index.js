@@ -1,0 +1,1 @@
+/home/leviathan/.config/opencode/plugins/kraken-v1.2/dist/index.js

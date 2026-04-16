@@ -1,0 +1,32 @@
+{
+  "exercise_id": "e007",
+  "name": "Tool — complexity_hotspots",
+  "component": "analysis_tools",
+  "component_area": "complexity_analysis",
+  "mechanical_verification": "Run complexity_hotspots on /tmp, verify non-empty output or clean result",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call complexity_hotspots target=/tmp",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call complexity_hotspots target=/tmp",
+      "expected": "Non-empty string output (complexity report or 'no issues')",
+      "mechanical_pass": "Output is a non-empty string, not error object"
+    }
+  ],
+
+  "pass_criteria": {
+    "runs_successfully": "complexity_hotspots executes without throwing",
+    "returns_string": "Output is a string",
+    "graceful_empty": "Handles directories with no complex code gracefully"
+  },
+
+  "failure_modes": {
+    "crashes": "Tool throws unhandled exception",
+    "returns_undefined": "Tool returns undefined/null",
+    "hangs": "Tool hangs or times out on large directory"
+  }
+}

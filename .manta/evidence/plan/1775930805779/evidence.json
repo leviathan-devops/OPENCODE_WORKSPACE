@@ -1,0 +1,13 @@
+{
+  "gate": "plan",
+  "timestamp": 1775930805779,
+  "passed": true,
+  "files": [
+    "/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent/Active Context/KRAKEN_SYSTEM_PROMPT.md"
+  ],
+  "metadata": {
+    "tool": "write",
+    "sessionID": "ses_291aa36e4ffeOCjVHNF1bVkTZ6",
+    "workEvidence": "wrote:/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent/Active Context/KRAKEN_SYSTEM_PROMPT.md (# KRAKEN BRAIN — SHARK AGENT v...)"
+  }
+}

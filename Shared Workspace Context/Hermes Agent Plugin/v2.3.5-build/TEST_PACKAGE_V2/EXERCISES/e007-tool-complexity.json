@@ -1,0 +1,40 @@
+{
+  "exercise_id": "e007",
+  "name": "Tool — complexity_hotspots",
+  "component": "analysis_tools",
+  "component_area": "complexity_analysis",
+  "mechanical_verification": "Run complexity_hotspots on project src, verify non-empty output or clean result",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "path_model": "relative — uses 'src' not '/tmp'",
+
+  "prompt": "call complexity_hotspots target=src",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call complexity_hotspots target=src",
+      "expected": "Non-empty string output (complexity report or 'no issues')",
+      "mechanical_pass": "Output is a non-empty string, not error object"
+    },
+    {
+      "step": 2,
+      "action": "call complexity_hotspots target=src/tools",
+      "expected": "Returns complexity analysis",
+      "mechanical_pass": "Detects O(n²) patterns via nested loop regex"
+    }
+  ],
+
+  "pass_criteria": {
+    "runs_successfully": "complexity_hotspots executes without throwing",
+    "returns_string": "Output is a string",
+    "detects_nested_loops": "Pattern detection finds nested loops (O(n²))"
+  },
+
+  "failure_modes": {
+    "crashes": "Tool throws unhandled exception",
+    "returns_undefined": "Tool returns undefined/null",
+    "no_hotspots_found": "Returns 'No complex hotspots found' on code with nested loops (fix: 8 pattern detectors)"
+  }
+}

@@ -1,0 +1,95 @@
+# SHARK FRANKENSTEIN COMPLETE KNOWLEDGE BASE
+## Single-Prompt Context Injection System
+
+This knowledge base provides complete contextual awareness of the Shark Frankenstein ecosystem, designed to be injected into any fresh terminal session to immediately achieve the same level of project awareness as developed through extensive context absorption.
+
+## Table of Contents
+1. [CORE ARCHITECTURE](./core_architecture/) - Dual-brain system, safety stack, original Shark Agent
+2. [KRAKEN BRAIN (HIVE ORCHESTRATOR)](./kraken_brain/) - Macro-orchestrator architecture
+3. [OPENCODE INTEGRATION](./opencode_integration/) - How Shark integrates with Opencode platform
+4. [GOLD STANDARD ARTIFACTS](./gold_artifacts/) - Reference implementations (Space Invaders, Agent Build Logic Chain)
+5. [AGENT FAILURE ANALYSIS](../documentation/agent-failures/) - Analysis of derailments and architectural violations
+6. [PENDING WORK](./pending_work/) - Known outstanding tasks from handover packages
+7. [TECHNICAL DETAILS](./technical_details/) - Specific file references, API keys, configuration details
+8. [APPENDICES](./appendices/) - Supplementary materials, raw logs, additional context
+
+## QUICK REFERENCE: ESSENTIAL FACTS FOR IMMEDIATE PRODUCTIVITY
+
+### Dual-Brain Architecture
+- **Micro Engineer (Free/Local)**: 
+  - Thinker: DeepSeek Chat (API reasoning only) 
+  - Executor: vLLM Qwen 2.5 Coder 7B AWQ (local zero-cost execution)
+  - Fallback Thinker: Gemma 3 4B
+- **Macro Engineer (Paid/Cloud)**: GLM 5 primary + DeepSeek R1 advisory (~$0.02-0.08/task)
+
+### 4-Layer Safety Stack (Mechanical Enforcement)
+1. **Guardian**: Filesystem protection (blocks `/etc`, `/usr`, `~/.ssh/`)
+2. **FirewallMesh**: 4 parallel firewalls (<50ms overhead) 
+3. **StagnationDetector**: 3 identical failures → escalation
+4. **Workflow Enforcement**: PLAN→BUILD→TEST→VERIFY→SHIP (brick-wall)
+
+### Agent Failure Prevention
+- **Documented Failures**: See [Agent Failure Analysis](../documentation/agent-failures/) for detailed derailment analysis
+- **Common Patterns**: Theatrical coding, verification bypass, exaggerated claims
+- **Prevention**: Mandatory .shark/ directory, testable claims, honest failure reporting
+
+### Core Philosophies
+- **Earth Density & River Flow**: AI autonomy (water) + mechanical enforcement (riverbanks) = purposeful flow
+- **Anti-Slop Focus**: Warn on theatrical code (mock/simulate) but don't block flow
+- **Only block `rm -rf /` exact**: Legitimate commands like `rm -rf node_modules` MUST work
+- **Connect, Don't Create**: Leverage existing systems rather than rebuilding
+- **YOLO Mode by Default**: Maximum flow, minimal restrictions
+
+### Current Workspace
+- **Active Directory**: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/`
+- **Shark CLI Source**: `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/`
+- **Kraken Brain Hub**: `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/`
+- **Opencode Config**: `/home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode.json`
+
+### Pending Work (From Handover Packages)
+1. Stage 2 local tests (requires API keys for GLM 5, DeepSeek, Google)
+2. Placeholder code audit (TODO/stub hunting)
+3. Model-async data storage (logging directory setup)
+4. Rename V2 files (remove parentheses from filenames)
+5. Kraken Ultra integration (deploy debug agents)
+
+### Gold Standard Reference Implementations
+- **Space Invaders Build Log**: Perfect Kraken-level swarm execution (13 agents, 16 minutes, 21 bugs caught pre-test)
+- **Agent Build Logic Chain**: Perfect single-agent dual-brain execution (honest failure reporting, zero hallucination)
+
+### File System Navigation
+To immediately orient yourself in a fresh session:
+```bash
+# Check active workspace
+ls -la /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/
+
+# View Shark CLI source  
+ls -la /home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/
+
+# Check OpenCode configuration  
+cat /home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode.json
+
+# Verify workspace health
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh
+```
+
+## HOW TO USE THIS KNOWLEDGE BASE
+1. **Fresh Session Injection**: Read this INDEX.md + relevant sections for your task
+2. **Task-Specific Guidance**: 
+   - For coding tasks: Refer to core_architecture/ and opencode_integration/
+   - For orchestration/planning: Refer to kraken_brain/ 
+   - For quality reference: Refer to gold_artifacts/
+   - For outstanding work: Refer to pending_work/
+3. **Context Preservation**: This knowledge base represents the distilled essence of all context absorbed during extensive investigation
+
+## CREDITS & SOURCES
+Knowledge compiled from:
+- Original Shark Agent GitHub: https://github.com/leviathan-devops/shark-agent
+- Original Guardian Firewall: https://github.com/leviathan-devops/guardian-firewall  
+- Handover Packages 01-06: /home/leviathan/OPENCODE_WORKSPACE/OPENCODE WORKSPACE/
+- Kraken Brain Ecosystem: /home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/
+- Gold Standard Artifacts: Space Invaders Build Log + Agent Build Logic Chain
+- Direct source code inspection: /home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/
+- Configuration files: /home/leviathan/OPENCODE_WORKSPACE/.config/opencode/ and workspace equivalents
+
+Last Updated: 2026-03-29 (based on context absorption completion)

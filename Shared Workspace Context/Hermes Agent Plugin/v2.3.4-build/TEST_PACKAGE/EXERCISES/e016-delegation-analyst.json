@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e016",
+  "name": "Delegation — @analyst subagent",
+  "component": "subagent_delegation",
+  "component_area": "agent_routing",
+  "mechanical_verification": "Delegate a simple analysis task to @analyst, verify response returned",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "@analyst Analyze this code: function add(a, b) { return a + b; }",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@analyst Analyze this: print('hello world')",
+      "expected": "Response from analyst subagent (analysis text, not an error)",
+      "mechanical_pass": "Output is non-empty string with analysis content"
+    }
+  ],
+
+  "pass_criteria": {
+    "delegation_succeeds": "@analyst returns a response (not 'unknown agent' or error)",
+    "returns_analysis": "Response contains analysis-type content"
+  },
+
+  "failure_modes": {
+    "agent_not_found": "@analyst returns 'unknown agent' or similar error",
+    "empty_response": "@analyst returns empty or no response"
+  }
+}

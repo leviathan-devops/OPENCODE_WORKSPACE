@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775637756074,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_293be7178ffeNhNABwcazKheyu",
+    "workEvidence": "ran:ls -la /home/leviathan/OPENCODE_WORKSPACE/plugins/spider-agent/"
+  }
+}

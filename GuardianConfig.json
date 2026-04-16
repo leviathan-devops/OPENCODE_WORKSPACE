@@ -1,0 +1,96 @@
+////////////////////////////////////////////////////////////////////////////////
+// Guardian Configuration
+////////////////////////////////////////////////////////////////////////////////
+//
+// {
+//   "guardian": {
+//     "level": "SANDBOX",
+//     "description": "Base enforcement level",
+//     "zones": {
+//       "SYSTEM": { "blocked": true },
+//       "PERSONAL": { "blocked": true },
+//       "WORKSPACE": { "allowed": true }
+//     }
+//   }
+// }
+//
+////////////////////////////////////////////////////////////////////////////////
+
+{
+  "guardian": {
+    "level": "SANDBOX",
+    "description": "Base enforcement level - blocks dangerous operations",
+    "zones": {
+      "SYSTEM": {
+        "blocked": true,
+        "paths": ["/bin", "/usr", "/sbin", "/etc", "/System"]
+      },
+      "PERSONAL": {
+        "blocked": true,
+        "paths": [".ssh", ".aws", "Documents", "Desktop", ".config/credentials"]
+      },
+      "WORKSPACE": {
+        "allowed": true,
+        "paths": ["./"]
+      }
+    },
+    "dangerousCommands": [
+      "rm -rf /",
+      "dd if=",
+      "mkfs",
+      ":(){ :|:& };:"
+    ],
+    "sourceFileProtection": {
+      "enabled": true,
+      "gracePeriodMinutes": 60,
+      "extensions": [".ts", ".js", ".py", ".html", ".css", ".go", ".rs"]
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Scope Boundaries
+////////////////////////////////////////////////////////////////////////////////
+//
+// Boundaries:
+// - Agent can read/write files in WORKSPACE only
+// - Agent cannot access SYSTEM or PERSONAL zones
+// - Agent cannot execute dangerous commands
+// - Source files protected with 60-minute grace period
+//
+////////////////////////////////////////////////////////////////////////////////
+
+{
+  "scope": {
+    "boundaries": [
+      {
+        "zone": "SYSTEM",
+        "access": "denied",
+        "reason": "Critical system directories"
+      },
+      {
+        "zone": "PERSONAL", 
+        "access": "denied",
+        "reason": "User private data"
+      },
+      {
+        "zone": "WORKSPACE",
+        "access": "allowed",
+        "reason": "Project workspace"
+      }
+    ]
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Acceptance Criteria
+////////////////////////////////////////////////////////////////////////////////
+//
+// For v4.8.1:
+// 1. Identity Wall must check isSharkAgent() before enforcement
+// 2. PLAN gate must allow read operations
+// 3. No debug logs in shipped code
+// 4. Mechanical Sudo for opencode.json edits
+// 5. Slop Detection for false completion claims
+//
+////////////////////////////////////////////////////////////////////////////////

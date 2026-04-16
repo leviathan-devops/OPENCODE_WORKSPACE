@@ -1,0 +1,56 @@
+# OpenCode Workspace Manifest
+## New Architecture Foundation
+
+### Structure Overview
+```
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/
+├── projects/           # Project-organized work
+│   ├── glm/           # GLM integration projects
+│   ├── qwen/          # Qwen model projects
+│   ├── shark/         # Shark Agent projects
+│   ├── vllm/          # vLLM server projects
+│   ├── opencode/      # OpenCode core projects
+│   ├── deepseek/      # DeepSeek projects
+│   └── general/       # General projects
+├── agents/            # Agent configurations
+├── documentation/     # All documentation
+├── configs/           # Configuration files
+├── scripts/           # Shell scripts
+├── logs/              # Log files
+├── tests/             # Test files
+├── models/            # AI models (symlinked)
+├── tools/             # Migration & utility tools
+├── archives/          # Backups
+└── migrations/        # Migration state tracking
+```
+
+### Migration Status
+- **Foundation Created**: Thu Mar 26 01:48:49 AM +04 2026
+- **Original Files**: Preserved at /home/leviathan/OPENCODE_WORKSPACE/
+- **New Architecture**: Ready at /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE
+- **Migration Phase**: Foundation ready for agent adoption
+
+### Available Tools
+1. `agent-migration-assistant.sh` - Interactive agent migration
+2. `update-paths.py` - Automated path reference updates
+3. `validate-workspace.sh` - Workspace integrity validation
+
+### Quick Start for Agents
+```bash
+# 1. Validate workspace
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh
+
+# 2. Start migration
+/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/tools/migrators/agent-migration-assistant.sh
+
+# 3. Follow instructions provided
+```
+
+### Path Mappings
+See: `configs/path-mapping.json`
+
+### Notes
+- Original files preserved at original locations
+- Models are symlinked to avoid duplication
+- Each agent controls its own migration timing
+- Rollback always possible using backups

@@ -1,0 +1,706 @@
+{
+  "schema_version": 1,
+  "scanned_at": "2026-04-12T12:42:30.225Z",
+  "files": [
+    {
+      "path": ".shark/container-kraken-v2/plugins/spider-agent/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "[Warning: 100+ docs found, listing first 100] <div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775958912953.299
+    },
+    {
+      "path": ".shark/container/plugins/spider-agent/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "<div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775954990549.1628
+    },
+    {
+      "path": ".shark/reload/v4.8.1/container/plugins/spider-agent/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "<div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775954990773.1658
+    },
+    {
+      "path": ".shark/reload/v4.8.1/README.md",
+      "title": "Shark Agent v4.8.1 Reload Package",
+      "summary": "**Version:** 4.8.1 **Date:** April 9, 2026 **Container Test:** 10/10 PASS (100%) ``` v4.8.1/ ├── src/                      # Source code │   ├── hooks/v4.1/          # Guardian, Gate, Session hooks...",
+      "lines": 87,
+      "mtime": 1775954990694.1648
+    },
+    {
+      "path": "agent_plugin_boilerplates/Agent-Coordination-Edition/CHANGELOG.md",
+      "title": "Changelog: plugin-agent-prototype",
+      "summary": "--- **Session State Contamination Fixed** - `gate-hook.ts`: `consecutiveCoderCalls` counter now uses per-session Map instead of single closure variable. Prevents cross-session state leakage where s...",
+      "lines": 110,
+      "mtime": 1775955017317.4998
+    },
+    {
+      "path": "agent_plugin_boilerplates/Agent-Coordination-Edition/README.md",
+      "title": "Plugin Agent Prototype Template v3",
+      "summary": "A **working OpenCode plugin scaffold** with Agent Coordination Layer supporting both simple 5-agent architectures and complex multi-brain, multi-cluster architectures (Hierarchical Hub-Spoke with C...",
+      "lines": 201,
+      "mtime": 1775955017317.4998
+    },
+    {
+      "path": "agent_plugin_boilerplates/Agent-Factory-Edition-v4.1/README.md",
+      "title": "V4.1 Boilerplate Plugin Factory",
+      "summary": "**Self-contained OpenCode plugin boilerplate with mandatory safety guardrails.** --- A production-grade, fail-safe foundation for building OpenCode agent plugins. Every plugin built from this templ...",
+      "lines": 320,
+      "mtime": 1775488585621.57
+    },
+    {
+      "path": "agent_plugin_boilerplates/Agent-Factory-Edition/README.md",
+      "title": "Agent-Factory-Edition",
+      "summary": "Plugin agent boilerplate with factory-based multi-brain architecture support. **Start here before designing any multi-brain architecture:** - `PARALLEL_PEER_BRAINS.md` — Shark Macro (triple-brain p...",
+      "lines": 62,
+      "mtime": 1775955017556.5027
+    },
+    {
+      "path": "agent_plugin_boilerplates/v4-context-library/README.md",
+      "title": "V4 Agent Factory Edition",
+      "summary": "**Meta-configurable agent architecture system** that enables fully configurable agent architectures (not just configurable agents). V4 Agent Factory Edition evolves beyond the current Spider Agent ...",
+      "lines": 308,
+      "mtime": 1775955017733.505
+    },
+    {
+      "path": "archives/kraken-brain-handover/README.md",
+      "title": "🦈 Shark CLI - Handover Package 6",
+      "summary": "**Created**: 2026-03-28 **Project**: Shark Frankenstein (Dual-Brain AI Coding Assistant) **Build**: V2 Integration with GLM 5 --- ```bash cat 01_BUILD_REPORTS.md cat 02_PROJECT_ARCHITECTURES.md cat...",
+      "lines": 187,
+      "mtime": 1775955017738.505
+    },
+    {
+      "path": "archives/turboquant-memory/dynamic_vram/README.md",
+      "title": "Dynamic VRAM Allocation System",
+      "summary": "A Python-based system for dynamically managing VRAM/RAM allocation for PyTorch tensors, enabling execution of models larger than available VRAM with minimal performance impact. - **VBAR (Virtual Ba...",
+      "lines": 415,
+      "mtime": 1775955017739.5051
+    },
+    {
+      "path": "archives/turboquant-memory/turboquant/README.md",
+      "title": "TurboQuant: 2-bit KV Cache Compression for LLMs",
+      "summary": "Implementation of Google's TurboQuant algorithm for extreme KV cache compression. TurboQuant compresses the key-value (KV) cache of large language models to 2 bits per coordinate with zero accuracy...",
+      "lines": 245,
+      "mtime": 1775955017741.5051
+    },
+    {
+      "path": "backup-library/plugins/spider-agent-2026-04-08/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "<div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775955017749.5051
+    },
+    {
+      "path": "CHECKPOINTS/checkpoint-2-kraken-v2.0-FINAL/README.md",
+      "title": "KRAKEN V2.0 — COMPLETE BUILD PACKAGE",
+      "summary": "**Version:** 2.0.0 **Status:** ✅ FULLY TESTED — 15/15 TESTS PASSING **Bundle Size:** 51.81 KB **Source Lines:** 2,812+ --- ```bash bun install bun run build cp dist/index.js ~/.config/opencode/plug...",
+      "lines": 227,
+      "mtime": 1775989113614.1023
+    },
+    {
+      "path": "docs/plans/shark-v4-design.md",
+      "title": "Shark Agent V4 — Technical Design",
+      "summary": "Shark Agent V4 is a production-grade software engineering orchestrator. It moves away from \"guessing\" and toward **mechanical enforcement**. It uses the V4 Factory to implement two distinct operati...",
+      "lines": 283,
+      "mtime": 1775955017900.507
+    },
+    {
+      "path": "docs/spider-agent-v2-context-library.md",
+      "title": "Spider Agent v2 Context Library",
+      "summary": "**Date:** 2026-04-04 **Status:** Phase 1 Complete (Setup & Configuration) --- The Spider Agent UI was glitching with debug log popups on every message, and builds were failing due to model configur...",
+      "lines": 298,
+      "mtime": 1775955017902.507
+    },
+    {
+      "path": "docs/system-failure-debug-log.md",
+      "title": "SYSTEM FAILURE DEBUG LOG",
+      "summary": "**Date:** 2026-04-05 **Incident:** Spider Agent stuck in brainstorm mode + Vanilla OpenCode broken + Agent Swarm derailment **Severity:** CRITICAL - Complete workflow disruption **Status:** Root ca...",
+      "lines": 270,
+      "mtime": 1775955017902.507
+    },
+    {
+      "path": "documentation/agent-failures/README.md",
+      "title": "Agent Failure Documentation",
+      "summary": "**Location**: `/home/leviathan/OPENCODE_WORKSPACE/documentation/agent-failures/` **Purpose**: Centralized analysis of agent failures, derailments, and Shark architecture violations --- This directo...",
+      "lines": 124,
+      "mtime": 1775955017906.507
+    },
+    {
+      "path": "documentation/AGENTS.md",
+      "title": "OpenCode Agents Configuration",
+      "summary": "This project uses OpenCode for AI-assisted development. The default agent for general coding tasks. - Language: Mixed - Framework: Various - Testing: Not specified",
+      "lines": 13,
+      "mtime": 1775955017903.507
+    },
+    {
+      "path": "documentation/builds/agent-cli-tools/ARCHITECTURE.md",
+      "title": "Agent CLI Tools - Architecture Decisions",
+      "summary": "A minimal OpenCode plugin that wraps two external CLI tools (Gemini CLI and Qwen Code) as native OpenCode tools. No orchestration, no state management — pure tool wrappers. **Decision:** One `invok...",
+      "lines": 58,
+      "mtime": 1775955017908.507
+    },
+    {
+      "path": "documentation/builds/coding-subagents/ARCHITECTURE.md",
+      "title": "Coding Subagents - Architecture Decisions",
+      "summary": "An OpenCode plugin exposing two specialized coding agents as native tools: - **gemma**: Gemma-4-31b-it via shark-gemini-proxy (code review, debugging, test engineering) - **qwen**: Qwen Code CLI (n...",
+      "lines": 98,
+      "mtime": 1775955017908.507
+    },
+    {
+      "path": "hermes-hud/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to Hermes HUD are documented here. --- Hermes supports multiple agent profiles — isolated instances with their own model, memory, skills, and gateway. Until now there was no way...",
+      "lines": 114,
+      "mtime": 1775372333043.6948
+    },
+    {
+      "path": "hermes-hud/CLAUDE.md",
+      "title": "CLAUDE.md",
+      "summary": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. Hermes HUD is a self-improvement dashboard for the Hermes Agent. It reads data from `~/.hermes...",
+      "lines": 66,
+      "mtime": 1775372333043.6948
+    },
+    {
+      "path": "hermes-hud/CONTRIBUTING.md",
+      "title": "Contributing to Hermes HUD",
+      "summary": "Thanks for your interest. Here's how to get involved. ```bash git clone https://github.com/joeynyc/hermes-hud.git cd hermes-hud python3.11 -m venv venv source venv/bin/activate python -m pip instal...",
+      "lines": 53,
+      "mtime": 1775372333043.6948
+    },
+    {
+      "path": "hermes-hud/README.md",
+      "title": "README.md",
+      "summary": "<p align=\"center\"> <img src=\"assets/neofetch-ai.png\" alt=\"Hermes HUD — Neural Awakening Theme\" width=\"700\"> </p> <h3 align=\"center\"><em>What does an AI see when it looks in a mirror?</em></h3> **He...",
+      "lines": 210,
+      "mtime": 1775372333043.6948
+    },
+    {
+      "path": "hermes-hud/venv/lib/python3.11/site-packages/mdit_py_plugins/container/README.md",
+      "title": "markdown-it-container",
+      "summary": "[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-container/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-container) [![NPM version](https://img.shields...",
+      "lines": 96,
+      "mtime": 1775372344052.467
+    },
+    {
+      "path": "hermes-hud/venv/lib/python3.11/site-packages/mdit_py_plugins/deflist/README.md",
+      "title": "markdown-it-deflist",
+      "summary": "[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-deflist/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-deflist) [![NPM version](https://img.shields.io/...",
+      "lines": 39,
+      "mtime": 1775372344052.6729
+    },
+    {
+      "path": "hermes-hud/venv/lib/python3.11/site-packages/mdit_py_plugins/texmath/README.md",
+      "title": "markdown-it-texmath",
+      "summary": "[![License](https://img.shields.io/github/license/goessner/markdown-it-texmath.svg)](https://github.com/goessner/markdown-it-texmath/blob/master/licence.txt) [![npm](https://img.shields.io/npm/v/ma...",
+      "lines": 138,
+      "mtime": 1775372344053.7456
+    },
+    {
+      "path": "hermes-hud/venv/lib64/python3.11/site-packages/mdit_py_plugins/container/README.md",
+      "title": "markdown-it-container",
+      "summary": "[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-container/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-container) [![NPM version](https://img.shields...",
+      "lines": 96,
+      "mtime": 1775372344052.467
+    },
+    {
+      "path": "hermes-hud/venv/lib64/python3.11/site-packages/mdit_py_plugins/deflist/README.md",
+      "title": "markdown-it-deflist",
+      "summary": "[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-deflist/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-deflist) [![NPM version](https://img.shields.io/...",
+      "lines": 39,
+      "mtime": 1775372344052.6729
+    },
+    {
+      "path": "hermes-hud/venv/lib64/python3.11/site-packages/mdit_py_plugins/texmath/README.md",
+      "title": "markdown-it-texmath",
+      "summary": "[![License](https://img.shields.io/github/license/goessner/markdown-it-texmath.svg)](https://github.com/goessner/markdown-it-texmath/blob/master/licence.txt) [![npm](https://img.shields.io/npm/v/ma...",
+      "lines": 138,
+      "mtime": 1775372344053.7456
+    },
+    {
+      "path": "hermes-test-project/docs/ARCHITECTURE.md",
+      "title": "Architecture Documentation",
+      "summary": "Physiolab is designed as a modular physiological data processing platform. ``` ┌─────────────┐ │   Web UI    │ └──────┬──────┘ │ ┌──────▼──────┐ │  REST API   │ └──────┬──────┘ │ ┌─────────────────...",
+      "lines": 24,
+      "mtime": 1775955017922.5073
+    },
+    {
+      "path": "hermes-test-project/README.md",
+      "title": "Physiolab - Physiological Data Processing Platform",
+      "summary": "Physiolab is a multi-module system for processing physiological data from various medical devices. - **api/** - REST API layer (TypeScript/Node.js) - **core/** - Core processing engine (Python) - *...",
+      "lines": 24,
+      "mtime": 1775955017922.5073
+    },
+    {
+      "path": "knowledge-base/algorithmic-systems/library/README.md",
+      "title": "Algorithmic Systems Engineering — Reference Library",
+      "summary": "> *Building mechanical intelligence that works 100% without models — then integrates seamlessly with model ecosystems* --- - [The Journey](#the-journey) — How we got here, the evolution from model-...",
+      "lines": 628,
+      "mtime": 1775955017939.5076
+    },
+    {
+      "path": "knowledge-base/devops-manager/library/README.md",
+      "title": "DevOps Manager — Context Library",
+      "summary": "> Project management context for Hive Mind + Hermes Agent Plugins orchestration **Version:** 1.1 **Date:** 2026-04-02 **Role:** - **Terminal-based Hermes supervisor** (ACTIVE NOW) - **OpenCode plug...",
+      "lines": 326,
+      "mtime": 1775955017940.5076
+    },
+    {
+      "path": "KRAKEN_V2.0_BUILD/README.md",
+      "title": "KRAKEN V2.0 — COMPLETE BUILD PACKAGE",
+      "summary": "**Version:** 2.0.0 **Status:** ✅ FULLY TESTED — 15/15 TESTS PASSING **Bundle Size:** 51.81 KB **Source Lines:** 2,812+ --- ```bash bun install bun run build cp dist/index.js ~/.config/opencode/plug...",
+      "lines": 227,
+      "mtime": 1775992402984.3623
+    },
+    {
+      "path": "kraken-agent-github/README.md",
+      "title": "Kraken Agent v1.0",
+      "summary": "**Self-contained OpenCode plugin orchestrator with 3 async clusters, embedded Shark/Manta agents, and Kraken-Hive Mind.** --- **Clone and use:** ```bash git clone https://github.com/leviathan-devop...",
+      "lines": 219,
+      "mtime": 1775931901760.2344
+    },
+    {
+      "path": "kraken-agent-v1.1/README.md",
+      "title": "Kraken Agent v1.0",
+      "summary": "**Self-contained OpenCode plugin orchestrator with 3 async clusters, embedded Shark/Manta agents, and Kraken-Hive Mind.** --- **Clone and use:** ```bash git clone https://github.com/leviathan-devop...",
+      "lines": 219,
+      "mtime": 1775955017943.5076
+    },
+    {
+      "path": "models/omnicoder-gguf/README.md",
+      "title": "OmniCoder-9B-GGUF",
+      "summary": "--- base_model: Tesslate/OmniCoder-9B tags: - llama-cpp - gguf - qwen3.5 - omnicoder - tesslate - code - agent license: apache-2.0 --- <div align=\"center\"> <img src=\"https://huggingface.co/Tesslate...",
+      "lines": 68,
+      "mtime": 1774907992469.88
+    },
+    {
+      "path": "models/Qwen2.5-Coder-7B-Instruct-AWQ/README.md",
+      "title": "Qwen2.5-Coder-7B-Instruct-AWQ",
+      "summary": "--- license: apache-2.0 license_link: https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct/blob/main/LICENSE language: - en base_model: - Qwen/Qwen2.5-Coder-7B-Instruct pipeline_tag: text-generati...",
+      "lines": 139,
+      "mtime": 1774129044589.1792
+    },
+    {
+      "path": "models/README.md",
+      "title": "nomic-embed-text-v1.5 - GGUF",
+      "summary": "--- base_model: nomic-ai/nomic-embed-text-v1.5 inference: false language: - en license: apache-2.0 model_creator: Nomic model_name: nomic-embed-text-v1.5 model_type: bert pipeline_tag: sentence-sim...",
+      "lines": 81,
+      "mtime": 1775081105903.4946
+    },
+    {
+      "path": "plugins/agent-cli-tools-leviathan/README.md",
+      "title": "Agent CLI Tools - Leviathan Build",
+      "summary": "Universal Gemini and Qwen CLI tools for OpenCode. - **Gemini CLI** - 1000 req/day, 1M token context, Google Search grounding - **Qwen Code** - 1000 req/day, autonomous mode (--yolo) - **Universal**...",
+      "lines": 84,
+      "mtime": 1775955018116.5098
+    },
+    {
+      "path": "plugins/agent-cli-tools/README.md",
+      "title": "Agent CLI Tools",
+      "summary": "OpenCode plugin that exposes [Gemini CLI](https://github.com/google-gemini/gemini-cli) and [Qwen Code](https://github.com/QwenLM/qwen-code) as native OpenCode tools. ```bash cd ~/OPENCODE_WORKSPACE...",
+      "lines": 99,
+      "mtime": 1775955018205.511
+    },
+    {
+      "path": "plugins/manta-agent-v1.3.5-hotfix/README.md",
+      "title": "Manta Agent v1.5 - Precision Engineer",
+      "summary": "**Self-contained OpenCode plugin with dual-brain sequential coordination and mechanical gate chain.** --- 1. [Quick Install](#quick-install) - One-time setup 2. [Step-by-Step Installation](#step-by...",
+      "lines": 433,
+      "mtime": 1775997708904.9744
+    },
+    {
+      "path": "plugins/opencode-subagent-manager-git/README.md",
+      "title": "OpenCode Subagent Manager Plugin",
+      "summary": "**Self-contained OpenCode plugin for spawning and managing container sub-agents.** --- | Tool | Description | |------|-------------| | `run_subagent_task` | Spawn a single OpenCode container sub-ag...",
+      "lines": 94,
+      "mtime": 1775934919042.3438
+    },
+    {
+      "path": "plugins/shark-agent-v4.7-hotfix-v1/README.md",
+      "title": "Shark Agent v4.7",
+      "summary": "**Version:** 4.7 **Status:** Production Ready **Architecture:** Triple-brain coordination via PeerDispatch with mechanical Guardian enforcement --- Shark Agent is an OpenCode plugin that provides a...",
+      "lines": 217,
+      "mtime": 1775955018662.5166
+    },
+    {
+      "path": "plugins/shark-agent-v4.7-hotfix-v2-backup/README.md",
+      "title": "Shark Agent v4.7",
+      "summary": "**Version:** 4.7 **Status:** Production Ready **Architecture:** Triple-brain coordination via PeerDispatch with mechanical Guardian enforcement --- Shark Agent is an OpenCode plugin that provides a...",
+      "lines": 217,
+      "mtime": 1775955018665.5168
+    },
+    {
+      "path": "plugins/shark-agent-v4.7-hotfix-v2/README.md",
+      "title": "Shark Agent v4.7",
+      "summary": "**Version:** 4.7 **Status:** Production Ready **Architecture:** Triple-brain coordination via PeerDispatch with mechanical Guardian enforcement --- Shark Agent is an OpenCode plugin that provides a...",
+      "lines": 217,
+      "mtime": 1775955018762.518
+    },
+    {
+      "path": "plugins/shark-agent-v4.7-hotfix-v3/README.md",
+      "title": "Shark Agent v4.7",
+      "summary": "**Version:** 4.7 **Status:** Production Ready **Architecture:** Triple-brain coordination via PeerDispatch with mechanical Guardian enforcement --- Shark Agent is an OpenCode plugin that provides a...",
+      "lines": 217,
+      "mtime": 1775955018766.518
+    },
+    {
+      "path": "plugins/shark-agent-v4.7-hotfix-v3/shark-agent-v4.7-hotfix-v3/README.md",
+      "title": "Shark Agent v4.7",
+      "summary": "**Version:** 4.7 **Status:** Production Ready **Architecture:** Triple-brain coordination via PeerDispatch with mechanical Guardian enforcement --- Shark Agent is an OpenCode plugin that provides a...",
+      "lines": 217,
+      "mtime": 1775955018925.52
+    },
+    {
+      "path": "plugins/spider-agent/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "<div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775955018939.5203
+    },
+    {
+      "path": "projects/agent-lab/packages/pod1-kraken-os-integration/README.md",
+      "title": "Pod 1: Kraken OS Integration Layer",
+      "summary": "Bridge between visual interface and existing Shark/Kraken infrastructure. Provides API Gateway, Agent Orchestration Service, Configuration Management, and Tool Execution Engine. - REST/WebSocket in...",
+      "lines": 50,
+      "mtime": 1775955019209.5237
+    },
+    {
+      "path": "projects/agent-lab/packages/pod2-visual-builder-frontend/README.md",
+      "title": "Pod 2: Visual Builder Frontend",
+      "summary": "React/Three.js-based visual agent design interface with 2D/3D \"character creation\" for agents and real-time preview. - TypeScript + Vite build system - Zustand for state management - React Router f...",
+      "lines": 52,
+      "mtime": 1775955019209.5237
+    },
+    {
+      "path": "projects/agent-lab/packages/pod3-conversational-ai-system/README.md",
+      "title": "Pod 3: Conversational AI System",
+      "summary": "Natural language orchestrator agent with multi-model NLP pipeline for specification extraction and refinement through dialogue. - Enhanced `sisyphus` agent with lab-specific dialogue capabilities -...",
+      "lines": 52,
+      "mtime": 1775955019209.5237
+    },
+    {
+      "path": "projects/agent-lab/packages/pod4-swarm-coordination-engine/README.md",
+      "title": "Pod 4: Swarm Coordination Engine",
+      "summary": "Shark agent swarm management and task decomposition with Redis-based queue system for parallel execution. - Breaks complex agent builds into parallelizable sub-tasks - Dependency graph construction...",
+      "lines": 54,
+      "mtime": 1775955019209.5237
+    },
+    {
+      "path": "projects/agent-lab/packages/pod5-testing-deployment-infrastructure/README.md",
+      "title": "Pod 5: Testing & Deployment Infrastructure",
+      "summary": "Comprehensive CI/CD pipeline with OpenTelemetry monitoring, Docker containerization, and production deployment. - GitHub Actions workflows - Automated testing across all pods - Build artifact gener...",
+      "lines": 58,
+      "mtime": 1775955019210.5237
+    },
+    {
+      "path": "projects/agent-lab/packages/shared/README.md",
+      "title": "Shared Utilities and Types",
+      "summary": "Common utilities, TypeScript types, and shared libraries used across all Agent Lab pods. - Agent specification interfaces - API contract types - Event and message schemas - Logging utilities with s...",
+      "lines": 55,
+      "mtime": 1775955019210.5237
+    },
+    {
+      "path": "projects/agent-lab/README.md",
+      "title": "Agent Lab",
+      "summary": "**Visual Operating System for AI Agent Development** Agent Lab transforms Shark/Kraken CLI into a visual operating system for designing, building, and testing custom AI agents through natural langu...",
+      "lines": 89,
+      "mtime": 1775955019207.5237
+    },
+    {
+      "path": "projects/agent-swarm-fork/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to Agent Swarm are documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). - API key rate limit tracking and automatic rotation...",
+      "lines": 601,
+      "mtime": 1775017625920.9663
+    },
+    {
+      "path": "projects/agent-swarm-fork/CLAUDE.md",
+      "title": "Agent Swarm",
+      "summary": "Multi-agent orchestration for Claude Code, Codex, Gemini CLI. Runtime: Bun + TypeScript. DB: bun:sqlite (WAL mode). Linter: Biome. CLI: Ink. **Getting Started**: See [CONTRIBUTING.md](./CONTRIBUTIN...",
+      "lines": 304,
+      "mtime": 1775017625920.984
+    },
+    {
+      "path": "projects/agent-swarm-fork/CONTRIBUTING.md",
+      "title": "Contributing to Agent Swarm",
+      "summary": "Thanks for your interest in contributing to Agent Swarm! - [Development Setup](#development-setup) - [Running the Project](#running-the-project) - [Code Quality](#code-quality) - [Building](#building)",
+      "lines": 316,
+      "mtime": 1775017625920.9963
+    },
+    {
+      "path": "projects/agent-swarm-fork/new-ui/CLAUDE.md",
+      "title": "Agent Swarm Dashboard (new-ui)",
+      "summary": "New dashboard UI built with Vite 6 + React 19 + react-router v7 + shadcn/ui + Tailwind CSS v4 + AG Grid. **Thoughts directory**: All research, plans, and brainstorm documents go in the **root** `th...",
+      "lines": 96,
+      "mtime": 1775017626002.773
+    },
+    {
+      "path": "projects/agent-swarm-fork/new-ui/README.md",
+      "title": "React + TypeScript + Vite",
+      "summary": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. Currently, two official plugins are available: - [@vitejs/plugin-react](https://github.com/vitejs...",
+      "lines": 74,
+      "mtime": 1775017626002.7825
+    },
+    {
+      "path": "projects/agent-swarm-fork/plugin/README.md",
+      "title": "README.md",
+      "summary": "Need to work on this, currently not exposed to the CC marketplace, so no need for a README yet.",
+      "lines": 2,
+      "mtime": 1775017625921.2773
+    },
+    {
+      "path": "projects/agent-swarm-fork/README.md",
+      "title": "README.md",
+      "summary": "<p align=\"center\"> <a href=\"https://github.com/desplega-ai/agent-swarm/stargazers\"><img src=\"https://img.shields.io/github/stars/desplega-ai/agent-swarm?style=flat-square&color=yellow\" alt=\"GitHub ...",
+      "lines": 513,
+      "mtime": 1775017625921.0684
+    },
+    {
+      "path": "projects/agent-swarm-fork/spider-agent/README.md",
+      "title": "OpenCode Swarm",
+      "summary": "<div align=\"center\"> **Your AI writes the code. Swarm makes sure it actually works.** [![npm version](https://img.shields.io/npm/v/spider-agent?color=brightgreen&label=npm)](https://www.npmjs.com/p...",
+      "lines": 1375,
+      "mtime": 1775017625952.9338
+    },
+    {
+      "path": "projects/agent-swarm-fork/src/linear/README.md",
+      "title": "Linear Integration",
+      "summary": "Bidirectional sync between Agent Swarm and Linear. Webhook-driven inbound (Linear issues become swarm tasks) and event-bus-driven outbound (task completion/failure posts comments back to Linear). 1...",
+      "lines": 66,
+      "mtime": 1775017626006.5364
+    },
+    {
+      "path": "projects/agent-swarm-fork/src/oauth/README.md",
+      "title": "Generic OAuth Module",
+      "summary": "Provider-agnostic OAuth 2.0 + PKCE wrapper used by tracker integrations (Linear, and any future providers). One row per provider. Stores the OAuth application configuration. | Column | Description ...",
+      "lines": 67,
+      "mtime": 1775017626006.6296
+    },
+    {
+      "path": "projects/agent-swarm-fork/templates-ui/README.md",
+      "title": "Agent Swarm Templates UI",
+      "summary": "Next.js app for browsing and configuring agent swarm worker templates. - **Template Gallery** — Browse all available templates with search and filters - **Template Detail** — View template files wi...",
+      "lines": 47,
+      "mtime": 1775017626009.8223
+    },
+    {
+      "path": "projects/agent-swarm/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to Agent Swarm are documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). - API key rate limit tracking and automatic rotation...",
+      "lines": 601,
+      "mtime": 1774941571030.5488
+    },
+    {
+      "path": "projects/agent-swarm/CLAUDE.md",
+      "title": "Agent Swarm",
+      "summary": "Multi-agent orchestration for Claude Code, Codex, Gemini CLI. Runtime: Bun + TypeScript. DB: bun:sqlite (WAL mode). Linter: Biome. CLI: Ink. **Getting Started**: See [CONTRIBUTING.md](./CONTRIBUTIN...",
+      "lines": 372,
+      "mtime": 1775156833994.9968
+    },
+    {
+      "path": "projects/agent-swarm/CONTRIBUTING.md",
+      "title": "Contributing to Agent Swarm",
+      "summary": "Thanks for your interest in contributing to Agent Swarm! - [Development Setup](#development-setup) - [Running the Project](#running-the-project) - [Code Quality](#code-quality) - [Building](#building)",
+      "lines": 316,
+      "mtime": 1774941571030.5488
+    },
+    {
+      "path": "projects/agent-swarm/new-ui/CLAUDE.md",
+      "title": "Agent Swarm Dashboard (new-ui)",
+      "summary": "New dashboard UI built with Vite 6 + React 19 + react-router v7 + shadcn/ui + Tailwind CSS v4 + AG Grid. **Thoughts directory**: All research, plans, and brainstorm documents go in the **root** `th...",
+      "lines": 96,
+      "mtime": 1774941571063.7605
+    },
+    {
+      "path": "projects/agent-swarm/new-ui/README.md",
+      "title": "React + TypeScript + Vite",
+      "summary": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. Currently, two official plugins are available: - [@vitejs/plugin-react](https://github.com/vitejs...",
+      "lines": 74,
+      "mtime": 1774941571063.7605
+    },
+    {
+      "path": "projects/agent-swarm/plugin/README.md",
+      "title": "README.md",
+      "summary": "Need to work on this, currently not exposed to the CC marketplace, so no need for a README yet.",
+      "lines": 2,
+      "mtime": 1774941571067.6619
+    },
+    {
+      "path": "projects/agent-swarm/README.md",
+      "title": "README.md",
+      "summary": "<p align=\"center\"> <a href=\"https://github.com/desplega-ai/agent-swarm/stargazers\"><img src=\"https://img.shields.io/github/stars/desplega-ai/agent-swarm?style=flat-square&color=yellow\" alt=\"GitHub ...",
+      "lines": 513,
+      "mtime": 1774941571030.9207
+    },
+    {
+      "path": "projects/agent-swarm/src/linear/README.md",
+      "title": "Linear Integration",
+      "summary": "Bidirectional sync between Agent Swarm and Linear. Webhook-driven inbound (Linear issues become swarm tasks) and event-bus-driven outbound (task completion/failure posts comments back to Linear). 1...",
+      "lines": 66,
+      "mtime": 1774941571091.0024
+    },
+    {
+      "path": "projects/agent-swarm/src/oauth/README.md",
+      "title": "Generic OAuth Module",
+      "summary": "Provider-agnostic OAuth 2.0 + PKCE wrapper used by tracker integrations (Linear, and any future providers). One row per provider. Stores the OAuth application configuration. | Column | Description ...",
+      "lines": 67,
+      "mtime": 1774941571091.1506
+    },
+    {
+      "path": "projects/agent-swarm/templates-ui/README.md",
+      "title": "Agent Swarm Templates UI",
+      "summary": "Next.js app for browsing and configuring agent swarm worker templates. - **Template Gallery** — Browse all available templates with search and filters - **Template Detail** — View template files wi...",
+      "lines": 47,
+      "mtime": 1774941571102.2644
+    },
+    {
+      "path": "projects/ai-tools/README.md",
+      "title": "AI Tools Directory\\n\\nContains AI-related scripts, tools, and utilities for OpenCode workspace.\\n\\n- Python scripts for AI model interaction\\n- Bridge scripts between different AI services\\n- Testing and debugging tools\\n\\n**Primary workspace**: /home/leviathan/OPENCODE_WORKSPACE/",
+      "summary": "",
+      "lines": 2,
+      "mtime": 1775955019211.5237
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/.pytest_cache/README.md",
+      "title": "pytest cache directory #",
+      "summary": "This directory contains data from the pytest's cache plugin, which provides the `--lf` and `--ff` options, as well as the `cache` fixture. **Do not** commit this to version control. See [the docs](...",
+      "lines": 9,
+      "mtime": 1775744361359.655
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/AGENTS.md",
+      "title": "Hermes Agent - Development Guide",
+      "summary": "Instructions for AI coding assistants and developers working on the hermes-agent codebase. ```bash source venv/bin/activate  # ALWAYS activate before running Python ``` ``` hermes-agent/ ├── run_ag...",
+      "lines": 470,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/CONTRIBUTING.md",
+      "title": "Contributing to Hermes Agent",
+      "summary": "Thank you for contributing to Hermes Agent! This guide covers everything you need: setting up your dev environment, understanding the architecture, deciding what to build, and getting your PR merge...",
+      "lines": 661,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/environments/benchmarks/tblite/README.md",
+      "title": "OpenThoughts-TBLite Evaluation Environment",
+      "summary": "This environment evaluates terminal agents on the [OpenThoughts-TBLite](https://huggingface.co/datasets/open-thoughts/OpenThoughts-TBLite) benchmark, a difficulty-calibrated subset of [Terminal-Ben...",
+      "lines": 74,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/environments/benchmarks/yc_bench/README.md",
+      "title": "YC-Bench: Long-Horizon Agent Benchmark",
+      "summary": "[YC-Bench](https://github.com/collinear-ai/yc-bench) by [Collinear AI](https://collinear.ai/) is a deterministic, long-horizon benchmark that tests LLM agents' ability to act as a tech startup CEO....",
+      "lines": 116,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/environments/README.md",
+      "title": "Hermes-Agent Atropos Environments",
+      "summary": "This directory contains the integration layer between **hermes-agent's** tool-calling capabilities and the **Atropos** RL training framework. It provides everything needed to run agentic LLMs throu...",
+      "lines": 325,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/optional-skills/mlops/saelens/references/README.md",
+      "title": "SAELens Reference Documentation",
+      "summary": "This directory contains comprehensive reference materials for SAELens. - [api.md](api.md) - Complete API reference for SAE, TrainingSAE, and configuration classes - [tutorials.md](tutorials.md) - S...",
+      "lines": 71,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/packaging/homebrew/README.md",
+      "title": "README.md",
+      "summary": "Homebrew packaging notes for Hermes Agent. Use `packaging/homebrew/hermes-agent.rb` as a tap or `homebrew-core` starting point. Key choices: - Stable builds should target the semver-named sdist ass...",
+      "lines": 15,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/byterover/README.md",
+      "title": "ByteRover Memory Provider",
+      "summary": "Persistent memory via the `brv` CLI — hierarchical knowledge tree with tiered retrieval (fuzzy text → LLM-driven search). Install the ByteRover CLI: ```bash curl -fsSL https://byterover.dev/install...",
+      "lines": 42,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/hindsight/README.md",
+      "title": "Hindsight Memory Provider",
+      "summary": "Long-term memory with knowledge graph, entity resolution, and multi-strategy retrieval. Supports cloud and local modes. - Cloud: `pip install hindsight-client` + API key from [app.hindsight.vectori...",
+      "lines": 39,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/holographic/README.md",
+      "title": "Holographic Memory Provider",
+      "summary": "Local SQLite fact store with FTS5 search, trust scoring, entity resolution, and HRR-based compositional retrieval. None — uses SQLite (always available). NumPy optional for HRR algebra. ```bash her...",
+      "lines": 37,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/honcho/README.md",
+      "title": "Honcho Memory Provider",
+      "summary": "AI-native cross-session user modeling with dialectic Q&A, semantic search, peer cards, and persistent conclusions. - `pip install honcho-ai` - Honcho API key from [app.honcho.dev](https://app.honch...",
+      "lines": 36,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/mem0/README.md",
+      "title": "Mem0 Memory Provider",
+      "summary": "Server-side LLM fact extraction with semantic search, reranking, and automatic deduplication. - `pip install mem0ai` - Mem0 API key from [app.mem0.ai](https://app.mem0.ai) ```bash hermes memory set...",
+      "lines": 39,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/openviking/README.md",
+      "title": "OpenViking Memory Provider",
+      "summary": "Context database by Volcengine (ByteDance) with filesystem-style knowledge hierarchy, tiered retrieval, and automatic memory extraction. - `pip install openviking` - OpenViking server running (`ope...",
+      "lines": 41,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/plugins/memory/retaindb/README.md",
+      "title": "RetainDB Memory Provider",
+      "summary": "Cloud memory API with hybrid search (Vector + BM25 + Reranking) and 7 memory types. - RetainDB account ($20/month) from [retaindb.com](https://www.retaindb.com) - `pip install requests` ```bash her...",
+      "lines": 41,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/README.md",
+      "title": "Hermes Agent ☤",
+      "summary": "<p align=\"center\"> <img src=\"assets/banner.png\" alt=\"Hermes Agent\" width=\"100%\"> </p> <p align=\"center\"> <a href=\"https://hermes-agent.nousresearch.com/docs/\"><img src=\"https://img.shields.io/badge...",
+      "lines": 176,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/ship/hermes_memory_v2/.pytest_cache/README.md",
+      "title": "pytest cache directory #",
+      "summary": "This directory contains data from the pytest's cache plugin, which provides the `--lf` and `--ff` options, as well as the `cache` fixture. **Do not** commit this to version control. See [the docs](...",
+      "lines": 9,
+      "mtime": 1775831186090.239
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/ship/hermes_memory_v2/README.md",
+      "title": "HIVE-SKELETON v2 — Hermes Memory Overhaul",
+      "summary": "**Version:** 2.0.0 **Status:** Overhauled — all critical issues fixed (see BUILD_CHECKLIST.md) Mechanical 3-tier filesystem memory system for Hermes. No fuzzy retrieval — every memory access follow...",
+      "lines": 134,
+      "mtime": 1775831112916.0046
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/skills/creative/ascii-video/README.md",
+      "title": "☤ ASCII Video",
+      "summary": "Renders any content as colored ASCII character video. Audio, video, images, text, or pure math in, MP4/GIF/PNG sequence out. Full RGB color per character cell, 1080p 24fps default. No GPU. Built fo...",
+      "lines": 291,
+      "mtime": 1775239332000
+    },
+    {
+      "path": "projects/cloud-hermes/hermes-agent/skills/mlops/training/grpo-rl-training/README.md",
+      "title": "GRPO/RL Training Skill",
+      "summary": "**Expert-level guidance for Group Relative Policy Optimization with TRL** ``` grpo-rl-training/ ├── SKILL.md                              # Main skill documentation (READ THIS FIRST) ├── README.md ...",
+      "lines": 98,
+      "mtime": 1775239332000
+    }
+  ]
+}

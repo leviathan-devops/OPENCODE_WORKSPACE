@@ -1,0 +1,116 @@
+============================================================
+FULL GATE CHAIN TESTS
+============================================================
+
+--- Test: PLAN → BUILD (SPEC.md written) ---
+Current Gate: plan
+Tool: write_file, Args: {"path":"SPEC.md","content":"# Spec\n- Feature 1"}
+[Manta] Gate advanced: plan → build
+Expected Gate: build
+Actual Gate:   build
+✅ PASS
+
+--- Test: BUILD → TEST (index.html with code) ---
+Current Gate: build
+Tool: write_file, Args: {"path":"index.html","content":"<!DOCTYPE html>\n<html>\nfunction test() {}"}
+[Manta] Gate advanced: build → test
+Expected Gate: test
+Actual Gate:   test
+✅ PASS
+
+--- Test: BUILD → TEST blocked (config.json) ---
+Current Gate: build
+Tool: write_file, Args: {"path":"config.json","content":"{}"}
+Expected Gate: build
+Actual Gate:   build
+✅ PASS
+
+--- Test: TEST → VERIFY (curl URL) ---
+Current Gate: test
+Tool: terminal, Args: {"command":"curl https://example.com"}
+[Manta] Gate advanced: test → verify
+Expected Gate: verify
+Actual Gate:   verify
+✅ PASS
+
+--- Test: TEST → VERIFY (npm audit) ---
+Current Gate: test
+Tool: terminal, Args: {"command":"npm audit"}
+[Manta] Gate advanced: test → verify
+Expected Gate: verify
+Actual Gate:   verify
+✅ PASS
+
+--- Test: TEST → VERIFY blocked (ls) ---
+Current Gate: test
+Tool: terminal, Args: {"command":"ls -la"}
+Expected Gate: test
+Actual Gate:   test
+✅ PASS
+
+--- Test: VERIFY → AUDIT (SPEC.md read) ---
+Current Gate: verify
+Tool: read, Args: {"path":"SPEC.md"}
+[Manta] SPEC alignment confirmed, entering AUDIT gate
+[Manta] Gate advanced: verify → audit
+Expected Gate: audit
+Actual Gate:   audit
+✅ PASS
+
+--- Test: VERIFY → AUDIT (npm audit command) ---
+Current Gate: verify
+Tool: terminal, Args: {"command":"npm audit"}
+[Manta] SPEC alignment confirmed, entering AUDIT gate
+[Manta] Gate advanced: verify → audit
+Expected Gate: audit
+Actual Gate:   audit
+✅ PASS
+
+--- Test: AUDIT → DELIVERY (npm audit 0 vulnerabilities) ---
+Current Gate: audit
+Tool: terminal, Args: {"command":"npm audit"}
+[Manta] AUDIT complete (clean scan confirmed), advancing to DELIVERY
+[Manta] Gate advanced: audit → delivery
+Expected Gate: delivery
+Actual Gate:   delivery
+✅ PASS
+
+--- Test: AUDIT → DELIVERY blocked (cat README) ---
+Current Gate: audit
+Tool: terminal, Args: {"command":"cat README.md"}
+Expected Gate: audit
+Actual Gate:   audit
+✅ PASS
+
+============================================================
+ITERATION LOOP TESTS
+============================================================
+
+--- Iteration Test: VERIFY failure (attempt 1, starting from 0) ---
+Current Gate: verify
+Tool: terminal, Args: {"command":"npm run test"}
+[Manta] VERIFY failure detected (attempt 1/3)
+Expected Attempts: 1, Actual: 1
+Expected Iteration: V1.0, Actual: V1.0
+✅ PASS
+
+--- Iteration Test: VERIFY failure (attempt 2, starting from 1) ---
+Current Gate: verify
+Tool: terminal, Args: {"command":"npm run test"}
+[Manta] VERIFY failure detected (attempt 2/3)
+Expected Attempts: 2, Actual: 2
+Expected Iteration: V1.0, Actual: V1.0
+✅ PASS
+
+--- Iteration Test: VERIFY failure (attempt 3 - should escalate to V1.1) ---
+Current Gate: verify
+Tool: terminal, Args: {"command":"npm run test"}
+[Manta] VERIFY failure detected (attempt 0/3)
+[Manta] ITERATION ESCALATION: V1.1 — returning to PLAN
+[MANTA STATE] iteration=V1.1 gate=plan verifyAttempts=0
+Expected Attempts: 0, Actual: 0
+Expected Iteration: V1.1, Actual: V1.1
+✅ PASS
+
+============================================================
+🎉 ALL TESTS PASSED

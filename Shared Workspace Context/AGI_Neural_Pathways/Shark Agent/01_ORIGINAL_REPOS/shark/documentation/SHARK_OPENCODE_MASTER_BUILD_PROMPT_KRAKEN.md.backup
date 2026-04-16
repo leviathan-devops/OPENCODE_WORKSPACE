@@ -1,0 +1,457 @@
+# 🦈 SHARK AGENT + OPENCODE MASTER BUILD PROMPT (KRAKEN EDITION)
+
+## 🎯 **MISSION FOR GLM ENGINEERS**
+Integrate Shark Agent's mechanical enforcement systems into Opencode's TypeScript codebase as an **operating system level enhancement**, preserving 100% of Opencode's UI/UX while adding hardcoded workflow enforcement, file protection, and dual-brain architecture.
+
+**CRITICAL CONSTRAINT**: DO NOT replace or remove ANY Opencode code—only enhance or add to existing architecture.
+
+**NEW ARCHITECTURE**: You are part of **Kraken Brain orchestration** with Nemotron context bridge:
+- **DeepSeek Kraken Brain**: Central commander (makes strategic decisions)
+- **Nemotron Context Bridge**: 1M token context firewall (filters your outputs)
+- **You (GLM Engineer)**: Implementation specialist (reports to Nemotron)
+- **Opencode-Ultra**: Your task manager (coordinates with Nemotron)
+
+---
+
+## 📊 **CURRENT STATUS & DISCOVERIES**
+
+### ✅ **Key Discoveries (Mar 24 2026)**
+1. **Opencode is TypeScript** (55.3% TS, 40.7% MDX) - not Go as previously assumed
+2. **Shark Frankenstein CLI exists** (~50% of Qwen Code level) with identified theatrical code issues
+3. **Correct GitHub URLs** identified for all context documents
+4. **Shark-agent skill file exists** (`~/.config/opencode/skills/shark-agent/SKILL.md`) showing prior integration attempt
+5. **User has working vLLM setup** for testing Micro Engineer execution
+6. **GLM 4.7 coding plan endpoint confirmed working** with tool use capabilities
+7. **Integration approach clarified**: Surgical addition to Opencode codebase, not replacement
+8. **Auto-switch demonstration captured**: Real-time example of dual-brain switching documented
+9. **GLM OpenCode integration verified**: OpenCode-Ultra plugin installed, Shark Agent skill functional
+
+### ✅ **Opencode Architecture Analyzed**
+**Key integration points**:
+- `packages/opencode/src/agent/agent.ts` - Plan/build agent definitions
+- `packages/opencode/src/session/processor.ts` - Message/tool processing
+- `packages/opencode/src/tool/registry.ts` - Tool execution system
+- `packages/opencode/src/permission/index.ts` - Permission system
+- `packages/opencode/src/session/status.ts` - Session completion logic
+
+### ✅ **Shark Systems Examined (All TypeScript)**
+- **Guardian** (`src/guardian/index.ts` ~800 lines) - File protection with zone classification
+- **Workflow State Machine** (`src/workflow/state-machine.ts` ~862 lines) - 5-step workflow enforcement  
+- **AutoDebug** (`src/debug/autodebug.ts` ~530 lines) - Pattern-based error fixing
+- **DualBrainCoordinator** (`src/brain/coordinator.ts`) - Micro/Macro mode switching
+- **ToolExecutor** (`src/tools/executor.ts`) - Protected tool execution
+
+### ✅ **6-Step Workflow Innovation (V2)**
+V2 adds "Crash Test" step after Ship for adversarial user-endpoint testing:
+1. PLAN → 2. BUILD → 3. TEST → 4. VERIFY → 5. SHIP → **6. CRASH TEST**
+
+### ✅ **AUTO-SWITCH DEMONSTRATION CAPTURED**
+**Real-time example of dual-brain auto-switching** (Mar 24 2026):
+- **Trigger**: User observation of mode transition
+- **From**: Plan mode (analysis, DeepSeek Reason) 
+- **To**: Build mode (execution, DeepSeek Chat)
+- **Criteria**: Task changed from "analyze what we did" → "document how switch happened"
+- **Pattern**: User intent shift + tool requirement change
+- **Documentation**: `SHARK_AUTO_SWITCH_DEMONSTRATION.md` created with exact implementation blueprint
+
+---
+
+## 🏗️ **INTEGRATION STRATEGY**
+
+### **Core Principles**
+1. **Build on top of Opencode's plan/build toggle system** - enhance with autonomous agent switching
+2. **Integrate at deepest CLI level** - Guardian, Workflow, AutoDebug hardcoded into CLI core
+3. **Use sandboxed development** - fork Opencode, protect original with Guardian
+4. **Enable parallel development** - 5 GLM engineers working in parallel
+5. **MVP = Mode switching + Guardian + 5-step workflow** → V2 = Add Crash Test (Step 6)
+6. **Kraken Brain orchestration** - Nemotron filters context, DeepSeek coordinates
+
+### **Technical Specifications**
+- **Micro Engineer**: vLLM (primary) and Gemma (fallback) as equal execution engine options
+- **Macro Engineer**: GLM 4.7 on coding plan endpoint (`api.z.ai/api/coding/paas/v4/`) with DeepSeek advisory
+- **Compiler firewall**: Agent outputs must pass through CLI validation layer that enforces full workflow completion
+- **3-failure reset**: Three consecutive failures at any workflow step triggers reset to Plan with full context capture
+- **Autonomous mode switching**: Agents automatically switch between plan/build modes based on workflow context (DEMONSTRATED LIVE)
+- **Auto-switch criteria**: Task analysis, user intent, tool requirements, complexity scoring
+- **Integration method**: Plugin/middleware system hardcoded into CLI core (operating system level enhancement)
+- **Sandbox approach**: Fork Opencode repo for parallel development
+- **Auto-switch behavior**: Always-on enhancement working alongside manual toggle
+- **Context firewall**: Nemotron (1M tokens) sits between Kraken Brain (8K tokens) and GLM engineers
+
+### **KRAKEN BRAIN ORCHESTRATION RULES**
+1. **Report to Nemotron**: All your outputs go to Nemotron context bridge
+2. **Receive commands via Nemotron**: Kraken Brain commands come through Nemotron
+3. **Critical updates flagged**: Use `[CRITICAL]`, `[BLOCKER]`, `[DECISION]` tags
+4. **Progress summaries**: Daily summaries for Kraken Brain review
+5. **Token efficiency**: Keep outputs concise but complete
+
+---
+
+## 📁 **REFERENCE: FIXED SHARK CLI (`FIXED-cli.ts`)**
+
+A fully integrated version of Shark CLI exists at:
+`/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-frankenstein/GLM Engineer Shared Workspace/FIXED-cli.ts`
+
+**Key Integration Patterns**:
+1. **Guardian initialization** - `createProductionGuardian(workspacePath)`
+2. **Workflow initialization** - `new WorkflowMachine(workspacePath)`
+3. **AutoDebug initialization** - `new AutoDebugEngine()`
+4. **Guardian wrapping** - All file operations checked via `checkGuardian()`
+5. **Workflow enforcement** - `setOriginalPrompt()` and step tracking
+6. **AutoDebug integration** - Error analysis and auto-fix attempts
+
+**Use this file as the model for Opencode integration.**
+
+---
+
+## 🎯 **INTEGRATION POINTS (OPENCODE → SHARK)**
+
+### **1. MODE SWITCHING SYSTEM (Primary Target)**
+**Location**: Opencode's plan/build mode toggle mechanism
+**Files**: `packages/opencode/src/agent/agent.ts`, `packages/opencode/src/session/processor.ts`
+
+**CRITICAL CLARIFICATION**: DO NOT REPLACE manual toggle. Add **autonomous dual-brain switching** as an ALWAYS-ON ENHANCEMENT that works alongside manual toggle.
+
+**Integration Tasks**:
+1. Map Opencode's plan/build mode to Shark's Micro/Macro modes
+2. **Add AutoSwitchDetector layer** that monitors sessions for mode transition opportunities
+3. **Micro Engineer Mode** = Automatic detection when to switch from Plan (DeepSeek analysis) → Build (vLLM/Gemma execution)
+4. **Macro Engineer Mode** = GLM handles planning+building internally, DeepSeek as advisory
+5. Leverage Opencode's existing "cannot build in plan mode" enforcement as foundation for Guardian/Workflow systems
+6. **Auto-switch criteria**: Task analysis, user intent, tool requirements, complexity scoring (DEMONSTRATED LIVE)
+
+**Reference**: `SHARK_AUTO_SWITCH_DEMONSTRATION.md` - Real-time example captured
+
+### **2. COMMAND EXECUTION PIPELINE (Core Enforcement)**
+**Location**: Where Opencode processes/executes agent-generated commands
+**Files**: `packages/opencode/src/session/processor.ts`, `packages/opencode/src/tool/registry.ts`
+
+**Integration Tasks**:
+1. **Guardian Angel**: Wrap ALL file operations (read/write/delete) with permission checks
+2. **WorkflowMachine**: Inject 5-step validation (PLAN→BUILD→TEST→VERIFY→SHIP) at command boundaries
+3. **ToolExecutor**: Replace native tool execution with Shark's Guardian-protected version
+4. **AutoDebugEngine**: Integrate into error handling - provide mechanical fixes before allowing retry
+
+### **3. ERROR HANDLING & FEEDBACK LOOP (Anti-Hallucination)**
+**Location**: How Opencode handles/reports errors from agent commands
+**Files**: `packages/opencode/src/session/processor.ts`, `packages/opencode/src/session/status.ts`
+
+**Integration Tasks**:
+1. Replace error display with **mechanical violation detection**
+2. When agent attempts to bypass workflow (e.g., faking test results):
+   - CLI detects violation via workflow state
+   - Outputs: `VIOLATION DETECTED: [specific workflow step skipped]`
+   - Provides: `AUTO-DEBUG SOLUTION: [mechanical fix from knowledge base]`
+   - Forces: `NEXT STEPS: [clear mechanical instructions to complete correct step]`
+3. Prevents theatrical simulation by requiring actual workflow completion evidence
+
+### **4. COMPLETION/SHIP VALIDATION (Final Gatekeeper)**
+**Location**: How Opencode determines when a task is "complete"
+**Files**: `packages/opencode/src/session/processor.ts`, `packages/opencode/src/session/status.ts`
+
+**Integration Tasks**:
+1. Implement **mechanical compile-from-scratch validation** at ship stage
+2. Before allowing user output:
+   - CLI checks workflow state = SHIP stage
+   - CLI mechanically compiles entire codebase from scratch (no agent context)
+   - Verifies build workflow completion through artifact analysis (0 AI inference)
+   - If validation fails: Forces restart from PLAN stage with added context
+3. This is the "satisfaction firewall" - ensures agents can't hallucinate completion
+
+---
+
+## 🛠️ **STEP-BY-STEP IMPLEMENTATION INSTRUCTIONS**
+
+### **PHASE 1: FOUNDATION SETUP (Days 1-2)**
+**Team**: All 5 engineers coordinate setup
+
+#### **Step 1.1: Fork and Sandbox Opencode**
+```bash
+# Already done: /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration/
+cd /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration
+git checkout -b shark-integration
+```
+
+#### **Step 1.2: Set Up Development Environment**
+```bash
+# Install bun if not present
+curl -fsSL https://bun.sh/install | bash
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Install dependencies
+cd /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark-opencode-integration
+bun install
+```
+
+#### **Step 1.3: Analyze Integration Points in Detail**
+1. Examine `packages/opencode/src/session/processor.ts` - understand message flow
+2. Map Opencode's plugin/middleware system (if exists)
+3. Identify where to inject Shark systems
+4. Document all touchpoints for Guardian, Workflow, AutoDebug
+
+### **PHASE 2: CORE SYSTEMS INTEGRATION (Days 3-7) - PARALLEL WORK**
+
+#### **Engineer #1: Guardian Module Integration**
+**Files to create/modify**:
+- `packages/shark-agent/src/guardian/index.ts`
+- `packages/shark-agent/src/guardian/permission-checker.ts`
+- `packages/shark-agent/src/guardian/file-protection.ts`
+
+**Integration Tasks**:
+1. Port Guardian system from Shark Frankenstein to Opencode
+2. Wrap all file system operations (read/write/edit/delete) with permission checks
+3. Implement system file blocking (.ssh, /etc/passwd, etc.)
+4. Add audit logging
+5. **Verification**: Guardian blocks `/etc/passwd` write attempts
+
+**Nemotron Reporting Format**:
+```
+[GUARDIAN] File protection layer integrated ✓
+- Wrapped 12 file operations with permission checks
+- System file blocking active (5 critical paths)
+- Audit logging to ~/.shark-agent/logs/guardian.log
+```
+
+#### **Engineer #2: Workflow State Machine Integration**
+**Files to create/modify**:
+- `packages/shark-agent/src/workflow/state-machine.ts`
+- `packages/shark-agent/src/workflow/enforcement.ts`
+- `packages/shark-agent/src/workflow/validation.ts`
+
+**Integration Tasks**:
+1. Port WorkflowMachine to Opencode
+2. Hook into command execution pipeline
+3. Enforce 5-step (MVP) → 6-step (V2) sequence
+4. Block advancement until step completion evidence
+5. **Verification**: Workflow prevents BUILD step without complete PLAN
+
+**Nemotron Reporting Format**:
+```
+[WORKFLOW] State machine integrated ✓
+- 5-step enforcement active (PLAN→BUILD→TEST→VERIFY→SHIP)
+- Step validation via mechanical evidence checking
+- Blocks invalid state transitions
+```
+
+#### **Engineer #3: AutoDebug Module Integration**
+**Files to create/modify**:
+- `packages/shark-agent/src/debug/autodebug.ts`
+- `packages/shark-agent/src/debug/pattern-matcher.ts`
+- `packages/shark-agent/src/debug/fix-generator.ts`
+
+**Integration Tasks**:
+1. Port AutoDebug engine to Opencode
+2. Integrate into error handling pipeline
+3. Pattern-based error detection and fixing
+4. Common error database integration (`docker-sandbox-common-errors.md`)
+5. **Verification**: AutoDebug fixes common Docker/npm errors
+
+**Nemotron Reporting Format**:
+```
+[AUTODEBUG] Error fixing engine integrated ✓
+- 47 common error patterns loaded
+- Mechanical fix generation for Docker/npm errors
+- Integrated with Opencode error handler
+```
+
+#### **Engineer #4: DualBrain Coordinator Integration**
+**Files to create/modify**:
+- `packages/shark-agent/src/brain/coordinator.ts`
+- `packages/shark-agent/src/brain/mode-detector.ts`
+- `packages/shark-agent/src/brain/auto-switch.ts`
+
+**Integration Tasks**:
+1. Port DualBrainCoordinator to Opencode
+2. Implement automatic mode switching
+3. Map Opencode plan/build → Shark micro/macro modes
+4. Auto-switch criteria implementation
+5. **Verification**: System auto-switches based on task analysis
+
+**Nemotron Reporting Format**:
+```
+[DUALBRAIN] Auto-switch coordinator integrated ✓
+- Micro/Macro mode mapping to plan/build
+- Auto-switch on task analysis (5 criteria)
+- Manual toggle preserved alongside auto-switch
+```
+
+#### **Engineer #5: Integration Testing & Verification**
+**Files to create/modify**:
+- `packages/shark-agent/src/integration/test-runner.ts`
+- `packages/shark-agent/src/integration/validation.ts`
+- `packages/shark-agent/src/integration/anti-hallucination.ts`
+
+**Integration Tasks**:
+1. Create comprehensive integration tests
+2. Implement anti-hallucination validation
+3. Mechanical compile-from-scratch verification
+4. Cross-module dependency testing
+5. **Verification**: All modules work together, no theatrical code
+
+**Nemotron Reporting Format**:
+```
+[INTEGRATION] Cross-module testing ✓
+- All 4 modules integrated and functional
+- Anti-hallucination validation active
+- Mechanical compilation verification working
+```
+
+### **PHASE 3: INTEGRATION & FINALIZATION (Day 7)**
+**Team**: All 5 engineers
+
+#### **Step 3.1: Cross-Module Integration Testing**
+1. Ensure Guardian protects Workflow state
+2. Verify AutoDebug fixes Workflow validation failures
+3. Test DualBrain mode switching with Guardian permissions
+4. Run end-to-end scenario tests
+
+#### **Step 3.2: Anti-Hallucination Verification**
+1. Mechanical compile-from-scratch validation
+2. Attempt to bypass workflow - must be detected
+3. Test fake test result detection
+4. Verify satisfaction firewall blocks incomplete work
+
+#### **Step 3.3: Performance & Security Audit**
+1. Performance benchmarking
+2. Security review of permission system
+3. Edge case testing
+4. Documentation of limitations
+
+---
+
+## 🚨 **ANTI-HALLUCINATION PROTOCOLS**
+
+### **What is "Theatrical Code"?**
+Code that appears functional but:
+1. Has fake test results (tests pass but functionality broken)
+2. Simulates workflow completion without actual evidence
+3. Bypasses mechanical validation with clever tricks
+4. Creates appearance of functionality without substance
+
+### **Detection Mechanisms**
+1. **Mechanical compilation** - Code must compile from scratch with no agent context
+2. **Workflow step evidence** - Each step requires mechanical proof
+3. **Cross-validation** - Multiple systems verify same result
+4. **Random sampling** - Spot checks on generated code
+5. **Satisfaction firewall** - Final output validation separate from agent
+
+### **Required Evidence for Each Workflow Step**
+- **PLAN**: Written plan file with specific, testable requirements
+- **BUILD**: Actual code files that compile/run
+- **TEST**: Actual test execution logs, not just "tests pass" statement
+- **VERIFY**: Clean environment test results
+- **SHIP**: Mechanical compilation from scratch validation
+- **CRASH TEST** (V2): Adversarial user-endpoint testing results
+
+---
+
+## 📋 **GLM ENGINEER COMMUNICATION STANDARDS**
+
+### **Reporting to Nemotron**
+All outputs use this format:
+
+```
+[MODULE] Brief status update ✓/✗
+- Key accomplishment 1
+- Key accomplishment 2
+- Blockers (if any): [BLOCKER] description
+- Decisions needed: [DECISION] question for Kraken Brain
+- Next steps: brief plan
+```
+
+### **Critical Event Tags**
+- `[CRITICAL]` - Major breakthrough or failure
+- `[BLOCKER]` - Stopping issue requiring attention
+- `[DECISION]` - Architecture choice needing approval
+- `[SECURITY]` - Security concern identified
+- `[PERFORMANCE]` - Performance issue discovered
+
+### **Progress Tracking**
+Daily summaries should include:
+1. Module completion percentage
+2. Key features implemented
+3. Tests passing/failing
+4. Integration status with other modules
+5. Remaining work estimate
+
+### **Surgical Debugging Assistance**
+**When you get stuck**, Kraken Brain may deploy a debugging agent directly to your container:
+
+**Trigger Conditions**:
+- Code quality degradation (broken/invalid patterns)
+- Build failures persisting >30 minutes
+- Stuck on same problem >1 hour
+- Problem exceeds single-engineer capability
+- You request assistance via `[DEBUG_NEEDED]` tag
+
+**Debug Agent Types**:
+1. **DeepSeek Chat**: General debugging & logic analysis
+2. **Fresh GLM Model**: Language-specific debugging
+3. **Specialized Debugger**: Module-specific expertise
+4. **AutoDebug Agent**: Pattern-based error fixing
+
+**How to Work with Debug Agent**:
+1. **Share context**: Provide full code state and error logs
+2. **Parallel work**: Both agents can edit same files simultaneously
+3. **Communication**: Use dedicated chat channel in container
+4. **Merge fixes**: Integrate debug agent's solutions
+5. **Audit trail**: All debugging actions logged
+
+**Exit Criteria** (debug agent leaves when):
+- Bug fixed: Root cause resolved
+- Workaround established
+- 2-hour time limit reached
+- You resume solo work
+
+**Benefits**:
+- Zero latency communication (direct agent-to-agent)
+- Full context access (no filtering through Nemotron bridge)
+- Specialized skills for specific problems
+- No token waste debugging through context firewall
+
+---
+
+## 🏁 **COMPLETION CRITERIA**
+
+You are done when:
+1. ✅ Forked Opencode repository with Shark systems integrated
+2. ✅ All 4 Shark systems (Guardian, Workflow, AutoDebug, DualBrain) operational
+3. ✅ Dual-brain architecture functioning (micro/macro modes)
+4. ✅ Mechanical enforcement verified (no bypass possible)
+5. ✅ Anti-hallucination systems working (catches fake outputs)
+6. ✅ Ship validation requires actual mechanical proof
+7. ✅ Build passes and all integration tests pass
+8. ✅ User approves before any git push
+9. ✅ Ready for Stage 3 user endpoint validation
+
+---
+
+## ⏱️ **TIMELINE & MILESTONES**
+
+**Total Duration**: ~1 week with 5 parallel GLM 4.7 engineers
+
+**Day 1-2**: Foundation setup & environment
+**Day 3-5**: Parallel module development
+**Day 6**: Integration testing
+**Day 7**: Final verification & documentation
+
+**Daily Sync**: Via Nemotron → Kraken Brain at 08:00, 12:00, 18:00
+
+---
+
+## 🔗 **CRITICAL DOCUMENTS**
+
+1. **This Prompt**: Your implementation guide
+2. **Kraken Brain Orchestration Plan**: `KRAKEN_BRAIN_ORCHESTRATION_PLAN.md`
+3. **Auto-Switch Demonstration**: `SHARK_AUTO_SWITCH_DEMONSTRATION.md`
+4. **Fixed CLI Reference**: `shark-frankenstein/GLM Engineer Shared Workspace/FIXED-cli.ts`
+5. **Common Errors Database**: `docker-sandbox-common-errors.md`
+6. **GLM OpenCode Integration Guide**: `GLM_OPENCODE_INTEGRATION_COMPLETE_GUIDE.md`
+
+---
+
+**The CLI becomes the Earth Density** - mechanical enforcement layer that directs the river of AI agency toward productive, verifiable output. Agents operate freely within the channel but cannot escape its constraints. This is the Shark Agent thesis realized through Opencode's foundation.
+
+*You are building the future of trustworthy AI agents. Report through Nemotron, build with precision, eliminate theatrical code.* 🦈
+
+**KRAKEN BRAIN OVERSEEING - NEMOTRON BRIDGE ACTIVE - 5 GLM ENGINEERS DEPLOYED**

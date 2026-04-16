@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775640192438,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:cp /home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent/dist/index.js /home/leviathan/tmp/oc-test"
+  }
+}

@@ -1,0 +1,197 @@
+# OpenCode Config Migration Bug - March 29, 2026
+
+## Incident Summary
+**Date**: March 29, 2026  
+**Time**: ~05:18 UTC  
+**Affected Version**: OpenCode v1.3.4  
+**Issue**: Sisyphus mode and opencode-ultra plugin disappeared from fresh sessions  
+**Status**: ✅ RESOLVED
+
+## Timeline
+- **05:18**: OpenCode updated from v1.3.3 (or earlier) to v1.3.4
+- **05:24**: Config package.json updated in `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/`
+- **Discovery**: Fresh opencode sessions showed only "plan" and "build" modes, missing "sisyphus"
+- **Investigation**: 05:44-05:46
+- **Resolution**: 05:46
+
+## Root Cause Analysis
+
+### Breaking Change in OpenCode v1.3.4
+OpenCode v1.3.4 introduced a **breaking change** to the configuration directory structure:
+
+| Version | Expected Config Location | Actual Config Location |
+|---------|--------------------------|------------------------|
+| v1.3.3 (or earlier) | `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/` | `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/` |
+| v1.3.4 | `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/` | `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/` |
+
+### Configuration Mismatch
+The system had a **dual config structure**:
+1. **New structure** (created by v1.3.4): `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/`
+   - `package.json` with `@opencode-ai/plugin@1.3.4`
+   - Empty `node_modules/` (no opencode-ultra)
+   - No `opencode.json` or `opencode-ultra.json`
+
+2. **Old structure** (from previous version): `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/`
+   - `opencode.json` with `"plugin": ["opencode-ultra"]`
+   - `opencode-ultra.json` with sisyphus configuration
+   - `node_modules/opencode-ultra@0.9.9`
+   - `skills/` directory
+
+### Why Sisyphus Disappeared
+1. **Fresh sessions** used v1.3.4 binary looking for config in new location
+2. **Config not found** → Empty plugin array `"plugin": []`
+3. **opencode-ultra not loaded** → No sisyphus agent registered
+4. **Existing sessions** continued working (cached config or different binary path)
+
+## Evidence
+
+### Before Fix
+```bash
+$ opencode debug config
+{
+  "agent": {},
+  "mode": {},
+  "plugin": [],  # ← EMPTY!
+  "command": {},
+  "username": "leviathan"
+}
+
+$ ls -la /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/
+total 28
+drwxrwxr-x  4 leviathan leviathan 4096 Mar 29 01:05 .
+drwxr-xr-x 34 leviathan leviathan 4096 Mar 29 01:04 ..
+-rw-r--r--  1 leviathan leviathan  707 Mar 29 01:05 bun.lock
+-rw-rw-r--  1 leviathan leviathan   45 Mar 29 01:05 .gitignore
+drwxr-xr-x  4 leviathan leviathan 4096 Mar 29 01:05 node_modules
+drwxrwxr-x  4 leviathan leviathan 4096 Mar 26 01:48 opencode/  # ← Config here!
+-rw-rw-r--  1 leviathan leviathan   62 Mar 29 05:24 package.json
+```
+
+### Logs Showing the Issue
+```
+INFO  2026-03-29T01:28:32 +5ms service=config path=/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode.json loading
+INFO  2026-03-29T01:28:32 +0ms service=config path=/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode.jsonc loading
+# Both lookups FAILED - files not in expected location
+```
+
+## Fix Applied
+
+### Step 1: Backup
+```bash
+cp -r /home/leviathan/OPENCODE_WORKSPACE/configs/opencode /home/leviathan/OPENCODE_WORKSPACE/configs/opencode.backup.before-fix-20260329-0544
+```
+
+### Step 2: Move Config Files
+```bash
+mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/opencode.json /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/
+mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/opencode-ultra.json /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/
+mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/skills /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/
+```
+
+### Step 3: Update Dependencies
+Updated `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/package.json`:
+```json
+{
+  "dependencies": {
+    "@opencode-ai/plugin": "1.3.4",
+    "opencode-ultra": "0.9.9"  # ← Added
+  }
+}
+```
+
+### Step 4: Install Plugin
+```bash
+cd /home/leviathan/OPENCODE_WORKSPACE/configs/opencode && bun install
+# Installed: @opencode-ai/plugin@1.3.4, opencode-ultra@0.9.9
+```
+
+### Step 5: Clean Up
+```bash
+rm -rf /home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode/
+```
+
+## Verification
+
+### After Fix
+```bash
+$ opencode debug config | grep -A2 '"plugin"'
+  "plugin": [
+    "opencode-ultra"  # ← LOADED!
+  ],
+
+$ opencode debug config | grep '"default_agent"'
+  "default_agent": "sisyphus"  # ← RESTORED!
+
+$ timeout 5 opencode run --agent sisyphus "Test"
+[opencode-ultra] ENTRY — plugin loading {
+  directory: "/home/leviathan",
+}
+[opencode-ultra] Agents registered {
+  agents: [ "sisyphus", "oracle", "explore", "librarian", "multimodal-looker", "metis", "momus",
+    "atlas", "hephaestus", "scout"
+  ],
+}
+> sisyphus · glm-5
+Sisyphus is available and operational.
+```
+
+## Final Directory Structure
+```
+/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/
+├── bun.lock
+├── .gitignore
+├── node_modules/
+│   ├── @opencode-ai/
+│   └── opencode-ultra@0.9.9/
+├── opencode.json              # ← Now in correct location
+├── opencode-ultra.json        # ← Now in correct location
+├── package.json               # ← Updated with opencode-ultra dependency
+└── skills/                    # ← Moved from subdirectory
+```
+
+## Prevention Recommendations
+
+### For Future OpenCode Updates
+1. **Check release notes** for breaking changes before updating
+2. **Backup config** before major version updates:
+   ```bash
+   cp -r ~/.config/opencode ~/.config/opencode.backup-$(date +%Y%m%d)
+   ```
+3. **Monitor config loading** after updates:
+   ```bash
+   opencode debug config --print-logs
+   ```
+4. **Verify plugins** are loaded:
+   ```bash
+   opencode debug config | grep '"plugin"'
+   ```
+
+### For OpenCode Development Team
+1. **Backward compatibility**: Maintain support for old config locations during migration period
+2. **Migration scripts**: Provide automated migration for config directory changes
+3. **Clear documentation**: Document breaking changes in config structure
+4. **Version checks**: Warn users about config migration needs during update
+
+## Lessons Learned
+1. **Silent breaking changes** can cause feature disappearance without error messages
+2. **Dual config structures** can exist during version transitions
+3. **Plugin loading failures** are silent - empty plugin array indicates config issue
+4. **Existing sessions may mask problems** - always test fresh sessions after updates
+
+## Related Files
+- Backup: `/home/leviathan/OPENCODE_WORKSPACE/configs/opencode.backup.before-fix-20260329-0544/`
+- Old plugin backup: `/tmp/opencode-ultra-backup/`
+- This document: `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE_CONFIG_MIGRATION_BUG_20260329.md`
+
+## Resolution Status
+✅ **FULLY RESOLVED** - Sisyphus mode and opencode-ultra plugin restored
+✅ **Config migrated** to v1.3.4 compatible structure
+✅ **All agents available** in fresh sessions
+✅ **Backup preserved** for rollback if needed
+
+---
+**Documented by**: OpenCode Assistant  
+**Date**: March 29, 2026  
+**Time**: 05:47 UTC  
+**Environment**: OpenCode v1.3.4, opencode-ultra@0.9.9  
+**Reference**: User report "sisyphus is no longer present in my selectable modes"

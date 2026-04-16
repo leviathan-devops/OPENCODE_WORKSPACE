@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e017",
+  "name": "Delegation — @builder subagent",
+  "component": "subagent_delegation",
+  "component_area": "agent_routing",
+  "mechanical_verification": "Delegate a simple coding task to @builder, verify code returned",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "@builder Write a hello world function in TypeScript",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@builder Write a hello world function in TypeScript",
+      "expected": "Response contains code (function or TypeScript snippet)",
+      "mechanical_pass": "Output contains 'function' or 'export' or 'const' or code-like content"
+    }
+  ],
+
+  "pass_criteria": {
+    "delegation_succeeds": "@builder returns a response",
+    "returns_code": "Response contains code content (not just explanation)"
+  },
+
+  "failure_modes": {
+    "agent_not_found": "@builder returns unknown agent error",
+    "no_code": "@builder returns explanation but no actual code"
+  }
+}

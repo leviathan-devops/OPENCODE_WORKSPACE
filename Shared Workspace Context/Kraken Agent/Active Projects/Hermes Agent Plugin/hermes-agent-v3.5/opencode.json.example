@@ -1,0 +1,5 @@
+{
+  "plugins": [
+    "file:///home/YOUR_USER/.config/opencode/plugins/hermes-agent-v3.5/index.js"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "spider-agent-isolation",
+  "version": "1.0.0",
+  "description": "Spider agent isolation wrapper - adds agent filtering to spider hooks",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.0.0"
+  }
+}

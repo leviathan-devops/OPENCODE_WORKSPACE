@@ -1,0 +1,10 @@
+{
+  "allowedUsers": [
+    "leviathan",
+    "admin"
+  ],
+  "adminUsers": [
+    "leviathan"
+  ],
+  "description": "List of Mattermost users allowed to interact with the OpenCode agents"
+}

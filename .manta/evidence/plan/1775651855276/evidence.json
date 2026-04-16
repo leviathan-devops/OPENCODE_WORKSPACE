@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775651855276,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:cat /home/leviathan/OPENCODE_WORKSPACE/DEBUG\\ LOGS/system-brain-guardian-v4.7-failure-2026-04-08.md "
+  }
+}

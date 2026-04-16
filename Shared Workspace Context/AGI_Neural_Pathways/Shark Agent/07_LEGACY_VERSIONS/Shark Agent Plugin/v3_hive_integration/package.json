@@ -1,0 +1,22 @@
+{
+  "name": "hive-mind-shark-plugin",
+  "version": "3.0.0",
+  "description": "Hive Mind + Shark Enforcement - YOLO with guardrails",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node --experimental-vm-modules test/enforcement.test.ts",
+    "copy": "cp dist/index.js ~/.config/opencode/plugins/hive-mind-plugin.js",
+    "install-plugin": "npm run build && npm run copy"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "workspace:*",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gate": "plan",
+  "timestamp": 1775591707449,
+  "passed": true,
+  "files": [
+    "/home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent/src/hooks/v4.1/session-hook.ts"
+  ],
+  "metadata": {
+    "tool": "write",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "wrote:/home/leviathan/OPENCODE_WORKSPACE/projects/shark-agent/src/hooks/v4.1/session-hook.ts (/**\n * Session Hook — shark se...)"
+  }
+}

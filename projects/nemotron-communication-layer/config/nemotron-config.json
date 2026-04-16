@@ -1,0 +1,49 @@
+{
+  "tokenLimits": {
+    "default": {
+      "2k": 2000,
+      "4k": 4000,
+      "6k": 6000,
+      "8k": 8000
+    },
+    "overrideMax": 72000,
+    "moreContextDefault": 24000
+  },
+  "compression": {
+    "enabled": true,
+    "removeRedundancy": true,
+    "aggregateDetails": true,
+    "preserveCodeBlocks": true
+  },
+  "priority": {
+    "CRITICAL": {
+      "multiplier": 2,
+      "maxTokens": 8000
+    },
+    "HIGH": {
+      "multiplier": 1.5,
+      "maxTokens": 6000
+    },
+    "MEDIUM": {
+      "multiplier": 1,
+      "maxTokens": 4000
+    },
+    "LOW": {
+      "multiplier": 0.75,
+      "maxTokens": 2000
+    }
+  },
+  "contextStorage": {
+    "maxTokens": 1000000,
+    "evictionPolicy": "FIFO"
+  },
+  "routing": {
+    "broadcastToIdle": false,
+    "maxRecipients": 10
+  },
+  "metrics": {
+    "trackByClass": true,
+    "trackCompressionRatio": true,
+    "logInterval": 3600000
+  }
+}

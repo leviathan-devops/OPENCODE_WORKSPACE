@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  bridge:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.bridge
+    container_name: mattermost-opencode-bridge
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MATTERMOST_URL=${MATTERMOST_URL}
+      - MATTERMOST_TOKEN=${MATTERMOST_TOKEN}
+      - MATTERMOST_BOT_USERNAME=${MATTERMOST_BOT_USERNAME:-opencode-bot}
+      - MATTERMOST_BOT_USER_ID=${MATTERMOST_BOT_USER_ID}
+      - MATTERMOST_ALLOWED_USERS=${MATTERMOST_ALLOWED_USERS:-*}
+      - MATTERMOST_REQUIRE_MENTION=${MATTERMOST_REQUIRE_MENTION:-true}
+      - MATTERMOST_FREE_RESPONSE_CHANNELS=${MATTERMOST_FREE_RESPONSE_CHANNELS:-}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SESSION_TIMEOUT=1800
+      - OPENCODE_IMAGE=${OPENCODE_IMAGE:-opencodeai/opencode:latest}
+      - DEFAULT_AGENT=${DEFAULT_AGENT:-manta}
+      - DEFAULT_PLUGINS=${DEFAULT_PLUGINS:-manta-agent-v1.5}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-minimax/MiniMax-M2.7}
+      - WORKSPACE_ROOT=/workspace
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - workspace-data:/workspace
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - opencode-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: opencode-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - opencode-net
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  redis-data:
+  workspace-data:
+
+networks:
+  opencode-net:
+    driver: bridge

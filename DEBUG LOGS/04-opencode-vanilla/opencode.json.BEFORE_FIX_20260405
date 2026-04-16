@@ -1,0 +1,447 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "minimax-cn": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "minimax-cn-coding-plan": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "minimax-coding-plan": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "zai": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5v-turbo"
+      ]
+    },
+    "zai-coding-plan": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5.1",
+        "glm-5v-turbo"
+      ]
+    },
+    "zhipuai": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5v-turbo"
+      ]
+    },
+    "zhipuai-coding-plan": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.6v-flash",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5.1",
+        "glm-5v-turbo"
+      ]
+    },
+    "opencode": {
+      "blacklist": [
+        "gpt-5-nano"
+      ]
+    },
+    "openai": {
+      "blacklist": [
+        "chatgpt-image-latest",
+        "codex-mini-latest",
+        "gpt-3.5-turbo",
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-4.1-nano",
+        "gpt-4o",
+        "gpt-4o-2024-05-13",
+        "gpt-4o-2024-08-06",
+        "gpt-4o-2024-11-20",
+        "gpt-4o-mini",
+        "gpt-5",
+        "gpt-5-codex",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5-pro",
+        "gpt-5.1",
+        "gpt-5.1-chat-latest",
+        "gpt-5.1-codex",
+        "gpt-5.1-codex-max",
+        "gpt-5.1-codex-mini",
+        "gpt-5.2",
+        "gpt-5.2-chat-latest",
+        "gpt-5.2-codex",
+        "gpt-5.2-pro",
+        "gpt-5.3-chat-latest",
+        "gpt-5.3-codex",
+        "gpt-5.3-codex-spark",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.4-pro",
+        "gpt-image-1",
+        "gpt-image-1-mini",
+        "gpt-image-1.5",
+        "o1",
+        "o1-mini",
+        "o1-preview",
+        "o1-pro",
+        "o3",
+        "o3-deep-research",
+        "o3-mini",
+        "o3-pro",
+        "o4-mini",
+        "o4-mini-deep-research",
+        "text-embedding-3-large",
+        "text-embedding-3-small",
+        "text-embedding-ada-002"
+      ]
+    },
+    "deepseek": {
+      "blacklist": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ]
+    },
+    "0-local-agent-models": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local Agent Models",
+      "options": {
+        "baseURL": "http://localhost:8000/v1",
+        "mergeMessages": true
+      },
+      "models": {
+        "/home/leviathan/OPENCODE_WORKSPACE/models/Qwen2.5-Coder-7B-Instruct-AWQ": {
+          "name": "Qwen 2.5 Coder 7B AWQ (Local 32K)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "omnicoder-9b-q4_k_m.gguf": {
+          "name": "OmniCoder 9B (Local 256K)",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "0-google": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Google AI",
+      "options": {
+        "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+      },
+      "models": {
+        "gemma-4-31b-it": {
+          "name": "Gemma 4 31B IT (262K)",
+          "limit": {
+            "context": 262144,
+            "output": 16384
+          }
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite",
+          "limit": {
+            "context": 1006633,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "0-deepseek": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "DeepSeek",
+      "options": {
+        "baseURL": "https://api.deepseek.com",
+        "apiKey": "{env:DEEPSEEK_API_KEY}"
+      },
+      "models": {
+        "deepseek-chat": {
+          "name": "DeepSeek Chat (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "deepseek-reasoner": {
+          "name": "DeepSeek Reasoner (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "options": {
+            "reasoning": {
+              "type": "enabled",
+              "budgetTokens": 1000
+            }
+          }
+        }
+      }
+    },
+    "0-openrouter": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenRouter",
+      "options": {
+        "baseURL": "https://openrouter.ai/api/v1",
+        "apiKey": "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"
+      },
+      "models": {
+        "deepseek/deepseek-chat": {
+          "name": "DeepSeek V3 (163K, $0.00000032/1K)",
+          "limit": {
+            "context": 163840,
+            "output": 16384
+          }
+        },
+        "google/gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (1M, ~free)",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "deepseek/deepseek-v3": {
+          "name": "DeepSeek V3 (OpenRouter 64K)",
+          "limit": {
+            "context": 65536,
+            "output": 8192
+          }
+        },
+        "qwen/qwen2.5-coder-7b-instruct": {
+          "name": "Qwen 2.5 Coder 7B (Pennies)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen/qwen3.6-plus-preview:free": {
+          "name": "Qwen 3.6 Plus (FREE)",
+          "limit": {
+            "context": 1000000,
+            "output": 32000
+          }
+        }
+      }
+    },
+    "0-opencode-zen": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenCode Zen",
+      "options": {
+        "baseURL": "https://opencode.ai/zen/v1/chat/completions",
+        "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+      },
+      "models": {
+        "nemotron-3-super-free": {
+          "name": "Nemotron 3 Super Free (1M)",
+          "limit": {
+            "context": 1048576,
+            "output": 16384
+          }
+        },
+        "qwen3.6-plus-free": {
+          "name": "Qwen 3.6 Plus Free (128K)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "opencode-go": {
+      "blacklist": [
+        "glm-5",
+        "kimi-k2.5",
+        "mimo-v2-pro",
+        "mimo-v2-omni",
+        "minimax-m2.5",
+        "minimax-m2.7"
+      ]
+    },
+    "0-opencode-go": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenCode Go",
+      "options": {
+        "baseURL": "https://opencode.ai/zen/go/v1",
+        "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+      },
+      "models": {
+        "glm-5": {
+          "name": "GLM-5 (Go)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "kimi-k2.5": {
+          "name": "Kimi K2.5 (Go)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "mimo-v2-pro": {
+          "name": "MiMo-V2-Pro (Go)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "mimo-v2-omni": {
+          "name": "MiMo-V2-Omni (Go)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "minimax-m2.5": {
+          "name": "MiniMax M2.5 (Go)",
+          "npm": "@ai-sdk/anthropic",
+          "baseURL": "https://opencode.ai/zen/go/v1",
+          "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "minimax-m2.7": {
+          "name": "MiniMax M2.7 (Go)",
+          "npm": "@ai-sdk/anthropic",
+          "baseURL": "https://opencode.ai/zen/go/v1",
+          "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "architect": {
+      "disable": true
+    },
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    }
+  },
+  "mcp": {
+    "agent_swarm": {
+      "type": "remote",
+      "url": "http://localhost:3013",
+      "headers": {
+        "Authorization": "Bearer {env:AGENT_SWARM_API_KEY}"
+      },
+      "enabled": true
+    }
+  },
+  "tools": {
+    "agent_swarm_memory*": true,
+    "agent_swarm_send*": true,
+    "agent_swarm_get*": true,
+    "agent_swarm_poll*": true,
+    "agent_swarm_join*": true,
+    "agent_swarm_store*": true,
+    "agent_swarm_my*": true,
+    "agent_swarm_cancel*": true,
+    "agent_swarm_task*": true,
+    "agent_swarm_update*": true,
+    "agent_swarm_context*": true,
+    "agent_swarm_inject*": true,
+    "agent_swarm_list*": true,
+    "agent_swarm_create*": true,
+    "agent_swarm_post*": true,
+    "agent_swarm_read*": true,
+    "agent_swarm_trigger*": true,
+    "agent_swarm_register*": true,
+    "agent_swarm_unregister*": true,
+    "agent_swarm_request*": true,
+    "agent_swarm_retry*": true
+  },
+  "plugin": [
+    "file:///home/leviathan/OPENCODE_WORKSPACE/plugins/spider-agent",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hive Mind Plugin/v4/hive-mind-plugin.ts",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hermes Agent Plugin/v2.1-build/dist/index.js",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/plugins/coding-subagents/dist/index.js",
+    "file:///home/leviathan/OPENCODE_WORKSPACE/plugins/opencode-plugin-engineering/dist/index.js"
+  ],
+  "permission": {
+    "*": {
+      "*": "allow"
+    }
+  }
+}

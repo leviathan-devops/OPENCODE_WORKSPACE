@@ -1,0 +1,44 @@
+{
+  "exercise_id": "e006",
+  "name": "Gate Auto-Advance — TEST→VERIFY",
+  "component": "hooks",
+  "component_area": "gate-hook (test pass detection)",
+  "mechanical_verification": "Run terminal command with 'test pass' in output while at TEST gate, verify auto-advance to VERIFY",
+  "difficulty": "P0",
+  "time_estimate": "45 seconds",
+
+  "prompt": "call shark-gate action=advance gate=test then terminal command='echo test results: all tests passed' then call shark-status",
+
+  "expected_behavior": "After test-pass pattern in terminal output, gate auto-advances to VERIFY",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=advance gate=test to position at test gate",
+      "expected": "currentGate is 'test'",
+      "mechanical_pass": "Now at test gate"
+    },
+    {
+      "step": 2,
+      "action": "call terminal with pass pattern: echo 'test suite: 5 passed, 0 failed'",
+      "expected": "Terminal output contains pass pattern",
+      "mechanical_pass": "Output has test.*pass regex match"
+    },
+    {
+      "step": 3,
+      "action": "call shark-status to check gate",
+      "expected": "currentGate is now 'verify'",
+      "mechanical_pass": "Gate auto-advanced from test to verify"
+    }
+  ],
+
+  "pass_criteria": {
+    "gate_advances": "TEST → VERIFY auto-advance triggers on test pass pattern",
+    "test_gate_passed": "test gate status changes to 'passed'"
+  },
+
+  "failure_modes": {
+    "gate_stays": "Gate does not advance after test pass pattern",
+    "pattern_not_detected": "test pass pattern not recognized"
+  }
+}

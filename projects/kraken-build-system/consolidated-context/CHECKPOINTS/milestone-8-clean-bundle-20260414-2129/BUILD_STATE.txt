@@ -1,0 +1,31 @@
+=== CHECKPOINT: milestone-8-clean-bundle-20260414-2129 ===
+Date: 2026-04-14T21:29:00 UTC
+Phase: BUILD → pre-ship testing
+Milestone: milestone-8-clean-bundle
+
+STATUS:
+- What completed: Bundle rebuilt with no hardcoded paths
+- Current state: Ship package updated, ready for container test
+- Working: Bundle clean, wrappers fixed
+
+NEXT:
+- Immediate: Build test container
+- Future: Run TUI test, verify container spawning
+
+BUNDLE CHECKSUM:
+59cc4bba07bba0410d1f1dd074c691da (clean - no hardcoded paths)
+
+FILES:
+- dist/index.js: 59cc4bba07bba0410d1f1dd074c691da
+- Ship build/index.js: 59cc4bba07bba0410d1f1dd074c691da
+- kraken-agent-source/wrappers/: Updated (no hardcoded paths)
+- subagent-manager/wrappers/: Updated (no hardcoded paths)
+
+BUGS FIXED:
+- __dirname hardcode in shark-t2-tools.ts → import.meta.url ESM fix
+- LOCAL_FALLBACK_DIR hardcode → os.homedir() fix
+- PLUGIN_MOUNTS hardcode → dynamic path fix
+
+ERRORS:
+- Known: None
+- Outstanding: Container runtime test

@@ -1,0 +1,64 @@
+{
+  "suite": "shark-e2e-container",
+  "timestamp": 1775743824905,
+  "overallPassed": true,
+  "passRate": 1,
+  "passedTests": 10,
+  "failedTests": 0,
+  "totalTests": 10,
+  "containerMode": true,
+  "containerId": "74563df70fcc",
+  "buildId": "shark-v481-container-test-1775743824905",
+  "tests": [
+    {
+      "name": "build-succeeds",
+      "passed": true,
+      "output": "Build exists (1027214 bytes)"
+    },
+    {
+      "name": "dist-file-exists",
+      "passed": true,
+      "output": "EXISTS"
+    },
+    {
+      "name": "hooks-have-agent-checks",
+      "passed": true,
+      "output": "guardian:2 session:2"
+    },
+    {
+      "name": "guardian-has-source-protection",
+      "passed": true,
+      "output": "canEdit references: 1"
+    },
+    {
+      "name": "system-transform-has-ironclad",
+      "passed": true,
+      "output": "IRONCLAD references: 1"
+    },
+    {
+      "name": "delivery-gate-requires-tests",
+      "passed": true,
+      "output": "Test requirement found: 1"
+    },
+    {
+      "name": "no-manta-in-shark-hooks",
+      "passed": true,
+      "output": "Manta references: 0"
+    },
+    {
+      "name": "container-self-contained",
+      "passed": true,
+      "output": "Container: true, No forbidden paths: true"
+    },
+    {
+      "name": "guardian-blocks-spoof",
+      "passed": true,
+      "output": "Anti-spoof mechanism: true"
+    },
+    {
+      "name": "deployment-guard-exists",
+      "passed": true,
+      "output": "Deployment guard: true"
+    }
+  ]
+}

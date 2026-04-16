@@ -1,0 +1,43 @@
+{
+  "exercise_id": "e004",
+  "name": "Tool — lint",
+  "component": "quality_tools",
+  "component_area": "static_analysis",
+  "mechanical_verification": "Run lint on a real project directory, verify non-empty output or clean result",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "path_model": "relative — uses 'src' not '/tmp'",
+  "path_model_explanation": "Tools use path containment: join(context.directory, target). Absolute paths like /tmp break this.",
+
+  "prompt": "call lint target=src",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call lint target=src",
+      "expected": "Non-empty string output (lint findings or 'no issues')",
+      "mechanical_pass": "Output is a non-empty string, not an error object"
+    },
+    {
+      "step": 2,
+      "action": "call lint target=nonexistent/path",
+      "expected": "Graceful error or 'path not found', not a crash",
+      "mechanical_pass": "No crash, returns error message or empty string"
+    }
+  ],
+
+  "pass_criteria": {
+    "runs_successfully": "lint tool executes without throwing",
+    "returns_string": "Output is a string (not undefined/null/object)",
+    "graceful_error": "Invalid path returns graceful error, not crash",
+    "no_eslint_config_error": "Does not crash with 'ESLint couldn't find an eslint.config'"
+  },
+
+  "failure_modes": {
+    "crashes": "lint tool throws unhandled exception",
+    "returns_undefined": "lint tool returns undefined or empty",
+    "wrong_type": "Returns object/array instead of string",
+    "eslint_config_error": "ESLint config error (fix: combined stdout+stderr)"
+  }
+}

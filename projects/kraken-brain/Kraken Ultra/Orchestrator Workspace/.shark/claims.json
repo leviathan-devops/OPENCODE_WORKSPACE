@@ -1,0 +1,48 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "claim": "MessageClassifier correctly sizes messages to 2k/4k/6k/8k tokens",
+      "file": "src/message-classifier.ts",
+      "testFile": "tests/message-classifier.test.ts",
+      "status": "pending"
+    },
+    {
+      "id": "C002",
+      "claim": "CompressionPipeline applies 4-stage compression",
+      "file": "src/compression.ts",
+      "testFile": "tests/compression.test.ts",
+      "status": "pending"
+    },
+    {
+      "id": "C003",
+      "claim": "AgentRouter routes messages to correct recipients",
+      "file": "src/routing.ts",
+      "testFile": "tests/routing.test.ts",
+      "status": "pending"
+    },
+    {
+      "id": "C004",
+      "claim": "NemotronBridge orchestrates full message flow",
+      "file": "src/nemotron-bridge.ts",
+      "testFile": "tests/nemotron-bridge.test.ts",
+      "status": "pending"
+    },
+    {
+      "id": "C005",
+      "claim": "More context override works for 24-72k token requests",
+      "file": "src/nemotron-bridge.ts",
+      "testFile": "tests/integration.test.ts",
+      "status": "pending"
+    },
+    {
+      "id": "C006",
+      "claim": "Types compile without TypeScript errors",
+      "file": "src/types.ts",
+      "testFile": "tests/types.test.ts",
+      "status": "pending"
+    }
+  ],
+  "created": "2026-03-26",
+  "totalClaims": 6
+}

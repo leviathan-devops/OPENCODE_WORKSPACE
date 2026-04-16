@@ -1,0 +1,178 @@
+=== E2E TEST RESULTS ===
+Command: npx tsx test-e2e.ts
+Timestamp: Tue Apr  7 11:43:01 PM +04 2026
+
+
+=== Plugin Initialization ===
+  ✓ Plugin name is 'hermes-agent'
+  ✗ Has 19 agents (got undefined)
+  ✓ Has at least 28 tools (got 29)
+  ✓ Has tool.execute.before hook
+  ✓ Has tool.execute.after hook
+  ✓ Has chat.messages.transform hook
+  ✓ Has chat.system.transform hook
+  ✓ Has session.compacting hook
+
+=== Tool Schema Validation ===
+  ✓ Tool 'lint' exists
+  ✓ Tool 'lint' has description
+  ✓ Tool 'lint' has args schema
+  ✓ Tool 'lint' has execute function
+  ✓ Tool 'diff' exists
+  ✓ Tool 'diff' has description
+  ✓ Tool 'diff' has args schema
+  ✓ Tool 'diff' has execute function
+  ✓ Tool 'build_check' exists
+  ✓ Tool 'build_check' has description
+  ✓ Tool 'build_check' has args schema
+  ✓ Tool 'build_check' has execute function
+  ✓ Tool 'syntax_check' exists
+  ✓ Tool 'syntax_check' has description
+  ✓ Tool 'syntax_check' has args schema
+  ✓ Tool 'syntax_check' has execute function
+  ✓ Tool 'test_runner' exists
+  ✓ Tool 'test_runner' has description
+  ✓ Tool 'test_runner' has args schema
+  ✓ Tool 'test_runner' has execute function
+  ✓ Tool 'placeholder_scan' exists
+  ✓ Tool 'placeholder_scan' has description
+  ✓ Tool 'placeholder_scan' has args schema
+  ✓ Tool 'placeholder_scan' has execute function
+  ✓ Tool 'sast_scan' exists
+  ✓ Tool 'sast_scan' has description
+  ✓ Tool 'sast_scan' has args schema
+  ✓ Tool 'sast_scan' has execute function
+  ✓ Tool 'secret_scan' exists
+  ✓ Tool 'secret_scan' has description
+  ✓ Tool 'secret_scan' has args schema
+  ✓ Tool 'secret_scan' has execute function
+  ✓ Tool 'complexity_hotspots' exists
+  ✓ Tool 'complexity_hotspots' has description
+  ✓ Tool 'complexity_hotspots' has args schema
+  ✓ Tool 'complexity_hotspots' has execute function
+  ✓ Tool 'detect_domains' exists
+  ✓ Tool 'detect_domains' has description
+  ✓ Tool 'detect_domains' has args schema
+  ✓ Tool 'detect_domains' has execute function
+  ✓ Tool 'extract_code_blocks' exists
+  ✓ Tool 'extract_code_blocks' has description
+  ✓ Tool 'extract_code_blocks' has args schema
+  ✓ Tool 'extract_code_blocks' has execute function
+  ✓ Tool 'imports' exists
+  ✓ Tool 'imports' has description
+  ✓ Tool 'imports' has args schema
+  ✓ Tool 'imports' has execute function
+  ✓ Tool 'symbols' exists
+  ✓ Tool 'symbols' has description
+  ✓ Tool 'symbols' has args schema
+  ✓ Tool 'symbols' has execute function
+  ✓ Tool 'grill' exists
+  ✓ Tool 'grill' has description
+  ✓ Tool 'grill' has args schema
+  ✓ Tool 'grill' has execute function
+  ✓ Tool 'verify' exists
+  ✓ Tool 'verify' has description
+  ✓ Tool 'verify' has args schema
+  ✓ Tool 'verify' has execute function
+  ✓ Tool 'health' exists
+  ✓ Tool 'health' has description
+  ✓ Tool 'health' has args schema
+  ✓ Tool 'health' has execute function
+  ✓ Tool 'evidence_check' exists
+  ✓ Tool 'evidence_check' has description
+  ✓ Tool 'evidence_check' has args schema
+  ✓ Tool 'evidence_check' has execute function
+  ✓ Tool 'retrieve_summary' exists
+  ✓ Tool 'retrieve_summary' has description
+  ✓ Tool 'retrieve_summary' has args schema
+  ✓ Tool 'retrieve_summary' has execute function
+  ✓ Tool 'hermes_remember' exists
+  ✓ Tool 'hermes_remember' has description
+  ✓ Tool 'hermes_remember' has args schema
+  ✓ Tool 'hermes_remember' has execute function
+  ✓ Tool 'hermes_recall' exists
+  ✓ Tool 'hermes_recall' has description
+  ✓ Tool 'hermes_recall' has args schema
+  ✓ Tool 'hermes_recall' has execute function
+  ✓ Tool 'hermes_context' exists
+  ✓ Tool 'hermes_context' has description
+  ✓ Tool 'hermes_context' has args schema
+  ✓ Tool 'hermes_context' has execute function
+  ✓ Tool 'list_sessions' exists
+  ✓ Tool 'list_sessions' has description
+  ✓ Tool 'list_sessions' has args schema
+  ✓ Tool 'list_sessions' has execute function
+  ✓ Tool 'load_session' exists
+  ✓ Tool 'load_session' has description
+  ✓ Tool 'load_session' has args schema
+  ✓ Tool 'load_session' has execute function
+  ✓ Tool 'fork_session' exists
+  ✓ Tool 'fork_session' has description
+  ✓ Tool 'fork_session' has args schema
+  ✓ Tool 'fork_session' has execute function
+  ✓ Tool 'create_snapshot' exists
+  ✓ Tool 'create_snapshot' has description
+  ✓ Tool 'create_snapshot' has args schema
+  ✓ Tool 'create_snapshot' has execute function
+  ✓ Tool 'checkpoint' exists
+  ✓ Tool 'checkpoint' has description
+  ✓ Tool 'checkpoint' has args schema
+  ✓ Tool 'checkpoint' has execute function
+  ✓ Tool 'phase_complete' exists
+  ✓ Tool 'phase_complete' has description
+  ✓ Tool 'phase_complete' has args schema
+  ✓ Tool 'phase_complete' has execute function
+  ✓ Tool 'save_plan' exists
+  ✓ Tool 'save_plan' has description
+  ✓ Tool 'save_plan' has args schema
+  ✓ Tool 'save_plan' has execute function
+
+=== Quality Tools (Subprocess) ===
+  ✓ lint tool returns non-empty string (got Error: Access denied. Path resolves outside projec...)
+  ✓ build_check tool returns non-empty string
+  ✓ syntax_check tool returns non-empty string
+  ✓ diff tool returns string
+
+=== Security Tools (Subprocess) ===
+  ✓ placeholder_scan tool returns string
+  ✓ secret_scan tool returns string
+
+=== Analysis Tools ===
+  ✓ detect_domains returns string
+  ✗ detect_domains mentions 'src' directory
+  ✓ extract_code_blocks returns string
+  ✓ extract_code_blocks extracts code
+  ✓ symbols returns string
+  ✓ symbols returns non-empty content
+  ✓ imports returns string
+
+=== Verification Tools ===
+  ✓ grill returns string
+  ✓ grill output includes 'Attack Results'
+  ✓ evidenceCheck returns string
+  ✗ evidenceCheck output includes 'Evidence Check'
+
+=== Session Tools ===
+  ✓ listSessions returns string
+  ✓ createSnapshot returns string
+  ✓ createSnapshot confirms creation
+
+=== 2nd-Brain Memory Tools ===
+  ✓ hermesRemember returns string
+  ✓ hermesRemember confirms storage
+  ✓ Memory file actually written to ~/.hermes/memory/
+  ✓ hermesRecall returns string
+  ✓ hermesContext returns string
+
+=== Hook Functionality ===
+  ✓ tool.execute.before hook callable without throwing
+  ✓ tool.execute.after hook callable without throwing
+
+==================================================
+RESULTS: 144 passed, 3 failed
+==================================================
+Pass rate: 98.0%
+
+⚠️ 3 test(s) failed — review output above
+
+Exit code: 0

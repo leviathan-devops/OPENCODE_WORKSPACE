@@ -1,0 +1,92 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {},
+    "minimax-cn": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "minimax-cn-coding-plan": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "minimax-coding-plan": {
+      "blacklist": [
+        "MiniMax-M2",
+        "MiniMax-M2.1",
+        "MiniMax-M2.5",
+        "MiniMax-M2.5-highspeed",
+        "MiniMax-M2.7",
+        "MiniMax-M2.7-highspeed"
+      ]
+    },
+    "zai": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5v-turbo"
+      ]
+    },
+    "zai-pro": {
+      "blacklist": [
+        "glm-4.5",
+        "glm-4.5-air",
+        "glm-4.5-flash",
+        "glm-4.5v",
+        "glm-4.6",
+        "glm-4.6v",
+        "glm-4.7",
+        "glm-4.7-flash",
+        "glm-4.7-flashx",
+        "glm-5",
+        "glm-5-turbo",
+        "glm-5v-turbo"
+      ]
+    },
+    "gemini": {
+      "blacklist": [
+        "gemini-2.5-flash",
+        "gemini-3-flash",
+        "gemini-3-pro",
+        "gemini-4-flash",
+        "gemini-4-pro",
+        "gemini-4.5-flash",
+        "gemini-4.5-pro",
+        "gemini-pro"
+      ]
+    }
+  },
+  "plugin": {
+    "paths": [
+      "file:///opt/opencode/plugins/shark-agent/dist/index.js",
+      "file:///opt/opencode/plugins/spider-agent",
+      "file:///opt/opencode/plugins/coding-subagents",
+      "file:///opt/opencode/plugins/opencode-subagent-manager",
+      "file:///opt/opencode/plugins/opencode-plugin-engineering"
+    ]
+  },
+  "agent": {
+    "subagent_timeout_seconds": 120
+  }
+}

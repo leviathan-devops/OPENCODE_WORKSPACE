@@ -1,0 +1,43 @@
+{
+  "exercise_id": "e018",
+  "name": "Gate Status — All Gates",
+  "component": "tools",
+  "component_area": "shark-gate tool (status action) — all 6 gates",
+  "mechanical_verification": "Get status of all gates, verify all 6 are represented with correct statuses",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call shark-gate action=status",
+
+  "expected_behavior": "Returns all 6 gate statuses: plan, build, test, verify, audit, delivery with status values",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=status",
+      "expected": "JSON with statuses object containing all 6 gates",
+      "mechanical_pass": "All 6 gates present"
+    },
+    {
+      "step": 2,
+      "action": "Verify gate names",
+      "expected": "Statuses include: plan, build, test, verify, audit, delivery",
+      "mechanical_pass": "All gate names correct"
+    },
+    {
+      "step": 3,
+      "action": "Verify currentGate returned",
+      "expected": "currentGate field shows which gate is active",
+      "mechanical_pass": "Current gate identified"
+    }
+  ],
+
+  "pass_criteria": {
+    "all_6_gates": "statuses object has all 6 gate names",
+    "valid_statuses": "Each status value is valid (pending/passed/failed/blocked)"
+  },
+
+  "failure_modes": {
+    "missing_gates": "Only some gates present in statuses"
+  }
+}

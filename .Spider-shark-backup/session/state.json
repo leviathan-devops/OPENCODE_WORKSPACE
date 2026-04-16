@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "writtenAt": 1775772313026,
+  "toolAggregates": {
+    "shark-status": {
+      "tool": "shark-status",
+      "count": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "totalDuration": 4
+    }
+  },
+  "activeAgent": {
+    "ses_28bb8ebcaffeEQWjG6520e5XZX": "spider"
+  },
+  "delegationChains": {},
+  "agentSessions": {
+    "ses_28bb8ebcaffeEQWjG6520e5XZX": {
+      "agentName": "spider",
+      "lastToolCallTime": 1775772308615,
+      "lastAgentEventTime": 1775772308615,
+      "delegationActive": false,
+      "activeInvocationId": 0,
+      "lastInvocationIdByAgent": {},
+      "windows": {},
+      "lastCompactionHint": 0,
+      "architectWriteCount": 0,
+      "lastCoderDelegationTaskId": null,
+      "currentTaskId": null,
+      "turboMode": false,
+      "gateLog": {},
+      "reviewerCallCount": {},
+      "lastGateFailure": null,
+      "partialGateWarningsIssuedForTask": [
+        "ses_28bb8ebcaffeEQWjG6520e5XZX:unknown"
+      ],
+      "selfFixAttempted": false,
+      "selfCodingWarnedAtCount": 0,
+      "catastrophicPhaseWarnings": [],
+      "lastPhaseCompleteTimestamp": 0,
+      "lastPhaseCompletePhase": 0,
+      "phaseAgentsDispatched": [],
+      "lastCompletedPhaseAgentsDispatched": [],
+      "qaSkipCount": 0,
+      "qaSkipTaskIds": [],
+      "pendingAdvisoryMessages": [],
+      "taskWorkflowStates": {},
+      "scopeViolationDetected": false,
+      "model_fallback_index": 0,
+      "modelFallbackExhausted": false,
+      "coderRevisions": 0,
+      "revisionLimitHit": false,
+      "sessionRehydratedAt": 0
+    }
+  }
+}

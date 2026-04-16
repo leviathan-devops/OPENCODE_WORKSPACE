@@ -1,0 +1,9 @@
+{
+  "sziyoi8633fgmj3ob8drtm44jw": {
+    "name": "manta-factory",
+    "agentType": "manta",
+    "plugins": ["manta-agent-v1.5"],
+    "model": "minimax/MiniMax-M2.7",
+    "description": "Manta precision engineer - dedicated channel"
+  }
+}

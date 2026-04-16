@@ -1,0 +1,12 @@
+{
+  "id": "e003",
+  "name": "macro-brain-context-check",
+  "component": "system-transform",
+  "difficulty": "P0",
+  "prompt": "call shark-status-macro and verify output shows 'Brain: execution, reasoning, system' (triple-brain coordination)",
+  "expected_output_contains": ["execution", "reasoning", "system"],
+  "verification": {
+    "type": "output_contains",
+    "required_strings": ["execution", "reasoning", "system"]
+  }
+}

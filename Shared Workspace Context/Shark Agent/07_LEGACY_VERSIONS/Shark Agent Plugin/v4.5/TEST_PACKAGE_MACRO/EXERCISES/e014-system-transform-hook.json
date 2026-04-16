@@ -1,0 +1,38 @@
+{
+  "exercise_id": "e014",
+  "name": "System Transform Hook — Enforcement Context Injection",
+  "component": "hooks",
+  "component_area": "experimental.chat.system.transform",
+  "mechanical_verification": "Send a message and verify system prompt includes [SHARK ENFORCEMENT CONTEXT] with gate, iteration, criteria",
+  "difficulty": "P1",
+  "time_estimate": "20 seconds",
+
+  "prompt": "Send message: 'test' and observe if system enforcement context is injected into the prompt visible in debug or trace",
+
+  "expected_behavior": "Agent's system prompt includes [SHARK ENFORCEMENT CONTEXT] showing currentGate, iteration, verifyAttempts, blocking criteria for current gate",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Call shark-gate action=advance gate=build to set a specific gate",
+      "expected": "currentGate is now 'build'",
+      "mechanical_pass": "Gate positioned"
+    },
+    {
+      "step": 2,
+      "action": "Send a test message and check debug output for [SHARK ENFORCEMENT CONTEXT]",
+      "expected": "System prompt includes enforcement context block",
+      "mechanical_pass": "Hook injects context on message"
+    }
+  ],
+
+  "pass_criteria": {
+    "context_injected": "[SHARK ENFORCEMENT CONTEXT] appears in system prompt",
+    "gate_in_context": "currentGate is shown in enforcement context",
+    "iteration_in_context": "iteration is shown in enforcement context"
+  },
+
+  "failure_modes": {
+    "hook_not_firing": "No [SHARK ENFORCEMENT CONTEXT] in system prompt"
+  }
+}

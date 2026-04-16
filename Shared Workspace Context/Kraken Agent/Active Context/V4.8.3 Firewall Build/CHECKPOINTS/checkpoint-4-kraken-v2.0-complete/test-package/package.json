@@ -1,0 +1,12 @@
+{
+  "name": "kraken-v2-pressure-test",
+  "version": "2.0.0",
+  "description": "Pressure test package for Kraken V2.0 mechanical systems",
+  "type": "module",
+  "scripts": {
+    "test": "node runner.js",
+    "test:verbose": "node runner.js --verbose"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

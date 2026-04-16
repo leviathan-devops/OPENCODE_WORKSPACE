@@ -1,0 +1,662 @@
+# Handover Package Skill Build Prompt
+
+## 🎯 OBJECTIVE
+Build a lightweight OpenCode skill that creates cross-agent handover packages using the template from the Planning Brain Handover Package. When agents hear "build/create a handover package," they'll execute this skill to capture session context and generate a standardized package for the next agent.
+
+## 📋 CORE REQUIREMENTS
+
+### 1. Template-Based Generation
+Use the exact structure from `/home/leviathan/OPENCODE_WORKSPACE/projects/kraken-brain/Planning Brain Handover Package/` as the template:
+```
+HandoverPackage/
+├── NEXT_STEPS_PROMPT.md
+├── V3_Planning_Brain_Context.md
+├── V4_CONTEXT_LIBRARY.md
+├── build-transcript.md
+└── README.md
+```
+
+### 2. Lightweight & Fast
+- **<30 second execution time** - Minimal processing overhead
+- **<1000 token context capture** - Focus on essential information only
+- **Template filling only** - No deep code analysis (use Nemotron Scan for that)
+- **Zero external dependencies** - Self-contained skill execution
+
+### 3. Smart Context Capture
+The skill should automatically capture:
+- **Recent tool calls** (last 10 from OpenCode context)
+- **Key decisions made** during the session
+- **Files modified/created** in current session
+- **Pending todos** from any todo lists
+- **Session metadata** (agent type, start time, duration)
+- **Critical discoveries** (vulnerabilities found, solutions implemented)
+
+### 4. Natural Language Triggers
+The skill should respond to:
+- "build a handover package"
+- "create a handover package"
+- "prepare handover for next agent"
+- "capture session context"
+- `/build-handover-package [summary]`
+
+## 🏗️ IMPLEMENTATION SPECIFICATION
+
+### Skill Interface
+```javascript
+// Primary interface
+/build-handover-package [summary] [output_dir?]
+
+// Natural language triggers
+"build a handover package summarizing the firewall fix"
+"create a handover package for the DeepSeek agent"
+"prepare handover - I need to switch models"
+```
+
+### Phase 1: Context Capture
+
+#### 1.1 Session History Extraction
+```javascript
+// Extract last N tool calls from OpenCode context
+const extractToolCalls = (context, limit = 10) => {
+  const toolCalls = [];
+  // Parse context for tool execution patterns
+  // Format: { tool: 'read', target: 'file.ts', timestamp, result }
+  return toolCalls.slice(0, limit);
+};
+
+// Capture key decisions from reasoning blocks
+const extractDecisions = (context) => {
+  const decisions = [];
+  // Look for patterns like:
+  // - "I decided to..."
+  // - "The best approach is..."
+  // - "Critical finding:..."
+  // - "Vulnerability identified:..."
+  return decisions;
+};
+```
+
+#### 1.2 File Modification Tracking
+```javascript
+// Track files modified in current session
+const getModifiedFiles = () => {
+  const modified = {
+    created: [],    // Files created via write tool
+    edited: [],     // Files modified via edit tool  
+    read: [],       // Files read for context
+    deleted: []     // Files deleted (rare)
+  };
+  
+  // Parse tool call history for file operations
+  // read tool → add to read
+  // write tool → add to created (if new) or edited
+  // edit tool → add to edited
+  
+  return modified;
+};
+```
+
+#### 1.3 Todo List Extraction
+```javascript
+// Extract pending tasks from todo lists
+const extractPendingTodos = (context) => {
+  const todos = [];
+  // Look for TodoWrite tool calls
+  // Parse todo list structure
+  // Filter for 'pending' and 'in_progress' status
+  return todos.map(todo => ({
+    content: todo.content,
+    priority: todo.priority,
+    status: todo.status
+  }));
+};
+```
+
+#### 1.4 Session Metadata
+```javascript
+const sessionMetadata = {
+  agentType: 'GLM-5', // Extract from context or environment
+  startTime: sessionStartTimestamp,
+  duration: Date.now() - sessionStartTimestamp,
+  modelSwitching: {
+    from: currentModel,
+    to: nextModel || 'unknown',
+    reason: userProvidedSummary || 'context preservation'
+  },
+  constraintsHonored: [
+    'YOLO compatibility',
+    'Anti-slop focus',
+    'Performance optimization'
+  ]
+};
+```
+
+### Phase 2: Template Filling
+
+#### 2.1 NEXT_STEPS_PROMPT.md Template
+```markdown
+# PLANNING BRAIN HANDOVER PACKAGE
+## NEXT STEPS PROMPT
+
+### Context Summary
+${summary || 'Session context capture for agent handover'}
+
+### Current Operational Status
+**Agent**: ${sessionMetadata.agentType}
+**Duration**: ${formatDuration(sessionMetadata.duration)}
+**Files Modified**: ${modifiedFiles.created.length} created, ${modifiedFiles.edited.length} edited
+**Pending Todos**: ${pendingTodos.length}
+
+### What Has Been Accomplished
+${generateAccomplishmentsList(toolCalls, decisions)}
+
+### What Remains to Be Done
+${generatePendingWorkList(pendingTodos, toolCalls)}
+
+### IMMEDIATE NEXT STEPS
+${generateImmediateNextSteps(pendingTodos)}
+
+### Key Constraints to Honor
+${extractConstraintsFromSession(decisions, context)}
+
+### Success Metrics to Target
+${generateSuccessMetrics(modifiedFiles, toolCalls)}
+
+### Where to Begin
+The next agent should start by:
+1. ${getFirstStep(pendingTodos)}
+2. ${getSecondStep(modifiedFiles)}
+3. ${getThirdStep(decisions)}
+```
+
+#### 2.2 V3_Planning_Brain_Context.md Template
+```markdown
+# 🧠 V3 PLANNING BRAIN CONTEXT
+## For ${sessionMetadata.modelSwitching.to} Strategic Planning
+
+### Strategic Analysis
+Based on the work completed by ${sessionMetadata.agentType}:
+
+**Key Architectural Decisions:**
+${formatDecisionsAsBullets(decisions.filter(d => d.type === 'architectural'))}
+
+**Critical Findings:**
+${formatDecisionsAsBullets(decisions.filter(d => d.type === 'finding'))}
+
+**Vulnerabilities Identified:**
+${formatDecisionsAsBullets(decisions.filter(d => d.type === 'vulnerability'))}
+
+### Implementation Roadmap
+**Current Phase**: ${determineCurrentPhase(toolCalls, modifiedFiles)}
+
+**Next Phase Requirements:**
+${generatePhaseRequirements(pendingTodos)}
+
+### Constraint Compliance Matrix
+| Constraint | Current Status | Action Required | Priority |
+|------------|----------------|-----------------|----------|
+${generateConstraintTable(sessionMetadata.constraintsHonored)}
+
+### Files for Direct Reference
+${generateFileReferenceTable(modifiedFiles)}
+```
+
+#### 2.3 V4_CONTEXT_LIBRARY.md Template
+```markdown
+# V4 CONTEXT LIBRARY: SESSION EVIDENCE BASE
+
+## Evidence Tables
+
+### 1. Tool Execution Evidence
+| Tool | Target | Result | Timestamp |
+|------|--------|--------|-----------|
+${generateToolEvidenceTable(toolCalls)}
+
+### 2. Decision Evidence
+| Decision Type | Content | Impact | Confidence |
+|---------------|---------|--------|------------|
+${generateDecisionEvidenceTable(decisions)}
+
+### 3. File Modification Evidence
+| File | Operation | Lines Changed | Purpose |
+|------|-----------|---------------|---------|
+${generateFileModificationTable(modifiedFiles)}
+
+### 4. Constraint Compliance Evidence
+| Constraint | Evidence | Status | Verification |
+|------------|----------|--------|--------------|
+${generateConstraintEvidenceTable(sessionMetadata.constraintsHonored, toolCalls)}
+```
+
+#### 2.4 build-transcript.md Template
+```markdown
+# Handover Package Build Transcript
+
+## Package Information
+- **Generated**: ${new Date().toISOString()}
+- **From Agent**: ${sessionMetadata.agentType}
+- **To Agent**: ${sessionMetadata.modelSwitching.to}
+- **Reason**: ${sessionMetadata.modelSwitching.reason}
+- **Skill Version**: ${skillVersion}
+
+## Session Statistics
+- **Duration**: ${formatDuration(sessionMetadata.duration)}
+- **Tool Calls**: ${toolCalls.length}
+- **Files Created**: ${modifiedFiles.created.length}
+- **Files Edited**: ${modifiedFiles.edited.length}
+- **Decisions Made**: ${decisions.length}
+- **Pending Todos**: ${pendingTodos.length}
+
+## Context Capture Methodology
+1. Tool call history extraction (last ${toolCalls.length} calls)
+2. Decision pattern recognition
+3. File operation tracking
+4. Todo list parsing
+5. Template-based synthesis
+
+## Package Contents
+1. **NEXT_STEPS_PROMPT.md** - Immediate actions for next agent
+2. **V3_Planning_Brain_Context.md** - Strategic context and roadmap
+3. **V4_CONTEXT_LIBRARY.md** - Evidence base from session
+4. **README.md** - Package overview and usage
+
+## Verification
+- All templates filled with session data
+- No empty required sections
+- Consistent timestamps and metadata
+```
+
+#### 2.5 README.md Template
+```markdown
+# Handover Package
+
+## Transferring Context from ${sessionMetadata.agentType} to ${sessionMetadata.modelSwitching.to}
+
+### Package Generated
+**Timestamp**: ${new Date().toISOString()}
+**Session Duration**: ${formatDuration(sessionMetadata.duration)}
+**Reason for Handover**: ${sessionMetadata.modelSwitching.reason}
+
+### How to Use This Package
+
+#### 1. Start Here: NEXT_STEPS_PROMPT.md
+Read this file FIRST for immediate actionable tasks.
+
+#### 2. Strategic Context: V3_Planning_Brain_Context.md
+Review for architectural decisions and roadmap.
+
+#### 3. Evidence Base: V4_CONTEXT_LIBRARY.md
+Reference for specific tool calls, decisions, and file modifications.
+
+#### 4. Methodology: build-transcript.md
+Understanding of how this package was generated.
+
+### Critical Files Modified
+${generateCriticalFilesList(modifiedFiles)}
+
+### Immediate Actions Required
+${extractImmediateActions(pendingTodos)}
+
+### Constraints to Preserve
+${sessionMetadata.constraintsHonored.map(c => `- ${c}`).join('\n')}
+
+### Notes for Next Agent
+${generateAgentNotes(sessionMetadata, decisions)}
+```
+
+### Phase 3: Package Creation
+
+#### 3.1 Directory Structure
+```javascript
+const generatePackageStructure = (templates, metadata) => {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const packageName = `handover-${timestamp}-${metadata.agentType}-${metadata.modelSwitching.to}`;
+  
+  return {
+    baseDir: outputDir || `/home/leviathan/.handover/${packageName}/`,
+    files: {
+      'NEXT_STEPS_PROMPT.md': templates.nextSteps,
+      'V3_Planning_Brain_Context.md': templates.planningContext,
+      'V4_CONTEXT_LIBRARY.md': templates.contextLibrary,
+      'build-transcript.md': templates.transcript,
+      'README.md': templates.readme,
+      '.metadata.json': JSON.stringify({
+        generated: new Date().toISOString(),
+        agentFrom: metadata.agentType,
+        agentTo: metadata.modelSwitching.to,
+        skillVersion: skillVersion,
+        fileCount: 5
+      }, null, 2)
+    }
+  };
+};
+```
+
+#### 3.2 File Writing
+```javascript
+const createPackage = async (structure) => {
+  // Create base directory
+  await bash(`mkdir -p "${structure.baseDir}"`);
+  
+  // Write each file
+  for (const [filename, content] of Object.entries(structure.files)) {
+    const filepath = path.join(structure.baseDir, filename);
+    await write(filepath, content);
+  }
+  
+  return structure.baseDir;
+};
+```
+
+### Phase 4: Output and Cleanup
+
+#### 4.1 Success Response
+```javascript
+const generateSuccessResponse = (packagePath, stats) => {
+  return {
+    success: true,
+    message: `Handover package created at: ${packagePath}`,
+    packagePath,
+    stats: {
+      filesGenerated: 5,
+      toolCallsCaptured: stats.toolCalls,
+      decisionsRecorded: stats.decisions,
+      pendingTodos: stats.todos,
+      executionTime: stats.executionTime
+    },
+    instructions: `
+## Next Steps for Receiving Agent:
+1. Navigate to: ${packagePath}
+2. Read README.md first for overview
+3. Follow NEXT_STEPS_PROMPT.md for immediate actions
+4. Reference V3_Planning_Brain_Context.md for strategy
+5. Use V4_CONTEXT_LIBRARY.md for evidence
+
+## Quick Start:
+\`\`\`bash
+cd ${packagePath}
+cat README.md
+cat NEXT_STEPS_PROMPT.md
+\`\`\`
+`
+  };
+};
+```
+
+#### 4.2 Error Handling
+```javascript
+const handleError = (error, context) => {
+  // Fallback: Create minimal handover
+  const minimalPackage = {
+    'HANDOVER_SUMMARY.md': `
+# Emergency Handover - ${new Date().toISOString()}
+
+## Error during full package generation:
+${error.message}
+
+## Last known state:
+${JSON.stringify(context.lastState, null, 2)}
+
+## Manual continuation required.
+`
+  };
+  
+  return {
+    success: false,
+    message: `Partial handover created due to error: ${error.message}`,
+    packagePath: emergencyPath,
+    error: error.message
+  };
+};
+```
+
+## 🧪 SKILL EXECUTION FLOW
+
+### 1. Trigger Detection
+```javascript
+// Detect handover requests
+const isHandoverRequest = (input) => {
+  const triggers = [
+    /build.*handover/i,
+    /create.*handover/i,
+    /prepare.*handover/i,
+    /capture.*context/i,
+    /^\/build-handover-package/i
+  ];
+  return triggers.some(pattern => pattern.test(input));
+};
+```
+
+### 2. Argument Parsing
+```javascript
+const parseHandoverArgs = (input) => {
+  // Extract summary from natural language
+  const summaryMatch = input.match(/summarizing\s+(.+)/i) || 
+                      input.match(/for\s+(.+)/i) ||
+                      input.match(/\/(.+)/);
+  
+  // Extract output directory
+  const dirMatch = input.match(/to\s+(\S+)/i) ||
+                   input.match(/in\s+(\S+)/i);
+  
+  return {
+    summary: summaryMatch ? summaryMatch[1] : 'Session context preservation',
+    outputDir: dirMatch ? dirMatch[1] : null,
+    timestamp: new Date().toISOString()
+  };
+};
+```
+
+### 3. Main Execution
+```javascript
+const executeHandover = async (args, context) => {
+  const startTime = Date.now();
+  
+  try {
+    // Phase 1: Context Capture
+    const capturedContext = await captureSessionContext(context);
+    
+    // Phase 2: Template Filling
+    const templates = await fillTemplates(capturedContext, args);
+    
+    // Phase 3: Package Creation
+    const packagePath = await createPackage(templates);
+    
+    // Phase 4: Output
+    const stats = {
+      toolCalls: capturedContext.toolCalls.length,
+      decisions: capturedContext.decisions.length,
+      todos: capturedContext.pendingTodos.length,
+      executionTime: Date.now() - startTime
+    };
+    
+    return generateSuccessResponse(packagePath, stats);
+    
+  } catch (error) {
+    return handleError(error, { lastState: args });
+  }
+};
+```
+
+## 📊 PERFORMANCE TARGETS
+
+### Execution Time
+- **Target**: <30 seconds total
+- **Context Capture**: <5 seconds
+- **Template Filling**: <10 seconds
+- **File Writing**: <5 seconds
+- **Overhead**: <10 seconds buffer
+
+### Resource Usage
+- **Memory**: <50MB peak
+- **CPU**: Minimal (template processing only)
+- **Disk I/O**: 5 files × ~10KB each = 50KB
+- **Network**: None (local only)
+
+### Quality Metrics
+- **Completeness**: 100% template sections filled
+- **Accuracy**: No hallucinated content
+- **Consistency**: Same structure as Planning Brain template
+- **Usability**: Next agent can immediately understand and act
+
+## 🚀 EXAMPLE USAGES
+
+### Example 1: Simple Handover
+```
+User: I need to switch to DeepSeek. Build a handover package.
+Agent: [Executes skill]
+Output: Handover package created at: /home/leviathan/.handover/20250327-glm5-deepseek/
+```
+
+### Example 2: Specific Context
+```
+User: Build a handover package summarizing the ToolExecutor firewall fix
+Agent: [Captures relevant context, generates package]
+Output: Package includes specific code snippets, analysis, next steps
+```
+
+### Example 3: Command Line
+```
+User: /build-handover-package "Wave 1 complete, ready for Wave 2" /tmp/handover
+Agent: [Creates package with summary at specified location]
+Output: Package at /tmp/handover/ with Wave 1 completion context
+```
+
+### Example 4: Mid-Session Emergency
+```
+User: Timeout approaching, create handover package now!
+Agent: [Rapid context capture, minimal package]
+Output: Emergency handover created. Continue from /path/to/emergency-handover/
+```
+
+## 🔧 SKILL FILE STRUCTURE
+
+```javascript
+// handover-package.js
+export const skill = {
+  name: "handover-package",
+  description: "Create cross-agent handover packages",
+  version: "1.0.0",
+  
+  execute: async (args, context) => {
+    return await executeHandover(args, context);
+  },
+  
+  triggers: [
+    "build a handover package",
+    "create a handover package", 
+    "prepare handover",
+    "capture session context",
+    "/build-handover-package"
+  ],
+  
+  help: `
+## Handover Package Skill
+
+Creates standardized handover packages for agent context transfer.
+
+### Usage:
+- "build a handover package"
+- "create a handover package for DeepSeek"
+- "prepare handover summarizing the firewall fix"
+- /build-handover-package [summary] [output_dir]
+
+### Outputs:
+1. NEXT_STEPS_PROMPT.md - Immediate actionable tasks
+2. V3_Planning_Brain_Context.md - Strategic roadmap  
+3. V4_CONTEXT_LIBRARY.md - Evidence base
+4. build-transcript.md - Methodology
+5. README.md - Overview
+
+### Based on:
+Planning Brain Handover Package template from /home/leviathan/OPENCODE_WORKSPACE/projects/kraken-brain/Planning Brain Handover Package/
+`
+};
+```
+
+## 🧪 TESTING SCENARIOS
+
+### Test 1: Basic Functionality
+- Input: "build a handover package"
+- Expected: Package created with 5 files in default location
+- Verification: All templates filled, no empty sections
+
+### Test 2: Specific Summary
+- Input: "build a handover package for the firewall implementation"
+- Expected: Package includes firewall-related context
+- Verification: NEXT_STEPS_PROMPT.md mentions firewall tasks
+
+### Test 3: Custom Output Directory
+- Input: "/build-handover-package test /tmp/test-handover"
+- Expected: Package created at /tmp/test-handover/
+- Verification: Files exist at specified location
+
+### Test 4: Error Recovery
+- Simulate: Context capture failure
+- Expected: Emergency minimal package created
+- Verification: HANDOVER_SUMMARY.md exists with error info
+
+### Test 5: Performance
+- Measure: Execution time for typical session
+- Target: <30 seconds
+- Verification: Meets performance targets
+
+## 📚 TEMPLATE SOURCES
+
+### Primary Template
+- `/home/leviathan/OPENCODE_WORKSPACE/projects/kraken-brain/Planning Brain Handover Package/`
+- Structure: NEXT_STEPS_PROMPT.md, V3_Planning_Brain_Context.md, V4_CONTEXT_LIBRARY.md, build-transcript.md
+
+### Adaptation Notes
+- **Lightweight**: Remove deep analysis sections (Nemotron Scan handles those)
+- **Session-focused**: Emphasize tool calls, decisions, file modifications
+- **Action-oriented**: Focus on next steps rather than comprehensive analysis
+- **Standardized**: Maintain consistent structure for agent predictability
+
+### Placeholder Mapping
+| Original Section | Handover Skill Version |
+|------------------|------------------------|
+| Evidence tables | Tool execution evidence |
+| Architecture analysis | Decision evidence |
+| Code citations | File modification evidence |
+| Strategic roadmap | Immediate next steps |
+| Deep analysis | Session context capture |
+
+## 🔄 INTEGRATION WITH OTHER SKILLS
+
+### Nemotron Scan Relationship
+- **Nemotron Scan**: Deep codebase analysis, evidence-based reality checking
+- **Handover Package**: Lightweight session context capture, agent-to-agent transfer
+- **Usage**: Run Nemotron Scan for deep understanding, Handover Package for quick context transfer
+
+### Complementary Usage
+```
+# Deep analysis first
+User: run a nemotron scan /home/leviathan/OPENCODE_WORKSPACE/projects/shark-frankenstein
+Agent: [Generates comprehensive analysis package]
+
+# Then handover when switching agents  
+User: build a handover package based on the nemotron findings
+Agent: [Creates lightweight package referencing nemotron output]
+```
+
+### Skill Chaining
+```javascript
+// Potential future enhancement
+const chainSkills = async () => {
+  // Run nemotron scan
+  const scanResult = await executeSkill('nemotron-scan', targetPath);
+  
+  // Create handover referencing scan
+  const handoverResult = await executeSkill('handover-package', {
+    summary: `Based on nemotron scan: ${scanResult.packagePath}`,
+    includeScanResults: true
+  });
+  
+  return handoverResult;
+};
+```
+
+---
+
+**BUILD READY** - This specification provides complete guidance for building a lightweight, fast handover package skill that enables efficient agent context transfer while maintaining the structural integrity of the Planning Brain Handover Package template.

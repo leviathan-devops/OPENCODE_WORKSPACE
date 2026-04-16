@@ -1,0 +1,14 @@
+[Unit]
+Description=Voice-to-Text Dictation Service
+After=network.target
+
+[Service]
+Type=simple
+User=leviathan
+WorkingDirectory=/home/leviathan/OPENCODE_WORKSPACE/projects/voice-to-text
+ExecStart=/home/leviathan/OPENCODE_WORKSPACE/projects/voice-to-text/voice-to-text
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

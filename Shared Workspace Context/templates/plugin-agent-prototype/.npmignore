@@ -1,0 +1,7 @@
+tests/
+*.test.ts
+*.spec.ts
+tsconfig.json
+.git/
+node_modules/
+dist/*.d.ts

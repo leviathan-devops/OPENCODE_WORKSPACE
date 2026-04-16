@@ -1,0 +1,400 @@
+# SHARK FRANKENSTEIN - COMPLETE CONTEXT FOR IMMEDIATE SESSION AWARENESS
+
+*This document provides complete contextual awareness of the Shark Frankenstein ecosystem. Reading this single document in a fresh terminal session provides the same level of project awareness as developed through extensive context absorption.*
+
+## TABLE OF CONTENTS
+1. [CORE ARCHITECTURE](#1-core-architecture)
+2. [SAFETY STACK](#2-safety-stack-mechanical-enforcement)
+3. [DUAL-BRAIN SYSTEM](#3-dual-brain-system)
+4. [KRAKEN BRAIN HIVE ORCHESTRATOR](#4-kraken-brain-hive-orchestrator)
+5. [OPENCODE INTEGRATION](#5-opencode-integration)
+6. [GOLD STANDARD ARTIFACTS](#6-gold-standard-artifacts)
+7. [PENDING WORK](#7-pending-work)
+8. [QUICK REFERENCE](#8-quick-reference)
+9. [FILESYSTEM NAVIGATION](#9-filesystem-navigation)
+
+---
+
+## 1. CORE ARCHITECTURE
+
+Shark Frankenstein is a dual-brain AI coding assistant CLI that evolved from a Qwen Code customization attempt into a sophisticated Opencode-integrated system with mechanical enforcement at the CLI level to prevent hallucination.
+
+### The Two Core Pillars (Pre-Opencode)
+1. **Original Shark Agent Architecture** (https://github.com/leviathan-devops/shark-agent)
+   - Dual-brain reasoning system separating planning from execution
+   - Five-step workflow enforcement (PLAN→BUILD→TEST→VERIFY→SHIP)
+   - AutoDebug pattern-based error fixing (~60% auto-fix rate)
+   - ToolExecutor as Constitutional Anchor (single chokepoint for all actions)
+
+2. **Guardian Firewall** (https://github.com/leviathan-devops/guardian-firewall)
+   - Zone-based filesystem protection system
+   - Blocks writes to system-critical paths: `/etc`, `/usr`, `~/.ssh/`
+   - Audit logging of all file operations
+   - Sandbox mode for safe testing
+
+These two pillars formed the foundation before integration with Opencode.
+
+## 2. SAFETY STACK - 4-LAYER MECHANICAL ENFORCEMENT
+
+Based on the "Earth Density & River Flow" philosophy: AI autonomy is the water, mechanical enforcement is the riverbanks that give water purpose and direction.
+
+### Layer 1: Guardian Filesystem Protection
+**Location**: `src/guardian/`
+- Zone-based file protection (SYSTEM, PROJECT, TEMP, USER zones)
+- Blocks writes to `/etc`, `/usr`, `~/.ssh/`, `/root/`, `/proc/`, `/sys/`, `/dev/`
+- Protection levels: STRICT, BALANCED, PERMISSIVE, SANDBOX
+- Audit logging of all operations
+- Sandbox creation for risky operations
+- **Verification**: Vanilla-vs-Shark test shows 83% failure rate without Guardian
+
+### Layer 2: FirewallMesh - Parallel Security Screening
+**Location**: `src/firewall/`
+- Four firewalls running in parallel via `Promise.all` (<50ms overhead)
+- **GuardianFirewall** - Filesystem path protection
+- **WorkflowBlocker** - Enforces PLAN→BUILD→TEST→VERIFY→SHIP sequence
+- **TheatricalDetector** - Identifies mock/simulate/placeholder code (WARN only)
+- **SecretDetector** - Prevents accidental credential leaks
+- **Key Innovation**: Parallel execution ensures all checks always run
+
+### Layer 3: StagnationDetector - Loop Prevention
+**Location**: `src/stagnation/`
+- Detects when AI is stuck in repetitive failure loop
+- Trigger: 3 identical consecutive failures
+- Action: Escalation to higher reasoning or workflow reset
+- Context capture preserves failure context for analysis
+
+### Layer 4: Workflow Enforcement - The Brick Wall
+**Location**: `src/workflow/`
+- Mechanical 5-step enforcement: PLAN → BUILD → TEST → VERIFY → SHIP
+- Each step requires specific evidence to proceed:
+  1. **PLAN**: Written plan file with specific, testable requirements
+  2. **BUILD**: Actual code files, successful compilation, valid TypeScript types
+  3. **TEST**: Test execution logs (not just "tests pass"), coverage metrics, edge case testing
+  4. **VERIFY**: Clean environment results, no agent context, reproducible builds
+  5. **SHIP**: Mechanical compilation from scratch, fresh dependency install, complete integration test
+- 3-failure reset: After 3 verification failures → reset to PLAN with context capture
+- **Key Innovation**: Brick-wall enforcement - systems cannot bypass through persuasion
+
+## 3. DUAL-BRAIN SYSTEM
+
+### Micro Engineer (Free/Local Tier) - THE HYBRID ARCHITECTURE
+**This is the corrected architecture based on your specification:**
+
+- **Thinker/Planner (Reasoning Brain)**: DeepSeek Chat (API-based)
+  - Used **exclusively** for planning, reasoning, and decision-making
+  - Does NOT perform code execution or file operations
+  - Minimizes API usage by restricting to cognitive tasks only (<10% of total tokens)
+- **Doer/Executor (Lobotomized Execution Brain)**: vLLM Qwen 2.5 Coder 7B AWQ (local, zero-cost)
+  - **Lobotomized**: Capable of executing plans but **cannot** engage in independent reasoning or planning
+  - Zero-cost local execution (no API calls)
+  - Handles: code generation, file edits, command execution, testing
+  - Receives structured plans from Thinker/Planner and executes them mechanically
+- **Fallback System**: Gemma 3 4B available as backup Thinker if DeepSeek unavailable
+- **Safety Integration**: Executor remains subject to all 4-layer safety stack
+
+**Workflow Flow**:
+1. User request → Micro Engineer Thinker (DeepSeek Chat)
+2. Thinker generates: structured plan + executable commands (minimal API usage)
+3. Plan passed to Micro Engineer Executor (vLLM Qwen local)
+4. Executor performs: mechanical execution only (file edits, commands, tests)
+5. Results returned to Thinker for validation (if needed)
+6. Final output to user
+
+**Verification Points**:
+- In `shark-frankenstein/src/brain/`: coordinator that routes planning to DeepSeek and execution to vLLM
+- Micro Engineer prompts show: thinking phase (DeepSeek) → execution phase (local Qwen)
+- API logs show DeepSeek calls only during planning phases, not during file edits/commands
+
+### Macro Engineer (Paid/Cloud Tier)
+- **Primary Brain**: GLM 5 (128K context window)
+- **Advisory Brain**: DeepSeek R1 (for complex reasoning tasks)
+- **Cost**: ~$0.02-0.08 per task
+- **Use Cases**: Multi-file architecture, DevOps, system migrations, complex refactoring
+
+### Dual-Brain Coordinator
+Located in `src/brain/`:
+- Responsible for task analysis and routing to appropriate engineer tier
+- Implements auto-switch logic based on task complexity
+- Maintains context between Micro and Macro operations
+- Handles fallback scenarios when primary brains are unavailable
+
+## 4. KRAKEN BRAIN HIVE ORCHESTRATOR
+
+Kraken Brain is the macro-orchestrator agent that coordinates a swarm of Shark agents to accomplish complex software engineering tasks.
+
+### Three-Layer System
+
+#### Layer 1: DeepSeek Kraken Brain (Strategic Commander)
+- **Role**: Central decision maker & coordinator
+- **Model**: DeepSeek Reasoner (128K context window)
+- **Responsibilities**:
+  - High-level architecture decisions
+  - Assigning GLM engineers to specific modules
+  - Reviewing critical integration points
+  - Managing overall build timeline (~1 week with 5 engineers)
+  - Receiving filtered intelligence from Nemotron
+  - Issuing commands through Nemotron bridge
+- **Critical Constraint**: Must NOT absorb raw GLM engineer outputs (100K+ tokens every 10 minutes)
+
+#### Layer 2: Nemotron Context Bridge (Intelligence Firewall)
+- **Role**: Context firewall & intelligence filter
+- **Model**: Free model with 1M token context window
+- **Responsibilities**:
+  - Ingest ALL outputs from 5 GLM engineers
+  - Maintain complete build context
+  - Filter & compact information using:
+    1. Criticality scoring (bug fixes > feature progress > routine updates)
+    2. Dependency tracking (changes affecting other modules)
+    3. Progress aggregation (daily summaries vs real-time minutiae)
+    4. Decision distillation (extract key decisions for Kraken Brain)
+  - Pass 1-2K token summaries to Kraken Brain
+  - Relay Kraken Brain commands to GLM engineers
+  - Maintain "ground truth" of build state
+
+#### Layer 3: GLM 4.7 Engineers (Parallel Workforce)
+- **Role**: Implementation workforce (5 parallel engineers)
+- **Allocation**:
+  1. Engineer #1: Guardian module integration
+  2. Engineer #2: Workflow State Machine integration  
+  3. Engineer #3: AutoDebug module integration
+  4. Engineer #4: DualBrain Coordinator integration
+  5. Engineer #5: Integration testing & verification
+- **Work Pattern**: Parallel development on separate modules with daily sync via Nemotron
+
+### Token Flow Control
+```
+Raw GLM Outputs (100K+ tokens)
+        ↓
+[NEMOTRON BRIDGE - 1M tokens]
+        │
+        ├─ Store full context (900K+ tokens available)
+        │
+        └─ Extract essentials (1-2K tokens)
+                ↓
+    [KRAKEN BRAIN - 128K tokens]
+```
+
+### Key Features
+- **Context Preservation**: All critical decisions retained through compaction
+- **More Context Request**: Orchestrator can request 24-72K tokens when needed
+- **FIFO Eviction**: Oldest context evicted when 1M token limit exceeded
+- **Token Efficiency**: Average <2K tokens/hour sent to Kraken Brain
+- **Anti-Hallucination**: Requires mechanical evidence at each phase (PLAN/BUILD/TEST/VERIFY/SHIP)
+
+## 5. OPENCODE INTEGRATION
+
+Shark Frankenstein was originally built as a standalone TypeScript CLI attempting to customize Qwen Code into an agent with mechanical enforcement. The discovery of Opencode provided a ready-made platform with many desired features.
+
+### Why Opencode?
+Opencode already provided:
+- Multi-agent orchestration capabilities
+- Built-in tool use system
+- Agent spawning and management
+- Plugin system for extending functionality
+- Session management and context handling
+- Provider abstraction for multiple LLMs
+- Mechanically enforced plan/build mode toggle
+
+This allowed the Shark Frankenstein team to focus on integrating their core innovations rather than rebuilding basic agent infrastructure.
+
+### Integration Approach
+- **V2 alongside V1** strategy for safe migration (not in-place edits)
+- V1 files remain untouched as reference and fallback
+- V2 files created with `(V2)` suffix (e.g., `executor(V2).ts`)
+- V2 files gradually wired up and tested
+- Once V2 stable, V1 can be deprecated
+
+### Core Integration Points
+
+#### 1. Dual-Brain Coordinator Integration
+- Shark's dual-brain coordinator integrated with Opencode's agent system
+- Micro Engineer: Uses local vLLM Qwen for execution, DeepSeek Chat for thinking (API)
+- Macro Engineer: Uses GLM 5 (primary) + DeepSeek R1 (advisory) via Opencode's provider system
+- Coordinator decides which engineer tier to use based on task complexity
+
+#### 2. Safety Stack Mapping
+Each layer mapped to Opencode's equivalent systems:
+- **Guardian** → Mapped to Opencode's file system tools with path restrictions
+- **FirewallMesh** → Implemented as pre-tool hooks in Opencode (parallel execution via Promise.all)
+- **StagnationDetector** → Integrated as a session monitor checking for repetitive failures
+- **Workflow Enforcement** → Mapped to Opencode's verification system and custom step tracking
+
+#### 3. ToolExecutor as Constitutional Anchor
+- All tool calls in Opencode flow through the customized ToolExecutor
+- Safety layers called from within ToolExecutor
+- Preserves the "cannot bypass" property in Opencode environment
+
+#### 4. Opencode-Ultra Plugin for Kraken Brain
+- Provides multi-agent orchestration needed for Kraken Brain
+- Spawns/manages GLM engineer instances
+- Distributes tasks with concurrency control
+- Integrates with existing Shark Agent skills
+- Provides workforce layer for hive orchestrator
+
+### Current State
+- V2 files exist alongside V1 in `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/`
+- Opencode configuration updated in `/home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode.json`
+- Provider setup: Local vLLM for Qwen (Micro execution), GLM 5 API for Macro primary, DeepSeek Chat API for thinking/Macro advisory
+- Plugin system: opencode-ultra installed and configured
+- Safety layers: Partially integrated (Guardian connected to V1 ToolExecutor, WorkflowBlocker pending connection to V2)
+
+## 6. GOLD STANDARD ARTIFACTS
+
+These documents demonstrate perfect execution of the Shark Frankenstein principles.
+
+### 6.1 Space Invaders Build Log
+- **Demonstrates**: Perfect Kraken-level swarm execution
+- **Metrics**: 13 agents, 6 phases, ~16 minutes to production software, 21 bugs caught before user testing
+- **Phases**: Requirements → Planning → Parallel Development → Integration → Review → Bug Fixes → Testing & Debugging
+- **Key Principles**: 
+  1. Clarify before coding (30 seconds saved 2+ hours)
+  2. Plan before executing (Metis agent created execution waves, 60% time savings)
+  3. Specialized agents (each with focused role)
+  4. Parallel execution (multiple agents simultaneously)
+  5. Code review before testing (Momus caught 21 issues, 7 critical bugs fixed pre-test)
+  6. Systematic debugging (hypothesis-driven with logging)
+  7. Documentation throughout (every phase documented)
+  8. Error handling (timeouts with retries, graceful degradation)
+- **Files Generated**: 
+  1. `/home/leviathan/OPENCODE_WORKSPACE/space-invaders/index.html` (complete game - 867 lines)
+  2. `/home/leviathan/OPENCODE_WORKSPACE/space-invaders/test.html` (simple test page)
+  3. `/home/leviathan/OPENCODE_WORKSPACE/SPACE_INVADERS_BUILD_LOG.md` (this document)
+
+### 6.2 Agent Build Logic Chain (Mattermost Integration)
+- **Demonstrates**: Perfect single-agent dual-brain execution
+- **Pattern**: Initial Approach → Research & Pivot → Component Verification → Root Cause Analysis
+- **Critical**: Documents every failure honestly, every incorrect assumption, what should have been done differently
+- **Key Behaviors**:
+  - Documentation First, Implementation Second (read official docs before implementing)
+  - Database Records Are Not Everything (just because data exists doesn't mean app uses it)
+  - Configuration Updates Have Limits (security settings are necessary but not sufficient)
+  - Test Thoroughly Before Claiming Success (never claim works until seeing actual HTTP request/response)
+  - Agent Behavior Reflection (documented failures, lessons learned, honest reporting)
+- **Conclusion**: The slash command `/opencode` does NOT work in Mattermost despite correct configuration, running services, network connectivity, and proper bridge implementation - fundamental approach of database insertion is not supported by Mattermost
+- **Agent Responsibility**: Document every failure, lesson learned, and correct solution so user can make informed decision
+- **Core Principle**: No hallucination - honest reporting of failures
+
+## 7. PENDING WORK
+
+From handover packages 01-06 in `/home/leviathan/OPENCODE_WORKSPACE/OPENCODE WORKSPACE/`:
+
+### IMMEDIATE ACTIONS (Requiring API Keys)
+1. **Stage 2 Local Tests**
+   - Run integration tests requiring external API calls to GLM 5, DeepSeek, and Google (Gemma) models
+   - Prerequisites: Set `GLM_API_KEY`, `DEEPSEEK_API_KEY`, `GOOGLE_API_KEY` environment variables
+   - Expected outcome: All tests pass, confirming macro-engineer functionality
+
+### HIGH PRIORITY (No External Dependencies)
+2. **Placeholder Code Audit**
+   - Search for and replace TODO/FIXME/stub comments with proper implementations or issue tracking
+   - Locations: `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/` (primary), `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/` (secondary)
+   - Expected outcome: All placeholders converted to proper issues or replaced with minimal viable implementations
+
+3. **Model-Async Data Storage**
+   - Implement logging directory for capturing model interactions, token usage, and async operation traces
+   - Location: Should be under `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/.shark/` or similar
+   - Components to log: Input/output token counts, latency, error rates, context window utilization, async operation timing
+   - Expected outcome: Enables performance optimization, supports stagnation detection, provides data for improvement cycles
+
+4. **V2 File Renaming**
+   - Remove parentheses from V2 filenames to prevent CLI tool and shell scripting issues
+   - Files to rename: 
+     - `src/tools/executor(V2).ts` → `src/tools/executor_v2.ts`
+     - `src/workflow/blocker(V2).ts` → `src/workflow/blocker_v2.ts`
+     - `src/brain/coordinator(V2).ts` → `src/brain/coordinator_v2.ts`
+     - Similar renames for guard, debugger, etc. where applicable
+   - Required updates: Import statements, configuration files, build scripts, test files
+   - Expected outcome: Shell tab-completion works correctly, no more need to quote filenames in scripts, standard TypeScript tooling compatibility
+
+### INTEGRATION WORK (Requires Coordination)
+5. **Kraken Ultra Integration**
+   - Deploy debug agents and orchestration components from Kraken Ultra into main Shark Frankenstein workflow
+   - Source: `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/Kraken Ultra/`
+   - Target integration points: Guardian module debugging/validation, Workflow State Machine, AutoDebug enhancement, DualBrain Coordinator tuning, end-to-end verification pipeline
+   - Expected outcome: Full 5-engineer hive orchestrator operational, automated debugging reduces manual intervention, verification gates become fully automated, system ready for swarm engineering deployment
+
+## 8. QUICK REFERENCE: ESSENTIAL FACTS FOR IMMEDIATE PRODUCTIVITY
+
+### Dual-Brain Architecture
+- **Micro Engineer (Free/Local)**: 
+  - Thinker: DeepSeek Chat (API reasoning only) 
+  - Executor: vLLM Qwen 2.5 Coder 7B AWQ (local zero-cost execution)
+  - Fallback Thinker: Gemma 3 4B
+- **Macro Engineer (Paid/Cloud)**: GLM 5 primary + DeepSeek R1 advisory (~$0.02-0.08/task)
+
+### 4-Layer Safety Stack (Mechanical Enforcement)
+1. **Guardian**: Filesystem protection (blocks `/etc`, `/usr`, `~/.ssh/`)
+2. **FirewallMesh**: 4 parallel firewalls (<50ms overhead) 
+3. **StagnationDetector**: 3 identical failures → escalation
+4. **Workflow Enforcement**: PLAN→BUILD→TEST→VERIFY→SHIP (brick-wall)
+
+### Core Philosophies
+- **Earth Density & River Flow**: AI autonomy (water) + mechanical enforcement (earth density riverbanks) = purposeful flow
+- **Anti-Slop Focus**: Warn on theatrical code (mock/simulate) but don't block flow
+- **Only block `rm -rf /` exact**: Legitimate commands like `rm -rf node_modules` MUST work
+- **Connect, Don't Create**: Leverage existing systems rather than rebuilding
+- **YOLO Mode by Default**: Maximum flow, minimal restrictions
+
+### Current Workspace
+- **Active Directory**: `/home/leviathan/OPENCODE_WORKSPACE/`
+- **Shark CLI Source**: `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/`
+- **Kraken Brain Hub**: `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/`
+- **Opencode Config**: `/home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode.json`
+
+## 9. FILESYSTEM NAVIGATION
+
+To immediately orient yourself in a fresh session:
+
+```bash
+# Check active workspace
+ls -la /home/leviathan/OPENCODE_WORKSPACE/
+
+# View Shark CLI source  
+ls -la /home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/
+
+# Check OpenCode configuration  
+cat /home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode.json
+
+# Verify workspace health
+/home/leviathan/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh
+
+# Access key knowledge areas
+ls -la /home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/
+ls -la /home/leviathan/OPENCODE_WORKSPACE/KNOWLEDGE_BASE/
+```
+
+### Key Directories
+- `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/` - Shark CLI source (TypeScript)
+- `/home/leviathan/OPENCODE_WORKSPACE/` - Build reports, handover packages, context docs (**ACTIVE WORKSPACE**)
+- `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/` - Central hub for all development
+  - `Kraken Brain/Kraken Ultra/` - Opencode-ultra powered implementation
+  - `Kraken Brain/Shared Macro Context/` - Shared architecture, build logs, handovers
+  - `Kraken Brain/Shark CLI Context/` - Integration blueprints for Shark→Opencode migration
+  - `Kraken Brain/Shark Agent Context/` - Latest Shark Agent architecture (V3/V4)
+  - `Kraken Brain/Gold Standard Aritfacts/` - Space Invaders + Agent Build Logic Chain
+
+### Key Files
+- `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/tools/executor(V2).ts` - V2 ToolExecutor (Constitutional Anchor)
+- `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/workflow/blocker(V2).ts` - V2 WorkflowBlocker (needs connection to ToolExecutor)
+- `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/guardian/index.ts` - Guardian Firewall (connected to V1 ToolExecutor)
+- `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/src/brain/coordinator(V2).ts` - V2 dual-brain coordinator
+- `/home/leviathan/OPENCODE_WORKSPACE/.config/opencode/opencode/opencode.json` - Opencode configuration with providers and plugins
+- `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/Kraken Ultra/PROJECT_ARCHITECTURE.md` - Kraken Ultra architecture
+- `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/Kraken Ultra/KRAKEN_BRAIN_ORCHESTRATION_PLAN.md` - Hive orchestrator plan
+- `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/Gold Standard Aritfacts/SPACE_INVADERS_BUILD_LOG.md` - Perfect swarm execution reference
+- `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/Gold Standard Aritfacts/AGENT_BUILD_LOGIC_CHAIN.md` - Perfect single-agent execution reference
+
+## VERIFICATION THAT YOU HAVE FULL AWARENESS
+
+If you understand the following, you have complete contextual awareness:
+
+1. **Dual-Brain Micro Engineer**: DeepSeek Chat thinks, local vLLM Qwen executes (zero-cost, lobotomized)
+2. **4-Layer Safety Stack**: Guardian (filesystem) → FirewallMesh (parallel screens) → StagnationDetector (loops) → Workflow (PLAN→BUILD→TEST→VERIFY→SHIP brick wall)
+3. **Earth Density Philosophy**: Mechanical enforcement gives purpose to AI autonomy (water needs riverbanks)
+4. **ToolExecutor Constitutional Anchor**: Single chokepoint where ALL agent actions flow through for enforcement
+5. **Kraken Brain Hive Orchestrator**: DeepSeek → Nemotron (1M token bridge) → 5 GLM engineers
+6. **Gold Standards**: Space Invaders (perfect swarm) + Agent Build Logic Chain (perfect single agent, honest failures)
+7. **Pending Work**: Stage 2 tests (need API keys), placeholder audit, model-async storage, V2 file renaming, Kraken Ultra integration
+8. **Filesystem Layout**: Shark source in `/home/leviathan/OPENCODE_WORKSPACE/shark-frankenstein/`, active workspace in `/home/leviathan/OPENCODE_WORKSPACE/`, Kraken hub in `/home/leviathan/OPENCODE_WORKSPACE/Kraken Brain/`
+
+This completes the contextual injection. You now possess the same project awareness as developed through extensive context absorption and can immediately contribute productively to the Shark Frankenstein ecosystem.

@@ -1,0 +1,52 @@
+{
+  "package_id": "shark-micro-test-package-v1",
+  "version": "1.0",
+  "date": "2026-04-07",
+  "agent": "shark-micro",
+  "plugin": "shark-agent-v4.5",
+  "description": "Mechanical exercise package for Shark Micro Agent (Dual-Brain Sequential: Plan ↔ Build). Each exercise tests a core component via real-time execution in OpenCode. Output is structured JSON data for DevOps Manager review.",
+
+  "agent_characteristics": {
+    "mode": "Dual-brain sequential",
+    "brains": ["Plan Brain", "Build Brain"],
+    "gate_chain": ["plan", "build", "test", "verify", "audit", "delivery"],
+    "tools": ["shark-status", "shark-gate", "shark-evidence"],
+    "key_features": [
+      "MANDATORY SELF-REJECTION on Guardian-flagged commands",
+      "Gate auto-advance on file write/build/test pass",
+      "Iteration loop (3 VERIFY failures → escalate)",
+      "Evidence collection at each gate",
+      "System prompt injection via experimental.chat.system.transform"
+    ]
+  },
+
+  "how_to_use": {
+    "executor": "Any OpenCode agent (plan/build/default)",
+    "method": "Run each exercise in OpenCode. Capture actual output. Fill EXERCISE_RESULTS array.",
+    "output_target": "TEST_PACKAGE_MICRO/EXERCISE_RESULTS.json",
+    "delivery": "Send completed JSON to DevOps Manager for analysis"
+  },
+
+  "exercises": [
+    "EXERCISES/e001-status-micro.json",
+    "EXERCISES/e002-gate-criteria.json",
+    "EXERCISES/e003-guardian-dangerous-command.json",
+    "EXERCISES/e004-guardian-zone-check.json",
+    "EXERCISES/e005-gate-auto-advance-build.json",
+    "EXERCISES/e006-gate-auto-advance-test.json",
+    "EXERCISES/e007-evidence-collection.json",
+    "EXERCISES/e008-iteration-loop-init.json",
+    "EXERCISES/e009-self-rejection-t1-prompt.json",
+    "EXERCISES/e010-brain-switch-plan.json",
+    "EXERCISES/e011-brain-switch-build.json",
+    "EXERCISES/e012-gate-manual-evaluate.json",
+    "EXERCISES/e013-gate-manual-advance.json",
+    "EXERCISES/e014-iteration-escalation-detect.json",
+    "EXERCISES/e015-system-transform-hook.json",
+    "EXERCISES/e016-state-persistence-checkpoint.json",
+    "EXERCISES/e017-evidence-latest-gate.json",
+    "EXERCISES/e018-verify-attempts-counter.json",
+    "EXERCISES/e019-gate-status-all.json",
+    "EXERCISES/e020-coordinator-t1-text.json"
+  ]
+}

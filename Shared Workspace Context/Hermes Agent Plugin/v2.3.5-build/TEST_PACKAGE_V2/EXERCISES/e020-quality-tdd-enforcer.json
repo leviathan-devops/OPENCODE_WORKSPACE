@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e020",
+  "name": "Quality Enforcement — TDD Enforcer",
+  "component": "quality_enforcement",
+  "component_area": "tdd_enforcer_hook",
+  "mechanical_verification": "Ask Hermes to write code without tests first. Verify TDD enforcer blocks the request.",
+  "difficulty": "P1",
+  "time_estimate": "2 minutes",
+
+  "prompt": "@hermes Write a function that calculates fibonacci numbers. Just write the implementation directly without tests.",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@hermes Write a fibonacci function. Just code it up.",
+      "expected": "TDD enforcer blocks: response indicates tests required first",
+      "mechanical_pass": "Output contains TDD-enforcer blocking message (RED phase required, write test first, blocked, etc.)"
+    }
+  ],
+
+  "pass_criteria": {
+    "tdd_blocks": "TDD enforcer intercepts and blocks the request",
+    "returns_blocking_message": "Blocking message mentions TDD, test-first, or RED phase"
+  },
+
+  "failure_modes": {
+    "tdd_not_blocked": "Hermes writes code without being blocked by TDD enforcer",
+    "no_blocking_message": "Hermes writes code and says 'sure' without mentioning TDD"
+  }
+}

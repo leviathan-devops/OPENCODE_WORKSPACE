@@ -1,0 +1,5 @@
+Collecting ninja
+  Using cached ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.1 kB)
+Using cached ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (180 kB)
+Installing collected packages: ninja
+Successfully installed ninja-1.13.0

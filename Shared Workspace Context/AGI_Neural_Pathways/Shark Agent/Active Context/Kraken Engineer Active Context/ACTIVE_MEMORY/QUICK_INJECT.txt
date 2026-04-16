@@ -1,0 +1,37 @@
+# QUICK INJECT — Shark Agent v4.8.3 Firewall (Post-Build)
+
+## One-Line Summary
+Built 155-pattern firewall for shark-agent-v4 but discovered architecture gap: patterns work on tool calls, not on messages sent via `opencode run`.
+
+## Current State
+- Build: ✅ COMPLETE (155 patterns in guardian-hook.ts)
+- Unit Tests: ✅ 17/17 PASS
+- Container Blocking: ❌ NOT WORKING (architecture gap)
+- Next Phase: Implement message-layer firewall
+
+## The Architecture Problem
+```
+tool.execute.before → guardian fires → blocks tool calls
+BUT opencode run sends MESSAGES, not tool calls
+Agent interprets message → may not call blocked tool → guardian never fires
+```
+
+## Checkpoint
+`/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-1-shark-v4.8.3/`
+
+## Files
+- Source: projects/shark-agent-v4/src/hooks/v4.1/guardian-hook.ts
+- Bundle: projects/shark-agent-v4/dist/index.js
+- Memory: Shared Workspace Context/.../ACTIVE_MEMORY/
+
+## To Resume
+1. Read 00_INDEX.md
+2. Read 03_ARCHITECTURE_LESSON.md
+3. Read 06_NEXT_PHASE_PLAN.md
+4. Start with Phase 1: Audit chat-message-hook.ts
+
+## Critical Rules
+1. NEVER block /tmp builds
+2. buildTextToCheck = JSON.stringify(toolArgs) ONLY
+3. Throw to block, console.log is advisory
+4. Preserve v4.7-hotfix-v3 micro-architecture

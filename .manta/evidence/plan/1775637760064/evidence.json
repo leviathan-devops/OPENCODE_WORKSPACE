@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775637760064,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "read",
+    "sessionID": "ses_293be7178ffeNhNABwcazKheyu",
+    "workEvidence": "read:null"
+  }
+}

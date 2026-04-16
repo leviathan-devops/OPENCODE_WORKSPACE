@@ -1,0 +1,11 @@
+{
+  "gate": "verify",
+  "timestamp": 1775933752658,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "read",
+    "sessionID": "ses_282363bf4ffeyt4NeJeJkXuyBH",
+    "workEvidence": "read:null"
+  }
+}

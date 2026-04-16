@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-04-12T15-04-04-910Z",
+  "summary": {
+    "total": 8,
+    "passed": 0,
+    "failed": 8
+  },
+  "results": [
+    {
+      "name": "Identity Wall",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'getCurrentAgent'"
+    },
+    {
+      "name": "Tool Guardian",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createSystemBrain'"
+    },
+    {
+      "name": "Message Guardian",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createChatMessageHook'"
+    },
+    {
+      "name": "Tool Summarizer",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createSystemBrain'"
+    },
+    {
+      "name": "Compaction",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createCompactionHook'"
+    },
+    {
+      "name": "Session Cleanup",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createEventHook'"
+    },
+    {
+      "name": "Gate Evaluation",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createGateHook'"
+    },
+    {
+      "name": "Integration",
+      "error": "The requested module '../../dist/index.js' does not provide an export named 'createChatMessageHook'"
+    }
+  ]
+}

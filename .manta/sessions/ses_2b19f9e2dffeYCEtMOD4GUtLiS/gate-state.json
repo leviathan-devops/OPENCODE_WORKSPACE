@@ -1,0 +1,14 @@
+{
+  "currentGate": "plan",
+  "gateStatus": {
+    "plan": "pending",
+    "build": "pending",
+    "test": "pending",
+    "verify": "pending",
+    "audit": "pending",
+    "delivery": "pending"
+  },
+  "verifyAttempts": 0,
+  "currentIteration": "V1.0",
+  "iterationAttempts": {}
+}

@@ -1,0 +1,9 @@
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287] 
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287]        █     █     █▄   ▄█
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.16.0
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287]   █▄█▀ █     █     █     █  model   /home/leviathan/models/gguf/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:287] 
+(APIServer pid=1882831) INFO 03-21 19:57:00 [utils.py:223] non-default args: {'host': '0.0.0.0', 'model': '/home/leviathan/models/gguf/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf', 'tokenizer': 'Qwen/Qwen2.5-Coder-1.5B-Instruct', 'trust_remote_code': True, 'max_model_len': 16384, 'gpu_memory_utilization': 0.6, 'max_num_seqs': 64, 'enable_chunked_prefill': True}
+(APIServer pid=1882831) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=1882831) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.

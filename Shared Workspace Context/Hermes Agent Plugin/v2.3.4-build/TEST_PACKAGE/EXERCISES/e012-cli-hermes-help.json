@@ -1,0 +1,31 @@
+{
+  "exercise_id": "e012",
+  "name": "CLI — /Hermes help",
+  "component": "cli_commands",
+  "component_area": "/Hermes command handler",
+  "mechanical_verification": "Execute /Hermes help, verify help text listing available commands returned",
+  "difficulty": "P0",
+  "time_estimate": "10 seconds",
+
+  "prompt": "/Hermes help",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "/Hermes help",
+      "expected": "Help text listing /Hermes subcommands (status, agents, memory, help)",
+      "mechanical_pass": "Output contains at least 2 of: status, agents, memory, help"
+    }
+  ],
+
+  "pass_criteria": {
+    "lists_commands": "Output lists available /Hermes subcommands",
+    "includes_help": "Contains 'help' or 'usage' or 'commands'",
+    "not_empty": "Non-empty string returned"
+  },
+
+  "failure_modes": {
+    "empty_output": "/Hermes help returns empty",
+    "generic_help": "Returns generic OpenCode help instead of Hermes-specific"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "exercise_id": "e028",
+  "name": "Stress — Large context memory handling",
+  "component": "stress_testing",
+  "component_area": "context_volume",
+  "mechanical_verification": "Store a large memory (>100KB), retrieve it and verify integrity",
+  "difficulty": "P2",
+  "time_estimate": "1 minute",
+
+  "setup": "Generate large string for memory test (150KB)",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call hermes_remember topic=e028-large value=\"[LARGE_STRING_150KB]\"",
+      "expected": "Storage confirmation for large value",
+      "mechanical_pass": "hermes_remember returns confirmation (large value accepted)"
+    },
+    {
+      "step": 2,
+      "action": "call hermes_recall topic=e028-large",
+      "expected": "Retrieved value is same large string (no truncation)",
+      "mechanical_pass": "Retrieved value length matches stored value length"
+    }
+  ],
+
+  "pass_criteria": {
+    "large_store_succeeds": "150KB memory stored without error",
+    "large_retrieve_succeeds": "150KB memory retrieved without error",
+    "no_truncation": "Retrieved size === stored size"
+  },
+
+  "failure_modes": {
+    "store_fails_large": "hermes_remember rejects large value",
+    "retrieval_truncates": "hermes_recall returns truncated value",
+    "memory_corruption": "Retrieved value differs from stored value"
+  }
+}

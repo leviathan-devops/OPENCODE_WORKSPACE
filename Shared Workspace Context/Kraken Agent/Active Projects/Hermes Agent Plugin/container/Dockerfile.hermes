@@ -1,0 +1,24 @@
+# Dockerfile — Hermes Agent v3 Container Test
+# Builds a Docker image with Hermes v3 plugin for container ship testing
+
+FROM oven/bun:1.3 AS base
+WORKDIR /app
+
+# Install OpenCode
+RUN bun add -g opencode-ai@latest
+
+# Copy full project for testing
+COPY package.json bun.lock /app/
+COPY tsconfig.json build.ts /app/
+COPY src/ /app/src/
+COPY TESTS/ /app/TESTS/
+COPY scripts/ /app/scripts/
+COPY container/test-tui-replica.sh /app/
+
+# Pre-create .hermes directory for container testing
+RUN mkdir -p /root/.hermes/memory /app/.hermes
+
+# Build inside container
+RUN bun install && bun build.ts
+
+CMD ["/bin/bash"]

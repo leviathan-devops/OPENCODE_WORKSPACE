@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {}
+  },
+  "plugin": [
+    "file:///root/.config/opencode/plugins/kraken-agent/index.js",
+    "file:///root/.config/opencode/plugins/shark-agent/index.js",
+    "file:///root/.config/opencode/plugins/manta-agent/index.js",
+    "file:///root/.config/opencode/plugins/subagent-manager/dist/index.js"
+  ],
+  "agent": {
+    "kraken": {
+      "name": "kraken",
+      "description": "Kraken v2.0 - Multi-agent orchestrator with real Docker container spawning",
+      "mode": "primary",
+      "permission": {
+        "task": "allow"
+      },
+      "color": "#FF6B35"
+    }
+  },
+  "permission": {
+    "*": {
+      "*": "allow"
+    }
+  }
+}

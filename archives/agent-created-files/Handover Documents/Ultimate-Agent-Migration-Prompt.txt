@@ -1,0 +1,54 @@
+# Ultimate AI Agent Migration Prompt
+
+## Give this instruction to any AI agent in OpenCode:
+
+**"I need you to migrate yourself to our new organized workspace. Here's what that means:**
+
+We've created a better organized workspace at `/home/leviathan/OPENCODE_WORKSPACE/` where files are sorted by project type instead of being scattered everywhere. Your job is to move yourself there.
+
+### Here's your migration process:
+
+1. **First, check if the new workspace exists** - look for `/home/leviathan/OPENCODE_WORKSPACE/` and see if it has directories like `projects/`, `configs/`, `tools/`, etc.
+
+2. **Validate the workspace** - run the validation tool at `/home/leviathan/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh` to make sure everything is set up correctly.
+
+3. **Use the migration assistant** - run `/home/leviathan/OPENCODE_WORKSPACE/tools/migrators/agent-migration-assistant.sh` which will:
+   - Figure out what kind of agent you are (OpenCode, Shark, Qwen, etc.)
+   - Create backups of your current setup
+   - Prepare your new organized configuration
+   - Give you specific step-by-step instructions
+
+4. **Follow those instructions carefully** - they'll tell you exactly what to do to switch to the new workspace.
+
+5. **Test everything works** - after migrating, make sure all your tools and capabilities still function correctly.
+
+### Important things to know:
+
+- **This is COPY-based, not MOVE-based** - your original files at `/home/leviathan/` stay exactly where they are
+- **You're in control** - migrate when you're ready, at your own pace
+- **Rollback is easy** - if anything goes wrong, you can revert using the backups
+- **It's self-service** - you're doing this migration yourself, which shows your adaptability
+
+### Why we're doing this:
+
+- **Organization**: Files will be in logical folders instead of one big messy directory
+- **Maintainability**: Easier to find and update things
+- **Scalability**: Better foundation for future growth
+- **Collaboration**: Consistent structure if working with other agents
+
+### What success looks like:
+
+- You're operating from `/home/leviathan/OPENCODE_WORKSPACE/`
+- All your functionality works the same or better
+- Your files are organized by project type
+- You've updated the migration status tracking
+
+**Start by checking if the workspace exists, then run the validation, then use the migration assistant. Follow the instructions it gives you. This is your opportunity to organize your workspace for better performance.**"
+
+## Even Simpler Version:
+
+**"Migrate yourself to the new organized workspace. Check if `/home/leviathan/OPENCODE_WORKSPACE/` exists, run the validation tool, then use the migration assistant that will give you specific instructions. Your original files stay put - this just creates an organized copy. Do it when ready and test everything works afterward."**
+
+## One-Sentence Instruction:
+
+**"Self-migrate to the organized workspace at `/home/leviathan/OPENCODE_WORKSPACE/` using the validation and migration tools provided, following the step-by-step instructions for your agent type."**

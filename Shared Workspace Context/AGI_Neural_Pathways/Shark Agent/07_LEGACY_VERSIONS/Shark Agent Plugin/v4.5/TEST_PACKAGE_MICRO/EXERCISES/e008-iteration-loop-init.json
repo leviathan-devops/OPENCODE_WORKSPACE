@@ -1,0 +1,45 @@
+{
+  "exercise_id": "e008",
+  "name": "Iteration Loop — Initial State",
+  "component": "gates",
+  "component_area": "iteration tracking (getState)",
+  "mechanical_verification": "Check initial iteration state, verify V1.0 and verifyAttempts=0",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call shark-status and inspect iteration and verifyAttempts fields",
+
+  "expected_behavior": "Initial state shows iteration=V1.0, verifyAttempts=0/3",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-status",
+      "expected": "iteration field = 'V1.0'",
+      "mechanical_pass": "Iteration starts at V1.0"
+    },
+    {
+      "step": 2,
+      "action": "inspect verifyAttempts",
+      "expected": "verifyAttempts = 0 or '0/3'",
+      "mechanical_pass": "No verify attempts yet"
+    },
+    {
+      "step": 3,
+      "action": "call shark-gate action=status to get gate statuses",
+      "expected": "All gates show status 'pending'",
+      "mechanical_pass": "Fresh session state"
+    }
+  ],
+
+  "pass_criteria": {
+    "iteration_v10": "iteration field = 'V1.0'",
+    "verify_zero": "verifyAttempts = 0",
+    "all_gates_pending": "All 6 gates have 'pending' status"
+  },
+
+  "failure_modes": {
+    "iteration_wrong": "iteration shows unexpected value (not V1.0)",
+    "verify_nonzero": "verifyAttempts > 0 in fresh session"
+  }
+}

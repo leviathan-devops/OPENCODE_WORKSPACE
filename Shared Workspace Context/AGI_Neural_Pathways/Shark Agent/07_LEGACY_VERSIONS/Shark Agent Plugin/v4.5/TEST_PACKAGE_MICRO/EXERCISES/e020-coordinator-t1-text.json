@@ -1,0 +1,53 @@
+{
+  "exercise_id": "e020",
+  "name": "Coordinator T1 Text — Brain Switching Description",
+  "component": "brains",
+  "component_area": "COORDINATOR_T1 in shark-micro brain prompts",
+  "mechanical_verification": "Query agent's understanding of coordinator role (even though coordinator class was removed, COORDINATOR_T1 text remains as description)",
+  "difficulty": "P2",
+  "time_estimate": "15 seconds",
+
+  "prompt": "What is your coordinator? How does brain switching work between Plan and Build?",
+
+  "expected_behavior": "Agent explains coordinator role (managing brain switching) even though the coordinator class itself was removed. T1 includes COORDINATOR_T1 text that describes the switching mechanism.",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Ask: What is your coordinator?",
+      "expected": "Agent provides explanation of coordinator role",
+      "mechanical_pass": "Coordinator T1 text accessible"
+    },
+    {
+      "step": 2,
+      "action": "Ask: How does brain switching work?",
+      "expected": "Mentions Plan Brain and Build Brain switching mechanism",
+      "mechanical_pass": "Brain switching described"
+    },
+    {
+      "step": 3,
+      "action": "Verify coordinator text is in system context",
+      "expected": "COORDINATOR_T1 appears in agent's system prompt instructions",
+      "mechanical_pass": "Coordinator text embedded in agent T1"
+    },
+    {
+      "step": 4,
+      "action": "Ask about coordination rules",
+      "expected": "Mentions rules for when to switch brains",
+      "mechanical_pass": "Coordination logic present"
+    }
+  ],
+
+  "pass_criteria": {
+    "coordinator_explained": "Agent can explain coordinator role",
+    "brain_switch_described": "Agent describes Plan↔Build switching",
+    "coordinator_t1_present": "COORDINATOR_T1 text present in agent's context"
+  },
+
+  "failure_modes": {
+    "no_coordinator_knowledge": "Agent doesn't know about coordinator",
+    "wrong_switch_model": "Agent describes wrong brain switching model"
+  },
+
+  "note": "Coordinator class was removed in V4.4 (dead code). COORDINATOR_T1 is a string constant that remains as documentation-in-prompt describing what coordination would look like if implemented."
+}

@@ -1,0 +1,43 @@
+{
+  "workspace_created": "2026-03-26T01:50:53+04:00",
+  "original_location": "/home/leviathan",
+  "new_location": "/home/leviathan/OPENCODE_WORKSPACE",
+  "migration_phase": "completed",
+  "agents": {
+    "opencode": {
+      "status": "migrated",
+      "original_config": "/home/leviathan/.config/opencode",
+      "new_config": "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode",
+      "last_check": null,
+      "backup_location": null
+    },
+    "shark": {
+      "status": "migrated",
+      "original_config": "/home/leviathan/.shark-agent",
+      "new_config": "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent",
+      "last_check": null,
+      "backup_location": null
+    },
+    "qwen": {
+      "status": "migrated",
+      "original_config": null,
+      "new_config": null,
+      "last_check": null,
+      "backup_location": null
+    },
+    "glm": {
+      "status": "migrated",
+      "original_config": null,
+      "new_config": null,
+      "last_check": null,
+      "backup_location": null
+    }
+  },
+  "tools_available": [
+    "agent-migration-assistant.sh",
+    "update-paths.py",
+    "validate-workspace.sh"
+  ],
+  "validation_status": "completed",
+  "completed_date": "2026-03-29T05:54:05+04:00"
+}

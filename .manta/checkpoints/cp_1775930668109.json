@@ -1,0 +1,10 @@
+{
+  "id": "cp_1775930668109",
+  "timestamp": "2026-04-11T18:04:28.109Z",
+  "message": "test-checkpoint",
+  "state": {
+    "data": {},
+    "versions": {},
+    "timestamp": 1775930668109
+  }
+}

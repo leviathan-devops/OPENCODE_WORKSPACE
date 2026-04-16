@@ -1,0 +1,11 @@
+{
+  "gate": "audit",
+  "timestamp": 1775950844931,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "terminal",
+    "sessionID": "test-session",
+    "workEvidence": "ran:cat README.md"
+  }
+}

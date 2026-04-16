@@ -1,0 +1,31 @@
+{
+  "exercise_id": "e030",
+  "name": "Stress — Concurrent tool calls don't clobber",
+  "component": "stress_testing",
+  "component_area": "concurrency",
+  "mechanical_verification": "Run 3 tools concurrently, verify each returns correct individual result",
+  "difficulty": "P2",
+  "time_estimate": "1 minute",
+
+  "prompt": "call lint target=/tmp & call symbols target=/tmp & call complexity_hotspots target=/tmp & wait",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call lint target=/tmp && call symbols target=/tmp && call complexity_hotspots target=/tmp",
+      "expected": "All 3 tools return results without interference",
+      "mechanical_pass": "Each tool returns its own result (string output)"
+    }
+  ],
+
+  "pass_criteria": {
+    "all_complete": "All 3 tools complete without crash",
+    "no_interference": "lint output is lint output, symbols output is symbols output (not mixed)",
+    "no_resource_conflict": "No 'file locked' or 'resource busy' errors"
+  },
+
+  "failure_modes": {
+    "mixed_output": "Tools return each other's output (interleaved/corrupted)",
+    "resource_conflict": "One tool blocks another, or 'resource busy' error"
+  }
+}

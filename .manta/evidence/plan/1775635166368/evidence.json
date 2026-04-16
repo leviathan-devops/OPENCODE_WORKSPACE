@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775635166368,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:ls -la /home/leviathan/OPENCODE_WORKSPACE/build-packages/manta-shark-v4.6/src/"
+  }
+}

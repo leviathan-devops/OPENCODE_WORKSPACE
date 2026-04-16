@@ -1,0 +1,706 @@
+{
+  "schema_version": 1,
+  "scanned_at": "2026-04-02T01:12:10.363Z",
+  "files": [
+    {
+      "path": "archives/kraken-brain-handover/README.md",
+      "title": "🦈 Shark CLI - Handover Package 6",
+      "summary": "[Warning: 100+ docs found, listing first 100] **Created**: 2026-03-28 **Project**: Shark Frankenstein (Dual-Brain AI Coding Assistant) **Build**: V2 Integration with GLM 5 --- ```bash cat 01_BUILD_REPORTS.md cat 02_PROJECT_ARCHITECTURES.md cat...",
+      "lines": 187,
+      "mtime": 1774751236136.3696
+    },
+    {
+      "path": "archives/turboquant-memory/dynamic_vram/README.md",
+      "title": "Dynamic VRAM Allocation System",
+      "summary": "A Python-based system for dynamically managing VRAM/RAM allocation for PyTorch tensors, enabling execution of models larger than available VRAM with minimal performance impact. - **VBAR (Virtual Ba...",
+      "lines": 415,
+      "mtime": 1774751236123.4607
+    },
+    {
+      "path": "archives/turboquant-memory/turboquant/README.md",
+      "title": "TurboQuant: 2-bit KV Cache Compression for LLMs",
+      "summary": "Implementation of Google's TurboQuant algorithm for extreme KV cache compression. TurboQuant compresses the key-value (KV) cache of large language models to 2 bits per coordinate with zero accuracy...",
+      "lines": 245,
+      "mtime": 1774751236117.126
+    },
+    {
+      "path": "documentation/agent-failures/README.md",
+      "title": "Agent Failure Documentation",
+      "summary": "**Location**: `/home/leviathan/OPENCODE_WORKSPACE/documentation/agent-failures/` **Purpose**: Centralized analysis of agent failures, derailments, and Shark architecture violations --- This directo...",
+      "lines": 124,
+      "mtime": 1774752557665.292
+    },
+    {
+      "path": "documentation/AGENTS.md",
+      "title": "OpenCode Agents Configuration",
+      "summary": "This project uses OpenCode for AI-assisted development. The default agent for general coding tasks. - Language: Mixed - Framework: Various - Testing: Not specified",
+      "lines": 13,
+      "mtime": 1774751235982.1973
+    },
+    {
+      "path": "models/omnicoder-gguf/README.md",
+      "title": "OmniCoder-9B-GGUF",
+      "summary": "--- base_model: Tesslate/OmniCoder-9B tags: - llama-cpp - gguf - qwen3.5 - omnicoder - tesslate - code - agent license: apache-2.0 --- <div align=\"center\"> <img src=\"https://huggingface.co/Tesslate...",
+      "lines": 68,
+      "mtime": 1774907992469.88
+    },
+    {
+      "path": "models/Qwen2.5-Coder-7B-Instruct-AWQ/README.md",
+      "title": "Qwen2.5-Coder-7B-Instruct-AWQ",
+      "summary": "--- license: apache-2.0 license_link: https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct/blob/main/LICENSE language: - en base_model: - Qwen/Qwen2.5-Coder-7B-Instruct pipeline_tag: text-generati...",
+      "lines": 139,
+      "mtime": 1774129044589.1792
+    },
+    {
+      "path": "models/README.md",
+      "title": "nomic-embed-text-v1.5 - GGUF",
+      "summary": "--- base_model: nomic-ai/nomic-embed-text-v1.5 inference: false language: - en license: apache-2.0 model_creator: Nomic model_name: nomic-embed-text-v1.5 model_type: bert pipeline_tag: sentence-sim...",
+      "lines": 81,
+      "mtime": 1775081105903.4946
+    },
+    {
+      "path": "projects/agent-lab/packages/pod1-kraken-os-integration/README.md",
+      "title": "Pod 1: Kraken OS Integration Layer",
+      "summary": "Bridge between visual interface and existing Shark/Kraken infrastructure. Provides API Gateway, Agent Orchestration Service, Configuration Management, and Tool Execution Engine. - REST/WebSocket in...",
+      "lines": 50,
+      "mtime": 1774826137305.1157
+    },
+    {
+      "path": "projects/agent-lab/packages/pod2-visual-builder-frontend/README.md",
+      "title": "Pod 2: Visual Builder Frontend",
+      "summary": "React/Three.js-based visual agent design interface with 2D/3D \"character creation\" for agents and real-time preview. - TypeScript + Vite build system - Zustand for state management - React Router f...",
+      "lines": 52,
+      "mtime": 1774826146620.267
+    },
+    {
+      "path": "projects/agent-lab/packages/pod3-conversational-ai-system/README.md",
+      "title": "Pod 3: Conversational AI System",
+      "summary": "Natural language orchestrator agent with multi-model NLP pipeline for specification extraction and refinement through dialogue. - Enhanced `sisyphus` agent with lab-specific dialogue capabilities -...",
+      "lines": 52,
+      "mtime": 1774826153423.3774
+    },
+    {
+      "path": "projects/agent-lab/packages/pod4-swarm-coordination-engine/README.md",
+      "title": "Pod 4: Swarm Coordination Engine",
+      "summary": "Shark agent swarm management and task decomposition with Redis-based queue system for parallel execution. - Breaks complex agent builds into parallelizable sub-tasks - Dependency graph construction...",
+      "lines": 54,
+      "mtime": 1774826159879.4822
+    },
+    {
+      "path": "projects/agent-lab/packages/pod5-testing-deployment-infrastructure/README.md",
+      "title": "Pod 5: Testing & Deployment Infrastructure",
+      "summary": "Comprehensive CI/CD pipeline with OpenTelemetry monitoring, Docker containerization, and production deployment. - GitHub Actions workflows - Automated testing across all pods - Build artifact gener...",
+      "lines": 58,
+      "mtime": 1774826167215.6013
+    },
+    {
+      "path": "projects/agent-lab/packages/shared/README.md",
+      "title": "Shared Utilities and Types",
+      "summary": "Common utilities, TypeScript types, and shared libraries used across all Agent Lab pods. - Agent specification interfaces - API contract types - Event and message schemas - Logging utilities with s...",
+      "lines": 55,
+      "mtime": 1774826173638.7053
+    },
+    {
+      "path": "projects/agent-lab/README.md",
+      "title": "Agent Lab",
+      "summary": "**Visual Operating System for AI Agent Development** Agent Lab transforms Shark/Kraken CLI into a visual operating system for designing, building, and testing custom AI agents through natural langu...",
+      "lines": 89,
+      "mtime": 1774826111430.695
+    },
+    {
+      "path": "projects/general/documentation/AGENTS.md",
+      "title": "OpenCode Agents Configuration",
+      "summary": "This project uses OpenCode for AI-assisted development. The default agent for general coding tasks. - Language: Mixed - Framework: Various - Testing: Not specified",
+      "lines": 13,
+      "mtime": 1774751235617.0964
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/contrib/bulk_tool_caller/README.md",
+      "title": "Bulk Tool Caller",
+      "summary": "This module provides the `BulkToolCaller` class, which extends the `MCPMixin` to offer tools for performing multiple tool calls in a single request to a FastMCP server. This can be useful for optim...",
+      "lines": 35,
+      "mtime": 1774850066112.1987
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/contrib/component_manager/README.md",
+      "title": "Component Manager – Contrib Module for FastMCP",
+      "summary": "The **Component Manager** provides a unified API for enabling and disabling tools, resources, and prompts at runtime in a FastMCP server. This module is useful for dynamic control over which compon...",
+      "lines": 170,
+      "mtime": 1774850066254.2014
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/contrib/mcp_mixin/README.md",
+      "title": "MCP Mixin",
+      "summary": "from mcp.types import ToolAnnotations This module provides the `MCPMixin` base class and associated decorators (`@mcp_tool`, `@mcp_resource`, `@mcp_prompt`). It allows developers to easily define c...",
+      "lines": 148,
+      "mtime": 1774850066256.2014
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/contrib/README.md",
+      "title": "FastMCP Contrib Modules",
+      "summary": "This directory holds community-contributed modules for FastMCP. These modules extend FastMCP's functionality but are not officially maintained by the core team. **Guarantees:** *   Modules in `cont...",
+      "lines": 19,
+      "mtime": 1774850066112.1987
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/server/openapi/README.md",
+      "title": "OpenAPI Server Implementation (New)",
+      "summary": "This directory contains the next-generation FastMCP server implementation for OpenAPI integration, designed to replace the legacy implementation in `/server/openapi.py`. The new implementation uses...",
+      "lines": 266,
+      "mtime": 1774850067577.3354
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/fastmcp/utilities/openapi/README.md",
+      "title": "OpenAPI Utilities",
+      "summary": "This directory contains the OpenAPI integration utilities for FastMCP. The implementation follows a **stateless request building strategy** using `openapi-core` for high-performance, per-request HT...",
+      "lines": 211,
+      "mtime": 1774850068371.243
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/a2a_protocol/litellm_completion_bridge/README.md",
+      "title": "A2A to LiteLLM Completion Bridge",
+      "summary": "Routes A2A protocol requests through `litellm.acompletion`, enabling any LiteLLM-supported provider to be invoked via A2A. ``` A2A Request → Transform → litellm.acompletion → Transform → A2A Respon...",
+      "lines": 75,
+      "mtime": 1774850065659.1897
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/a2a_protocol/providers/litellm_completion/README.md",
+      "title": "A2A to LiteLLM Completion Bridge",
+      "summary": "Routes A2A protocol requests through `litellm.acompletion`, enabling any LiteLLM-supported provider to be invoked via A2A. ``` A2A Request → Transform → litellm.acompletion → Transform → A2A Respon...",
+      "lines": 75,
+      "mtime": 1774850065919.1948
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/completion_extras/README.md",
+      "title": "README.md",
+      "summary": "Logic specific for `litellm.completion`. Includes: - Bridge for transforming completion requests to responses api requests",
+      "lines": 4,
+      "mtime": 1774850066621.2085
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/containers/README.md",
+      "title": "Container Files API",
+      "summary": "This module provides a unified interface for container file operations across multiple LLM providers (OpenAI, Azure OpenAI, etc.). ``` endpoints.json                    # Declarative endpoint defin...",
+      "lines": 242,
+      "mtime": 1774850066845.213
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/arize/README.md",
+      "title": "Arize Phoenix Prompt Management Integration",
+      "summary": "This integration enables using prompt versions from Arize Phoenix with LiteLLM's completion function. - Fetch prompt versions from Arize Phoenix API - Workspace-based access control through Arize P...",
+      "lines": 211,
+      "mtime": 1774850067521.226
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/bitbucket/README.md",
+      "title": "LiteLLM BitBucket Prompt Management",
+      "summary": "A powerful prompt management system for LiteLLM that fetches `.prompt` files from BitBucket repositories. This enables team-based prompt management with BitBucket's built-in access control and vers...",
+      "lines": 318,
+      "mtime": 1774850067734.2305
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/dotprompt/README.md",
+      "title": "LiteLLM Dotprompt Manager",
+      "summary": "A powerful prompt management system for LiteLLM that supports [Google's Dotprompt specification](https://google.github.io/dotprompt/getting-started/). This allows you to manage your AI prompts in o...",
+      "lines": 316,
+      "mtime": 1774850068345.2422
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/gitlab/README.md",
+      "title": "LiteLLM gitlab Prompt Management",
+      "summary": "A powerful prompt management system for LiteLLM that fetches `.prompt` files from gitlab repositories. This enables team-based prompt management with gitlab's built-in access control and version co...",
+      "lines": 318,
+      "mtime": 1774850068666.2485
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/levo/README.md",
+      "title": "Levo AI Integration",
+      "summary": "This integration enables sending LLM observability data to Levo AI using OpenTelemetry (OTLP) protocol. The Levo integration extends LiteLLM's OpenTelemetry support to automatically send traces to ...",
+      "lines": 126,
+      "mtime": 1774850068986.255
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/integrations/websearch_interception/ARCHITECTURE.md",
+      "title": "WebSearch Interception Architecture",
+      "summary": "Server-side WebSearch tool execution for models that don't natively support it (e.g., Bedrock/Claude). User makes **ONE** `litellm.messages.acreate()` call → Gets final answer with search results. ...",
+      "lines": 293,
+      "mtime": 1774850069713.269
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/README.md",
+      "title": "README.md",
+      "summary": "This folder contains general-purpose utilities that are used in multiple places in the codebase. Core files: - `streaming_handler.py`: The core streaming logic + streaming related helper utils - `c...",
+      "lines": 14,
+      "mtime": 1774850069904.2727
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/azure_ai/README.md",
+      "title": "README.md",
+      "summary": "`/chat/completion` calls routed via `openai.py`.",
+      "lines": 1,
+      "mtime": 1774850080668.483
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/cohere/rerank/guardrail_translation/README.md",
+      "title": "Cohere Rerank Guardrail Translation Handler",
+      "summary": "Handler for processing the rerank endpoint (`/v1/rerank`) with guardrails. This handler processes rerank requests by: 1. Extracting the query text from the request 2. Applying guardrails to the que...",
+      "lines": 230,
+      "mtime": 1774850081117.4915
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/gemini/context_caching/README.md",
+      "title": "README.md",
+      "summary": "[Go here for the Gemini Context Caching code](../../vertex_ai/context_caching/)",
+      "lines": 1,
+      "mtime": 1774850081294.495
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/hosted_vllm/embedding/README.md",
+      "title": "README.md",
+      "summary": "No transformation is required for hosted_vllm embedding. VLLM is a superset of OpenAI's `embedding` endpoint. To pass provider-specific parameters, see [this](https://docs.litellm.ai/docs/completio...",
+      "lines": 5,
+      "mtime": 1774850081376.4966
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/litellm_proxy/skills/README.md",
+      "title": "LiteLLM Skills - Database-Backed Skills Storage",
+      "summary": "This module provides database-backed skills storage as an alternative to Anthropic's cloud-based Skills API. It enables using skills with **any LLM provider** (Bedrock, OpenAI, Azure, etc.) by stor...",
+      "lines": 382,
+      "mtime": 1774850081986.5085
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai_like/README.md",
+      "title": "JSON-Based OpenAI-Compatible Provider Configuration",
+      "summary": "This directory contains the new JSON-based configuration system for OpenAI-compatible providers. Instead of creating a full Python module for simple OpenAI-compatible providers, you can now define ...",
+      "lines": 130,
+      "mtime": 1774850082205.5127
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/chat/guardrail_translation/README.md",
+      "title": "README.md",
+      "summary": "Translation of OpenAI `/chat/completions` input and output to a custom guardrail. This enables guardrails to be applied to OpenAI `/chat/completions` requests and responses.",
+      "lines": 3,
+      "mtime": 1774850082094.5105
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/completion/guardrail_translation/README.md",
+      "title": "OpenAI Text Completion Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's text completion endpoint (`/v1/completions`) with guardrails. This handler processes text completion requests by: 1. Extracting the text prompt(s) from the request 2...",
+      "lines": 159,
+      "mtime": 1774850082110.511
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/image_generation/guardrail_translation/README.md",
+      "title": "OpenAI Image Generation Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's image generation endpoint with guardrails. This handler processes image generation requests by: 1. Extracting the text prompt from the request 2. Applying guardrails...",
+      "lines": 107,
+      "mtime": 1774850082133.5115
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/responses/guardrail_translation/README.md",
+      "title": "OpenAI Responses API Guardrail Translation Handler",
+      "summary": "This module provides guardrail translation support for the OpenAI Responses API format. The `OpenAIResponsesHandler` class handles the translation of guardrail operations for both input and output ...",
+      "lines": 120,
+      "mtime": 1774850082146.5117
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/speech/guardrail_translation/README.md",
+      "title": "OpenAI Text-to-Speech Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's text-to-speech endpoint (`/v1/audio/speech`) with guardrails. This handler processes text-to-speech requests by: 1. Extracting the input text from the request 2. App...",
+      "lines": 179,
+      "mtime": 1774850082164.512
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/openai/transcriptions/guardrail_translation/README.md",
+      "title": "OpenAI Audio Transcription Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's audio transcription endpoint (`/v1/audio/transcriptions`) with guardrails. This handler processes audio transcription responses by: 1. Applying guardrails to the tra...",
+      "lines": 160,
+      "mtime": 1774850082165.512
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/pass_through/guardrail_translation/README.md",
+      "title": "Pass-Through Endpoint Guardrail Translation",
+      "summary": "This module is located under `litellm/llms/` (instead of with the main passthrough code) because: 1. **Auto-discovery**: The `load_guardrail_translation_mappings()` function in `litellm/llms/__init...",
+      "lines": 42,
+      "mtime": 1774850082248.5137
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/llms/README.md",
+      "title": "README.md",
+      "summary": "To make it easy to see how calls are transformed for each model/provider: we are working on moving all supported litellm providers to a folder structure, where folder name is the supported litellm ...",
+      "lines": 12,
+      "mtime": 1774850080490.4792
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/passthrough/README.md",
+      "title": "README.md",
+      "summary": "This makes it easier to pass through requests to the LLM APIs. E.g. Route to VLLM's `/classify` endpoint: ```python import litellm response = litellm.llm_passthrough_route( model=\"hosted_vllm/paplu...",
+      "lines": 118,
+      "mtime": 1774850082802.5244
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/client/cli/README.md",
+      "title": "LiteLLM Proxy CLI",
+      "summary": "The LiteLLM Proxy CLI is a command-line tool for managing your LiteLLM proxy server. It provides commands for managing models, viewing server status, and interacting with the proxy server. ```bash ...",
+      "lines": 537,
+      "mtime": 1774850086932.6047
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/client/README.md",
+      "title": "LiteLLM Proxy Client",
+      "summary": "A Python client library for interacting with the LiteLLM proxy server. This client provides a clean, typed interface for managing models, keys, credentials, and making chat completions. ```bash pip...",
+      "lines": 394,
+      "mtime": 1774850086920.6045
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/discovery_endpoints/README.md",
+      "title": "README.md",
+      "summary": "Return the proxy base url and server root path, so UI can construct the correct url to access the proxy. This is useful when the proxy is deployed at a different path than the root of the domain. *...",
+      "lines": 13,
+      "mtime": 1774850087028.6067
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/guardrails/guardrail_hooks/ibm_guardrails/README.md",
+      "title": "IBM Guardrails Detector Integration",
+      "summary": "This integration provides support for IBM's FMS Guardrails detectors in LiteLLM. It supports both direct detector server calls and calls via the FMS Guardrails Orchestrator. - Support for IBM Detec...",
+      "lines": 200,
+      "mtime": 1774850087124.6084
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/hooks/mcp_semantic_filter/ARCHITECTURE.md",
+      "title": "MCP Semantic Tool Filter Architecture",
+      "summary": "When multiple MCP servers are connected, the proxy may expose hundreds of tools. Sending all tools in every request wastes context window tokens and increases cost. The semantic filter keeps only t...",
+      "lines": 97,
+      "mtime": 1774850087269.6113
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/README.md",
+      "title": "litellm-proxy",
+      "summary": "A local, fast, and lightweight **OpenAI-compatible server** to call 100+ LLM APIs. ```shell $ pip install litellm ``` ```shell $ litellm --model ollama/codellama ``` ```python import openai # opena...",
+      "lines": 44,
+      "mtime": 1774850082812.5247
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/proxy/types_utils/README.md",
+      "title": "README.md",
+      "summary": "Utility functions for proxy types.py",
+      "lines": 1,
+      "mtime": 1774850087957.6248
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/realtime_api/README.md",
+      "title": "README.md",
+      "summary": "Abstraction / Routing logic for OpenAI's `/v1/realtime` endpoint.",
+      "lines": 1,
+      "mtime": 1774850088032.6262
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/types/interactions/README.md",
+      "title": "Interactions API Types",
+      "summary": "This directory contains type definitions for the Google Interactions API. The `generated.py` file is auto-generated from the official OpenAPI spec: https://ai.google.dev/static/api/interactions.ope...",
+      "lines": 49,
+      "mtime": 1774850088176.629
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/litellm/types/proxy/README.md",
+      "title": "README.md",
+      "summary": "These are file-specific types for the proxy. For Types you expect to be used across the proxy, put them in `litellm/proxy/_types.py`",
+      "lines": 3,
+      "mtime": 1774850088207.6296
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/openapi_pydantic/v3/v3_0/README.md",
+      "title": "OpenAPI v3.0 schema classes",
+      "summary": "Due to the reserved words in python and pydantic, the following fields are used with [alias](https://pydantic-docs.helpmanual.io/usage/schema/#field-customisation) feature provided by pydantic: | C...",
+      "lines": 40,
+      "mtime": 1774850068425.244
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/openapi_pydantic/v3/v3_1/README.md",
+      "title": "OpenAPI v3.1 schema classes",
+      "summary": "Due to the reserved words in python and pydantic, the following fields are used with [alias](https://pydantic-docs.helpmanual.io/usage/schema/#field-customisation) feature provided by pydantic: | C...",
+      "lines": 42,
+      "mtime": 1774850068620.7542
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/playwright/driver/package/README.md",
+      "title": "playwright-core",
+      "summary": "This package contains the no-browser flavor of [Playwright](http://github.com/microsoft/playwright).",
+      "lines": 4,
+      "mtime": 1774850094547.7527
+    },
+    {
+      "path": "projects/hive/.venv/lib/python3.11/site-packages/playwright/driver/README.md",
+      "title": "README.md",
+      "summary": "manylinux1_x86_64.whl driver package",
+      "lines": 1,
+      "mtime": 1774850067605.2278
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/contrib/bulk_tool_caller/README.md",
+      "title": "Bulk Tool Caller",
+      "summary": "This module provides the `BulkToolCaller` class, which extends the `MCPMixin` to offer tools for performing multiple tool calls in a single request to a FastMCP server. This can be useful for optim...",
+      "lines": 35,
+      "mtime": 1774850066112.1987
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/contrib/component_manager/README.md",
+      "title": "Component Manager – Contrib Module for FastMCP",
+      "summary": "The **Component Manager** provides a unified API for enabling and disabling tools, resources, and prompts at runtime in a FastMCP server. This module is useful for dynamic control over which compon...",
+      "lines": 170,
+      "mtime": 1774850066254.2014
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/contrib/mcp_mixin/README.md",
+      "title": "MCP Mixin",
+      "summary": "from mcp.types import ToolAnnotations This module provides the `MCPMixin` base class and associated decorators (`@mcp_tool`, `@mcp_resource`, `@mcp_prompt`). It allows developers to easily define c...",
+      "lines": 148,
+      "mtime": 1774850066256.2014
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/contrib/README.md",
+      "title": "FastMCP Contrib Modules",
+      "summary": "This directory holds community-contributed modules for FastMCP. These modules extend FastMCP's functionality but are not officially maintained by the core team. **Guarantees:** *   Modules in `cont...",
+      "lines": 19,
+      "mtime": 1774850066112.1987
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/server/openapi/README.md",
+      "title": "OpenAPI Server Implementation (New)",
+      "summary": "This directory contains the next-generation FastMCP server implementation for OpenAPI integration, designed to replace the legacy implementation in `/server/openapi.py`. The new implementation uses...",
+      "lines": 266,
+      "mtime": 1774850067577.3354
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/fastmcp/utilities/openapi/README.md",
+      "title": "OpenAPI Utilities",
+      "summary": "This directory contains the OpenAPI integration utilities for FastMCP. The implementation follows a **stateless request building strategy** using `openapi-core` for high-performance, per-request HT...",
+      "lines": 211,
+      "mtime": 1774850068371.243
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/a2a_protocol/litellm_completion_bridge/README.md",
+      "title": "A2A to LiteLLM Completion Bridge",
+      "summary": "Routes A2A protocol requests through `litellm.acompletion`, enabling any LiteLLM-supported provider to be invoked via A2A. ``` A2A Request → Transform → litellm.acompletion → Transform → A2A Respon...",
+      "lines": 75,
+      "mtime": 1774850065659.1897
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/a2a_protocol/providers/litellm_completion/README.md",
+      "title": "A2A to LiteLLM Completion Bridge",
+      "summary": "Routes A2A protocol requests through `litellm.acompletion`, enabling any LiteLLM-supported provider to be invoked via A2A. ``` A2A Request → Transform → litellm.acompletion → Transform → A2A Respon...",
+      "lines": 75,
+      "mtime": 1774850065919.1948
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/completion_extras/README.md",
+      "title": "README.md",
+      "summary": "Logic specific for `litellm.completion`. Includes: - Bridge for transforming completion requests to responses api requests",
+      "lines": 4,
+      "mtime": 1774850066621.2085
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/containers/README.md",
+      "title": "Container Files API",
+      "summary": "This module provides a unified interface for container file operations across multiple LLM providers (OpenAI, Azure OpenAI, etc.). ``` endpoints.json                    # Declarative endpoint defin...",
+      "lines": 242,
+      "mtime": 1774850066845.213
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/arize/README.md",
+      "title": "Arize Phoenix Prompt Management Integration",
+      "summary": "This integration enables using prompt versions from Arize Phoenix with LiteLLM's completion function. - Fetch prompt versions from Arize Phoenix API - Workspace-based access control through Arize P...",
+      "lines": 211,
+      "mtime": 1774850067521.226
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/bitbucket/README.md",
+      "title": "LiteLLM BitBucket Prompt Management",
+      "summary": "A powerful prompt management system for LiteLLM that fetches `.prompt` files from BitBucket repositories. This enables team-based prompt management with BitBucket's built-in access control and vers...",
+      "lines": 318,
+      "mtime": 1774850067734.2305
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/dotprompt/README.md",
+      "title": "LiteLLM Dotprompt Manager",
+      "summary": "A powerful prompt management system for LiteLLM that supports [Google's Dotprompt specification](https://google.github.io/dotprompt/getting-started/). This allows you to manage your AI prompts in o...",
+      "lines": 316,
+      "mtime": 1774850068345.2422
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/gitlab/README.md",
+      "title": "LiteLLM gitlab Prompt Management",
+      "summary": "A powerful prompt management system for LiteLLM that fetches `.prompt` files from gitlab repositories. This enables team-based prompt management with gitlab's built-in access control and version co...",
+      "lines": 318,
+      "mtime": 1774850068666.2485
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/levo/README.md",
+      "title": "Levo AI Integration",
+      "summary": "This integration enables sending LLM observability data to Levo AI using OpenTelemetry (OTLP) protocol. The Levo integration extends LiteLLM's OpenTelemetry support to automatically send traces to ...",
+      "lines": 126,
+      "mtime": 1774850068986.255
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/integrations/websearch_interception/ARCHITECTURE.md",
+      "title": "WebSearch Interception Architecture",
+      "summary": "Server-side WebSearch tool execution for models that don't natively support it (e.g., Bedrock/Claude). User makes **ONE** `litellm.messages.acreate()` call → Gets final answer with search results. ...",
+      "lines": 293,
+      "mtime": 1774850069713.269
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/litellm_core_utils/README.md",
+      "title": "README.md",
+      "summary": "This folder contains general-purpose utilities that are used in multiple places in the codebase. Core files: - `streaming_handler.py`: The core streaming logic + streaming related helper utils - `c...",
+      "lines": 14,
+      "mtime": 1774850069904.2727
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/azure_ai/README.md",
+      "title": "README.md",
+      "summary": "`/chat/completion` calls routed via `openai.py`.",
+      "lines": 1,
+      "mtime": 1774850080668.483
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/cohere/rerank/guardrail_translation/README.md",
+      "title": "Cohere Rerank Guardrail Translation Handler",
+      "summary": "Handler for processing the rerank endpoint (`/v1/rerank`) with guardrails. This handler processes rerank requests by: 1. Extracting the query text from the request 2. Applying guardrails to the que...",
+      "lines": 230,
+      "mtime": 1774850081117.4915
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/gemini/context_caching/README.md",
+      "title": "README.md",
+      "summary": "[Go here for the Gemini Context Caching code](../../vertex_ai/context_caching/)",
+      "lines": 1,
+      "mtime": 1774850081294.495
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/hosted_vllm/embedding/README.md",
+      "title": "README.md",
+      "summary": "No transformation is required for hosted_vllm embedding. VLLM is a superset of OpenAI's `embedding` endpoint. To pass provider-specific parameters, see [this](https://docs.litellm.ai/docs/completio...",
+      "lines": 5,
+      "mtime": 1774850081376.4966
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/litellm_proxy/skills/README.md",
+      "title": "LiteLLM Skills - Database-Backed Skills Storage",
+      "summary": "This module provides database-backed skills storage as an alternative to Anthropic's cloud-based Skills API. It enables using skills with **any LLM provider** (Bedrock, OpenAI, Azure, etc.) by stor...",
+      "lines": 382,
+      "mtime": 1774850081986.5085
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai_like/README.md",
+      "title": "JSON-Based OpenAI-Compatible Provider Configuration",
+      "summary": "This directory contains the new JSON-based configuration system for OpenAI-compatible providers. Instead of creating a full Python module for simple OpenAI-compatible providers, you can now define ...",
+      "lines": 130,
+      "mtime": 1774850082205.5127
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/chat/guardrail_translation/README.md",
+      "title": "README.md",
+      "summary": "Translation of OpenAI `/chat/completions` input and output to a custom guardrail. This enables guardrails to be applied to OpenAI `/chat/completions` requests and responses.",
+      "lines": 3,
+      "mtime": 1774850082094.5105
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/completion/guardrail_translation/README.md",
+      "title": "OpenAI Text Completion Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's text completion endpoint (`/v1/completions`) with guardrails. This handler processes text completion requests by: 1. Extracting the text prompt(s) from the request 2...",
+      "lines": 159,
+      "mtime": 1774850082110.511
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/image_generation/guardrail_translation/README.md",
+      "title": "OpenAI Image Generation Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's image generation endpoint with guardrails. This handler processes image generation requests by: 1. Extracting the text prompt from the request 2. Applying guardrails...",
+      "lines": 107,
+      "mtime": 1774850082133.5115
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/responses/guardrail_translation/README.md",
+      "title": "OpenAI Responses API Guardrail Translation Handler",
+      "summary": "This module provides guardrail translation support for the OpenAI Responses API format. The `OpenAIResponsesHandler` class handles the translation of guardrail operations for both input and output ...",
+      "lines": 120,
+      "mtime": 1774850082146.5117
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/speech/guardrail_translation/README.md",
+      "title": "OpenAI Text-to-Speech Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's text-to-speech endpoint (`/v1/audio/speech`) with guardrails. This handler processes text-to-speech requests by: 1. Extracting the input text from the request 2. App...",
+      "lines": 179,
+      "mtime": 1774850082164.512
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/openai/transcriptions/guardrail_translation/README.md",
+      "title": "OpenAI Audio Transcription Guardrail Translation Handler",
+      "summary": "Handler for processing OpenAI's audio transcription endpoint (`/v1/audio/transcriptions`) with guardrails. This handler processes audio transcription responses by: 1. Applying guardrails to the tra...",
+      "lines": 160,
+      "mtime": 1774850082165.512
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/pass_through/guardrail_translation/README.md",
+      "title": "Pass-Through Endpoint Guardrail Translation",
+      "summary": "This module is located under `litellm/llms/` (instead of with the main passthrough code) because: 1. **Auto-discovery**: The `load_guardrail_translation_mappings()` function in `litellm/llms/__init...",
+      "lines": 42,
+      "mtime": 1774850082248.5137
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/llms/README.md",
+      "title": "README.md",
+      "summary": "To make it easy to see how calls are transformed for each model/provider: we are working on moving all supported litellm providers to a folder structure, where folder name is the supported litellm ...",
+      "lines": 12,
+      "mtime": 1774850080490.4792
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/passthrough/README.md",
+      "title": "README.md",
+      "summary": "This makes it easier to pass through requests to the LLM APIs. E.g. Route to VLLM's `/classify` endpoint: ```python import litellm response = litellm.llm_passthrough_route( model=\"hosted_vllm/paplu...",
+      "lines": 118,
+      "mtime": 1774850082802.5244
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/client/cli/README.md",
+      "title": "LiteLLM Proxy CLI",
+      "summary": "The LiteLLM Proxy CLI is a command-line tool for managing your LiteLLM proxy server. It provides commands for managing models, viewing server status, and interacting with the proxy server. ```bash ...",
+      "lines": 537,
+      "mtime": 1774850086932.6047
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/client/README.md",
+      "title": "LiteLLM Proxy Client",
+      "summary": "A Python client library for interacting with the LiteLLM proxy server. This client provides a clean, typed interface for managing models, keys, credentials, and making chat completions. ```bash pip...",
+      "lines": 394,
+      "mtime": 1774850086920.6045
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/discovery_endpoints/README.md",
+      "title": "README.md",
+      "summary": "Return the proxy base url and server root path, so UI can construct the correct url to access the proxy. This is useful when the proxy is deployed at a different path than the root of the domain. *...",
+      "lines": 13,
+      "mtime": 1774850087028.6067
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/guardrails/guardrail_hooks/ibm_guardrails/README.md",
+      "title": "IBM Guardrails Detector Integration",
+      "summary": "This integration provides support for IBM's FMS Guardrails detectors in LiteLLM. It supports both direct detector server calls and calls via the FMS Guardrails Orchestrator. - Support for IBM Detec...",
+      "lines": 200,
+      "mtime": 1774850087124.6084
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/hooks/mcp_semantic_filter/ARCHITECTURE.md",
+      "title": "MCP Semantic Tool Filter Architecture",
+      "summary": "When multiple MCP servers are connected, the proxy may expose hundreds of tools. Sending all tools in every request wastes context window tokens and increases cost. The semantic filter keeps only t...",
+      "lines": 97,
+      "mtime": 1774850087269.6113
+    },
+    {
+      "path": "projects/hive/.venv/lib64/python3.11/site-packages/litellm/proxy/README.md",
+      "title": "litellm-proxy",
+      "summary": "A local, fast, and lightweight **OpenAI-compatible server** to call 100+ LLM APIs. ```shell $ pip install litellm ``` ```shell $ litellm --model ollama/codellama ``` ```python import openai # opena...",
+      "lines": 44,
+      "mtime": 1774850082812.5247
+    }
+  ]
+}

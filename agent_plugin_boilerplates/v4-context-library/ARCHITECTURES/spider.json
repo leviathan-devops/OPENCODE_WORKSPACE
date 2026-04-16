@@ -1,0 +1,319 @@
+{
+  "id": "spider",
+  "name": "Spider Architecture",
+  "description": "Simple hub-spoke architecture with central orchestrator and specialized agent clusters",
+  "version": "v4",
+  
+  "brains": [
+    {
+      "id": "spider-orchestrator",
+      "type": "orchestrator",
+      "name": "Spider Orchestrator",
+      "description": "Central brain that coordinates all clusters and agents",
+      "coordinatesClusters": ["execution-cluster", "qa-cluster", "research-cluster"],
+      "canDelegateTo": ["architect", "coder", "reviewer", "test-engineer", "sme", "explorer", "critic"],
+      "config": {
+        "decisionStyle": "centralized",
+        "canOverride": true,
+        "priority": 100
+      }
+    }
+  ],
+  
+  "clusters": [
+    {
+      "id": "execution-cluster",
+      "type": "execution",
+      "name": "Execution Cluster",
+      "description": "Agents responsible for code implementation",
+      "agentIds": ["architect", "coder"],
+      "coordinatedBy": "spider-orchestrator",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 3
+      }
+    },
+    {
+      "id": "qa-cluster",
+      "type": "qa",
+      "name": "Quality Assurance Cluster",
+      "description": "Agents responsible for testing and quality",
+      "agentIds": ["reviewer", "test-engineer"],
+      "coordinatedBy": "spider-orchestrator",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2
+      }
+    },
+    {
+      "id": "research-cluster",
+      "type": "research",
+      "name": "Research Cluster",
+      "description": "Agents responsible for investigation and analysis",
+      "agentIds": ["sme", "explorer", "critic"],
+      "coordinatedBy": "spider-orchestrator",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2
+      }
+    }
+  ],
+  
+  "agents": [
+    {
+      "id": "architect",
+      "type": "architect",
+      "name": "Architect",
+      "description": "Designs system architecture and creates blueprints",
+      "clusterId": "execution-cluster",
+      "capabilities": ["design", "architecture", "planning", "system-design"],
+      "allowedTools": ["design-tool", "planning-tool", "architecture-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Architect agent. Your role is to design system architecture and create implementation blueprints.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.8,
+        "creativityBias": 0.7
+      }
+    },
+    {
+      "id": "coder",
+      "type": "coder",
+      "name": "Coder",
+      "description": "Implements code based on architectural specifications",
+      "clusterId": "execution-cluster",
+      "capabilities": ["coding", "implementation", "debugging", "refactoring"],
+      "allowedTools": ["code-editor", "debugger", "refactoring-tool"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Coder agent. Your role is to implement code based on architectural specifications.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.7,
+        "creativityBias": 0.6
+      }
+    },
+    {
+      "id": "reviewer",
+      "type": "reviewer",
+      "name": "Reviewer",
+      "description": "Reviews code for quality and standards compliance",
+      "clusterId": "qa-cluster",
+      "capabilities": ["code-review", "quality-assessment", "standards-check"],
+      "allowedTools": ["review-tool", "standards-checker", "quality-metrics"],
+      "maxConcurrentTasks": 3,
+      "promptTemplate": "You are a Reviewer agent. Your role is to review code for quality and standards compliance.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.9,
+        "creativityBias": 0.3
+      }
+    },
+    {
+      "id": "test-engineer",
+      "type": "test-engineer",
+      "name": "Test Engineer",
+      "description": "Creates and runs tests to ensure code quality",
+      "clusterId": "qa-cluster",
+      "capabilities": ["testing", "test-creation", "coverage-analysis", "bug-detection"],
+      "allowedTools": ["test-runner", "coverage-tool", "bug-detector"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Test Engineer agent. Your role is to create and run tests to ensure code quality.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.95,
+        "creativityBias": 0.4
+      }
+    },
+    {
+      "id": "sme",
+      "type": "sme",
+      "name": "Subject Matter Expert",
+      "description": "Provides domain expertise and answers technical questions",
+      "clusterId": "research-cluster",
+      "capabilities": ["expertise", "research", "analysis", "domain-knowledge"],
+      "allowedTools": ["research-tool", "knowledge-base", "analysis-tool"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Subject Matter Expert agent. Your role is to provide domain expertise and answer technical questions.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.8,
+        "creativityBias": 0.5
+      }
+    },
+    {
+      "id": "explorer",
+      "type": "explorer",
+      "name": "Explorer",
+      "description": "Explores codebases and discovers patterns",
+      "clusterId": "research-cluster",
+      "capabilities": ["exploration", "pattern-discovery", "dependency-mapping", "code-analysis"],
+      "allowedTools": ["exploration-tool", "pattern-detector", "dependency-mapper"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Explorer agent. Your role is to explore codebases and discover patterns.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.6,
+        "creativityBias": 0.8
+      }
+    },
+    {
+      "id": "critic",
+      "type": "critic",
+      "name": "Critic",
+      "description": "Provides critical feedback and identifies risks",
+      "clusterId": "research-cluster",
+      "capabilities": ["critique", "risk-identification", "feasibility-evaluation", "feedback"],
+      "allowedTools": ["critique-tool", "risk-assessor", "feasibility-checker"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Critic agent. Your role is to provide critical feedback and identify risks.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.85,
+        "creativityBias": 0.4
+      }
+    }
+  ],
+  
+  "workflows": [
+    {
+      "id": "spider-development-workflow",
+      "name": "Spider Development Workflow",
+      "description": "Standard development workflow for Spider architecture",
+      "phases": [
+        {
+          "id": "planning-phase",
+          "name": "Planning Phase",
+          "description": "System design and architecture planning",
+          "participatingAgents": ["architect", "sme"],
+          "involvedClusters": ["execution-cluster", "research-cluster"],
+          "config": {
+            "timeout": 3600000,
+            "optional": false
+          }
+        },
+        {
+          "id": "implementation-phase",
+          "name": "Implementation Phase",
+          "description": "Code implementation based on architecture",
+          "participatingAgents": ["coder"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 7200000,
+            "optional": false
+          }
+        },
+        {
+          "id": "testing-phase",
+          "name": "Testing Phase",
+          "description": "Code testing and quality assurance",
+          "participatingAgents": ["test-engineer"],
+          "involvedClusters": ["qa-cluster"],
+          "config": {
+            "timeout": 3600000,
+            "optional": false
+          }
+        },
+        {
+          "id": "review-phase",
+          "name": "Review Phase",
+          "description": "Code review and feedback",
+          "participatingAgents": ["reviewer", "critic"],
+          "involvedClusters": ["qa-cluster", "research-cluster"],
+          "config": {
+            "timeout": 1800000,
+            "optional": false
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "architecture-approval-gate",
+          "name": "Architecture Approval Gate",
+          "description": "Gate after planning phase to approve architecture",
+          "afterPhase": "planning-phase",
+          "beforePhase": "implementation-phase",
+          "criteria": [
+            {
+              "type": "approval",
+              "description": "Architecture must be approved by architect and SME",
+              "required": ["architecture-document", "approval-from-architect", "approval-from-sme"]
+            }
+          ],
+          "evaluatedBy": "spider-orchestrator"
+        },
+        {
+          "id": "code-completion-gate",
+          "name": "Code Completion Gate",
+          "description": "Gate after implementation phase to verify code completion",
+          "afterPhase": "implementation-phase",
+          "beforePhase": "testing-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Code must be complete and compilable",
+              "required": ["complete-code", "compilation-success", "basic-tests-pass"]
+            }
+          ],
+          "evaluatedBy": "spider-orchestrator"
+        },
+        {
+          "id": "quality-gate",
+          "name": "Quality Gate",
+          "description": "Gate after testing phase to ensure quality standards",
+          "afterPhase": "testing-phase",
+          "beforePhase": "review-phase",
+          "criteria": [
+            {
+              "type": "test",
+              "description": "Tests must pass with minimum coverage",
+              "required": ["all-tests-pass", "coverage-above-80", "no-critical-bugs"]
+            }
+          ],
+          "evaluatedBy": "spider-orchestrator"
+        }
+      ],
+      "managedBy": "spider-orchestrator",
+      "config": {
+        "allowParallel": false,
+        "allowSkip": false,
+        "allowRestart": true
+      }
+    }
+  ],
+  
+  "coordination": {
+    "style": "hub-spoke",
+    "protocol": "delegated",
+    "stateManagement": {
+      "storage": "persistent",
+      "persistence": {
+        "backend": "file",
+        "config": {
+          "path": "./state",
+          "format": "json"
+        }
+      }
+    },
+    "errorHandling": {
+      "retryPolicy": {
+        "maxRetries": 3,
+        "backoff": "exponential",
+        "backoffMs": 1000
+      },
+      "fallbacks": ["retry", "escalate", "manual-intervention"]
+    },
+    "config": {
+      "maxDelegationDepth": 3,
+      "allowCircularDelegation": false
+    }
+  },
+  
+  "metadata": {
+    "author": "Agent Factory Team",
+    "createdAt": "2025-04-03",
+    "tags": ["spider", "hub-spoke", "simple", "centralized"]
+  }
+}

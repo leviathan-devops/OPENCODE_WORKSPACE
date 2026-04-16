@@ -1,0 +1,46 @@
+{
+  "exercise_id": "e006",
+  "name": "Tool — grill (security testing)",
+  "component": "security_tools",
+  "component_area": "adversarial_testing",
+  "mechanical_verification": "Run grill on a file with SQL injection, verify attack vector identified",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "setup": "echo \"const query = 'SELECT * FROM users WHERE id = ' + userInput;\" > /tmp/sql_vuln_grill.ts",
+
+  "prompt": "call grill target=/tmp/sql_vuln_grill.ts",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call grill target=/tmp/sql_vuln_grill.ts",
+      "expected": "Output mentions 'SQL' or 'injection' or 'query' or 'Attack'",
+      "mechanical_pass": "Output contains at least one security-relevant keyword"
+    },
+    {
+      "step": 2,
+      "action": "call grill target=/tmp",
+      "expected": "Non-empty output (report generated), not crash",
+      "mechanical_pass": "Tool completes without throwing"
+    },
+    {
+      "step": 3,
+      "action": "rm /tmp/sql_vuln_grill.ts",
+      "expected": "Cleanup",
+      "mechanical_pass": "File removed"
+    }
+  ],
+
+  "pass_criteria": {
+    "identifies_sql": "SQL injection vector identified in vulnerable code",
+    "returns_report": "Output is a non-empty string (security report)",
+    "no_crash": "grill completes on any input"
+  },
+
+  "failure_modes": {
+    "misses_sqli": "SQL injection code not flagged",
+    "crashes": "grill throws unhandled exception",
+    "empty_output": "grill returns empty string on vulnerable code"
+  }
+}

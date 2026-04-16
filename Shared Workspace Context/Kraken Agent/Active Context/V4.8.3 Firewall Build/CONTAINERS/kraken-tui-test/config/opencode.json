@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {}
+  },
+  "plugin": [
+    "file:///root/.config/opencode/plugins/coding-subagents/index.js",
+    "file:///root/.config/opencode/plugins/opencode-plugin-engineering/index.js",
+    "file:///root/.config/opencode/plugins/kraken-agent/index.js",
+    "file:///root/.config/opencode/plugins/shark-agent-v4/index.js",
+    "file:///root/.config/opencode/plugins/manta-agent-v1.3.5-hotfix/index.js"
+  ],
+  "agent": {
+    "architect": {
+      "disable": true
+    }
+  }
+}

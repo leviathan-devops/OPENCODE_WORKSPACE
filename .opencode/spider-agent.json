@@ -1,0 +1,59 @@
+{
+  "agents": {
+    "spider": {
+      "model": "0-opencode-go/minimax-m2.7",
+      "fallback_models": [
+        "0-opencode-zen/nemotron-3-super-free"
+      ]
+    },
+    "coder": {
+      "model": "0-opencode-zen/qwen3.6-plus-free",
+      "fallback_models": [
+        "0-opencode-go/minimax-m2.7"
+      ]
+    },
+    "reviewer": {
+      "model": "0-opencode-go/minimax-m2.7",
+      "fallback_models": [
+        "0-opencode-zen/nemotron-3-super-free"
+      ]
+    },
+    "test_engineer": {
+      "model": "0-opencode-go/minimax-m2.7",
+      "fallback_models": [
+        "0-opencode-zen/nemotron-3-super-free"
+      ]
+    },
+    "explorer": {
+      "model": "0-opencode-zen/nemotron-3-super-free",
+      "fallback_models": [
+        "0-openrouter/google/gemini-2.5-flash"
+      ]
+    },
+    "sme": {
+      "model": "0-opencode-zen/nemotron-3-super-free",
+      "fallback_models": [
+        "0-opencode-go/minimax-m2.7"
+      ]
+    },
+    "critic": {
+      "model": "0-opencode-zen/nemotron-3-super-free",
+      "fallback_models": [
+        "0-opencode-go/minimax-m2.7"
+      ]
+    },
+    "docs": {
+      "model": "0-opencode-zen/nemotron-3-super-free",
+      "fallback_models": [
+        "0-opencode-go/minimax-m2.7"
+      ]
+    },
+    "designer": {
+      "model": "0-opencode-zen/nemotron-3-super-free",
+      "fallback_models": [
+        "0-opencode-go/minimax-m2.7"
+      ]
+    }
+  },
+  "max_iterations": 5
+}

@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022"],
+    "moduleResolution": "bundler",
+    "types": ["bun-types", "node"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src/index.ts",
+    "src/factory/**/*",
+    "src/config/loader.ts",
+    "src/config/schema.ts",
+    "src/config/constants.ts",
+    "src/config/templates/**/*",
+    "src/coordination/**/*",
+    "src/state.ts",
+    "src/utils/logger.ts",
+    "src/utils/retry.ts",
+    "src/hooks/**/*",
+    "src/tools/**/*",
+    "src/services/**/*"
+  ],
+  "exclude": ["node_modules", "dist", "tests", "*-v3-backup"]
+}

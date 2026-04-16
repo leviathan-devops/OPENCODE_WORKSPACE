@@ -1,0 +1,32 @@
+# Container Test Session Log
+# Date: 2026-04-12
+
+## Plugin Loading Test
+```
+INFO  service=plugin path=file:///root/.config/opencode/plugins/kraken-agent/index.js loading plugin
+[Kraken V2.0] Agent registered
+```
+
+## Agent Registration Confirmed
+- kraken agent visible via `opencode debug agent kraken`
+- Shark and Manta still functional
+
+## TUI Launch Test
+- `opencode --agent kraken /tmp` launches correctly
+- Agent tab shows "Kraken" with purple color
+- No "Agent not found" error
+
+## Hooks Registered (4 total)
+- event: session.created, session.compacting
+- chat.message: agent identity + message enforcement  
+- tool.execute.before: Layer 1 tool guardian
+- tool.execute.after: gate evaluation
+
+## Key Fix Applied
+Plugin export changed from object to async function:
+```typescript
+async function KrakenPlugin(input) {
+  return { name, version, config, hooks, tools };
+}
+export default KrakenPlugin;
+```

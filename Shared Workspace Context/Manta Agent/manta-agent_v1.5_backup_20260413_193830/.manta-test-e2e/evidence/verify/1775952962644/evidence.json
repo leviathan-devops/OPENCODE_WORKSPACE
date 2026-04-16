@@ -1,0 +1,11 @@
+{
+  "gate": "verify",
+  "timestamp": 1775952962644,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "terminal",
+    "sessionID": "test-session",
+    "workEvidence": "ran:npm audit"
+  }
+}

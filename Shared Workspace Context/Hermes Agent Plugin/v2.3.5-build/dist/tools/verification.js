@@ -1,0 +1,172 @@
+import { tool } from "./create-tool.js";
+import { spawnSync } from "child_process";
+import { existsSync, readFileSync, readdirSync, statSync } from "fs";
+import { join, resolve } from "path";
+function scanForVulnerabilities(content, findings, filePath) {
+    // SQL injection patterns
+    if (/\bquery\s*\(|execute\s*\(|\bSELECT\b.*\bFROM\b.*\$\{/.test(content)) {
+        findings.push(`- **SQL injection** (${filePath}): Possible SQL query with string interpolation`);
+    }
+    // XSS patterns
+    if (/innerHTML\s*=|insertAdjacentHTML|document\.write/.test(content)) {
+        findings.push(`- **XSS** (${filePath}): Potentially unsafe DOM manipulation`);
+    }
+    // Auth bypass
+    if (/===?\s*["']admin["']|\.role\s*==\s*["']admin["']/.test(content)) {
+        findings.push(`- **Auth bypass** (${filePath}): Hardcoded role check detected`);
+    }
+    // Command injection
+    if (/\beval\s*\(/.test(content)) {
+        findings.push(`- **Code injection** (${filePath}): Dynamic code execution detected`);
+    }
+    if (/new\s+Function\s*\(/.test(content)) {
+        findings.push(`- **Code injection** (${filePath}): Dynamic function constructor detected`);
+    }
+    // Weak crypto
+    if (/\bmd5\b|\bsha1\b/i.test(content)) {
+        findings.push(`- **Weak crypto** (${filePath}): MD5 or SHA1 detected`);
+    }
+}
+export const grill = tool({
+    description: "Scan code for common vulnerability patterns (SQL injection, XSS, auth bypass, insecure crypto)",
+    args: {
+        target: tool.schema.string().describe("Code or file to scan"),
+    },
+    execute: async (args, context) => {
+        const fullPath = join(context.directory, args.target);
+        const resolved = resolve(fullPath);
+        const allowedRoot = resolve(context.directory);
+        if (!resolved.startsWith(allowedRoot)) {
+            return `Error: Access denied. Target "${args.target}" resolves outside project directory.`;
+        }
+        try {
+            const stat = statSync(fullPath);
+            const findings = [];
+            if (stat.isDirectory()) {
+                // Scan all source files in directory
+                const scanDir = (dir) => {
+                    try {
+                        const entries = readdirSync(dir);
+                        for (const entry of entries) {
+                            if (entry === "node_modules" || entry === ".git" || entry === "dist" || entry === "coverage")
+                                continue;
+                            const entryPath = join(dir, entry);
+                            try {
+                                const entryStat = statSync(entryPath);
+                                if (entryStat.isDirectory()) {
+                                    scanDir(entryPath);
+                                }
+                                else if (entryStat.isFile() && /\.(ts|js|tsx|jsx|py|java|c|cpp|go|rs)$/.test(entry)) {
+                                    const fileContent = readFileSync(entryPath, "utf-8");
+                                    scanForVulnerabilities(fileContent, findings, entryPath.replace(context.directory + "/", ""));
+                                }
+                            }
+                            catch { /* skip unreadable entries */ }
+                        }
+                    }
+                    catch { /* skip unreadable directories */ }
+                };
+                scanDir(fullPath);
+            }
+            else {
+                // Single file
+                const content = readFileSync(fullPath, "utf-8");
+                scanForVulnerabilities(content, findings, args.target);
+            }
+            if (findings.length === 0) {
+                return `## Attack Results for ${args.target}\n\n✓ No obvious vulnerability patterns found.`;
+            }
+            return `## Attack Results for ${args.target}\n\n### Potential Issues\n${findings.slice(0, 30).join("\n")}`;
+        }
+        catch (err) {
+            return `Could not analyze: ${args.target} — ${err.message}`;
+        }
+    },
+});
+export const verify = tool({
+    description: "Proof-based completion verification",
+    args: {
+        criteria: tool.schema.string().describe("Success criteria to verify"),
+    },
+    execute: async (args, context) => {
+        const results = [];
+        const testResult = spawnSync("npm", ["test"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        results.push(`Tests: ${testResult.status !== null && testResult.status === 0 ? "✓ PASS" : "✗ FAIL"}`);
+        const buildResult = spawnSync("npx", ["tsc", "--noEmit"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        results.push(`Build: ${buildResult.status !== null && buildResult.status === 0 ? "✓ PASS" : "✗ FAIL"}`);
+        const lintResult = spawnSync("npx", ["eslint", "src"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        results.push(`Lint: ${lintResult.status !== null && lintResult.status === 0 ? "✓ PASS" : "✗ FAIL"}`);
+        const passed = results.filter(r => r.includes("✓")).length;
+        return `## Verification: ${args.criteria}\n\n${results.join("\n")}\n\n${passed}/3 checks passed.`;
+    },
+});
+export const health = tool({
+    description: "Project health score (0-100)",
+    args: {},
+    execute: async (args, context) => {
+        let score = 0;
+        const issues = [];
+        const testResult = spawnSync("npm", ["test"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        if (testResult.status !== null && testResult.status === 0) {
+            score += 30;
+        }
+        else {
+            issues.push("Tests failing or unavailable");
+        }
+        const buildResult = spawnSync("npx", ["tsc", "--noEmit"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        if (buildResult.status !== null && buildResult.status === 0) {
+            score += 30;
+        }
+        else {
+            issues.push("Build errors or unavailable");
+        }
+        const lintResult = spawnSync("npx", ["eslint", "src"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        if (lintResult.status !== null && lintResult.status === 0) {
+            score += 10;
+        }
+        else {
+            issues.push("Lint errors or unavailable");
+        }
+        const auditResult = spawnSync("npm", ["audit"], { cwd: context.directory, encoding: "utf-8", timeout: 60000 });
+        if (auditResult.stdout && auditResult.stdout.includes("found 0 vulnerabilities")) {
+            score += 30;
+        }
+        else {
+            issues.push("Vulnerable dependencies");
+        }
+        return `## Project Health: ${score}/100\n\n${issues.length > 0 ? "### Issues\n" + issues.map(i => `- ${i}`).join("\n") : "✓ No major issues detected."}`;
+    },
+});
+export const evidenceCheck = tool({
+    description: "Verify task evidence completeness",
+    args: {
+        taskId: tool.schema.string().describe("Task to check evidence for"),
+    },
+    execute: async (args, context) => {
+        const evidenceBase = process.env.HERMES_EVIDENCE_DIR ?? ".hermes";
+        const evidenceDir = join(context.directory, evidenceBase, "evidence");
+        if (!existsSync(evidenceDir)) {
+            return `Evidence check for ${args.taskId}: No ${evidenceBase}/evidence/ directory found.`;
+        }
+        const evidenceFiles = readdirSync(evidenceDir).filter(f => f.includes(args.taskId));
+        const hasReview = evidenceFiles.some(f => f.includes("reviewer") || f.includes("approval"));
+        const hasTest = evidenceFiles.some(f => f.includes("test"));
+        const hasBuild = evidenceFiles.some(f => f.includes("build") || f.includes("syntax"));
+        const rows = [
+            `| Review | ${hasReview ? "✓" : "✗"} |`,
+            `| Test | ${hasTest ? "✓" : "✗"} |`,
+            `| Build | ${hasBuild ? "✓" : "✗"} |`,
+        ].join("\n");
+        return `## Evidence Check: ${args.taskId}\n\n| Check | Status |\n|-------|--------|\n${rows}\n\n${hasReview && hasTest && hasBuild ? "✓ COMPLETE" : "⚠ INCOMPLETE"}`;
+    },
+});
+export const retrieveSummary = tool({
+    description: "Get compressed tool output summaries",
+    args: {
+        toolCallId: tool.schema.string().describe("Tool call ID to summarize"),
+    },
+    execute: async (args, context) => {
+        // Requires OpenCode SDK integration — return informational message
+        return `Summary for ${args.toolCallId}: Tool call summary requires OpenCode SDK access. Currently tool call history is managed by the OpenCode runtime.`;
+    },
+});

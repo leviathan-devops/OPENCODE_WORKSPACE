@@ -1,0 +1,224 @@
+# SHARK AGENT + OPENCODE INTEGRATION PLAN
+
+## Current Status (as of Mar 24 2026)
+
+### ✅ Discoveries Made
+1. **Opencode is TypeScript** (55.3% TS, 40.7% MDX) - not Go as previously assumed
+2. **Shark Frankenstein CLI exists** (~50% of Qwen Code level) with identified theatrical code issues
+3. **Correct GitHub URLs** identified for all context documents in shark-frankenstein repository
+4. **Shark-agent skill file exists** (`~/.config/opencode/skills/shark-agent/SKILL.md`) showing prior integration attempt
+5. **User has working vLLM setup** on local device for testing Micro Engineer execution
+6. **GLM 4.7 coding plan endpoint confirmed working** with tool use capabilities
+7. **Integration approach clarified**: Surgical addition to Opencode codebase, not replacement
+
+### ✅ Opencode Architecture Analyzed
+Key integration points identified:
+- `packages/opencode/src/agent/agent.ts` - Plan/build agent definitions
+- `packages/opencode/src/session/processor.ts` - Message/tool processing
+- `packages/opencode/src/tool/registry.ts` - Tool execution system
+- `packages/opencode/src/permission/index.ts` - Permission system
+- `packages/opencode/src/session/status.ts` - Session completion logic
+
+### ✅ Shark Systems Examined
+All systems in TypeScript (~2,600 lines total):
+- **Guardian** (`src/guardian/index.ts` ~800 lines) - File protection with zone classification
+- **Workflow State Machine** (`src/workflow/state-machine.ts` ~862 lines) - 5-step workflow enforcement
+- **AutoDebug** (`src/debug/autodebug.ts` ~530 lines) - Pattern-based error fixing
+- **DualBrainCoordinator** (`src/brain/coordinator.ts`) - Micro/Macro mode switching
+- **ToolExecutor** (`src/tools/executor.ts`) - Protected tool execution
+
+### ✅ 6-Step Workflow Innovation (V2)
+V2 adds "Crash Test" step after Ship for adversarial user-endpoint testing:
+1. PLAN → 2. BUILD → 3. TEST → 4. VERIFY → 5. SHIP → **6. CRASH TEST**
+
+### ✅ AUTO-SWITCH DEMONSTRATION CAPTURED (Mar 24 2026)
+**Real-time example of dual-brain auto-switching**:
+- **Trigger**: User observation of mode transition
+- **From**: Plan mode (analysis, DeepSeek Reason) 
+- **To**: Build mode (execution, DeepSeek Chat)
+- **Criteria**: Task changed from "analyze what we did" → "document how switch happened"
+- **Pattern**: User intent shift + tool requirement change
+- **Documentation**: `SHARK_AUTO_SWITCH_DEMONSTRATION.md` created with exact implementation blueprint
+
+## Integration Strategy
+
+### Core Principles
+1. **DO NOT replace or remove ANY Opencode code** - only enhance or add to existing architecture
+2. **Build on top of Opencode's plan/build toggle system** - enhance it with autonomous agent switching
+3. **Integrate at deepest CLI level** - Guardian, Workflow, AutoDebug must be hardcoded into CLI core
+4. **Use sandboxed development** - fork Opencode into separate codebase, protect original with Guardian
+5. **Enable parallel development** - structure work so 6-8 GLM engineers can work on different components
+
+### Technical Approach
+- **Micro Engineer**: vLLM (primary) and Gemma (fallback) as equal execution engine options
+- **Macro Engineer**: GLM 4.7 on coding plan endpoint (`api.z.ai/api/coding/paas/v4/`) with DeepSeek as advisory tool
+- **Compiler firewall**: Agent outputs must pass through CLI validation layer that enforces full workflow completion
+- **3-failure reset**: Three consecutive failures at any workflow step triggers reset to Plan with full context capture
+- **Autonomous mode switching**: Agents automatically switch between plan/build modes based on workflow context (DEMONSTRATED LIVE)
+- **Auto-switch criteria**: Task analysis, user intent, tool requirements, complexity scoring
+- **Integration method**: Plugin/middleware system hardcoded into CLI core (operating system level enhancement)
+- **Sandbox approach**: Fork Opencode repo for parallel development
+- **Auto-switch behavior**: Always-on enhancement working alongside manual toggle
+
+## Phase 1: Foundation Setup (Week 1)
+
+### Task 1.1: Fork and Sandbox Opencode
+- Fork `https://github.com/anomalyco/opencode` to local development directory
+- Set up development environment with TypeScript, npm dependencies
+- Verify existing Opencode functionality works
+- Create integration branch
+
+### Task 1.2: Analyze Integration Points in Detail
+- Map Opencode's tool execution flow (`processor.ts`, `tool/registry.ts`)
+- Understand permission system hooks
+- Identify where to inject Guardian file protection
+- Document all touchpoints for Shark systems
+
+### Task 1.3: Set Up Parallel Development Workspace
+- Create shared workspace directory structure
+- Set up documentation for GLM engineers
+- Create component assignment matrix
+- Establish communication protocol
+
+## Phase 2: Core Systems Integration (Weeks 2-3)
+
+### Task 2.1: Guardian Integration
+- Port Guardian system from Shark Frankenstein to Opencode
+- Wrap all file system operations (read/write/edit/delete) with permission checks
+- Implement system file blocking (.ssh, /etc/passwd, etc.)
+- Add audit logging
+- **Verification**: Guardian blocks `/etc/passwd` write attempts
+
+### Task 2.2: Workflow State Machine Integration
+- Port WorkflowMachine to Opencode
+- Hook into command execution pipeline
+- Enforce 5-step (MVP) → 6-step (V2) sequence
+- Block advancement until step completion evidence
+- **Verification**: Workflow prevents BUILD step without complete PLAN
+
+### Task 2.3: ToolExecutor Integration
+- Replace native tool execution with Shark's Guardian-protected version
+- Ensure consistent tool result formatting
+- Integrate with Opencode's tool registry
+- **Verification**: ToolExecutor blocks unauthorized file operations
+
+## Phase 3: Dual-Brain Architecture (Weeks 4-5)
+
+### Task 3.1: DualBrainCoordinator Integration
+- Replace core agent logic with DualBrainCoordinator
+- Implement Micro Engineer: DeepSeek plans → vLLM/Gemma executes
+- Implement Macro Engineer: GLM plans+executes → DeepSeek advises
+- Configure automatic switching based on task complexity
+- **Verification**: Both modes functional, automatic switching works
+
+### Task 3.2: Model Client Integration
+- Integrate GLM client for coding plan endpoint
+- Integrate DeepSeek client for advisory role
+- Integrate vLLM client for local execution
+- Configure fallback to Gemma proxy
+- **Verification**: All model clients respond correctly
+
+## Phase 4: Anti-Hallucination Systems (Weeks 6-7)
+
+### Task 4.1: AutoDebug Integration
+- Port AutoDebugEngine to Opencode
+- Integrate into error handling pipeline
+- Pattern matching for common errors (missing scripts, wrong paths, etc.)
+- Mechanical fix attempts before user error display
+- **Verification**: AutoDebug fixes "missing script: build" automatically
+
+### Task 4.2: Mechanical Violation Detection
+- Implement detection for agents faking completion or skipping steps
+- Clear error messages with mechanical next steps
+- Integrate with Workflow state machine
+- **Verification**: Agent faking test results gets mechanical violation error
+
+## Phase 5: Final Validation (Week 8)
+
+### Task 5.1: Mechanical Ship Validation
+- Implement compile-from-scratch verification at completion
+- Artifact-based workflow completion proof (0 AI inference)
+- Forced restart from PLAN on validation failure
+- **Verification**: Ship validation requires actual mechanical compilation proof
+
+### Task 5.2: Integration Test Suite
+- Create comprehensive test suite for all Shark systems
+- Test edge cases and violation scenarios
+- Verify no theatrical code remains
+- **Verification**: All integration tests pass
+
+## Immediate Next Steps
+
+### Step 1: Create Detailed GLM Engineer Build Prompt
+- Consolidate all discoveries into a single prompt
+- Include exact file paths and integration points
+- Specify component assignments for parallel work
+- Include testing requirements
+
+### Step 2: Set Up Sandboxed Development Environment
+- Clone Opencode to separate directory
+- Install dependencies and verify build
+- Create integration branch
+- Set up Guardian protection for original codebase
+
+### Step 3: Begin Phase 1 Implementation
+- Start with Guardian integration (highest priority)
+- Follow with Workflow state machine
+- Implement in parallel by different GLM engineers
+
+## Success Metrics
+
+### Mechanical Enforcement (MVP)
+- [ ] Guardian blocks system file writes
+- [ ] Workflow prevents step skipping
+- [ ] AutoDebug fixes 60% of common errors
+- [ ] ToolExecutor blocks unauthorized operations
+
+### Anti-Hallucination (V1)
+- [ ] Agents cannot fake test results
+- [ ] Ship validation requires actual compilation
+- [ ] No simulated/mocked outputs without workflow completion
+
+### Dual-Brain Functionality
+- [ ] Micro Engineer: DeepSeek plans → vLLM/Gemma executes
+- [ ] Macro Engineer: GLM handles end-to-end with DeepSeek advisory
+- [ ] Automatic mode switching based on task complexity
+
+### UI Preservation
+- [ ] Opencode's interface remains intact
+- [ ] Shark-specific indicators added (mode, workflow step, guardian status)
+- [ ] All existing Opencode features accessible
+
+## Files & Directories
+
+### Shark Frankenstein Repository
+- `/home/leviathan/OPENCODE_WORKSPACE/projects/shark-frankenstein/` - Main TypeScript CLI codebase
+- `SHARK-MASTER-PROMPT.md` - Architecture definition for vanilla agents
+- `SHARK_OPENCODE_INTEGRATION_BLUEPRINT.md` - Integration roadmap
+
+### Opencode Source
+- `https://github.com/anomalyco/opencode` - Main repository
+- Key integration files identified above
+
+### Local Configuration
+- `~/.config/opencode/skills/shark-agent/SKILL.md` - Existing shark-agent skill file
+
+## Communication Protocol
+
+All work must follow Shark's communication standard:
+```
+[1/5] Description of action... ✓ (result)
+[2/5] Description of action... ✓ (result)
+...
+```
+
+**NEVER** push to git without explicit user approval.
+
+## Critical Constraints
+- **Session persistence**: For alpha, use manual session-specific context; later integrate OpenViking
+- **Compiler firewall**: Agent outputs must pass through CLI validation layer
+- **3-failure reset**: Three consecutive failures trigger reset to Plan
+- **Autonomous mode switching**: Agents must automatically switch between plan/build modes
+
+---
+*This plan provides the roadmap for integrating Shark Agent's mechanical enforcement systems into Opencode's TypeScript codebase, preserving 100% of Opencode's UI/UX while adding hardcoded workflow enforcement, file protection, and dual-brain architecture at the deepest possible level.*

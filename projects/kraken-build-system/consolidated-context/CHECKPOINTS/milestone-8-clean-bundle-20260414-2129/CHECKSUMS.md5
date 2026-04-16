@@ -1,0 +1,4 @@
+# CHECKSUMS at milestone-8-clean-bundle-20260414-2129
+# Clean bundle with no hardcoded paths
+
+dist/index.js: 59cc4bba07bba0410d1f1dd074c691da

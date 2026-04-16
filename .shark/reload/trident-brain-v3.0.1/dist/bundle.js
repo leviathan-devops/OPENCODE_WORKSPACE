@@ -1,0 +1,1104 @@
+// src/algorithmic-core.ts
+import { exec } from "child_process";
+import { promisify } from "util";
+import { readFile, readdir, stat, access } from "fs/promises";
+import { join, basename, dirname } from "path";
+import { constants } from "fs";
+var execAsync = promisify(exec);
+var SEVERITY = {
+  CRITICAL: "CRITICAL",
+  HIGH: "HIGH",
+  MEDIUM: "MEDIUM",
+  LOW: "LOW",
+  INFO: "INFO"
+};
+var PATTERNS = {
+  // 🚫 BANNED PATTERNS - CRITICAL SYSTEM FAILURE
+  SIMULATED_EXECUTION: [
+    { regex: /setTimeout\s*\(\s*\(\s*\)\s*=>\s*resolve\s*\(\s*\{\s*success\s*:\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /setTimeout\s*\(\s*\(\s*\)\s*=>\s*\{?\s*resolve\s*\(\s*true\s*\)/i, severity: SEVERITY.CRITICAL },
+    { regex: /return\s+Promise\.resolve\s*\(\s*\{\s*success\s*:\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /return\s+await\s+Promise\.resolve\s*\(\s*\{\s*success\s*:\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /async\s+function.*\{\s*return\s+\{\s*success\s*:\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /function\s+\w+\s*\([^)]*\)\s*\{\s*return\s+\{\s*success\s*:\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /setTimeout.*100\s*\)/i, severity: SEVERITY.CRITICAL },
+    { regex: /delay.*100.*ms/i, severity: SEVERITY.CRITICAL },
+    { regex: /sleep.*100/i, severity: SEVERITY.CRITICAL },
+    { regex: /return\s+\{[^}]*success\s*:\s*true[^}]*\}.*100/ms, severity: SEVERITY.CRITICAL },
+    { regex: /return\s+\{\s*\n*\s*success\s*:\s*true\s*\n*\}/i, severity: SEVERITY.CRITICAL },
+    { regex: /setTimeout.*success.*true/i, severity: SEVERITY.CRITICAL }
+  ],
+  THEATRICAL_CODE: [
+    { regex: /\/\/\s*TODO.*full\s*implementation/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*TODO.*real/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*in\s*v\d+.*we\s+just\s+return/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*Full\s+implementation\s+would/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*mock\s+data/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*fake\s+/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*simulate/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\*[\s\S]*?fake[\s\S]*?\*\//i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*theatrical/i, severity: SEVERITY.CRITICAL },
+    { regex: /\/\/\s*placeholder/i, severity: SEVERITY.HIGH },
+    { regex: /\/\/\s*stub/i, severity: SEVERITY.HIGH }
+  ],
+  STUB_CODE: [
+    { regex: /function\s+\w+\s*\([^)]*\)\s*\{\s*return\s+null\s*;?\s*\}/i, severity: SEVERITY.CRITICAL },
+    { regex: /function\s+\w+\s*\([^)]*\)\s*\{\s*return\s+undefined\s*;?\s*\}/i, severity: SEVERITY.CRITICAL },
+    { regex: /:\s*\w+\s*=>\s*null/, severity: SEVERITY.HIGH },
+    { regex: /:\s*\w+\s*=>\s*undefined/, severity: SEVERITY.HIGH },
+    { regex: /async\s+function\s+\w+\([^)]*\)\s*\{\s*\}/i, severity: SEVERITY.CRITICAL },
+    { regex: /function\s+\w+\s*\([^)]*\)\s*\{\s*\}/i, severity: SEVERITY.HIGH },
+    { regex: /throw\s+new\s+Error\s*\(\s*['"]TODO/i, severity: SEVERITY.HIGH }
+  ],
+  // Security - CRITICAL
+  SQL_INJECTION: [
+    { regex: /`[^`]*\$\{[^}]+\}[^`]*`(?:query|select|insert|update|delete|where)/i, severity: SEVERITY.CRITICAL },
+    { regex: /string\.format.*(?:query|select|insert|update|delete|where)/i, severity: SEVERITY.CRITICAL },
+    { regex: /"\s*\+\s*\w+\s*\+\s*"\s*(?:query|select|insert|update|delete|where)/i, severity: SEVERITY.CRITICAL },
+    { regex: /"\s*\+.*\+\s*"\s*(?:select|from|where)/i, severity: SEVERITY.CRITICAL }
+  ],
+  SECRET_EXPOSURE: [
+    { regex: /api[_-]?key\s*=\s*["'][a-zA-Z0-9]{20,}/i, severity: SEVERITY.CRITICAL },
+    { regex: /secret\s*=\s*["'][a-zA-Z0-9]{20,}/i, severity: SEVERITY.CRITICAL },
+    { regex: /password\s*=\s*["'][a-zA-Z0-9]{20,}/i, severity: SEVERITY.CRITICAL },
+    { regex: /token\s*=\s*["'][a-zA-Z0-9]{20,}/i, severity: SEVERITY.CRITICAL },
+    { regex: /sk-[a-zA-Z0-9]{32,}/, severity: SEVERITY.CRITICAL },
+    { regex: /ghp_[a-zA-Z0-9]{36,}/, severity: SEVERITY.CRITICAL },
+    { regex: /["']ghu_[a-zA-Z0-9]{36,}["']/, severity: SEVERITY.CRITICAL }
+  ],
+  AUTH_BYPASS: [
+    { regex: /if\s*\(\s*true\s*\)\s*\{\s*return\s+true/i, severity: SEVERITY.CRITICAL },
+    { regex: /always\s*=\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /bypass\s*=\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /skipAuth\s*=\s*true/i, severity: SEVERITY.CRITICAL },
+    { regex: /auth\s*=\s*true\s*;\s*return/i, severity: SEVERITY.CRITICAL },
+    { regex: /return\s+true\s*;?\s*$/m, severity: SEVERITY.HIGH }
+  ],
+  // XSS - HIGH
+  XSS: [
+    { regex: /innerHTML\s*=/, severity: SEVERITY.HIGH },
+    { regex: /dangerouslySetInnerHTML/, severity: SEVERITY.HIGH },
+    { regex: /document\.write\s*\(/, severity: SEVERITY.HIGH },
+    { regex: /\.html\s*\(/, severity: SEVERITY.MEDIUM }
+  ],
+  // Quality - MEDIUM/HIGH
+  EMPTY_CATCH: [
+    { regex: /catch\s*\([^)]*\)\s*\{\s*\}/, severity: SEVERITY.HIGH },
+    { regex: /catch\s*\([^)]*\)\s*\{\s*\/\*\s*\*\/\s*\}/, severity: SEVERITY.HIGH }
+  ],
+  HOOK_SPILLOVER: [
+    { regex: /is\w+Agent\s*\(\s*\)\s*===?\s*false/i, severity: SEVERITY.HIGH },
+    { regex: /if\s*\(\s*!\s*agent\s*\)\s*\{/i, severity: SEVERITY.HIGH },
+    { regex: /agent\s*===\s*undefined/i, severity: SEVERITY.HIGH },
+    { regex: /_currentPhase/g, severity: SEVERITY.HIGH },
+    { regex: /if\s*\(\s*agent\s*!==?\s*['"]\w+['"]\s*\)/i, severity: SEVERITY.MEDIUM }
+  ],
+  GLOBAL_STATE: [
+    { regex: /^global\.\w+/m, severity: SEVERITY.MEDIUM },
+    { regex: /^globalThis\.\w+/m, severity: SEVERITY.MEDIUM },
+    { regex: /^(?:let|const|var)\s+_\w+\s*=/m, severity: SEVERITY.LOW }
+  ],
+  COMPLEXITY: [
+    { regex: /if\s*\(/g, threshold: 10, severity: SEVERITY.MEDIUM },
+    { regex: /for\s*\(/g, threshold: 5, severity: SEVERITY.MEDIUM },
+    { regex: /while\s*\(/g, threshold: 3, severity: SEVERITY.MEDIUM }
+  ],
+  RESOURCE_LEAK: [
+    { regex: /addEventListener\s*\(/g, severity: SEVERITY.MEDIUM },
+    { regex: /setInterval\s*\(/g, severity: SEVERITY.MEDIUM }
+  ]
+};
+var ProofVerifier = class {
+  async verifyClaim(claim, cwd) {
+    const normalizedClaim = claim.toLowerCase().trim();
+    const fileMatch = normalizedClaim.match(/(?:file|dist|index\.js|build|artifact)\s+(?:exists|found)|([\/\.\~\w-]+\.\w+)/);
+    if (fileMatch && (normalizedClaim.includes("exists") || normalizedClaim.includes("found") || normalizedClaim.includes("file"))) {
+      return this.verifyFileExistence(claim, cwd);
+    }
+    if (normalizedClaim.includes("test") && (normalizedClaim.includes("pass") || normalizedClaim.includes("fail") || normalizedClaim.includes("37"))) {
+      return this.verifyTestResults(claim, cwd);
+    }
+    if (normalizedClaim.includes("build") || normalizedClaim.includes("dist")) {
+      return this.verifyBuildArtifact(claim, cwd);
+    }
+    return {
+      type: "custom",
+      claim,
+      verified: false,
+      error: "Cannot verify claim automatically. Requires filesystem evidence."
+    };
+  }
+  async verifyFileExistence(claim, cwd) {
+    const pathMatch = claim.match(/[\/\.\~\w-]+\.\w+/);
+    if (!pathMatch) {
+      return { type: "file_exists", claim, verified: false, error: "No file path detected in claim" };
+    }
+    const filePath = pathMatch[0];
+    const fullPath = filePath.startsWith("/") ? filePath : join(cwd, filePath);
+    try {
+      await access(fullPath, constants.R_OK);
+      return { type: "file_exists", claim, verified: true, proof: `File found at ${fullPath}` };
+    } catch {
+      return { type: "file_exists", claim, verified: false, error: `File NOT found at ${fullPath}` };
+    }
+  }
+  async verifyTestResults(claim, cwd) {
+    const possiblePaths = [
+      join(cwd, "TEST_RESULTS.md"),
+      join(cwd, "test-results.json"),
+      join(cwd, "reports", "junit.xml"),
+      join(cwd, "coverage", "coverage-summary.json")
+    ];
+    for (const testPath of possiblePaths) {
+      try {
+        const content = await readFile(testPath, "utf-8");
+        const normalizedContent = content.toLowerCase();
+        const numbersMatch = claim.match(/(\d+)\s*\/\s*(\d+)/);
+        if (numbersMatch) {
+          const claimedPass = parseInt(numbersMatch[1]);
+          const claimedTotal = parseInt(numbersMatch[2]);
+          const actualMatch = normalizedContent.match(/(\d+)\s+(?:passing|passed)/);
+          if (actualMatch) {
+            const actualPass = parseInt(actualMatch[1]);
+            if (actualPass !== claimedPass) {
+              return {
+                type: "test_results",
+                claim,
+                verified: false,
+                error: `THEATER DETECTED: Claimed ${claimedPass}/${claimedTotal} passed but file shows ${actualPass} passed`
+              };
+            }
+          }
+        }
+        return { type: "test_results", claim, verified: true, proof: `Found test results at ${testPath}` };
+      } catch {
+      }
+    }
+    return {
+      type: "test_results",
+      claim,
+      verified: false,
+      error: "No test results file found. Cannot verify test claims. THIS IS THEATER."
+    };
+  }
+  async verifyBuildArtifact(claim, cwd) {
+    const distPath = join(cwd, "dist");
+    const buildPath = join(cwd, "build");
+    try {
+      const distStat = await stat(distPath);
+      if (distStat.isDirectory()) {
+        const files = await readdir(distPath);
+        if (files.length === 0) {
+          return { type: "build_artifact", claim, verified: false, error: "dist/ exists but is EMPTY - possible theater" };
+        }
+        return { type: "build_artifact", claim, verified: true, proof: `dist/ exists with ${files.length} files` };
+      }
+    } catch {
+    }
+    try {
+      const buildStat = await stat(buildPath);
+      if (buildStat.isDirectory()) {
+        return { type: "build_artifact", claim, verified: true, proof: `build/ exists` };
+      }
+    } catch {
+    }
+    return { type: "build_artifact", claim, verified: false, error: "No build artifact directory found" };
+  }
+  async verifyMultiple(claims, cwd) {
+    const results = [];
+    let theaterDetected = false;
+    const findings = [];
+    for (const claim of claims) {
+      const result = await this.verifyClaim(claim, cwd);
+      results.push(result);
+      if (!result.verified) {
+        theaterDetected = true;
+        findings.push({
+          severity: SEVERITY.CRITICAL,
+          layer: 0,
+          detector: "ProofVerifier",
+          category: "THEATER DETECTED",
+          title: "Claim cannot be verified - THEATRICAL CODE SUSPECTED",
+          file: cwd,
+          evidence: `${result.claim}: ${result.error}`,
+          remediation: "Do NOT claim work was done without proof. Provide actual file evidence.",
+          evidenceType: "PROOF",
+          proofVerified: false
+        });
+      }
+    }
+    return { passed: results.every((r) => r.verified), claims: results, theaterDetected, findings };
+  }
+};
+var RealTimeFirewall = class {
+  config = {
+    throwOnBanned: true,
+    throwOnSecurity: true,
+    throwOnHookSpillover: true
+  };
+  setConfig(config) {
+    this.config = { ...this.config, ...config };
+  }
+  /**
+   * REAL-TIME SCAN: Throws and HALTS on banned patterns
+   * Use this in tool.execute.before hook to BLOCK theatrical code
+   */
+  scanRealtime(code, filePath) {
+    const lines = code.split("\n");
+    for (const [categoryName, patterns] of Object.entries(PATTERNS)) {
+      for (const pattern of patterns) {
+        const flags = pattern.regex.flags.includes("g") ? pattern.regex.flags : pattern.regex.flags + "g";
+        const regex = new RegExp(pattern.regex.source, flags);
+        let match;
+        let safetyCount = 0;
+        const maxMatches = 100;
+        while ((match = regex.exec(code)) !== null && safetyCount < maxMatches) {
+          safetyCount++;
+          const lineNum = code.substring(0, match.index).split("\n").length;
+          const line = lines[lineNum - 1] || "";
+          const isBanned = categoryName === "SIMULATED_EXECUTION" || categoryName === "THEATRICAL_CODE" || categoryName === "STUB_CODE";
+          const isSecurity = categoryName === "SQL_INJECTION" || categoryName === "SECRET_EXPOSURE" || categoryName === "AUTH_BYPASS";
+          const isHookIssue = categoryName === "HOOK_SPILLOVER";
+          const shouldThrow = isBanned && this.config.throwOnBanned || isSecurity && this.config.throwOnSecurity || isHookIssue && this.config.throwOnHookSpillover;
+          if (shouldThrow) {
+            const error = `
+\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+\u{1F6AB} TRIDENT REAL-TIME FIREWALL - BLOCKED
+\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+
+FILE: ${filePath}:${lineNum}
+CATEGORY: ${categoryName}
+PATTERN: ${pattern.note || "Detected"}
+
+EVIDENCE:
+${line.trim()}
+
+MATCH: ${match[0].substring(0, 100)}
+
+${isBanned ? "\u{1F6AB} THIS PATTERN IS BANNED - CRITICAL SYSTEM FAILURE" : ""}
+${isSecurity ? "\u26A0\uFE0F SECURITY VULNERABILITY DETECTED" : ""}
+${isHookIssue ? "\u26A0\uFE0F HOOK SPILLOVER RISK - CROSS-PLUGIN CONTAMINATION" : ""}
+
+TRIDENT FIREWALL: Blocking execution. Fix before proceeding.
+\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+`;
+            throw new Error(error);
+          }
+        }
+      }
+    }
+  }
+  /**
+   * SOFT SCAN: Returns findings without throwing
+   * Use for non-blocking analysis
+   */
+  scanSoft(code, filePath) {
+    const findings = [];
+    const lines = code.split("\n");
+    for (const [categoryName, patterns] of Object.entries(PATTERNS)) {
+      for (const pattern of patterns) {
+        const flags = pattern.regex.flags.includes("g") ? pattern.regex.flags : pattern.regex.flags + "g";
+        const regex = new RegExp(pattern.regex.source, flags);
+        let match;
+        let safetyCount = 0;
+        const maxMatches = 100;
+        while ((match = regex.exec(code)) !== null && safetyCount < maxMatches) {
+          safetyCount++;
+          const lineNum = code.substring(0, match.index).split("\n").length;
+          const line = lines[lineNum - 1] || "";
+          findings.push({
+            severity: pattern.severity,
+            layer: 0,
+            detector: "RealTimeFirewall",
+            category: categoryName,
+            title: `[BLOCKED] ${pattern.note || "Banned pattern detected"}`,
+            file: filePath,
+            line: lineNum,
+            evidence: line.trim(),
+            remediation: this.getRemediation(categoryName),
+            evidenceType: "STATIC"
+          });
+        }
+      }
+    }
+    return findings;
+  }
+  getRemediation(category) {
+    const map = {
+      "SIMULATED_EXECUTION": "REMOVE theatrical code. Do NOT simulate work. Execute real operations.",
+      "THEATRICAL_CODE": "REMOVE placeholder comments. Implement actual functionality or remove code.",
+      "STUB_CODE": "IMPLEMENT actual logic. Stubs return nothing - they are BANNED.",
+      "SQL_INJECTION": "Use parameterized queries. Never concatenate user input into SQL.",
+      "SECRET_EXPOSURE": "Use environment variables. Never hardcode secrets.",
+      "AUTH_BYPASS": "IMPLEMENT proper authentication. Never bypass auth.",
+      "HOOK_SPILLOVER": "ADD agent identity check before hook logic runs."
+    };
+    return map[category] || "Fix this issue before proceeding.";
+  }
+};
+var HookIsolationAnalyzer = class {
+  agentCheckPatterns = [
+    /if\s*\(\s*agent\s*!==?\s*['"][^'"]+['"]\s*\)/i,
+    /if\s*\(\s*agent\s*===\s*['"][^'"]+['"]\s*\)/i,
+    /is\w+Agent\s*\(\s*\)/i,
+    /agent\s*===\s*undefined/i,
+    /!agent\s*\|\|\s*agent\s*===/i,
+    /switch\s*\(\s*agent\s*\)/i
+  ];
+  analyzePlugin(pluginSource, pluginName) {
+    const hooks = [];
+    const spilloverRisks = [];
+    const hookRegex = /['"](chat\.message|tool\.execute\.before|tool\.execute\.after|session\.compacting|experimental\.[^'"]+)['"]\s*:/g;
+    let match;
+    let safetyCount = 0;
+    const maxHooks = 50;
+    while ((match = hookRegex.exec(pluginSource)) !== null && safetyCount < maxHooks) {
+      safetyCount++;
+      const hookName = match[1];
+      const lineNum = pluginSource.substring(0, match.index).split("\n").length;
+      const afterHook = pluginSource.substring(match.index);
+      const funcMatch = afterHook.match(/(?:async\s+)?function\s*\([^)]*\)\s*\{[^}]*\}|\([^)]*\)\s*=>\s*\{[^}]*\}/);
+      let hasAgentCheck = false;
+      let agentCheckPattern;
+      for (const pattern of this.agentCheckPatterns) {
+        const checkMatch = pluginSource.match(pattern);
+        if (checkMatch) {
+          hasAgentCheck = true;
+          agentCheckPattern = checkMatch[0];
+          break;
+        }
+      }
+      const wouldFire = !hasAgentCheck;
+      let wrongContextImpact;
+      if (wouldFire) {
+        wrongContextImpact = this.estimateCrossPluginImpact(hookName, pluginName);
+        spilloverRisks.push({
+          severity: SEVERITY.CRITICAL,
+          layer: 4,
+          detector: "HookIsolationAnalyzer",
+          category: "HOOK SPILLOVER",
+          title: `Hook '${hookName}' fires WITHOUT agent check`,
+          file: pluginName,
+          line: lineNum,
+          evidence: `No agent identity check found before hook logic`,
+          remediation: `ADD agent check: if (agent !== '${pluginName}') return;`,
+          evidenceType: "STATIC"
+        });
+      }
+      hooks.push({
+        name: hookName,
+        file: pluginName,
+        line: lineNum,
+        hasAgentCheck,
+        agentCheckPattern,
+        wouldFireInWrongContext: wouldFire,
+        wrongContextImpact
+      });
+    }
+    return {
+      plugin: pluginName,
+      hooks,
+      spilloverRisks,
+      summary: {
+        totalHooks: hooks.length,
+        unsafeHooks: hooks.filter((h) => h.wouldFireInWrongContext).length,
+        safeHooks: hooks.filter((h) => !h.wouldFireInWrongContext).length
+      }
+    };
+  }
+  estimateCrossPluginImpact(hookName, sourcePlugin) {
+    const impacts = {
+      "chat.message": `Would transform messages for ALL agents including vanilla 'plan', 'build'`,
+      "tool.execute.before": `Would block tools for ALL agents`,
+      "tool.execute.after": `Would modify outputs for ALL agents`,
+      "session.compacting": `Would affect session cleanup for ALL agents`,
+      "experimental.chat.messages.transform": `Would pollute cross-agent message context`
+    };
+    return impacts[hookName] || `Would affect other agents when they trigger ${hookName}`;
+  }
+  analyzeHookSource(hookSource, hookName, pluginName) {
+    let hasAgentCheck = false;
+    let agentCheckPattern;
+    for (const pattern of this.agentCheckPatterns) {
+      const checkMatch = hookSource.match(pattern);
+      if (checkMatch) {
+        hasAgentCheck = true;
+        agentCheckPattern = checkMatch[0];
+        break;
+      }
+    }
+    const lineNum = hookSource.split("\n").length;
+    return {
+      name: hookName,
+      file: pluginName,
+      line: lineNum,
+      hasAgentCheck,
+      agentCheckPattern,
+      wouldFireInWrongContext: !hasAgentCheck,
+      wrongContextImpact: !hasAgentCheck ? this.estimateCrossPluginImpact(hookName, pluginName) : void 0
+    };
+  }
+};
+var ResourceFootprintEstimator = class {
+  estimate(code) {
+    const instantiations = {
+      Map: (code.match(/\bnew\s+Map\s*\(/g) || []).length,
+      Set: (code.match(/\bnew\s+Set\s*\(/g) || []).length,
+      Array: (code.match(/\[\]|\bArray\b/g) || []).length,
+      contextPush: (code.match(/\.push\s*\(/g) || []).length,
+      contextSplice: (code.match(/\.splice\s*\(/g) || []).length
+    };
+    const issues = [];
+    const contextRatio = instantiations.contextPush > 0 && instantiations.contextSplice === 0 ? instantiations.contextPush / Math.max(1, instantiations.contextSplice) : 0;
+    if (contextRatio > 10) {
+      issues.push(`CONTEXT BLOAT: ${instantiations.contextPush} pushes with ${instantiations.contextSplice} splices - ratio ${contextRatio.toFixed(1)}`);
+    }
+    let memoryEstimate = "LOW";
+    if (instantiations.Map > 20 || instantiations.Set > 20) {
+      memoryEstimate = "HIGH";
+      issues.push(`EXCESSIVE COLLECTIONS: ${instantiations.Map} Maps, ${instantiations.Set} Sets`);
+    } else if (instantiations.Map > 10 || instantiations.Set > 10) {
+      memoryEstimate = "MEDIUM";
+    }
+    const estimatedTokens = Math.ceil(code.length / 4);
+    let tokenEstimate = "LOW";
+    if (estimatedTokens > 1e5) {
+      tokenEstimate = "CRITICAL";
+      issues.push(`TOKEN BLOAT: Estimated ${estimatedTokens} tokens in context`);
+    } else if (estimatedTokens > 5e4) {
+      tokenEstimate = "HIGH";
+    } else if (estimatedTokens > 2e4) {
+      tokenEstimate = "MEDIUM";
+    }
+    const cleanupScore = instantiations.contextSplice === 0 && instantiations.contextPush > 0 ? Math.max(0, 100 - instantiations.contextPush * 5) : 100 - Math.abs(instantiations.contextPush - instantiations.contextSplice) * 10;
+    return {
+      memoryEstimate,
+      tokenEstimate,
+      cleanupScore: Math.max(0, Math.min(100, cleanupScore)),
+      issues,
+      instantiations
+    };
+  }
+};
+var CrossReferenceVerifier = class {
+  async verify(projectRoot, opencodeTools) {
+    const references = [];
+    const findings = [];
+    const files = await this.findSourceFiles(projectRoot);
+    for (const file of files) {
+      const content = await readFile(file, "utf-8");
+      const importMatches = content.matchAll(/import\s+.*\s+from\s+['"]([^'"]+)['"]/g);
+      for (const m of importMatches) {
+        const importPath = m[1];
+        const resolved = await this.resolveImport(importPath, file, projectRoot);
+        references.push({
+          type: "import",
+          reference: importPath,
+          file: basename(file),
+          line: content.substring(0, m.index).split("\n").length,
+          ...resolved
+        });
+      }
+      const clusterMatches = content.matchAll(/cluster[Ii]d|cluster_id|spawn_cluster_task.*['"]([^'"]+)['"]/gi);
+      for (const m of clusterMatches) {
+        const clusterId = m[1];
+        const isValidFormat = /^[a-zA-Z][a-zA-Z0-9_-]*$/.test(clusterId);
+        references.push({
+          type: "cluster_id",
+          reference: clusterId,
+          file: basename(file),
+          line: content.substring(0, m.index).split("\n").length,
+          verified: clusterId.length > 0 && isValidFormat,
+          resolution: isValidFormat ? "Valid format" : "Invalid format"
+        });
+      }
+      const toolMatches = content.matchAll(/['"]([a-z][a-z0-9]*-[a-z][a-z0-9]*(?:-[a-z][a-z0-9]*)*)['"]/gi);
+      for (const m of toolMatches) {
+        const toolName = m[1];
+        if (toolName.includes("/") || toolName.includes(".") || /^\d/.test(toolName)) continue;
+        const verified = !opencodeTools || opencodeTools.includes(toolName);
+        references.push({
+          type: "tool_name",
+          reference: toolName,
+          file: basename(file),
+          line: content.substring(0, m.index).split("\n").length,
+          verified,
+          resolution: verified ? "Tool registered" : void 0,
+          error: verified ? void 0 : "Tool not found in OpenCode API"
+        });
+        if (!verified) {
+          findings.push({
+            severity: SEVERITY.HIGH,
+            layer: 6,
+            detector: "CrossReferenceVerifier",
+            category: "UNREGISTERED TOOL",
+            title: `Tool '${toolName}' referenced but not registered`,
+            file: basename(file),
+            evidence: toolName,
+            remediation: "Register tool in plugin config or remove reference",
+            evidenceType: "STATIC"
+          });
+        }
+      }
+      const envMatches = content.matchAll(/process\.env\.([A-Z_][A-Z0-9_]*)/g);
+      for (const m of envMatches) {
+        const envVar = m[1];
+        references.push({
+          type: "env_var",
+          reference: `process.env.${envVar}`,
+          file: basename(file),
+          line: content.substring(0, m.index).split("\n").length,
+          verified: true,
+          // Assume exists
+          resolution: "Environment variable reference"
+        });
+      }
+    }
+    const unverified = references.filter((r) => !r.verified);
+    return {
+      projectRoot,
+      references,
+      unverified,
+      findings,
+      summary: {
+        total: references.length,
+        verified: references.filter((r) => r.verified).length,
+        unverified: unverified.length
+      }
+    };
+  }
+  async findSourceFiles(root) {
+    const files = [];
+    try {
+      const entries = await readdir(root, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory() && !entry.name.startsWith(".") && entry.name !== "node_modules") {
+          const subFiles = await this.findSourceFiles(join(root, entry.name));
+          files.push(...subFiles);
+        } else if (entry.isFile() && /\.(ts|js)$/.test(entry.name)) {
+          files.push(join(root, entry.name));
+        }
+      }
+    } catch {
+    }
+    return files;
+  }
+  async resolveImport(importPath, fromFile, projectRoot) {
+    if (importPath.startsWith("@") || !importPath.startsWith(".")) {
+      return { verified: true, resolution: "External module" };
+    }
+    const baseDir = dirname(fromFile);
+    const resolved = join(baseDir, importPath);
+    const extensions = ["", ".ts", ".js", "/index.ts", "/index.js"];
+    for (const ext of extensions) {
+      try {
+        await access(resolved + ext, constants.R_OK);
+        return { verified: true, resolution: `${resolved}${ext}` };
+      } catch {
+      }
+    }
+    return { verified: false, error: `Cannot resolve import '${importPath}'` };
+  }
+};
+var AlgorithmicScanner = class {
+  findingId = 1;
+  findings = [];
+  reset() {
+    this.findings = [];
+    this.findingId = 1;
+  }
+  scanFile(filePath, content) {
+    const lines = content.split("\n");
+    const fileFindings = [];
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.SIMULATED_EXECUTION, 0, "SIMULATED EXECUTION"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.THEATRICAL_CODE, 0, "THEATRICAL CODE"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.STUB_CODE, 0, "STUB CODE"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.SQL_INJECTION, 3, "SQL INJECTION"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.XSS, 3, "XSS"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.SECRET_EXPOSURE, 3, "SECRET EXPOSURE"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.AUTH_BYPASS, 3, "AUTH BYPASS"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.EMPTY_CATCH, 5, "SILENT ERROR SWALLOWING"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.HOOK_SPILLOVER, 4, "HOOK SPILLOVER"));
+    fileFindings.push(...this.scanPatterns(filePath, content, lines, PATTERNS.GLOBAL_STATE, 4, "ISOLATION VIOLATION"));
+    fileFindings.push(...this.scanComplexity(filePath, lines, 5));
+    fileFindings.push(...this.scanResourceLeaks(filePath, content, 5));
+    if (content.length < 50 && (filePath.endsWith(".ts") || filePath.endsWith(".js"))) {
+      fileFindings.push(this.createFinding(
+        SEVERITY.MEDIUM,
+        1,
+        "BundleSizeAnomaly",
+        "ARCHITECTURAL DECAY",
+        "Suspiciously small file",
+        filePath,
+        `Size: ${content.length} bytes`,
+        "Verify this file contains real implementation",
+        "STATIC"
+      ));
+    }
+    return fileFindings;
+  }
+  scanPatterns(filePath, content, lines, patterns, layer, category) {
+    const findings = [];
+    for (const pattern of patterns) {
+      try {
+        const flags = pattern.regex.flags.includes("g") ? pattern.regex.flags : pattern.regex.flags + "g";
+        const regex = new RegExp(pattern.regex.source, flags);
+        let match;
+        let safetyCount = 0;
+        const maxMatches = 100;
+        while ((match = regex.exec(content)) !== null && safetyCount < maxMatches) {
+          safetyCount++;
+          const matchStr = match[0];
+          const lineNum = content.substring(0, match.index).split("\n").length;
+          findings.push(this.createFinding(
+            pattern.severity,
+            layer,
+            this.getDetectorName(category),
+            category,
+            this.generateTitle(category, pattern.note),
+            filePath,
+            matchStr.substring(0, 100),
+            this.generateRemediation(category),
+            "STATIC",
+            void 0,
+            void 0,
+            lineNum
+          ));
+        }
+      } catch (e) {
+      }
+    }
+    return findings;
+  }
+  scanComplexity(filePath, lines, layer) {
+    const findings = [];
+    let ifCount = 0;
+    let forCount = 0;
+    let whileCount = 0;
+    for (const line of lines) {
+      if (/\bif\s*\(/.test(line)) ifCount++;
+      if (/\bfor\s*\(/.test(line)) forCount++;
+      if (/\bwhile\s*\(/.test(line)) whileCount++;
+    }
+    const totalConditionals = ifCount + forCount + whileCount;
+    const lineCount = lines.length;
+    if (totalConditionals > 10 && lineCount > 100) {
+      findings.push(this.createFinding(
+        SEVERITY.MEDIUM,
+        layer,
+        "ComplexityHotspot",
+        "COMPLEXITY",
+        `High cyclomatic complexity (${totalConditionals} conditionals)`,
+        filePath,
+        `Conditionals: ${ifCount} if, ${forCount} for, ${whileCount} while in ${lineCount} lines`,
+        "Simplify by extracting functions or using early returns",
+        "STATIC"
+      ));
+    }
+    return findings;
+  }
+  scanResourceLeaks(filePath, content, layer) {
+    const findings = [];
+    const addListeners = (content.match(/addEventListener\s*\(/g) || []).length;
+    const removeListeners = (content.match(/removeEventListener\s*\(/g) || []).length;
+    if (addListeners > removeListeners) {
+      findings.push(this.createFinding(
+        SEVERITY.MEDIUM,
+        layer,
+        "MemoryLeak",
+        "RESOURCE LEAK",
+        `Potential event listener leak: ${addListeners} add vs ${removeListeners} remove`,
+        filePath,
+        `${addListeners} addEventListener, ${removeListeners} removeEventListener`,
+        "Ensure all addEventListener has corresponding removeEventListener",
+        "STATIC"
+      ));
+    }
+    return findings;
+  }
+  createFinding(severity, layer, detector, category, title, file, evidence, remediation, evidenceType, commandExecuted, commandOutput, line) {
+    return {
+      id: `AUDIT-${this.findingId++}`,
+      severity,
+      layer,
+      detector,
+      category,
+      title,
+      file,
+      evidence,
+      remediation,
+      evidenceType,
+      commandExecuted,
+      commandOutput,
+      line
+    };
+  }
+  getDetectorName(category) {
+    const map = {
+      "SIMULATED EXECUTION": "SimulatedExecution",
+      "THEATRICAL CODE": "TheatricalCode",
+      "STUB CODE": "StubFunction",
+      "SQL INJECTION": "SQLInjection",
+      "XSS": "XSSDetector",
+      "SECRET EXPOSURE": "SecretExposure",
+      "AUTH BYPASS": "AuthBypass",
+      "SILENT ERROR SWALLOWING": "EmptyCatch",
+      "HOOK SPILLOVER": "HookSpillover",
+      "ISOLATION VIOLATION": "IsolationViolation",
+      "COMPLEXITY": "ComplexityHotspot",
+      "RESOURCE LEAK": "MemoryLeak"
+    };
+    return map[category] || "Unknown";
+  }
+  generateTitle(category, note) {
+    const titles = {
+      "SIMULATED EXECUTION": "\u{1F6AB} THEATRICAL CODE DETECTED - BANNED PATTERN",
+      "THEATRICAL CODE": "\u{1F6AB} PLACEHOLDER/TODO COMMENT - THEATRICAL CODE",
+      "STUB CODE": "\u{1F6AB} STUB FUNCTION - BANNED PATTERN",
+      "SQL INJECTION": "Potential SQL injection vulnerability",
+      "XSS": "Potential XSS vulnerability - unsafe DOM manipulation",
+      "SECRET EXPOSURE": "Hardcoded secret/API key detected",
+      "AUTH BYPASS": "Potential authentication bypass",
+      "SILENT ERROR SWALLOWING": "Empty catch block - error is silently ignored",
+      "HOOK SPILLOVER": "Potential hook spillover pattern",
+      "ISOLATION VIOLATION": "Global state access detected",
+      "COMPLEXITY": "High cyclomatic complexity detected",
+      "RESOURCE LEAK": "Potential resource leak detected"
+    };
+    return titles[category] || category;
+  }
+  generateRemediation(category) {
+    const remediations = {
+      "SIMULATED EXECUTION": "REMOVE theatrical code. Do NOT simulate work. Execute real operations.",
+      "THEATRICAL CODE": "REMOVE placeholder comments. Implement actual functionality or remove code.",
+      "STUB CODE": "IMPLEMENT actual logic. Stubs that return null/undefined are BANNED.",
+      "SQL INJECTION": "Use parameterized queries or an ORM. Never concatenate user input into SQL strings.",
+      "XSS": "Sanitize user input. Use safe DOM methods or a sanitization library.",
+      "SECRET EXPOSURE": "Move secrets to environment variables. Use a secrets manager in production.",
+      "AUTH BYPASS": "Remove hardcoded auth bypass. Implement proper authentication checks.",
+      "SILENT ERROR SWALLOWING": "Add error logging or handling to catch block.",
+      "HOOK SPILLOVER": "Ensure hooks only fire for intended agents.",
+      "ISOLATION VIOLATION": "Avoid global state. Use dependency injection.",
+      "COMPLEXITY": "Simplify by extracting functions, using early returns, or breaking into modules.",
+      "RESOURCE LEAK": "Ensure all event listeners and intervals have corresponding cleanup."
+    };
+    return remediations[category] || "Review and fix.";
+  }
+  getFindings() {
+    return [...this.findings];
+  }
+  addFinding(finding) {
+    if (!finding.id) {
+      finding.id = `AUDIT-${this.findingId++}`;
+    }
+    this.findings.push(finding);
+  }
+  addFindings(findings) {
+    this.findings.push(...findings);
+  }
+};
+var AuditEngine = class {
+  state;
+  scanner;
+  constructor() {
+    this.scanner = new AlgorithmicScanner();
+    this.state = this.createInitialState();
+  }
+  createInitialState() {
+    return {
+      config: {
+        targetPath: "",
+        depth: 7,
+        containerImage: "opencode-python3:latest",
+        buildCommand: "npm run build 2>&1",
+        testCommand: "npm test 2>&1"
+      },
+      currentLayer: 0,
+      completedLayers: [],
+      startedAt: /* @__PURE__ */ new Date(),
+      status: "IDLE"
+    };
+  }
+  getState() {
+    return { ...this.state };
+  }
+  getScanner() {
+    return this.scanner;
+  }
+  startAudit(config) {
+    this.state.config = { ...this.state.config, ...config };
+    this.state.currentLayer = 0;
+    this.state.completedLayers = [];
+    this.state.startedAt = /* @__PURE__ */ new Date();
+    this.state.status = "SCANNING";
+    this.scanner.reset();
+  }
+  async scanDirectory(targetPath) {
+    const files = /* @__PURE__ */ new Map();
+    const MAX_FILE_SIZE = 1024 * 1024;
+    const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
+    let totalSize = 0;
+    try {
+      const { stdout } = await execAsync(
+        `find "${targetPath}" -type f \\( -name "*.ts" -o -name "*.js" -o -name "*.json" \\) 2>/dev/null | head -50`,
+        { timeout: 15e3 }
+      );
+      const filePaths = stdout.split("\n").filter((p) => p.trim());
+      for (const filePath of filePaths.slice(0, 50)) {
+        if (totalSize >= MAX_TOTAL_SIZE) break;
+        try {
+          const stats = await Promise.race([
+            stat(filePath),
+            new Promise(
+              (_, reject) => setTimeout(() => reject(new Error("STAT_TIMEOUT")), 5e3)
+            )
+          ]).catch((e) => {
+            throw e;
+          });
+          if (stats.size > MAX_FILE_SIZE) {
+            continue;
+          }
+          const content = await Promise.race([
+            readFile(filePath, "utf-8"),
+            new Promise(
+              (_, reject) => setTimeout(() => reject(new Error("READ_TIMEOUT")), 5e3)
+            )
+          ]).catch((e) => {
+            throw e;
+          });
+          if (content.includes("\uFFFD") && content.length > 100) {
+            continue;
+          }
+          totalSize += stats.size;
+          files.set(filePath, content);
+        } catch (e) {
+        }
+      }
+    } catch (e) {
+    }
+    return files;
+  }
+  async runBuildTest(targetPath) {
+    const command = this.state.config.buildCommand || "npm run build 2>&1";
+    try {
+      const { stdout, stderr } = await execAsync(command, {
+        cwd: targetPath,
+        timeout: 12e4
+      });
+      return { success: true, output: stdout + "\n" + stderr };
+    } catch (e) {
+      return { success: false, output: e.message || String(e) };
+    }
+  }
+  async runTestSuite(targetPath) {
+    const command = this.state.config.testCommand || "npm test 2>&1";
+    try {
+      const { stdout, stderr } = await execAsync(command, {
+        cwd: targetPath,
+        timeout: 18e4
+      });
+      const output = stdout + "\n" + stderr;
+      const passMatch = output.match(/(\d+)\s+passing/);
+      const failMatch = output.match(/(\d+)\s+fail/);
+      return {
+        success: !output.includes("error") && !output.includes("FAIL"),
+        output,
+        passing: passMatch ? parseInt(passMatch[1]) : 0,
+        failing: failMatch ? parseInt(failMatch[1]) : 0
+      };
+    } catch (e) {
+      return { success: false, output: e.message || String(e) };
+    }
+  }
+  completeLayer(layer) {
+    if (!this.state.completedLayers.includes(layer)) {
+      this.state.completedLayers.push(layer);
+    }
+    this.state.currentLayer = layer + 1;
+  }
+  complete() {
+    this.state.status = "COMPLETE";
+  }
+};
+var ReportGenerator = class {
+  generate(findingId, getFindingsByLayer, state2) {
+    const allFindings = [];
+    for (let i = 0; i <= 6; i++) {
+      allFindings.push(...getFindingsByLayer(i));
+    }
+    const critical = allFindings.filter((f) => f.severity === "CRITICAL").length;
+    const high = allFindings.filter((f) => f.severity === "HIGH").length;
+    const medium = allFindings.filter((f) => f.severity === "MEDIUM").length;
+    const low = allFindings.filter((f) => f.severity === "LOW").length;
+    const info = allFindings.filter((f) => f.severity === "INFO").length;
+    const passStatus = critical === 0 && high === 0 ? "\u2705 PASSED" : "\u274C FAILED";
+    const duration = Date.now() - state2.startedAt.getTime();
+    let report = `# TRIDENT CODE REVIEW \u2014 AUDIT REPORT
+
+**Target:** ${state2.config.targetPath}
+**Date:** ${state2.startedAt.toISOString()}
+**Duration:** ${Math.round(duration / 1e3)}s
+**Status:** ${passStatus}
+
+---
+
+## EXECUTIVE SUMMARY
+
+| Severity | Count | Status |
+|----------|-------|--------|
+| CRITICAL (BANNED) | ${critical} | ${critical > 0 ? "\u{1F6A8} IMMEDIATE FIX REQUIRED" : "\u2705"} |
+| HIGH | ${high} | ${high > 0 ? "\u26A0\uFE0F" : "\u2705"} |
+| MEDIUM | ${medium} | ${medium > 0 ? "\u26A1" : "\u2705"} |
+| LOW | ${low} | ${low > 0 ? "\u{1F4DD}" : "\u2705"} |
+| INFO | ${info} | \u2139\uFE0F |
+
+${critical > 0 ? "\n\u{1F6A8} **CRITICAL: THEATRICAL CODE DETECTED - ALL SUCH PATTERNS ARE BANNED**\n" : ""}
+
+---
+
+## FINDINGS BY LAYER
+
+`;
+    const layerNames = {
+      0: "\u{1F6AB} BANNED PATTERNS (Theatrical Code)",
+      1: "Structure Analysis",
+      2: "Execution Verification",
+      3: "Security Analysis",
+      4: "Architecture Analysis",
+      5: "Quality Analysis",
+      6: "Integration Verification"
+    };
+    for (let layer = 0; layer <= 6; layer++) {
+      const layerFindings = getFindingsByLayer(layer);
+      if (layerFindings.length === 0) continue;
+      report += `### Layer ${layer}: ${layerNames[layer] || "Unknown"}
+
+`;
+      for (const f of layerFindings) {
+        const icon = { CRITICAL: "\u{1F6AB}", HIGH: "\u26A0\uFE0F", MEDIUM: "\u26A1", LOW: "\u{1F4DD}", INFO: "\u2139\uFE0F" }[f.severity];
+        report += `#### ${icon} [${f.severity}] ${f.title}
+`;
+        report += `**File:** ${f.file}${f.line ? `:${f.line}` : ""}
+`;
+        report += `**Category:** ${f.category}
+`;
+        report += `**Evidence:** \`${f.evidence}\`
+`;
+        report += `**Fix:** ${f.remediation}
+
+`;
+      }
+    }
+    report += `
+
+---
+
+## SYSTEM PROMPT FOR FIXING
+
+Copy this to fix the issues:
+
+\`\`\`
+TARGET: ${state2.config.targetPath}
+CRITICAL (BANNED): ${critical}
+HIGH: ${high}
+
+\u{1F6AB} THEATRICAL CODE PATTERNS ARE BANNED - FIX IMMEDIATELY:
+1. SIMULATED_EXECUTION - fake success responses
+2. THEATRICAL_CODE - TODO placeholders, mock comments
+3. STUB_CODE - null/undefined returns
+
+RULES:
+1. Fix CRITICAL immediately - theatrical code is BANNED
+2. Fix HIGH before deployment
+3. Run tests after each fix
+
+ISSUES:
+${allFindings.filter((f) => f.severity === "CRITICAL" || f.severity === "HIGH").map(
+      (f, i) => `${i + 1}. [${f.severity}] ${f.file}${f.line ? `:${f.line}` : ""}
+   ${f.title}
+   Fix: ${f.remediation}`
+    ).join("\n")}
+\`\`\`
+
+---
+
+*Generated by Trident Brain v2.0 \u2014 Algorithmic Core*
+`;
+    return report;
+  }
+};
+var auditEngine = new AuditEngine();
+var reportGenerator = new ReportGenerator();
+var proofVerifier = new ProofVerifier();
+var realTimeFirewall = new RealTimeFirewall();
+var hookAnalyzer = new HookIsolationAnalyzer();
+var resourceEstimator = new ResourceFootprintEstimator();
+var crossRefVerifier = new CrossReferenceVerifier();
+
+// src/index.ts
+var state = {
+  mode: "idle",
+  target: "",
+  artifacts: /* @__PURE__ */ new Map(),
+  lastFindings: []
+};
+async function runAudit(target) {
+  try {
+    auditEngine.startAudit({
+      targetPath: target,
+      depth: 7
+    });
+    const files = await auditEngine.scanDirectory(target);
+    if (files.size === 0) {
+      return `No files found in ${target}`;
+    }
+    const scanner = auditEngine.getScanner();
+    let scanned = 0;
+    for (const [filePath, content] of files) {
+      try {
+        scanner.scanFile(filePath, content);
+        scanned++;
+      } catch (e) {
+      }
+    }
+    for (let i = 0; i <= 6; i++) {
+      auditEngine.completeLayer(i);
+    }
+    auditEngine.complete();
+    const findings = scanner.getFindings();
+    state.lastFindings = findings;
+    state.lastAuditTarget = target;
+    const report = reportGenerator.generate(
+      () => "AUDIT-1",
+      (layer) => findings.filter((f) => f.layer === layer),
+      auditEngine.getState()
+    );
+    state.artifacts.set("TRIDENT_CODE_REVIEW.md", report);
+    return `AUDIT COMPLETE
+Files: ${scanned}
+Findings: ${findings.length}`;
+  } catch (error) {
+    return `AUDIT ERROR: ${error.message}`;
+  }
+}
+async function TridentBrainPlugin(input) {
+  return {
+    "chat.message": async (input2, output) => {
+      if (input2.agent !== "trident") return;
+      const message = input2.message || "";
+      if (message.includes("audit")) {
+        const match = message.match(/\/[\/\.\~\w-]+/);
+        const target = match ? match[0] : "/tmp";
+        output.parts = [{ type: "text", text: `AUDIT STARTED ${target}` }];
+        runAudit(target).then((result) => {
+          output.parts = [{ type: "text", text: result }];
+        });
+        return;
+      }
+      output.parts = [{ type: "text", text: "TRIDENT OK" }];
+    }
+  };
+}
+export {
+  TridentBrainPlugin as default
+};

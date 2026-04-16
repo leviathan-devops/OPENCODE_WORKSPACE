@@ -1,0 +1,440 @@
+{
+  "id": "shark-v4",
+  "name": "Shark V4 — Triple-Brain Parallel Peer",
+  "description": "Shark Macro architecture: three peer brains racing concurrently with domain ownership, dynamic context injection, active derailment detection, and mechanical gate enforcement. Aligned with shark-context library ground truth.",
+  "version": "4.0",
+  "variant": "macro",
+  "groundTruth": "/home/leviathan/OPENCODE_WORKSPACE/shark-agent-rebirth/shark-context/",
+
+  "brains": [
+    {
+      "id": "shark-execution",
+      "name": "Execution Brain",
+      "role": "primary-agent",
+      "description": "Steamrolls the build forward. Primary autonomous execution agent.",
+      "config": {
+        "decisionStyle": "aggressive",
+        "priority": 100,
+        "canOverride": true,
+        "autonomyLevel": "full",
+        "executionSpeed": "fast",
+        "aggressionLevel": "high"
+      },
+      "domainOwnership": {
+        "writes": ["execution-state", "quality-state"],
+        "reads": ["plan-state", "thinking-state"]
+      },
+      "behavior": {
+        "steamrollBuild": true,
+        "contextInjected": true,
+        "respondsToPriority": true
+      }
+    },
+    {
+      "id": "shark-reasoning",
+      "name": "Reasoning Brain",
+      "role": "floating-2nd-brain",
+      "description": "On-demand intelligence and dynamic T1/T2 context management. Context bridge between Execution and all state.",
+      "config": {
+        "decisionStyle": "analytical",
+        "priority": 90,
+        "canOverride": false,
+        "intelligenceStyle": "on-demand",
+        "contextManagement": "active"
+      },
+      "domainOwnership": {
+        "writes": ["thinking-state", "context-bridge"],
+        "reads": ["execution-state", "plan-state", "workflow-state", "quality-state", "security-state"]
+      },
+      "behavior": {
+        "contextGapDetection": true,
+        "autoDebug60Percent": true,
+        "t2Synthesis": true,
+        "contextInjection": true,
+        "readOnlyObserver": true
+      }
+    },
+    {
+      "id": "shark-system",
+      "name": "System Brain",
+      "role": "watchdog-enforcer",
+      "description": "Active derailment detection, real-time enforcement, gate evaluation. Watches all domains, enforces gates, triggers escalations.",
+      "config": {
+        "decisionStyle": "defensive",
+        "priority": 80,
+        "canOverride": true,
+        "vigilanceLevel": "maximum",
+        "threatSensitivity": "high",
+        "enforcementStyle": "active"
+      },
+      "domainOwnership": {
+        "writes": ["workflow-state", "security-state"],
+        "reads": ["execution-state", "thinking-state", "plan-state", "quality-state", "context-bridge"]
+      },
+      "behavior": {
+        "derailmentDetection": true,
+        "realTimeFix": true,
+        "gateEnforcement": true,
+        "escalationTrigger": true,
+        "readOnlyObserver": true
+      }
+    }
+  ],
+
+  "clusters": [
+    {
+      "id": "execution-cluster",
+      "name": "Execution Cluster",
+      "type": "execution",
+      "description": "Core execution cluster — all build operations",
+      "agentIds": ["executor"],
+      "coordinatedBy": "shark-execution",
+      "config": {
+        "maxConcurrentTasks": 2,
+        "executionSpeed": "fast"
+      }
+    },
+    {
+      "id": "reasoning-cluster",
+      "name": "Reasoning Cluster",
+      "type": "analysis",
+      "description": "Analysis and context synthesis cluster",
+      "agentIds": ["synthesizer", "auto-debugger"],
+      "coordinatedBy": "shark-reasoning",
+      "config": {
+        "maxConcurrentTasks": 2
+      }
+    },
+    {
+      "id": "enforcement-cluster",
+      "name": "Enforcement Cluster",
+      "type": "enforcement",
+      "description": "Gate enforcement and security cluster",
+      "agentIds": ["gate-keeper", "guardian-enforcer"],
+      "coordinatedBy": "shark-system",
+      "config": {
+        "maxConcurrentTasks": 2
+      }
+    }
+  ],
+
+  "agents": [
+    {
+      "id": "executor",
+      "name": "Executor",
+      "type": "coder",
+      "description": "Primary execution agent — steamrolls build",
+      "clusterId": "execution-cluster",
+      "capabilities": ["file-write", "terminal", "build-tools", "test-runner"],
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.7,
+        "speedBias": 0.9
+      }
+    },
+    {
+      "id": "synthesizer",
+      "name": "Synthesizer",
+      "type": "sme",
+      "description": "T2 context synthesis and injection",
+      "clusterId": "reasoning-cluster",
+      "capabilities": ["context-synthesis", "t2-management", "knowledge-base"],
+      "config": {
+        "style": "analytical",
+        "qualityBias": 0.9,
+        "creativityBias": 0.6
+      }
+    },
+    {
+      "id": "auto-debugger",
+      "name": "Auto-Debugger",
+      "type": "sme",
+      "description": "Automatic error detection and fix (60% auto-fix rate)",
+      "clusterId": "reasoning-cluster",
+      "capabilities": ["error-detection", "pattern-matching", "auto-fix"],
+      "config": {
+        "style": "analytical",
+        "qualityBias": 0.85
+      }
+    },
+    {
+      "id": "gate-keeper",
+      "name": "Gate Keeper",
+      "type": "reviewer",
+      "description": "Gate criteria evaluation and blocking",
+      "clusterId": "enforcement-cluster",
+      "capabilities": ["gate-evaluation", "evidence-collection", "phase-blocking"],
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.99
+      }
+    },
+    {
+      "id": "guardian-enforcer",
+      "name": "Guardian Enforcer",
+      "type": "critic",
+      "description": "Guardian zone enforcement and scope containment",
+      "clusterId": "enforcement-cluster",
+      "capabilities": ["guardian", "zone-classification", "scope-enforcement", "derailment-detection"],
+      "config": {
+        "style": "conservative",
+        "securityLevel": "maximum"
+      }
+    }
+  ],
+
+  "workflows": [
+    {
+      "id": "shark-build-workflow",
+      "name": "Shark Build Workflow",
+      "description": "Six-phase build workflow with mechanical gate enforcement",
+      "phases": [
+        {
+          "id": "architect-phase",
+          "name": "Architect Phase",
+          "description": "Generate SPEC.md and configure Guardian",
+          "participatingAgents": ["executor", "synthesizer"],
+          "involvedClusters": ["execution-cluster", "reasoning-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "guardianLevel": "BALANCED"
+          }
+        },
+        {
+          "id": "coding-phase",
+          "name": "Coding Phase",
+          "description": "Execute SPEC.md — create files, run commands",
+          "participatingAgents": ["executor"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 1800000,
+            "optional": false,
+            "scopeEnforcement": "strict"
+          }
+        },
+        {
+          "id": "test-phase",
+          "name": "Test Phase",
+          "description": "Run tests, verify coverage >= 80%",
+          "participatingAgents": ["executor", "auto-debugger"],
+          "involvedClusters": ["execution-cluster", "reasoning-cluster"],
+          "config": {
+            "timeout": 600000,
+            "optional": false,
+            "coverageFloor": 80
+          }
+        },
+        {
+          "id": "build-phase",
+          "name": "Build Phase",
+          "description": "Compile, lint, type-check, produce artifact",
+          "participatingAgents": ["executor"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "lintThreshold": "zero-warnings"
+          }
+        },
+        {
+          "id": "review-phase",
+          "name": "Review Phase",
+          "description": "SAST, secrets scan, dependency audit",
+          "participatingAgents": ["gate-keeper", "guardian-enforcer"],
+          "involvedClusters": ["enforcement-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "sastFailOn": "critical",
+            "secretsFailOn": "any"
+          }
+        },
+        {
+          "id": "delivery-phase",
+          "name": "Delivery Phase",
+          "description": "Archive evidence, create checkpoint, notify",
+          "participatingAgents": ["gate-keeper"],
+          "involvedClusters": ["enforcement-cluster"],
+          "config": {
+            "timeout": 60000,
+            "optional": false
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "architect-gate",
+          "name": "Architect Gate",
+          "description": "SPEC.md is complete and valid",
+          "afterPhase": "architect-phase",
+          "beforePhase": "coding-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "SPEC.md exists with all required sections",
+              "required": ["spec-exists", "requirements-listed", "acceptance-criteria-defined", "guardian-configured"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        },
+        {
+          "id": "coding-gate",
+          "name": "Coding Gate",
+          "description": "Implementation matches SPEC.md",
+          "afterPhase": "coding-phase",
+          "beforePhase": "test-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "All specified files created, no scope violations",
+              "required": ["files-created", "no-unspecified-files", "no-guardian-violations"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        },
+        {
+          "id": "test-gate",
+          "name": "Test Gate",
+          "description": "Tests pass with adequate coverage",
+          "afterPhase": "test-phase",
+          "beforePhase": "build-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Tests pass, coverage >= 80%, no weak assertions",
+              "required": ["tests-pass", "coverage-80+", "no-weak-assertions"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        },
+        {
+          "id": "build-gate",
+          "name": "Build Gate",
+          "description": "Code compiles and lint is clean",
+          "afterPhase": "build-phase",
+          "beforePhase": "review-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Build succeeds, lint clean, artifact produced",
+              "required": ["build-success", "lint-clean", "artifact-produced"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        },
+        {
+          "id": "review-gate",
+          "name": "Review Gate",
+          "description": "Security scan is clean",
+          "afterPhase": "review-phase",
+          "beforePhase": "delivery-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "SAST clean, secrets scan clean, dependencies audited",
+              "required": ["sast-clean", "no-secrets", "deps-audited"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        },
+        {
+          "id": "delivery-gate",
+          "name": "Delivery Gate",
+          "description": "Evidence archived, checkpoint created",
+          "afterPhase": "delivery-phase",
+          "beforePhase": null,
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "All evidence archived, checkpoint created",
+              "required": ["all-evidence-archived", "checkpoint-created", "delivery-summary-generated"]
+            }
+          ],
+          "evaluatedBy": "shark-system"
+        }
+      ],
+      "managedBy": "shark-system",
+      "config": {
+        "allowParallel": false,
+        "allowSkip": false,
+        "allowRestart": true,
+        "tripleBrainCoordination": "required"
+      }
+    }
+  ],
+
+  "coordination": {
+    "style": "federated",
+    "protocol": "broadcast",
+    "domainOwnership": {
+      "execution-state": ["shark-execution", "shark-system"],
+      "thinking-state": ["shark-reasoning", "shark-system"],
+      "context-bridge": ["shark-reasoning"],
+      "workflow-state": ["shark-system", "shark-reasoning"],
+      "quality-state": ["shark-execution", "shark-system"],
+      "security-state": ["shark-system"],
+      "plan-state": ["shark-reasoning", "shark-system"]
+    },
+    "brainMessenger": {
+      "priorityLevels": ["critical", "high", "normal", "low"],
+      "criticalBypass": true
+    },
+    "stateManagement": {
+      "storage": "filesystem",
+      "evidencePath": ".shark/evidence",
+      "statePath": ".shark/state",
+      "checkpointPath": ".shark/checkpoints"
+    },
+    "errorHandling": {
+      "autoDebugRate": 0.6,
+      "escalationTriggers": ["recurring-error", "unknown-error", "guardian-breach", "secret-detected"],
+      "fallbacks": ["auto-debug", "escalate"]
+    }
+  },
+
+  "guardian": {
+    "zones": [
+      { "name": "WORKSPACE", "paths": ["./", "./**"], "access": "full" },
+      { "name": "SANDBOX", "paths": ["./.sandbox/**"], "access": "full" },
+      { "name": "DEVELOPMENT", "paths": ["~/Projects", "~/code"], "access": "conditional" },
+      { "name": "PERSONAL", "paths": ["~/.ssh", "~/.aws", "~/Documents"], "access": "BLOCKED" },
+      { "name": "CONFIG", "paths": ["/etc", "/opt/etc"], "access": "BLOCKED" },
+      { "name": "SYSTEM", "paths": ["/bin", "/usr", "/System"], "access": "NEVER" }
+    ],
+    "protectionLevels": {
+      "STRICT": { "workspace": "read-only", "dev": "BLOCKED", "system": "BLOCKED", "sandbox": "full" },
+      "BALANCED": { "workspace": "full", "dev": "conditional", "system": "BLOCKED", "sandbox": "full" },
+      "PERMISSIVE": { "workspace": "full", "dev": "full", "system": "BLOCKED", "sandbox": "full" },
+      "SANDBOX": { "workspace": "redirected", "dev": "redirected", "system": "BLOCKED", "sandbox": "full" }
+    }
+  },
+
+  "evidence": {
+    "path": ".shark/evidence",
+    "structure": "{gate-id}/{timestamp}/",
+    "files": {
+      "evidenceJson": "gate-evidence.json",
+      "commandLog": "command-output.log",
+      "checksum": "checksum.sha256"
+    }
+  },
+
+  "escalation": {
+    "format": "structured",
+    "triggers": {
+      "critical": ["secret-detected", "sast-critical", "guardian-breach", "data-exfiltration", "critical-cve"],
+      "high": ["same-error-3x", "unknown-error", "coverage-below-80", "build-fail"],
+      "medium": ["non-critical-sast", "deprecated-dep", "performance-concern"]
+    },
+    "autoDebugAttempts": 3,
+    "path": ".shark/escalations"
+  },
+
+  "metadata": {
+    "groundTruth": "/home/leviathan/OPENCODE_WORKSPACE/shark-agent-rebirth/shark-context/",
+    "author": "Leviathan DevOps",
+    "createdAt": "2026-04-05",
+    "tags": ["shark", "triple-brain", "macro", "parallel-peer", "devops", "anti-hallucination", "quality-gated"]
+  }
+}

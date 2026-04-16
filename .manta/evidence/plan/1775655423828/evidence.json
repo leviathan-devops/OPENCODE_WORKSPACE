@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775655423828,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:echo \"=== Plugin Paths ===\" && ls -la /home/leviathan/tmp/oc-test-ws/shark-agent-dist/index.js 2>/de"
+  }
+}

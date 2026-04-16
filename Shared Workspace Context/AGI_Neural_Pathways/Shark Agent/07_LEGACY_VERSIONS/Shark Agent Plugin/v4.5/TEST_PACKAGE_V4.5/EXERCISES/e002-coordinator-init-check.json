@@ -1,0 +1,12 @@
+{
+  "id": "e002",
+  "name": "coordinator-initialization-check",
+  "component": "coordinator",
+  "difficulty": "P0",
+  "prompt": "call shark-status-micro and verify output shows 'Brain: plan' (initialization)",
+  "expected_output_contains": ["Brain", "plan"],
+  "verification": {
+    "type": "output_contains",
+    "required_strings": ["Brain", "plan"]
+  }
+}

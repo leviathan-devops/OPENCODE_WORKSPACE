@@ -1,0 +1,34 @@
+{
+  "exercise_id": "e013",
+  "name": "Spillover — Vanilla agent isolation from /Hermes",
+  "component": "spillover_defense",
+  "component_area": "hermes-command hook guard",
+  "mechanical_verification": "As a vanilla agent, run /Hermes status. Vanilla agent must NOT get Hermes response.",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "As Hermes agent: /Hermes status",
+      "expected": "Hermes status output (confirms command works for Hermes)",
+      "mechanical_pass": "Returns Hermes-specific status text"
+    },
+    {
+      "step": 2,
+      "action": "As plan/vanilla agent: /Hermes status",
+      "expected": "Plan agent ignores /Hermes OR returns plan agent response, NOT Hermes status",
+      "mechanical_pass": "Output does NOT contain 'hermes' session info or agent list"
+    }
+  ],
+
+  "pass_criteria": {
+    "hermes_gets_response": "Hermes agent receives /Hermes intercept correctly",
+    "vanilla_not_polluted": "Vanilla plan/build agents do NOT receive Hermes command output"
+  },
+
+  "failure_modes": {
+    "vanilla_gets_hermes": "CRITICAL — Plan agent receives Hermes command output",
+    "hermes_missed": "Hermes agent does not receive /Hermes intercept"
+  }
+}

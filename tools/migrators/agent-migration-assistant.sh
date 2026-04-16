@@ -1,0 +1,112 @@
+#!/bin/bash
+# Agent Migration Assistant
+# Allows agents to migrate themselves to the new workspace
+
+set -e
+
+WORKSPACE="/home/leviathan/OPENCODE_WORKSPACE"
+MAPPING_FILE="$WORKSPACE/configs/path-mapping.json"
+
+echo "🔧 Agent Migration Assistant"
+echo "============================"
+
+# Load path mappings
+if [ ! -f "$MAPPING_FILE" ]; then
+    echo "❌ Path mapping file not found: $MAPPING_FILE"
+    exit 1
+fi
+
+OLD_BASE=$(jq -r '.old_base' "$MAPPING_FILE")
+NEW_BASE=$(jq -r '.new_base' "$MAPPING_FILE")
+
+echo "Migrating from: $OLD_BASE"
+echo "Migrating to:   $NEW_BASE"
+echo ""
+
+# Detect agent type
+detect_agent_type() {
+    if [ -f "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode/opencode.json" ]; then
+        echo "opencode"
+    elif [ -f "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent/config.json" ]; then
+        echo "shark"
+    elif ps aux | grep -q "[q]wen"; then
+        echo "qwen"
+    elif ps aux | grep -q "[g]lm"; then
+        echo "glm"
+    else
+        echo "unknown"
+    fi
+}
+
+AGENT_TYPE=$(detect_agent_type)
+echo "Detected agent type: $AGENT_TYPE"
+
+# Migration steps per agent type
+case "$AGENT_TYPE" in
+    "opencode")
+        echo "📦 Migrating OpenCode agent..."
+        
+        # Create backup of current config
+        if [ -d "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode" ]; then
+            BACKUP_DIR="/home/leviathan/OPENCODE_WORKSPACE/configs/opencode.backup.$(date +%Y%m%d-%H%M%S)"
+            cp -rp "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode" "$BACKUP_DIR"
+            echo "✅ Backup created: $BACKUP_DIR"
+        fi
+        
+        # Create new config directory
+        mkdir -p "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode.new"
+        
+        # Copy updated configuration
+        cp -rp "$WORKSPACE/configs/opencode/"* "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode.new/"
+        
+        echo "✅ OpenCode migration prepared."
+        echo ""
+        echo "📋 To complete migration:"
+        echo "   1. Stop OpenCode: opencode stop-all"
+        echo "   2. Switch config: mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode /home/leviathan/OPENCODE_WORKSPACE/configs/opencode.old && mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode.new /home/leviathan/OPENCODE_WORKSPACE/configs/opencode"
+        echo "   3. Restart: opencode start"
+        echo "   4. Test: opencode status"
+        echo ""
+        echo "🔄 To rollback:"
+        echo "   mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode /home/leviathan/OPENCODE_WORKSPACE/configs/opencode.new && mv /home/leviathan/OPENCODE_WORKSPACE/configs/opencode.old /home/leviathan/OPENCODE_WORKSPACE/configs/opencode"
+        ;;
+    
+    "shark")
+        echo "🦈 Migrating Shark Agent..."
+        
+        # Create backup
+        if [ -d "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent" ]; then
+            BACKUP_DIR="/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.backup.$(date +%Y%m%d-%H%M%S)"
+            cp -rp "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent" "$BACKUP_DIR"
+            echo "✅ Backup created: $BACKUP_DIR"
+        fi
+        
+        # Create new config directory
+        mkdir -p "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.new"
+        cp -rp "$WORKSPACE/configs/shark-agent/"* "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.new/"
+        
+        echo "✅ Shark Agent migration prepared."
+        echo ""
+        echo "📋 To complete migration:"
+        echo "   1. Stop Shark: shark-agent stop"
+        echo "   2. Switch config: mv /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.old && mv /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.new /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent"
+        echo "   3. Restart: shark-agent start"
+        echo ""
+        echo "🔄 To rollback:"
+        echo "   mv /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.new && mv /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent.old /home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent"
+        ;;
+    
+    *)
+        echo "⚠️  Unknown or generic agent type."
+        echo ""
+        echo "📋 Generic migration steps:"
+        echo "   1. Check new workspace: ls -la $WORKSPACE"
+        echo "   2. Review your configuration files"
+        echo "   3. Manually update paths using: python3 $WORKSPACE/tools/updaters/update-paths.py"
+        echo "   4. Test in isolated environment first"
+        ;;
+esac
+
+echo ""
+echo "🎯 Migration preparation complete!"
+echo "   Review the instructions above before proceeding."

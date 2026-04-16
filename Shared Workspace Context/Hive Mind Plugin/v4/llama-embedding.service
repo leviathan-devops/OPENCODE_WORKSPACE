@@ -1,0 +1,17 @@
+[Unit]
+Description=Hive Mind Embedding Server (llama.cpp)
+After=network.target
+
+[Service]
+Type=simple
+User=leviathan
+Group=leviathan
+WorkingDirectory=/home/leviathan
+ExecStart=/home/leviathan/llama.cpp/build/bin/llama-server -m /home/leviathan/models/nomic-embed-text-v1.5.Q4_K_M.gguf -ngl 99 --port 8001 --host 0.0.0.0 --embeddings
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/llama-embedding-stdout.log
+StandardError=append:/tmp/llama-embedding-stderr.log
+
+[Install]
+WantedBy=multi-user.target

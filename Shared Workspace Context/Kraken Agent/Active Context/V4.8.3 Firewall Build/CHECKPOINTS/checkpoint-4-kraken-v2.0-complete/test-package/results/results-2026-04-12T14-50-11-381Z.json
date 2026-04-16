@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-04-12T14-50-11-381Z",
+  "summary": {
+    "total": 8,
+    "passed": 0,
+    "failed": 8
+  },
+  "results": [
+    {
+      "name": "Identity Wall",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/01-identity-wall.js"
+    },
+    {
+      "name": "Tool Guardian",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/02-tool-guardian.js"
+    },
+    {
+      "name": "Message Guardian",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/03-message-guardian.js"
+    },
+    {
+      "name": "Tool Summarizer",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/04-tool-summarizer.js"
+    },
+    {
+      "name": "Compaction",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/05-compaction.js"
+    },
+    {
+      "name": "Session Cleanup",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/06-session-cleanup.js"
+    },
+    {
+      "name": "Gate Evaluation",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/07-gate-evaluation.js"
+    },
+    {
+      "name": "Integration",
+      "error": "Cannot find module '/home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/src/hooks/index.js' imported from /home/leviathan/OPENCODE_WORKSPACE/CHECKPOINTS/checkpoint-4-kraken-v2.0-complete/test-package/exercises/08-integration.js"
+    }
+  ]
+}

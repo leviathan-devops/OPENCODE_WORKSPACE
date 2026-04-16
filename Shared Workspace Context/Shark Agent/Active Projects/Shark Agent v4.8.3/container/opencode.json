@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "minimax": {}
+  },
+  "plugin": [
+    "file:///root/.config/opencode/plugins/shark-agent-v4.8.3/dist/index.js"
+  ],
+  "permission": {
+    "*": {
+      "*": "allow"
+    }
+  }
+}

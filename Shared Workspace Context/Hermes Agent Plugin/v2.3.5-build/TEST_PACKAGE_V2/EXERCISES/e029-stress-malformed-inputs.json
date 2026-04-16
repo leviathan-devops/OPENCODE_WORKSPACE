@@ -1,0 +1,43 @@
+{
+  "exercise_id": "e029",
+  "name": "Stress — Malformed inputs don't crash tools",
+  "component": "stress_testing",
+  "component_area": "error_handling",
+  "mechanical_verification": "Call tools with empty/missing/null inputs, verify graceful error responses",
+  "difficulty": "P1",
+  "time_estimate": "1 minute",
+
+  "prompt": "call lint target=",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call lint target=",
+      "expected": "Graceful error (not a crash)",
+      "mechanical_pass": "Returns error string or empty string, not an exception"
+    },
+    {
+      "step": 2,
+      "action": "call hermes_remember topic= value=\"test\"",
+      "expected": "Graceful error or empty response",
+      "mechanical_pass": "No crash, returns error message"
+    },
+    {
+      "step": 3,
+      "action": "call symbols target=/nonexistent/path/file.ts",
+      "expected": "Graceful error or empty response",
+      "mechanical_pass": "No crash, returns error message"
+    }
+  ],
+
+  "pass_criteria": {
+    "lint_empty_graceful": "lint with empty target returns error gracefully",
+    "memory_empty_graceful": "hermes_remember with empty topic returns error gracefully",
+    "symbols_missing_graceful": "symbols on missing file returns error gracefully"
+  },
+
+  "failure_modes": {
+    "crashes_on_empty": "Tools crash with unhandled exception on empty input",
+    "hangs_on_missing": "Tools hang indefinitely on missing files"
+  }
+}

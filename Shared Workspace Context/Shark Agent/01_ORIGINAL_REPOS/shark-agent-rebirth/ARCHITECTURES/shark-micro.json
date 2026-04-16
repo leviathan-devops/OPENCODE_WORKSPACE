@@ -1,0 +1,343 @@
+{
+  "id": "shark-micro",
+  "name": "Shark Micro (Dual-Brain)",
+  "description": "Context-firewalled dual-brain architecture with mechanical plan/build switching",
+  "version": "v4",
+  
+  "brains": [
+    {
+      "id": "plan-brain",
+      "type": "reasoning",
+      "name": "Plan Brain",
+      "description": "Strategic reasoning, analysis, planning — owns spec document and plan state",
+      "coordinatesClusters": ["planning-cluster"],
+      "canDelegateTo": ["planner", "architect", "reviewer"],
+      "config": {
+        "decisionStyle": "strategic",
+        "canOverride": false,
+        "priority": 90,
+        "strategyDepth": "deep",
+        "coordinationStyle": "precise",
+        "role": "reasoning",
+        "contextType": "T1 + T2 (full reference)"
+      }
+    },
+    {
+      "id": "build-brain",
+      "type": "execution",
+      "name": "Build Brain",
+      "description": "Mechanical execution — executes exactly what spec says, no reasoning",
+      "coordinatesClusters": ["execution-cluster"],
+      "canDelegateTo": ["builder", "tester"],
+      "config": {
+        "decisionStyle": "mechanical",
+        "canOverride": false,
+        "priority": 80,
+        "autonomyLevel": "zero",
+        "executionPrecision": "exact",
+        "role": "execution",
+        "contextType": "T1 only (clean)"
+      }
+    },
+    {
+      "id": "coordinator",
+      "type": "switch",
+      "name": "Coordinator",
+      "description": "Mechanical switch between Plan and Build brains — NOT agent-driven",
+      "coordinatesClusters": [],
+      "canDelegateTo": [],
+      "config": {
+        "switchingStyle": "mechanical",
+        "triggers": ["spec-complete", "build-complete", "test-complete", "gate-passed", "gate-failed"],
+        "enforcement": "hard",
+        "cannotBeBypassed": true
+      }
+    }
+  ],
+
+  "clusters": [
+    {
+      "id": "planning-cluster",
+      "type": "planning",
+      "name": "Planning Cluster",
+      "description": "Strategic planning and analysis",
+      "agentIds": ["planner", "architect"],
+      "coordinatedBy": "plan-brain",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": false,
+        "maxConcurrentTasks": 1
+      }
+    },
+    {
+      "id": "execution-cluster",
+      "type": "execution",
+      "name": "Execution Cluster",
+      "description": "Mechanical implementation and testing",
+      "agentIds": ["builder", "tester"],
+      "coordinatedBy": "build-brain",
+      "config": {
+        "communicationStyle": "sync",
+        "allowCrossCluster": false,
+        "maxConcurrentTasks": 2
+      }
+    }
+  ],
+
+  "agents": [
+    {
+      "id": "planner",
+      "type": "reasoning",
+      "name": "Planner",
+      "description": "Detailed planning and task decomposition",
+      "clusterId": "planning-cluster",
+      "capabilities": ["planning", "task-decomposition", "estimation"],
+      "allowedTools": ["file-read", "file-write", "planning-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Planner agent in Shark Micro. Your role is detailed planning and task decomposition. You reason strategically and generate precise specifications.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.95,
+        "creativityBias": 0.5
+      }
+    },
+    {
+      "id": "architect",
+      "type": "reasoning",
+      "name": "Architect",
+      "description": "System design and architecture",
+      "clusterId": "planning-cluster",
+      "capabilities": ["architecture", "design", "pattern-selection"],
+      "allowedTools": ["file-read", "file-write", "design-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Architect agent in Shark Micro. Your role is system design and architecture. You reason strategically about structure and patterns.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.95,
+        "creativityBias": 0.7
+      }
+    },
+    {
+      "id": "builder",
+      "type": "execution",
+      "name": "Builder",
+      "description": "Mechanical code implementation — executes exactly as specified, no reasoning",
+      "clusterId": "execution-cluster",
+      "capabilities": ["implementation", "file-operations", "terminal-execution"],
+      "allowedTools": ["file-write", "file-read", "terminal", "build-tool"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Builder agent in Shark Micro. Your ONLY role is to execute exactly what the specification says. You do NOT reason, plan, or make decisions. You execute precise commands only.",
+      "config": {
+        "style": "mechanical",
+        "autonomyLevel": "zero",
+        "qualityBias": 0.9,
+        "creativityBias": 0.0
+      }
+    },
+    {
+      "id": "tester",
+      "type": "execution",
+      "name": "Tester",
+      "description": "Test execution and verification",
+      "clusterId": "execution-cluster",
+      "capabilities": ["test-execution", "verification", "coverage"],
+      "allowedTools": ["test-runner", "coverage-tool", "terminal"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Tester agent in Shark Micro. Your role is to execute tests exactly as specified and report results. You do not design tests.",
+      "config": {
+        "style": "mechanical",
+        "autonomyLevel": "zero",
+        "qualityBias": 0.95
+      }
+    },
+    {
+      "id": "reviewer",
+      "type": "reasoning",
+      "name": "Reviewer",
+      "description": "Code review and verification",
+      "clusterId": "planning-cluster",
+      "capabilities": ["review", "verification", "quality-assessment"],
+      "allowedTools": ["file-read", "lint-tool", "sast-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Reviewer agent in Shark Micro. Your role is to verify that implementation matches specification and report gate status.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.99,
+        "creativityBias": 0.1
+      }
+    }
+  ],
+
+  "workflows": [
+    {
+      "id": "shark-micro-workflow",
+      "name": "Shark Micro Workflow",
+      "description": "Dual-brain sequential build with mechanical switching",
+      "phases": [
+        {
+          "id": "plan-phase",
+          "name": "Plan Phase",
+          "description": "Plan Brain generates specification",
+          "participatingAgents": ["planner", "architect"],
+          "involvedClusters": ["planning-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "brainActive": "plan-brain",
+            "brainIdle": "build-brain"
+          }
+        },
+        {
+          "id": "build-phase",
+          "name": "Build Phase",
+          "description": "Build Brain executes specification",
+          "participatingAgents": ["builder"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 1800000,
+            "optional": false,
+            "brainActive": "build-brain",
+            "brainIdle": "plan-brain"
+          }
+        },
+        {
+          "id": "test-phase",
+          "name": "Test Phase",
+          "description": "Tests run and verify",
+          "participatingAgents": ["tester"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 600000,
+            "optional": false
+          }
+        },
+        {
+          "id": "review-phase",
+          "name": "Review Phase",
+          "description": "Plan Brain reviews output and gates",
+          "participatingAgents": ["reviewer"],
+          "involvedClusters": ["planning-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "spec-gate",
+          "name": "Spec Gate",
+          "description": "Specification is complete and valid",
+          "afterPhase": "plan-phase",
+          "beforePhase": "build-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "SPEC.md exists with all required sections",
+              "required": ["SPEC.md", "guardian-config"]
+            }
+          ],
+          "evaluatedBy": "coordinator"
+        },
+        {
+          "id": "build-gate",
+          "name": "Build Gate",
+          "description": "Implementation matches specification",
+          "afterPhase": "build-phase",
+          "beforePhase": "test-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "All specified files created, no scope violations",
+              "required": ["file-list", "guardian-log"]
+            }
+          ],
+          "evaluatedBy": "coordinator"
+        },
+        {
+          "id": "test-gate",
+          "name": "Test Gate",
+          "description": "All tests pass with adequate coverage",
+          "afterPhase": "test-phase",
+          "beforePhase": "review-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Tests pass, coverage >= 80%",
+              "required": ["test-output", "coverage-report"]
+            }
+          ],
+          "evaluatedBy": "coordinator"
+        },
+        {
+          "id": "review-gate",
+          "name": "Review Gate",
+          "description": "Code is security-clean and ready for delivery",
+          "afterPhase": "review-phase",
+          "beforePhase": null,
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "No secrets, SAST clean, artifact produced",
+              "required": ["secrets-scan", "sast-report", "artifact"]
+            }
+          ],
+          "evaluatedBy": "coordinator"
+        }
+      ],
+      "managedBy": "coordinator",
+      "config": {
+        "allowParallel": false,
+        "allowSkip": false,
+        "allowRestart": true,
+        "mechanicalSwitching": true,
+        "contextFirewall": true
+      }
+    }
+  ],
+
+  "coordination": {
+    "style": "hub-spoke",
+    "protocol": "direct",
+    "stateManagement": {
+      "storage": "file",
+      "persistence": {
+        "backend": "file",
+        "config": {
+          "path": ".shark"
+        }
+      }
+    },
+    "errorHandling": {
+      "retryPolicy": {
+        "maxRetries": 3,
+        "backoff": "exponential",
+        "backoffMs": 1000
+      },
+      "fallbacks": ["auto-debug", "escalate"]
+    },
+    "config": {
+      "contextFirewall": true,
+      "mechanicalSwitching": true,
+      "guardianEnforcement": true
+    }
+  },
+
+  "guardian": {
+    "levels": ["STRICT", "BALANCED", "PERMISSIVE", "SANDBOX"],
+    "zones": {
+      "WORKSPACE": {"paths": ["./", "./src", "./lib"], "access": "full"},
+      "SANDBOX": {"paths": ["./test-sandbox"], "access": "full"},
+      "PERSONAL": {"paths": ["~/.ssh", "~/.aws", "~/Documents"], "access": "BLOCKED"},
+      "CONFIG": {"paths": ["/etc", "/opt"], "access": "BLOCKED"},
+      "SYSTEM": {"paths": ["/bin", "/usr", "/System"], "access": "NEVER"}
+    }
+  },
+
+  "metadata": {
+    "author": "Leviathan / Shark Agent Team",
+    "createdAt": "2026-04-05",
+    "variant": "micro",
+    "tags": ["shark", "dual-brain", "micro", "context-firewalled", "mechanical-switching"]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e021",
+  "name": "Quality Enforcement — Plan Validator",
+  "component": "quality_enforcement",
+  "component_area": "plan_validator_hook",
+  "mechanical_verification": "Ask Hermes to create a plan with TODO/TBD placeholders. Verify plan validator rejects it.",
+  "difficulty": "P1",
+  "time_estimate": "2 minutes",
+
+  "prompt": "@hermes Create a plan for a user authentication system. Use TODO for the implementation details and TBD for the database schema.",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@hermes Plan an auth system. Include TODO: implement password hashing and TBD: database schema",
+      "expected": "Plan validator rejects: response indicates plan has placeholders/TBD/TODO",
+      "mechanical_pass": "Output contains validator rejection (placeholders found, TBD/TODO not allowed, reject plan, etc.)"
+    }
+  ],
+
+  "pass_criteria": {
+    "validator_rejects": "Plan validator blocks plan with TBD/TODO/placeholder content",
+    "returns_rejection_message": "Blocking message mentions placeholders, TBD, TODO, or validation"
+  },
+
+  "failure_modes": {
+    "plan_accepted_with_todos": "Hermes accepts plan with TODO/TBD placeholders",
+    "no_rejection_message": "Hermes says 'great plan' without validating"
+  }
+}

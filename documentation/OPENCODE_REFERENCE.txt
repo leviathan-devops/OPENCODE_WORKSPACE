@@ -1,0 +1,97 @@
+┌─────────────────────────────────────────────────────────────────┐
+│         🚀 OPENCODE-MATTERMOST INTEGRATION 🚀              │
+└─────────────────────────────────────────────────────────────────┘
+
+✅ STATUS: FULLY OPERATIONAL
+📅 DEPLOYED: 2026-03-26
+🏠 LOCATION: /opt/mattermost-opencode/
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🔌 MATTERMOST CREDENTIALS                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  Username: leviathan                                          │
+│  Password: SharkDevops                                        │
+│  Server: http://localhost:9080                             │
+│  Theme: Dark Mode                                          │
+│  Notifications: OFF                                         │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  💬 AVAILABLE COMMANDS                                        │
+├─────────────────────────────────────────────────────────────────┤
+│  /opencode help            → Show all commands                │
+│  /opencode chat <msg>       → Chat with AI                 │
+│  /opencode code <desc>      → Generate code                │
+│  /opencode review           → Review workspace               │
+│  /opencode context           → Show current context           │
+│  /opencode workspace <name>  → Switch workspace             │
+│  /opencode history           → Show conversation history    │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🎯 QUICK START                                             │
+├─────────────────────────────────────────────────────────────────┤
+│  1. Open Mattermost desktop app                               │
+│  2. Login with credentials above                                │
+│  3. Type: /opencode help                                    │
+│  4. Try: /opencode chat Hello world!                         │
+│  5. Enjoy!                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🔧 SYSTEM COMPONENTS                                        │
+├─────────────────────────────────────────────────────────────────┤
+│  ✅ OpenCode Bridge Service (port 5000)                      │
+│  ✅ Redis Session Manager (port 6379)                        │
+│  ✅ Mattermost Slash Command (/opencode)                     │
+│  ✅ Persistent Workspace (/opt/opencode-workspace/)            │
+│  ✅ Channel Isolation (per-channel workspaces)                  │
+│  ✅ Version Control (git integration)                           │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  📊 WORKSPACE STRUCTURE                                     │
+├─────────────────────────────────────────────────────────────────┤
+│  /opt/opencode-workspace/                                   │
+│  ├── channels/           → Per-channel contexts               │
+│  ├── users/             → User-specific data                 │
+│  ├── files/             → Shared file storage               │
+│  ├── history/           → Conversation logs                 │
+│  └── config/           → Integration settings              │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🔍 TROUBLESHOOTING                                         │
+├─────────────────────────────────────────────────────────────────┤
+│  Commands not working?                                          │
+│  → cd ~/mattermost-server && docker compose restart mattermost      │
+│                                                             │
+│  Bridge service down?                                         │
+│  → cd /opt/mattermost-opencode && docker compose restart        │
+│                                                             │
+│  Check logs:                                                  │
+│  → docker logs -f opencode-bridge                             │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  📚 DOCUMENTATION                                            │
+├─────────────────────────────────────────────────────────────────┤
+│  Full Guide: /opt/mattermost-opencode/SETUP_GUIDE.md        │
+│  Docker Compose: /opt/mattermost-opencode/docker-compose.yml   │
+│  Bridge Service: /opt/mattermost-opencode/bridge/bridge.py      │
+│  Mattermost Server: ~/mattermost-server/                     │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🎉 READY TO USE!                                         │
+├─────────────────────────────────────────────────────────────────┤
+│  Your Mattermost server now has an AI-powered coding assistant  │
+│  integrated directly into your chat channels.                    │
+│                                                             │
+│  Every channel can have its own workspace and context.         │
+│  Natural language commands work seamlessly.                      │
+│                                                             │
+│  Start typing /opencode and let AI help you code!           │
+└─────────────────────────────────────────────────────────────────┘
+
+            💡 TIP: Try "/opencode chat create a python script to automate backups"

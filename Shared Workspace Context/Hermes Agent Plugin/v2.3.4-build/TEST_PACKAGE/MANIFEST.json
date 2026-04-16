@@ -1,0 +1,47 @@
+{
+  "package_id": "hermes-test-package-v1",
+  "version": "1.0",
+  "date": "2026-04-06",
+  "plugin": "v2.3.2-build",
+  "description": "Mechanical exercise package for Hermes Agent Plugin v2.3.2. Each exercise tests a core component via real-time execution in OpenCode. Output is structured JSON data for DevOps Manager review.",
+
+  "how_to_use": {
+    " executor": "Spider Agent (or any OpenCode agent)",
+    " method": "Run each exercise in OpenCode. Capture actual output. Fill EXERCISE_RESULTS array.",
+    " output_target": "TEST_PACKAGE/EXERCISE_RESULTS.json",
+    " delivery": "Send completed JSON to DevOps Manager for analysis"
+  },
+
+  "exercises": [
+    "EXERCISES/e001-memory-remember-recall.json",
+    "EXERCISES/e002-memory-context.json",
+    "EXERCISES/e003-memory-persistence.json",
+    "EXERCISES/e004-tool-lint.json",
+    "EXERCISES/e005-tool-secret-scan.json",
+    "EXERCISES/e006-tool-grill.json",
+    "EXERCISES/e007-tool-complexity.json",
+    "EXERCISES/e008-tool-symbols.json",
+    "EXERCISES/e009-cli-hermes-status.json",
+    "EXERCISES/e010-cli-hermes-agents.json",
+    "EXERCISES/e011-cli-hermes-memory.json",
+    "EXERCISES/e012-cli-hermes-help.json",
+    "EXERCISES/e013-spillover-vanilla-agent.json",
+    "EXERCISES/e014-spillover-self-review.json",
+    "EXERCISES/e015-path-containment.json",
+    "EXERCISES/e016-delegation-analyst.json",
+    "EXERCISES/e017-delegation-builder.json",
+    "EXERCISES/e018-delegation-tdd.json",
+    "EXERCISES/e019-delegation-grill.json",
+    "EXERCISES/e020-quality-tdd-enforcer.json",
+    "EXERCISES/e021-quality-plan-validator.json",
+    "EXERCISES/e022-quality-brainstorm-gate.json",
+    "EXERCISES/e023-hook-tool-before.json",
+    "EXERCISES/e024-hook-tool-after.json",
+    "EXERCISES/e025-session-checkpoint.json",
+    "EXERCISES/e026-session-phase-complete.json",
+    "EXERCISES/e027-session-snapshot.json",
+    "EXERCISES/e028-stress-large-context.json",
+    "EXERCISES/e029-stress-malformed-inputs.json",
+    "EXERCISES/e030-stress-concurrent-tools.json"
+  ]
+}

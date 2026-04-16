@@ -1,0 +1,106 @@
+# vLLM Multi-Agent Vibecoding Setup
+
+## 🚀 Quick Start
+
+### 1. Start vLLM Server
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable vllm-qwen-multi
+sudo systemctl start vllm-qwen-multi
+```
+
+### 2. Check Status
+```bash
+sudo systemctl status vllm-qwen-multi
+journalctl -u vllm-qwen-multi -f  # Follow logs
+```
+
+### 3. Test Multi-Agent Capability
+```bash
+cd /home/leviathan
+source vllm-venv/bin/activate
+python test_vllm_multi_agent.py
+```
+
+## 🖥️ Using with Multiple Terminals
+
+### Terminal 1-5: Each running Qwen Code
+```bash
+# Example curl command for each terminal
+curl -X POST http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen2.5-coder-14b-awq",
+    "prompt": "Write Python code to parse JSON",
+    "max_tokens": 1024,
+    "temperature": 0.7
+  }'
+```
+
+### Python Client Example (for each agent)
+```python
+import openai
+
+client = openai.OpenAI(
+    base_url="http://localhost:8000/v1",
+    api_key="no-key-required"
+)
+
+response = client.completions.create(
+    model="qwen2.5-coder-14b-awq",
+    prompt="Write a function to sort a list",
+    max_tokens=512
+)
+print(response.choices[0].text)
+```
+
+## ⚙️ Configuration Details
+
+- **Model**: Qwen/Qwen2.5-Coder-14B-Instruct-AWQ (4-bit quantized)
+- **Port**: 8000
+- **Max Concurrent Requests**: 32
+- **Context Length**: 8192 tokens
+- **GPU Memory Utilization**: 85% (9.8GB VRAM)
+- **CPU Offloading**: Enabled for layers that don't fit in VRAM
+
+## 🎯 Performance Tips
+
+1. **Batch Similar Requests**: Group coding tasks by language/type
+2. **Use Streaming**: For long generations, use `"stream": true`
+3. **Adjust Temperature**: 
+   - 0.2-0.4: Precise, deterministic code
+   - 0.7-0.9: Creative, exploratory code
+4. **Monitor Resources**: Watch GPU/CPU usage with `nvidia-smi` and `htop`
+
+## 🔧 Troubleshooting
+
+### Server Won't Start
+```bash
+# Check logs
+journalctl -u vllm-qwen-multi -n 50
+
+# Check GPU memory
+nvidia-smi
+
+# Restart service
+sudo systemctl restart vllm-qwen-multi
+```
+
+### Out of Memory
+- Reduce `--gpu-memory-utilization` to 0.7
+- Reduce `--max-num-batched-tokens` to 1024
+- Reduce `--max-num-seqs` to 16
+
+### Slow Responses
+- Increase `--swap-space` to 32
+- Check CPU usage with `htop`
+- Ensure no other GPU-intensive processes running
+
+## 📊 Expected Performance
+
+- **First Token Latency**: 2-5 seconds (model loading)
+- **Tokens/Second**: 30-50 tokens/sec (4-bit AWQ)
+- **Concurrent Agents**: 5-10 comfortably
+- **Memory Usage**: ~9GB VRAM + ~8GB RAM
+
+Enjoy your unlimited, local Qwen Code terminals! 🎉

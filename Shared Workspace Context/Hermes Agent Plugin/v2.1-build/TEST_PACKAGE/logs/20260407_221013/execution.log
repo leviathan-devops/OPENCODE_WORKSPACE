@@ -1,0 +1,103 @@
+Hermes v2.1 Integration Test - Execution Log
+Started: Tue Apr  7 10:10:13 PM +04 2026
+Host: LeviathanLocal
+User: leviathan
+[22:10:13] [INFO] Log directory: /home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hermes Agent Plugin/v2.1-build/TEST_PACKAGE/logs/20260407_221013
+[22:10:13] [INFO] Cloning test project...
+[22:10:13] [INFO] Creating synthetic test project (GitHub clone unavailable)
+[22:10:13] [INFO] Collecting environment information...
+[22:10:13] [SUCCESS] Setup complete
+[22:10:13] [INFO] === 1.1 Agent Registration ===
+[22:10:13] [INFO] TEST AR-001: hermes agent in tab toggle
+[22:10:13] [INFO] TEST AR-002: spider agent visible
+[22:10:13] [INFO] TEST AR-003: 19 sub-agents registered
+[22:10:13] [INFO] TEST AR-004: /Hermes command works
+[22:10:13] [INFO] TEST AR-005: /hermes alias
+[22:10:13] [INFO] TEST AR-006: /spider command
+[22:10:13] [INFO] === 1.2 Memory System ===
+[22:10:13] [INFO] TEST MS-001: hermes_recall empty context
+[22:10:13] [INFO] TEST MS-002: hermes_remember saves context
+[22:10:13] [INFO] TEST MS-003: Memory file readable externally
+[22:10:13] [INFO] TEST MS-004: Memory persists restart
+[22:10:13] [INFO] TEST MS-005: Memory not corrupted
+[22:10:13] [INFO] TEST MS-006: Handles 1MB+ context
+[22:10:13] [INFO] TEST MS-007: Concurrent writes safe
+[22:10:13] [INFO] === 1.3 Checkpoint System ===
+[22:10:13] [INFO] TEST CS-001: checkpoint saves state
+[22:10:13] [INFO] TEST CS-002: phase_complete advances
+[22:10:13] [INFO] TEST CS-003: Checkpoint files created
+[22:10:13] [INFO] TEST CS-004: Valid JSON files
+[22:10:13] [INFO] TEST CS-005: Checkpoint survives restart
+[22:10:13] [INFO] TEST CS-006: Multiple checkpoints
+[22:10:13] [INFO] TEST CS-007: Timestamp included
+[22:10:13] [INFO] === 1.4 Context Management ===
+[22:10:13] [INFO] TEST CM-001: save_plan structure
+[22:10:13] [INFO] TEST CM-002: extract_code_blocks TypeScript
+[22:10:13] [INFO] TEST CM-003: extract_code_blocks Python
+[22:10:13] [INFO] TEST CM-004: extract_code_blocks mixed
+[22:10:13] [INFO] TEST CM-005: imports resolves
+[22:10:13] [INFO] TEST CM-006: symbols finds defs
+[22:10:13] [INFO] TEST CM-007: Context within budget
+[22:10:13] [INFO] TEST CM-008: Multi-file aggregation
+[22:10:13] [INFO] === 1.5 Hooks (14 hooks) ===
+[22:10:13] [INFO] TEST HK-001: on_edit
+[22:10:13] [INFO] TEST HK-002: on_agent_start
+[22:10:13] [INFO] TEST HK-003: on_agent_end
+[22:10:13] [INFO] TEST HK-004: on_tool_call
+[22:10:13] [INFO] TEST HK-005: on_message
+[22:10:13] [INFO] TEST HK-006: on_planning
+[22:10:13] [INFO] TEST HK-007: checkpoint_save
+[22:10:13] [INFO] TEST HK-008: checkpoint_load
+[22:10:13] [INFO] TEST HK-009: build_check
+[22:10:13] [INFO] TEST HK-010: syntax_check
+[22:10:13] [INFO] TEST HK-011: lint
+[22:10:13] [INFO] TEST HK-012: test_runner
+[22:10:13] [INFO] TEST HK-013: diff
+[22:10:13] [INFO] TEST HK-014: health
+[22:10:13] [INFO] === 1.6 Delegation ===
+[22:10:13] [INFO] TEST DL-001: Delegate to analyst
+[22:10:13] [INFO] TEST DL-002: Delegate to builder
+[22:10:13] [INFO] TEST DL-003: Delegate to planner
+[22:10:13] [INFO] TEST DL-004: Delegate to tdd
+[22:10:13] [INFO] TEST DL-005: Delegate to reviewer
+[22:10:13] [INFO] TEST DL-006: Cross-agent comms
+[22:10:13] [INFO] TEST DL-007: Agent-to-agent
+[22:10:13] [INFO] TEST DL-008: Delegation with context
+[22:10:13] [SUCCESS] Phase 1 complete (0s)
+[22:10:13] [INFO] === 2.1 Hallucination Detection ===
+[22:10:13] [INFO] TEST HD-001: hermes_recall non-existent files
+[22:10:13] [INFO] TEST HD-002: grill impossible claims
+[22:10:13] [INFO] TEST HD-003: evidence_check
+[22:10:13] [INFO] TEST HD-004: File existence check
+[22:10:13] [INFO] TEST HD-005: API contract verification
+[22:10:13] [INFO] === 2.2 Code Quality ===
+[22:10:13] [INFO] TEST CQ-001: lint finds issues
+[22:10:13] [INFO] TEST CQ-002: sast_scan security issues
+[22:10:13] [INFO] TEST CQ-003: secret_scan credentials
+[22:10:13] [INFO] TEST CQ-004: complexity_hotspots
+[22:10:13] [INFO] TEST CQ-005: TypeScript type errors
+[22:10:13] [INFO] TEST CQ-006: Python type hints
+[22:10:13] [INFO] === 2.3 Drift Detection ===
+[22:10:13] [INFO] TEST DD-001: drift-verifier
+[22:10:13] [INFO] TEST DD-002: Document comparison
+[22:10:13] [INFO] TEST DD-003: README vs implementation
+[22:10:13] [SUCCESS] Phase 2 complete (0s)
+[22:10:13] [INFO] === 3.1 Context Volume ===
+[22:10:13] [INFO] TEST SV-001: 50+ files context
+[22:10:13] [INFO] TEST SV-002: 100+ tool calls
+[22:10:13] [INFO] TEST SV-003: 1MB+ context
+[22:10:13] [INFO] TEST SV-004: Large file 10MB+
+[22:10:13] [INFO] === 3.2 Multi-Agent Coordination ===
+[22:10:13] [INFO] TEST MA-001: 5+ parallel agents
+[22:10:13] [INFO] TEST MA-002: Output isolation
+[22:10:13] [INFO] TEST MA-003: Concurrent checkpoints
+[22:10:13] [INFO] TEST MA-004: Parallel file edits
+[22:10:13] [SUCCESS] Phase 3 complete (0s)
+[22:10:14] [INFO] TEST ER-001: Checkpoint JSON readable
+[22:10:14] [INFO] TEST ER-002: Memory files readable
+[22:10:14] [INFO] TEST ER-003: Plan files parseable
+[22:10:14] [INFO] TEST ER-004: Log files accessible
+[22:10:14] [SUCCESS] Phase 4 complete (0s)
+[22:10:14] [SUCCESS] Test execution complete
+[22:10:14] [INFO] Results saved to: /home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hermes Agent Plugin/v2.1-build/TEST_PACKAGE/logs/20260407_221013
+[22:10:14] [INFO] See REAL_TIME_LOG.md for manual test procedures

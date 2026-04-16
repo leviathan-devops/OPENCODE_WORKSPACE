@@ -1,0 +1,317 @@
+#!/bin/bash
+# 🦈 SHARK FRANKENSTEIN CLI
+# Launches OpenCode with Shark/Kraken enhancements
+
+set -e
+
+# Configuration directories
+SHARK_CONFIG_DIR="$HOME/.config/opencode"
+SHARK_WORKSPACE="$HOME/OPENCODE_WORKSPACE"
+SHARK_FRAGMENTS_DIR="$SHARK_WORKSPACE/.shark/fragments"
+
+# Mode selection wizard
+select_mode() {
+    echo "🦈 SHARK FRANKENSTEIN CLI"
+    echo "========================="
+    echo ""
+    echo "Select mode:"
+    echo "1) Micro Task  - Single file, quick fix, debugging"
+    echo "2) Macro Task  - Architecture, refactoring, system design"
+    echo "3) Direct OpenCode - Bypass wizard, use default OpenCode"
+    echo ""
+    read -p "Enter choice (1-3): " choice
+    
+    case $choice in
+        1) echo "micro" ;;
+        2) echo "macro" ;;
+        3) echo "direct" ;;
+        *) echo "micro" ;; # Default to micro
+    esac
+}
+
+# Prepare environment for selected mode
+prepare_environment() {
+    local mode="$1"
+    
+    # Export mode for OpenCode plugins
+    export SHARK_MODE="$mode"
+    
+    # Set agent mapping based on mode
+    if [ "$mode" = "micro" ]; then
+        export SHARK_PRIMARY_AGENT="shark-agent"
+        export SHARK_ORCHESTRATOR="hephaestus"
+        echo "🤖 Mode: Micro (Shark Agent)"
+    elif [ "$mode" = "macro" ]; then
+        export SHARK_PRIMARY_AGENT="kraken-brain"
+        export SHARK_ORCHESTRATOR="sisyphus"
+        echo "🐙 Mode: Macro (Kraken Brain)"
+    else
+        echo "⚡ Mode: Direct OpenCode"
+    fi
+    
+    # Load Shark-specific configuration
+    load_shark_config "$mode"
+}
+
+# Load Shark configuration
+load_shark_config() {
+    local mode="$1"
+    
+    # Create temporary config directory
+    TEMP_CONFIG_DIR=$(mktemp -d)
+    export OPENCODE_CONFIG_DIR="$TEMP_CONFIG_DIR"
+    
+    # Copy base OpenCode config
+    if [ -f "$SHARK_CONFIG_DIR/opencode.json" ]; then
+        cp "$SHARK_CONFIG_DIR/opencode.json" "$TEMP_CONFIG_DIR/opencode.json"
+    else
+        echo "⚠️  Warning: OpenCode config not found at $SHARK_CONFIG_DIR/opencode.json"
+        # Create minimal config
+        echo '{"$schema":"https://opencode.ai/config.json","model":"0-glm-coding/glm-5"}' > "$TEMP_CONFIG_DIR/opencode.json"
+    fi
+    
+    # Generate mode-specific opencode-ultra.json
+    generate_opencode_ultra_config "$mode" > "$TEMP_CONFIG_DIR/opencode-ultra.json"
+    
+    # Create fragments directory
+    mkdir -p "$TEMP_CONFIG_DIR/fragments"
+    if [ -d "$SHARK_FRAGMENTS_DIR" ]; then
+        cp -r "$SHARK_FRAGMENTS_DIR"/* "$TEMP_CONFIG_DIR/fragments/" 2>/dev/null || true
+    fi
+    
+    # Create .opencode directory structure
+    mkdir -p "$TEMP_CONFIG_DIR/.opencode/agents"
+    mkdir -p "$TEMP_CONFIG_DIR/.opencode/commands"
+    
+    # Generate Shark agent definitions
+    generate_shark_agents > "$TEMP_CONFIG_DIR/.opencode/agents/shark.md"
+}
+
+# Generate opencode-ultra.json with Shark mappings
+generate_opencode_ultra_config() {
+    local mode="$1"
+    
+    cat << 'EOF'
+{
+  "agents": {
+    "sisyphus": {
+      "model": "0-glm-coding/glm-5",
+      "description": "Kraken Brain - Primary orchestrator",
+      "aliases": ["kraken-brain", "orchestrator", "brain"]
+    },
+    "oracle": {
+      "model": "0-deepseek/deepseek-reasoner",
+      "description": "Architect - Design architect & debugger",
+      "aliases": ["architect", "design", "system"]
+    },
+    "hephaestus": {
+      "model": "0-glm-coding/glm-4.7",
+      "description": "Shark Agent - Deep autonomous worker",
+      "aliases": ["shark-agent", "engineer", "coder", "build"]
+    },
+    "momus": {
+      "model": "0-deepseek/deepseek-chat",
+      "description": "Code Review - Code reviewer",
+      "aliases": ["review", "qa", "test", "quality"]
+    },
+    "metis": {
+      "model": "0-deepseek/deepseek-reasoner",
+      "description": "Planning Brain - Strategic planner",
+      "aliases": ["planning", "strategy", "metis"]
+    },
+    "explore": {
+      "model": "0-glm-coding/glm-4.5-flash",
+      "description": "Scout - Fast codebase explorer",
+      "aliases": ["scout", "explore", "research"]
+    },
+    "librarian": {
+      "model": "0-deepseek/deepseek-chat",
+      "description": "Scribe - Documentation researcher",
+      "aliases": ["scribe", "doc", "documentation"]
+    },
+    "multimodal-looker": {
+      "model": "0-mimo/mimo-v2-omni",
+      "description": "Visual Cortex - Visual analyzer",
+      "aliases": ["visual", "image", "multimodal"]
+    },
+    "atlas": {
+      "model": "0-nemotron/nemotron-3-super",
+      "description": "Middle Manager - Task orchestrator",
+      "aliases": ["manager", "coordinate", "atlas"]
+    }
+  },
+  "categories": {
+    "micro": { "model": "0-glm-coding/glm-4.7" },
+    "macro": { "model": "0-glm-coding/glm-5" },
+    "quick": { "model": "0-glm-coding/glm-4.5-flash" },
+    "thinking": { "model": "0-deepseek/deepseek-reasoner" }
+  },
+  "fragments": {
+    "hephaestus": ["fragments/shark-agent.md"],
+    "sisyphus": ["fragments/kraken-brain.md"],
+    "oracle": ["fragments/architect.md"],
+    "momus": ["fragments/code-review.md"]
+  },
+  "disabled_agents": [],
+  "disabled_hooks": [],
+  "disabled_tools": [],
+  "demote_builtin": true,
+  "background_task": {
+    "defaultConcurrency": 3,
+    "providerConcurrency": {
+      "0-glm-coding": 5,
+      "0-deepseek": 3,
+      "0-local-vllm": 2,
+      "0-mimo": 1,
+      "0-nemotron": 1,
+      "0-opencode-zen": 3
+    }
+  }
+}
+EOF
+}
+
+# Generate Shark agent markdown definitions
+generate_shark_agents() {
+    cat << 'EOF'
+# Shark Frankenstein Agents
+
+## Kraken Brain (sisyphus)
+**Primary orchestrator** - Analyzes requests, reads code directly, delegates implementation to specialists.
+
+**Tools**: Grep, Glob, Read (NO Write/Edit/Bash)
+**Model**: GLM-5 Turbo
+**Mode**: Primary orchestrator
+
+## Shark Agent (hephaestus)
+**Deep autonomous worker** - Handles complex implementation tasks independently with high precision.
+
+**Tools**: Full access
+**Model**: GLM-4.7
+**Mode**: Subagent
+
+## Architect (oracle)
+**Design architect and debugger** - Focuses on architecture decisions, debugging complex issues.
+
+**Tools**: Full access
+**Model**: DeepSeek Reasoner
+**Mode**: Subagent
+
+## Code Review (momus)
+**Code reviewer** - Finds bugs, quality issues, and suggests improvements.
+
+**Tools**: Read, Grep, Glob (NO Write/Edit/Bash)
+**Model**: DeepSeek Chat
+**Mode**: Subagent
+
+## Planning Brain (metis)
+**Strategic planner** - Breaks down complex tasks into parallel execution waves.
+
+**Tools**: Planning tools
+**Model**: DeepSeek Reasoner
+**Mode**: Subagent
+
+## Scout (explore)
+**Fast codebase explorer** - Finds patterns, files, and implementations quickly.
+
+**Tools**: Grep, Glob, Read
+**Model**: GLM-4.5 Flash
+**Mode**: Subagent
+
+## Scribe (librarian)
+**Documentation researcher** - Finds official docs, best practices, and examples.
+
+**Tools**: Research tools
+**Model**: DeepSeek Chat
+**Mode**: Subagent
+
+## Visual Cortex (multimodal-looker)
+**Visual analyzer** - Inspects images, screenshots, and visual content.
+
+**Tools**: Image analysis
+**Model**: MiMo V2 Omni
+**Mode**: Subagent
+
+## Middle Manager (atlas)
+**Task orchestrator** - Manages project tasks and coordinates agent work.
+
+**Tools**: Coordination tools
+**Model**: Nemotron 3 Super
+**Mode**: Subagent
+EOF
+}
+
+# Auto-detect mode based on task
+auto_detect_mode() {
+    local task="$*"
+    local word_count=$(echo "$task" | wc -w)
+    
+    # Keywords indicating macro tasks
+    local macro_keywords="architecture system design refactor migrate pipeline devops ci/cd infrastructure"
+    # Keywords indicating micro tasks  
+    local micro_keywords="fix debug syntax error single file line test review"
+    
+    for keyword in $macro_keywords; do
+        if echo "$task" | grep -qi "$keyword"; then
+            echo "macro"
+            return
+        fi
+    done
+    
+    for keyword in $micro_keywords; do
+        if echo "$task" | grep -qi "$keyword"; then
+            echo "micro"
+            return
+        fi
+    done
+    
+    # Default based on length
+    if [ $word_count -gt 20 ]; then
+        echo "macro"
+    else
+        echo "micro"
+    fi
+}
+
+# Main execution
+main() {
+    # Check if opencode is installed
+    if ! command -v opencode &> /dev/null; then
+        echo "❌ OpenCode is not installed. Please install it first."
+        echo "   npm install -g @anomalyco/opencode"
+        exit 1
+    fi
+    
+    # If arguments provided, skip wizard
+    if [ $# -gt 0 ]; then
+        # Check for mode flags
+        for arg in "$@"; do
+            case $arg in
+                --micro|-m) MODE="micro"; break ;;
+                --macro|-M) MODE="macro"; break ;;
+                --direct|-d) MODE="direct"; break ;;
+            esac
+        done
+        
+        if [ -z "$MODE" ]; then
+            # Auto-detect based on task complexity
+            MODE=$(auto_detect_mode "$@")
+        fi
+    else
+        # Interactive mode - show wizard
+        MODE=$(select_mode)
+    fi
+    
+    # Prepare environment
+    prepare_environment "$MODE"
+    
+    # Launch OpenCode
+    echo "🚀 Launching OpenCode with Shark enhancements..."
+    echo ""
+    
+    # Pass all arguments to opencode
+    exec opencode "$@"
+}
+
+# Run main function
+main "$@"

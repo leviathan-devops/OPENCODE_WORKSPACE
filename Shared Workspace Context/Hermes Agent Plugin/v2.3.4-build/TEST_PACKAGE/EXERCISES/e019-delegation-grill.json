@@ -1,0 +1,30 @@
+{
+  "exercise_id": "e019",
+  "name": "Delegation — @grill subagent (security)",
+  "component": "subagent_delegation",
+  "component_area": "agent_routing",
+  "mechanical_verification": "Delegate a security analysis task to @grill, verify attack analysis returned",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "@grill Attack surface of: user_input = request.args.get('id')",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "@grill Attack surface of: user_input = request.args.get('id')",
+      "expected": "Response contains security analysis (attack vectors, vulnerabilities)",
+      "mechanical_pass": "Output contains 'attack' or 'vulnerability' or 'SQL' or 'injection' or 'input'"
+    }
+  ],
+
+  "pass_criteria": {
+    "delegation_succeeds": "@grill returns a response",
+    "returns_security_analysis": "Response contains security-relevant content"
+  },
+
+  "failure_modes": {
+    "agent_not_found": "@grill returns unknown agent error",
+    "no_analysis": "@grill returns generic response without security analysis"
+  }
+}

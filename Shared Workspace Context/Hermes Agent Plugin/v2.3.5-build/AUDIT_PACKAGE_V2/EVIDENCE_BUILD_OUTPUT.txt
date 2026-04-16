@@ -1,0 +1,10 @@
+=== BUILD OUTPUT ===
+Build command: bun build.ts
+Working directory: /home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hermes Agent Plugin/v2.3.5-build
+Timestamp: Tue Apr  7 11:44:22 PM +04 2026
+
+Built: dist/index.js
+
+Build exit code: 0
+
+-rw-r--r-- 1 leviathan leviathan 562059 Apr  7 23:44 dist/index.js

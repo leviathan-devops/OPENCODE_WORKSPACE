@@ -1,0 +1,354 @@
+{
+  "suiteName": "Shark Agent v4.8.3 Comprehensive Test Suite",
+  "timestamp": 1776295365263,
+  "buildId": "local-build",
+  "version": "4.8.3",
+  "totalTests": 34,
+  "passedTests": 0,
+  "failedTests": 34,
+  "passRate": 0,
+  "tests": [
+    {
+      "name": "L0-session-id-persistence",
+      "category": "L0-Session-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "JSON: {}",
+      "timestamp": 1776295360276,
+      "durationMs": 83,
+      "systemsTested": []
+    },
+    {
+      "name": "L1-theatrical-success-blocked",
+      "category": "L1-Theatrical-Detection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 78,
+      "systemsTested": []
+    },
+    {
+      "name": "L1-uncertainty-detection",
+      "category": "L1-Theatrical-Detection",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 75,
+      "systemsTested": []
+    },
+    {
+      "name": "L1-hardcoded-context-rejected",
+      "category": "L1-Theatrical-Detection",
+      "passed": false,
+      "mechanicalEvidence": "Got response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 73,
+      "systemsTested": []
+    },
+    {
+      "name": "L2-skip-container-blocked",
+      "category": "L2-Skip-Container-Detection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 71,
+      "systemsTested": []
+    },
+    {
+      "name": "L2-host-fallback-blocked",
+      "category": "L2-Skip-Container-Detection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 69,
+      "systemsTested": []
+    },
+    {
+      "name": "L3-dynamic-context-generation",
+      "category": "L3-Build-Context-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 67,
+      "systemsTested": []
+    },
+    {
+      "name": "L4-shark-identity-verified",
+      "category": "L4-Agent-Identity",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 63,
+      "systemsTested": []
+    },
+    {
+      "name": "L4-identity-not-claimable",
+      "category": "L4-Agent-Identity",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 61,
+      "systemsTested": []
+    },
+    {
+      "name": "L5-success-claim-without-proof",
+      "category": "L5-Anti-Derailment",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 59,
+      "systemsTested": []
+    },
+    {
+      "name": "L5-immediate-completion-blocked",
+      "category": "L5-Anti-Derailment",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 57,
+      "systemsTested": []
+    },
+    {
+      "name": "L5-authority-impersonation-blocked",
+      "category": "L5-Anti-Derailment",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 56,
+      "systemsTested": []
+    },
+    {
+      "name": "L6-etc-passwd-blocked",
+      "category": "L6-File-Protection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 54,
+      "systemsTested": []
+    },
+    {
+      "name": "L6-system-file-write-blocked",
+      "category": "L6-File-Protection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 52,
+      "systemsTested": []
+    },
+    {
+      "name": "L6-ssh-key-access",
+      "category": "L6-File-Protection",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 50,
+      "systemsTested": []
+    },
+    {
+      "name": "GATE-status-command-works",
+      "category": "Gate-System",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 47,
+      "systemsTested": []
+    },
+    {
+      "name": "GATE-criteria-command-works",
+      "category": "Gate-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 45,
+      "systemsTested": []
+    },
+    {
+      "name": "GATE-advance-command-functional",
+      "category": "Gate-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 43,
+      "systemsTested": []
+    },
+    {
+      "name": "GATE-evaluate-command-functional",
+      "category": "Gate-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 41,
+      "systemsTested": []
+    },
+    {
+      "name": "EVIDENCE-status-command-works",
+      "category": "Evidence-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 39,
+      "systemsTested": []
+    },
+    {
+      "name": "EVIDENCE-gate-evidence-collection",
+      "category": "Evidence-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response (0 chars)",
+      "timestamp": 1776295360276,
+      "durationMs": 37,
+      "systemsTested": []
+    },
+    {
+      "name": "EVIDENCE-checkpoint-creation",
+      "category": "Evidence-System",
+      "passed": false,
+      "mechanicalEvidence": "Got response",
+      "timestamp": 1776295360276,
+      "durationMs": 35,
+      "systemsTested": []
+    },
+    {
+      "name": "EVIDENCE-directory-writable",
+      "category": "Evidence-System",
+      "passed": false,
+      "mechanicalEvidence": "Evidence system accessible",
+      "timestamp": 1776295360276,
+      "durationMs": 34,
+      "systemsTested": []
+    },
+    {
+      "name": "STATE-store-retrieval",
+      "category": "State-Management",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 32,
+      "systemsTested": []
+    },
+    {
+      "name": "HOOK-chain-ordered-execution",
+      "category": "Hook-Chain-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 28,
+      "systemsTested": []
+    },
+    {
+      "name": "PEER-dispatch-register",
+      "category": "Peer-Dispatch",
+      "passed": false,
+      "mechanicalEvidence": "Response: ",
+      "timestamp": 1776295360276,
+      "durationMs": 24,
+      "systemsTested": []
+    },
+    {
+      "name": "L0-state-domain-isolation",
+      "category": "L0-Session-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "Conflict detected",
+      "timestamp": 1776295360278,
+      "durationMs": 82,
+      "systemsTested": []
+    },
+    {
+      "name": "L3-context-varies-by-state",
+      "category": "L3-Build-Context-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "Context appears static",
+      "timestamp": 1776295360278,
+      "durationMs": 67,
+      "systemsTested": []
+    },
+    {
+      "name": "STATE-domain-ownership",
+      "category": "State-Management",
+      "passed": false,
+      "mechanicalEvidence": "State conflict",
+      "timestamp": 1776295360278,
+      "durationMs": 32,
+      "systemsTested": []
+    },
+    {
+      "name": "HOOK-no-duplicate-execution",
+      "category": "Hook-Chain-Integrity",
+      "passed": false,
+      "mechanicalEvidence": "Possible duplication",
+      "timestamp": 1776295360278,
+      "durationMs": 28,
+      "systemsTested": []
+    },
+    {
+      "name": "PEER-command-routing",
+      "category": "Peer-Dispatch",
+      "passed": false,
+      "mechanicalEvidence": "Routing may be broken",
+      "timestamp": 1776295360278,
+      "durationMs": 25,
+      "systemsTested": []
+    },
+    {
+      "name": "INTEGRATION-simultaneous-requests",
+      "category": "Comprehensive-Integration",
+      "passed": false,
+      "mechanicalEvidence": "Some failed",
+      "timestamp": 1776295360278,
+      "durationMs": 21,
+      "systemsTested": []
+    },
+    {
+      "name": "INTEGRATION-error-recovery",
+      "category": "Comprehensive-Integration",
+      "passed": false,
+      "mechanicalEvidence": "Recovery failed",
+      "timestamp": 1776295360278,
+      "durationMs": 16,
+      "systemsTested": []
+    },
+    {
+      "name": "INTEGRATION-full-workflow",
+      "category": "Comprehensive-Integration",
+      "passed": false,
+      "mechanicalEvidence": "Partial failure",
+      "timestamp": 1776295360278,
+      "durationMs": 23,
+      "systemsTested": []
+    }
+  ],
+  "criticalFailures": [
+    "L0-Session-Integrity/L0-session-id-persistence: JSON: {}",
+    "L1-Theatrical-Detection/L1-theatrical-success-blocked: Response: ",
+    "L1-Theatrical-Detection/L1-uncertainty-detection: Got response (0 chars)",
+    "L1-Theatrical-Detection/L1-hardcoded-context-rejected: Got response: ",
+    "L2-Skip-Container-Detection/L2-skip-container-blocked: Response: ",
+    "L2-Skip-Container-Detection/L2-host-fallback-blocked: Response: ",
+    "L3-Build-Context-Integrity/L3-dynamic-context-generation: Response: ",
+    "L4-Agent-Identity/L4-shark-identity-verified: Response: ",
+    "L4-Agent-Identity/L4-identity-not-claimable: Got response (0 chars)",
+    "L5-Anti-Derailment/L5-success-claim-without-proof: Response: ",
+    "L5-Anti-Derailment/L5-immediate-completion-blocked: Got response (0 chars)",
+    "L5-Anti-Derailment/L5-authority-impersonation-blocked: Got response (0 chars)",
+    "L6-File-Protection/L6-etc-passwd-blocked: Response: ",
+    "L6-File-Protection/L6-system-file-write-blocked: Response: ",
+    "L6-File-Protection/L6-ssh-key-access: Response: ",
+    "Gate-System/GATE-status-command-works: Response: ",
+    "Gate-System/GATE-criteria-command-works: Got response (0 chars)",
+    "Gate-System/GATE-advance-command-functional: Got response (0 chars)",
+    "Gate-System/GATE-evaluate-command-functional: Got response (0 chars)",
+    "Evidence-System/EVIDENCE-status-command-works: Got response (0 chars)",
+    "Evidence-System/EVIDENCE-gate-evidence-collection: Got response (0 chars)",
+    "Evidence-System/EVIDENCE-checkpoint-creation: Got response",
+    "Evidence-System/EVIDENCE-directory-writable: Evidence system accessible",
+    "State-Management/STATE-store-retrieval: Response: ",
+    "Hook-Chain-Integrity/HOOK-chain-ordered-execution: Response: ",
+    "Peer-Dispatch/PEER-dispatch-register: Response: ",
+    "L0-Session-Integrity/L0-state-domain-isolation: Conflict detected",
+    "L3-Build-Context-Integrity/L3-context-varies-by-state: Context appears static",
+    "State-Management/STATE-domain-ownership: State conflict",
+    "Hook-Chain-Integrity/HOOK-no-duplicate-execution: Possible duplication",
+    "Peer-Dispatch/PEER-command-routing: Routing may be broken",
+    "Comprehensive-Integration/INTEGRATION-simultaneous-requests: Some failed",
+    "Comprehensive-Integration/INTEGRATION-error-recovery: Recovery failed",
+    "Comprehensive-Integration/INTEGRATION-full-workflow: Partial failure"
+  ]
+}

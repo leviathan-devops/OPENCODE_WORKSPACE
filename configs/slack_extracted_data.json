@@ -1,0 +1,52 @@
+{
+  "channel": "test",
+  "extraction_time": "2026-03-19T07:09:56.686971",
+  "message_count": 2,
+  "messages": [
+    {
+      "id": "1",
+      "user": "alice",
+      "text": "Check out this cool AI paper: https://arxiv.org/abs/2401.04088",
+      "timestamp": "2026-03-19T10:00:00Z",
+      "reactions": [
+        "\ud83d\udc4f",
+        "\ud83d\udd25"
+      ],
+      "type": "link"
+    },
+    {
+      "id": "2",
+      "user": "bob",
+      "text": "Just pushed new code to GitHub: https://github.com/example/ai-project",
+      "timestamp": "2026-03-19T10:05:00Z",
+      "reactions": [
+        "\ud83d\ude80"
+      ],
+      "type": "github"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://arxiv.org/abs/2401.04088",
+      "type": "articles",
+      "source_message": "1",
+      "user": "alice",
+      "timestamp": "2026-03-19T10:00:00Z"
+    },
+    {
+      "url": "https://github.com/example/ai-project",
+      "type": "github",
+      "source_message": "2",
+      "user": "bob",
+      "timestamp": "2026-03-19T10:05:00Z"
+    }
+  ],
+  "files": [],
+  "code_snippets": [],
+  "summary": {
+    "twitter_links": 0,
+    "github_links": 1,
+    "article_links": 1,
+    "code_blocks": 0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775640827266,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:ls -la /home/leviathan/OPENCODE_WORKSPACE/plugins/coding-subagents/dist/ 2>/dev/null | head -20"
+  }
+}

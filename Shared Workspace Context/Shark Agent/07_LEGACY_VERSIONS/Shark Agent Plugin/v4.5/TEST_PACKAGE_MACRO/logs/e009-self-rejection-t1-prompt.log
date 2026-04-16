@@ -1,0 +1,17 @@
+[2026-04-07T09:52:40.984Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing
+[2026-04-07T09:52:40.984Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {"toolCount":3,"tools":["route","gemma","qwen"],"route":"task routing - use when unsure which sub-agent to use","gemma":"gemma-4-31b-it (documentation, boilerplate, explanations)","qwen":"qwen3-coder (code completion, prototypes, free)"}
+[2026-04-07T09:52:40.985Z] INFO OpenCodePluginEngineering initializing 
+[0m
+> build · qwen3.6-plus-free
+[0m
+[0m⚙ [0mshark-status-macro Unknown
+[0m→ [0mRead .
+Shark Macro Status:
+- **Brain**: unknown
+- **Current Gate**: PLAN
+- **Iteration**: V1.0
+- **All Gates**: pending
+- **Evidence**: none collected
+- **Verify Attempts**: 0/3
+
+This appears to be a test package directory. What would you like to do?

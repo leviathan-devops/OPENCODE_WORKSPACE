@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a1a2e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .calculator {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .display {
+      background: #0f0f23;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      text-align: right;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .display-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      color: #ffffff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 60px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+      color: #ffffff;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .btn-number {
+      background: #2d3a5a;
+    }
+
+    .btn-number:hover {
+      background: #3a4a70;
+    }
+
+    .btn-operator {
+      background: #e94560;
+    }
+
+    .btn-operator:hover {
+      background: #f05a75;
+    }
+
+    .btn-clear {
+      background: #ff6b6b;
+    }
+
+    .btn-clear:hover {
+      background: #ff8585;
+    }
+
+    .btn-equals {
+      background: #00d9ff;
+      color: #0f0f23;
+    }
+
+    .btn-equals:hover {
+      background: #33e5ff;
+    }
+
+    .btn-zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <span class="display-value" id="display">0</span>
+    </div>
+    <div class="buttons">
+      <button class="btn-clear" data-action="clear">C</button>
+      <button class="btn-operator" data-action="toggle-sign">±</button>
+      <button class="btn-operator" data-action="percent">%</button>
+      <button class="btn-operator" data-action="operator" data-value="÷">÷</button>
+      
+      <button class="btn-number" data-action="number" data-value="7">7</button>
+      <button class="btn-number" data-action="number" data-value="8">8</button>
+      <button class="btn-number" data-action="number" data-value="9">9</button>
+      <button class="btn-operator" data-action="operator" data-value="×">×</button>
+      
+      <button class="btn-number" data-action="number" data-value="4">4</button>
+      <button class="btn-number" data-action="number" data-value="5">5</button>
+      <button class="btn-number" data-action="number" data-value="6">6</button>
+      <button class="btn-operator" data-action="operator" data-value="−">−</button>
+      
+      <button class="btn-number" data-action="number" data-value="1">1</button>
+      <button class="btn-number" data-action="number" data-value="2">2</button>
+      <button class="btn-number" data-action="number" data-value="3">3</button>
+      <button class="btn-operator" data-action="operator" data-value="+">+</button>
+      
+      <button class="btn-number btn-zero" data-action="number" data-value="0">0</button>
+      <button class="btn-number" data-action="decimal">.</button>
+      <button class="btn-equals" data-action="equals">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    let firstOperand = null;
+    let operator = null;
+    let waitingForSecondOperand = false;
+
+    function inputNumber(num) {
+      if (waitingForSecondOperand) {
+        display.textContent = num;
+        waitingForSecondOperand = false;
+      } else {
+        if (display.textContent === '0' && num !== '.') {
+          display.textContent = num;
+        } else if (display.textContent.length < 12) {
+          display.textContent += num;
+        }
+      }
+    }
+
+    function inputDecimal() {
+      if (waitingForSecondOperand) {
+        display.textContent = '0.';
+        waitingForSecondOperand = false;
+        return;
+      }
+      if (!display.textContent.includes('.')) {
+        display.textContent += '.';
+      }
+    }
+
+    function handleOperator(nextOperator) {
+      const inputValue = parseFloat(display.textContent);
+      
+      if (operator && waitingForSecondOperand) {
+        operator = nextOperator;
+        return;
+      }
+      
+      if (firstOperand === null) {
+        firstOperand = inputValue;
+      } else if (operator) {
+        const result = calculate(firstOperand, inputValue, operator);
+        if (result === 'Error') {
+          display.textContent = 'Error';
+          resetCalculator();
+          return;
+        }
+        display.textContent = String(result).slice(0, 12);
+        firstOperand = result;
+      }
+      
+      waitingForSecondOperand = true;
+      operator = nextOperator;
+    }
+
+    function calculate(first, second, op) {
+      switch (op) {
+        case '+': return first + second;
+        case '−': return first - second;
+        case '×': return first * second;
+        case '÷':
+          if (second === 0) return 'Error';
+          return first / second;
+        default: return second;
+      }
+    }
+
+    function performEquals() {
+      if (operator === null || waitingForSecondOperand) return;
+      
+      const inputValue = parseFloat(display.textContent);
+      const result = calculate(firstOperand, inputValue, operator);
+      
+      if (result === 'Error') {
+        display.textContent = 'Error';
+        resetCalculator();
+        return;
+      }
+      
+      display.textContent = String(result).slice(0, 12);
+      firstOperand = result;
+      operator = null;
+      waitingForSecondOperand = false;
+    }
+
+    function resetCalculator() {
+      firstOperand = null;
+      operator = null;
+      waitingForSecondOperand = false;
+    }
+
+    function clear() {
+      display.textContent = '0';
+      resetCalculator();
+    }
+
+    function toggleSign() {
+      const value = parseFloat(display.textContent);
+      display.textContent = String(-value);
+    }
+
+    function percent() {
+      const value = parseFloat(display.textContent);
+      display.textContent = String(value / 100);
+    }
+
+    document.querySelector('.buttons').addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+      if (!button) return;
+      
+      const action = button.dataset.action;
+      const value = button.dataset.value;
+      
+      switch (action) {
+        case 'number':
+          inputNumber(value);
+          break;
+        case 'decimal':
+          inputDecimal();
+          break;
+        case 'operator':
+          handleOperator(value);
+          break;
+        case 'equals':
+          performEquals();
+          break;
+        case 'clear':
+          clear();
+          break;
+        case 'toggle-sign':
+          toggleSign();
+          break;
+        case 'percent':
+          percent();
+          break;
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const key = e.key;
+      
+      if (key >= '0' && key <= '9') {
+        inputNumber(key);
+      } else if (key === '.') {
+        inputDecimal();
+      } else if (key === '+') {
+        handleOperator('+');
+      } else if (key === '-') {
+        handleOperator('−');
+      } else if (key === '*') {
+        handleOperator('×');
+      } else if (key === '/') {
+        e.preventDefault();
+        handleOperator('÷');
+      } else if (key === 'Enter' || key === '=') {
+        performEquals();
+      } else if (key === 'Escape' || key === 'c' || key === 'C') {
+        clear();
+      } else if (key === '%') {
+        percent();
+      }
+    });
+  </script>
+</body>
+</html>

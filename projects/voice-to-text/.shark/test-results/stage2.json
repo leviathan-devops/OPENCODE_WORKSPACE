@@ -1,0 +1,7 @@
+{
+  "stage": 2,
+  "success": true,
+  "exitCode": 0,
+  "timestamp": "2026-03-23T23:04:11+04:00",
+  "output": "=== RUN   TestVoskModelExists\n--- PASS: TestVoskModelExists (0.00s)\n=== RUN   TestAudioCaptureInitialization\n    audio_test.go:28: Audio capture requires hardware and will be tested manually.\n--- PASS: TestAudioCaptureInitialization (0.00s)\n=== RUN   TestBasic\n--- PASS: TestBasic (0.00s)\n=== RUN   TestDoublePressDetection\n--- PASS: TestDoublePressDetection (0.50s)\n=== RUN   TestDoublePressResetAfterTrigger\n--- PASS: TestDoublePressResetAfterTrigger (0.20s)\n=== RUN   TestOfflineOperation\n    offline_test.go:10: Offline operation test requires network monitoring\n--- SKIP: TestOfflineOperation (0.00s)\n=== RUN   TestMemoryUsage\n    performance_test.go:19: Memory usage: 396728 bytes\n--- PASS: TestMemoryUsage (0.00s)\n=== RUN   TestCPUUsage\n    performance_test.go:25: CPU usage test requires running application\n--- SKIP: TestCPUUsage (0.00s)\n=== RUN   TestVoskRecognizerCreation\n    vosk_test.go:10: Skipping Vosk recognizer creation test - requires full integration test environment\n--- SKIP: TestVoskRecognizerCreation (0.00s)\n=== RUN   TestSpeechRecognition\n    vosk_test.go:14: Skipping speech recognition test - requires audio hardware and model\n--- SKIP: TestSpeechRecognition (0.00s)\nPASS\nok  \tvoice-to-text/test\t(cached)\n"
+}

@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775637765527,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_293be159affeI3x2RbBWHaSv2z",
+    "workEvidence": "ran:ls -la \"/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Hermes Agent Plugin/v2.3.5-build"
+  }
+}

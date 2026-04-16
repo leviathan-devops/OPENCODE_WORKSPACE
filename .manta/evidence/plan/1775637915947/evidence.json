@@ -1,0 +1,11 @@
+{
+  "gate": "plan",
+  "timestamp": 1775637915947,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "tool": "bash",
+    "sessionID": "ses_2b19f9e2dffeYCEtMOD4GUtLiS",
+    "workEvidence": "ran:# Check which manta is currently loaded in opencode\nstat \"/home/leviathan/OPENCODE_WORKSPACE/Shared "
+  }
+}

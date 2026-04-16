@@ -1,0 +1,29 @@
+{
+  "name": "shark-agent-v4",
+  "version": "1.0.0",
+  "description": "Shark Agent V4 - Production-grade software engineering orchestrator with mechanical enforcement",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm --bundle",
+    "dev": "bun build src/index.ts --outdir dist --target bun --format esm --bundle --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^5.3.0"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "agent",
+    "shark",
+    "software-engineering",
+    "mechanical-enforcement"
+  ],
+  "author": "",
+  "license": "MIT"
+}

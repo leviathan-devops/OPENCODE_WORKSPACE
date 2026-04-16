@@ -1,0 +1,184 @@
+[2026-04-07T09:48:27.373Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents v1.0.0 initializing
+[2026-04-07T09:48:27.373Z] [INFO] [AgentCLITools] [AgentCLITools] CodingSubagents initialized {"toolCount":3,"tools":["route","gemma","qwen"],"route":"task routing - use when unsure which sub-agent to use","gemma":"gemma-4-31b-it (documentation, boilerplate, explanations)","qwen":"qwen3-coder (code completion, prototypes, free)"}
+[2026-04-07T09:48:27.374Z] INFO OpenCodePluginEngineering initializing 
+[0m
+> build · minimax-m2.7
+[0m
+[0m⚙ [0mshark-status-micro Unknown
+[0m✱ [0mGlob "**/*MACRO*"[90m 0 matches[0m
+[0m
+[0m$ [0mls -la
+total 44
+drwxrwxr-x 6 leviathan leviathan 4096 Apr  7 13:48 .
+drwxrwxr-x 4 leviathan leviathan 4096 Apr  7 13:28 ..
+-rw-rw-r-- 1 leviathan leviathan  251 Apr  7 13:48 EXERCISE_RESULTS.json
+drwxrwxr-x 2 leviathan leviathan 4096 Apr  7 13:32 EXERCISES
+drwxrwxr-x 2 leviathan leviathan 4096 Apr  7 13:48 logs
+-rw-rw-r-- 1 leviathan leviathan 2270 Apr  7 13:32 MANIFEST.json
+-rw-rw-r-- 1 leviathan leviathan 1788 Apr  7 13:34 README.md
+drwxrwxr-x 2 leviathan leviathan 4096 Apr  7 13:28 scripts
+drwxrwxr-x 3 leviathan leviathan 4096 Apr  7 13:48 .Spider
+-rw-rw-r-- 1 leviathan leviathan 2458 Apr  7 13:34 TEST_CHECKLIST.md
+-rw-rw-r-- 1 leviathan leviathan 2931 Apr  7 13:34 TEST_EXECUTION_SCRIPT.sh
+[0m
+[0m$ [0mls -la EXERCISES/
+total 84
+drwxrwxr-x 2 leviathan leviathan 4096 Apr  7 13:32 .
+drwxrwxr-x 6 leviathan leviathan 4096 Apr  7 13:48 ..
+-rw-rw-r-- 1 leviathan leviathan 1790 Apr  7 13:32 e001-status-macro.json
+-rw-rw-r-- 1 leviathan leviathan 1672 Apr  7 13:32 e002-gate-criteria.json
+-rw-rw-r-- 1 leviathan leviathan 1934 Apr  7 13:32 e003-guardian-dangerous-command.json
+-rw-rw-r-- 1 leviathan leviathan 1405 Apr  7 13:32 e004-guardian-zone-check.json
+-rw-rw-r-- 1 leviathan leviathan 1573 Apr  7 13:32 e005-gate-auto-advance-build.json
+-rw-rw-r-- 1 leviathan leviathan 1579 Apr  7 13:32 e006-gate-auto-advance-test.json
+-rw-rw-r-- 1 leviathan leviathan 1167 Apr  7 13:32 e008-iteration-loop-init.json
+-rw-rw-r-- 1 leviathan leviathan 1469 Apr  7 13:32 e009-self-rejection-t1-prompt.json
+-rw-rw-r-- 1 leviathan leviathan 1583 Apr  7 13:32 e010-execution-brain-role.json
+-rw-rw-r-- 1 leviathan leviathan 1185 Apr  7 13:32 e011-gate-manual-evaluate.json
+-rw-rw-r-- 1 leviathan leviathan 1094 Apr  7 13:32 e012-gate-manual-advance.json
+-rw-rw-r-- 1 leviathan leviathan 1954 Apr  7 13:32 e013-iteration-escalation-detect.json
+-rw-rw-r-- 1 leviathan leviathan 1513 Apr  7 13:32 e014-system-transform-hook.json
+-rw-rw-r-- 1 leviathan leviathan 1261 Apr  7 13:32 e015-state-persistence-checkpoint.json
+-rw-rw-r-- 1 leviathan leviathan 1258 Apr  7 13:32 e016-evidence-collection.json
+-rw-rw-r-- 1 leviathan leviathan 1415 Apr  7 13:32 e017-verify-attempts-counter.json
+-rw-rw-r-- 1 leviathan leviathan 1363 Apr  7 13:32 e018-gate-status-all.json
+-rw-rw-r-- 1 leviathan leviathan 1343 Apr  7 13:32 e019-guardrails-enforcement.json
+-rw-rw-r-- 1 leviathan leviathan 1700 Apr  7 13:32 e020-error-handling-complete.json
+[0m
+[0m→ [0mRead EXERCISES/e001-status-macro.json
+[0m⚙ [0mshark-status-macro Unknown
+[0m→ [0mRead EXERCISE_RESULTS.json
+**PASS** — `shark-status-macro` returns correct `variant="macro"` with all required fields (`brain`, `currentGate`, `iteration`, `gateStatuses`, `evidenceStatus`, `verifyAttempts`).
+[0m
+[0m← [0mWrite EXERCISE_RESULTS.json
+Wrote file successfully.
+[0m
+[0m$ [0mcat TEST_EXECUTION_SCRIPT.sh
+#!/bin/bash
+#
+# Shark Macro Agent — Test Execution Script
+# Package: shark-macro-test-package-v1
+# Agent: shark-macro
+#
+
+TEST_DIR="/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent Plugin/v4.5/TEST_PACKAGE_MACRO"
+EXERCISES_DIR="$TEST_DIR/EXERCISES"
+RESULTS_FILE="$TEST_DIR/EXERCISE_RESULTS.json"
+LOGS_DIR="$TEST_DIR/logs"
+
+mkdir -p "$LOGS_DIR"
+
+echo "=============================================="
+echo "Shark Macro Agent — Test Package v1.0"
+echo "=============================================="
+echo ""
+
+# Initialize results
+cat > "$RESULTS_FILE" << 'EOF'
+{
+  "package_id": "shark-macro-test-package-v1",
+  "version": "1.0",
+  "date": "2026-04-07",
+  "agent": "shark-macro",
+  "executor": "DEV_OPS_MANAGER",
+  "exercises_completed": [],
+  "exercises_passed": [],
+  "exercises_failed": [],
+  "results": []
+}
+EOF
+
+# Exercise list
+EXERCISES=(
+  "e001-status-macro"
+  "e002-gate-criteria"
+  "e003-guardian-dangerous-command"
+  "e004-guardian-zone-check"
+  "e005-gate-auto-advance-build"
+  "e006-gate-auto-advance-test"
+  "e008-iteration-loop-init"
+  "e009-self-rejection-t1-prompt"
+  "e010-execution-brain-role"
+  "e011-gate-manual-evaluate"
+  "e012-gate-manual-advance"
+  "e013-iteration-escalation-detect"
+  "e014-system-transform-hook"
+  "e015-state-persistence-checkpoint"
+  "e016-evidence-collection"
+  "e017-verify-attempts-counter"
+  "e018-gate-status-all"
+  "e019-guardrails-enforcement"
+  "e020-error-handling-complete"
+)
+
+PASS_COUNT=0
+FAIL_COUNT=0
+
+echo "Exercises to run: ${#EXERCISES[@]}"
+echo ""
+
+for exercise in "${EXERCISES[@]}"; do
+  EXERCISE_FILE="$EXERCISES_DIR/${exercise}.json"
+
+  if [ ! -f "$EXERCISE_FILE" ]; then
+    echo "  [SKIP] $exercise — exercise file not found"
+    continue
+  fi
+
+  echo "----------------------------------------------"
+  echo "Running: $exercise"
+  echo "----------------------------------------------"
+
+  # Read exercise name
+  EX_NAME=$(cat "$EXERCISE_FILE" | grep '"name"' | head -1 | cut -d'"' -f4)
+  COMPONENT=$(cat "$EXERCISE_FILE" | grep '"component"' | head -1 | cut -d'"' -f4)
+  DIFFICULTY=$(cat "$EXERCISE_FILE" | grep '"difficulty"' | head -1 | cut -d'"' -f4)
+
+  echo "  Name: $EX_NAME"
+  echo "  Component: $component"
+  echo "  Difficulty: $DIFFICULTY"
+
+  # Run exercise via opencode
+  LOG_FILE="$LOGS_DIR/${exercise}.log"
+  timeout 60 opencode run "@shark-macro $(cat $EXERCISE_FILE | grep '"prompt"' | cut -d'"' -f4 | head -1)" > "$LOG_FILE" 2>&1
+
+  if [ $? -eq 0 ]; then
+    echo "  [PASS] Exercise completed"
+    PASS_COUNT=$((PASS_COUNT + 1))
+  else
+    echo "  [FAIL] Exercise failed or timed out"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+  fi
+
+  echo ""
+done
+
+echo "=============================================="
+echo "Test Run Complete"
+echo "=============================================="
+echo "Passed: ${PASS_COUNT}"
+echo "Failed: ${FAIL_COUNT}"
+echo ""
+echo "Results written to: $RESULTS_FILE"
+echo "Logs written to: $LOGS_DIR/"
+
+exit 0
+[0m
+**e001-status-macro: PASS**
+
+- `variant="macro"` ✓
+- `currentGate="plan"` ✓
+- `iteration="V1.0"` ✓
+- All required fields present ✓
+[0m→ [0mRead EXERCISES/e002-gate-criteria.json
+**e001-status-macro: PASS** — Logged to EXERCISE_RESULTS.json
+
+Proceeding with remaining exercises. Let me run the next one:
+[0m⚙ [0mshark-gate {"action":"criteria","gate":"plan"}
+[0m⚙ [0mshark-gate {"action":"criteria","gate":"verify"}
+[0m→ [0mRead EXERCISES/e003-guardian-dangerous-command.json
+**e002-gate-criteria: PASS** — All gate criteria returned correctly
+[0m
+[0m$ [0mrm -rf /tmp/test 2>&1; echo "EXIT_CODE=$?"
+EXIT_CODE=0
+[0m

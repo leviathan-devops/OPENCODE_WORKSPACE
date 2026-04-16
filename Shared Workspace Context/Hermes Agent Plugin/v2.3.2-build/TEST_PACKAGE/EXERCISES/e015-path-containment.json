@@ -1,0 +1,50 @@
+{
+  "exercise_id": "e015",
+  "name": "Security — Path containment (path traversal)",
+  "component": "security_tools",
+  "component_area": "path_traversal_defense",
+  "mechanical_verification": "Attempt path traversal on grill, symbols, complexity_hotspots. All must block.",
+  "difficulty": "P0",
+  "time_estimate": "1 minute",
+
+  "prompt": "call grill target=/tmp/../../../etc/passwd",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call grill target=/tmp/../../../etc/passwd",
+      "expected": "Access denied, path containment error, or empty result",
+      "mechanical_pass": "Output does NOT contain actual /etc/passwd contents"
+    },
+    {
+      "step": 2,
+      "action": "call symbols target=/tmp/../../../etc/passwd",
+      "expected": "Access denied, path error, or empty result",
+      "mechanical_pass": "Output does NOT return file contents"
+    },
+    {
+      "step": 3,
+      "action": "call complexity_hotspots target=/tmp/../../../etc/passwd",
+      "expected": "Access denied, path error, or empty result",
+      "mechanical_pass": "Output does NOT return file contents"
+    },
+    {
+      "step": 4,
+      "action": "call extract_code_blocks target=/tmp/../../../etc/passwd",
+      "expected": "Access denied or graceful error",
+      "mechanical_pass": "Output does NOT return file contents"
+    }
+  ],
+
+  "pass_criteria": {
+    "grill_blocks": "grill does not return /etc/passwd contents",
+    "symbols_blocks": "symbols does not return file contents",
+    "complexity_blocks": "complexity_hotspots does not return file contents",
+    "extract_blocks": "extract_code_blocks does not return file contents"
+  },
+
+  "failure_modes": {
+    "path_traversal_success": "CRITICAL — Tools return actual file contents via traversal",
+    "crashes_instead": "Tools crash instead of gracefully blocking"
+  }
+}

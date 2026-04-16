@@ -1,0 +1,59 @@
+{
+  "exercise_id": "e017",
+  "name": "Evidence Collection — Latest Gate Evidence",
+  "component": "evidence",
+  "component_area": "EvidenceCollector getLatestEvidence",
+  "mechanical_verification": "Collect evidence for different gates, verify getLatestEvidence returns correct gate evidence",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "prompt": "Evaluate plan gate as passed, then call shark-evidence action=gate-evidence gate=plan, then evaluate build gate and check evidence",
+
+  "expected_behavior": "Evidence shows timestamp, passed status, metadata for each gate",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-gate action=evaluate gate=plan passed=true",
+      "expected": "Plan gate marked as passed",
+      "mechanical_pass": "Evidence generated for plan"
+    },
+    {
+      "step": 2,
+      "action": "call shark-evidence action=gate-evidence gate=plan",
+      "expected": "Evidence returned with passed: true, gate: plan",
+      "mechanical_pass": "Latest evidence for plan gate correct"
+    },
+    {
+      "step": 3,
+      "action": "call shark-gate action=evaluate gate=build passed=true",
+      "expected": "Build gate marked as passed",
+      "mechanical_pass": "Evidence generated for build"
+    },
+    {
+      "step": 4,
+      "action": "call shark-evidence action=gate-evidence gate=build",
+      "expected": "Evidence returned for build gate",
+      "mechanical_pass": "Build evidence collected correctly"
+    },
+    {
+      "step": 5,
+      "action": "Verify evidence has timestamp and metadata",
+      "expected": "Evidence includes timestamp, passed, metadata object",
+      "mechanical_pass": "Evidence has full structure"
+    }
+  ],
+
+  "pass_criteria": {
+    "plan_evidence": "Plan gate evidence shows passed: true",
+    "build_evidence": "Build gate evidence shows passed: true",
+    "evidence_has_timestamp": "Evidence includes timestamp field",
+    "evidence_has_metadata": "Evidence includes metadata object"
+  },
+
+  "failure_modes": {
+    "evidence_missing": "No evidence returned for evaluated gate",
+    "wrong_gate_evidence": "Evidence from wrong gate returned",
+    "missing_fields": "Evidence missing timestamp or passed status"
+  }
+}

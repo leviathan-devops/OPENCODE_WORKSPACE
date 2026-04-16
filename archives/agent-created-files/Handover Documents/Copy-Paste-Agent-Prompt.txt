@@ -1,0 +1,55 @@
+# COPY THIS ENTIRE TEXT AND PASTE TO ANY AI AGENT:
+
+## Agent Migration Instruction
+
+I need you to perform a self-migration to our new organized workspace. Here's exactly what to do:
+
+### Step 1: Check if the new workspace exists
+Look for `/home/leviathan/OPENCODE_WORKSPACE/` - it should have directories like `projects/`, `configs/`, `tools/`, etc.
+
+### Step 2: Validate the workspace
+Run the validation tool:
+```
+/home/leviathan/OPENCODE_WORKSPACE/tools/validators/validate-workspace.sh
+```
+This checks if everything is set up correctly.
+
+### Step 3: Use the migration assistant
+Run:
+```
+/home/leviathan/OPENCODE_WORKSPACE/tools/migrators/agent-migration-assistant.sh
+```
+This tool will:
+- Detect what type of agent you are
+- Create backups of your current configuration
+- Prepare your new organized configuration
+- Give you specific step-by-step instructions
+
+### Step 4: Follow the instructions
+The migration assistant will provide exact commands for:
+1. Stopping your processes
+2. Switching to the new configuration
+3. Restarting in the organized workspace
+4. Testing everything works
+
+### Step 5: Verify success
+After migrating, test that all your capabilities work correctly from the new location.
+
+## Key Information:
+- **Non-destructive**: Your original files at `/home/leviathan/` remain untouched
+- **Self-service**: You control the timing and process
+- **Rollback ready**: Easy to revert if needed
+- **Copy-based**: Creates organized copies, doesn't move originals
+
+## Why we're doing this:
+- Organizes files by project type (GLM, Qwen, Shark, etc.)
+- Makes maintenance and collaboration easier
+- Creates a scalable foundation for future work
+
+## Start now:
+1. Check if `/home/leviathan/OPENCODE_WORKSPACE/` exists
+2. Run the validation tool
+3. Use the migration assistant
+4. Follow the provided instructions
+
+This migration demonstrates your ability to self-improve and adapt your workspace for better performance.

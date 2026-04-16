@@ -1,0 +1,116 @@
+{
+  "suite": "shark-v482-mechanical-verification",
+  "timestamp": "2026-04-09T18:13:55.977Z",
+  "overallPassed": true,
+  "passRate": 1,
+  "passedTests": 20,
+  "failedTests": 0,
+  "totalTests": 20,
+  "buildId": "shark-v482-1775758435977",
+  "tests": [
+    {
+      "name": "plugin-bundle-exists",
+      "passed": true,
+      "output": "Bundle: 1031489 bytes (OK)"
+    },
+    {
+      "name": "bundle-has-export",
+      "passed": true,
+      "output": "Has export"
+    },
+    {
+      "name": "bug-fix-1-setCurrentAgent-called",
+      "passed": true,
+      "output": "Import: true, Call: true"
+    },
+    {
+      "name": "bug-fix-2-variant-passed",
+      "passed": true,
+      "output": "Variant passed"
+    },
+    {
+      "name": "guardian-has-identity-wall",
+      "passed": true,
+      "output": "Identity wall: true"
+    },
+    {
+      "name": "delivery-gate-requires-container-test",
+      "passed": true,
+      "output": "Test requirement: true"
+    },
+    {
+      "name": "no-hardcoded-personal-paths",
+      "passed": true,
+      "output": "Clean"
+    },
+    {
+      "name": "guardian-blocks-immediate-deploy",
+      "passed": true,
+      "output": "Deployment guard: true"
+    },
+    {
+      "name": "anti-spoof-verification",
+      "passed": true,
+      "output": "Anti-spoof: true"
+    },
+    {
+      "name": "guardian-has-source-protection",
+      "passed": true,
+      "output": "canEdit protection: true"
+    },
+    {
+      "name": "system-transform-has-ironclad",
+      "passed": true,
+      "output": "IRONCLAD rule: true"
+    },
+    {
+      "name": "gate-hook-has-slop-detector",
+      "passed": true,
+      "output": "Slop detector: true"
+    },
+    {
+      "name": "source-bundle-sync",
+      "passed": true,
+      "output": "Src: Thu Apr 09 2026 19:55:46 GMT+0400 (Gulf Standard Time), Bundle: Thu Apr 09 2026 22:13:08 GMT+0400 (Gulf Standard Time), Synced: true"
+    },
+    {
+      "name": "no-manta-contamination",
+      "passed": true,
+      "output": "Clean"
+    },
+    {
+      "name": "agent-state-module-complete",
+      "passed": true,
+      "output": "setCurrentAgent: true, getCurrentAgent: true"
+    },
+    {
+      "name": "guardian-uses-getCurrentAgent",
+      "passed": true,
+      "output": "getCurrentAgent used in if: true"
+    },
+    {
+      "name": "guardian-blocks-broken-builds",
+      "passed": true,
+      "output": "Broken build detection: true"
+    },
+    {
+      "name": "guardian-blocks-wrong-container",
+      "passed": true,
+      "output": "Wrong container detection: true"
+    },
+    {
+      "name": "guardian-validates-plugin-paths",
+      "passed": true,
+      "output": "Path validation: true"
+    },
+    {
+      "name": "opencode-container-knowledge-stored",
+      "passed": true,
+      "output": "Opencode container commands: true"
+    }
+  ],
+  "bugFixVerification": {
+    "bug1_setCurrentAgentCalled": true,
+    "bug2_variantPassed": true
+  }
+}

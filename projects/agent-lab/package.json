@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@agent-lab/monorepo",
+  "description": "Agent Lab: Visual Operating System for AI Agent Development",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.3.11",
+  "scripts": {
+    "dev": "bun run --filter=@agent-lab/pod1 dev",
+    "build": "bun run --filter=@agent-lab/* build",
+    "test": "bun run --filter=@agent-lab/* test",
+    "typecheck": "bun run --filter=@agent-lab/* typecheck",
+    "lint": "bun run --filter=@agent-lab/* lint",
+    "format": "bun run --filter=@agent-lab/* format",
+    "dev:all": "bun run --parallel --filter=@agent-lab/* dev",
+    "clean": "rm -rf node_modules packages/*/node_modules packages/*/dist packages/*/.turbo",
+    "prepare": "husky"
+  },
+  "workspaces": [
+    "packages/pod1-kraken-os-integration",
+    "packages/pod2-visual-builder-frontend",
+    "packages/pod3-conversational-ai-system",
+    "packages/pod4-swarm-coordination-engine",
+    "packages/pod5-testing-deployment-infrastructure",
+    "packages/shared"
+  ],
+  "devDependencies": {
+    "@types/bun": "1.3.11",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  }
+}

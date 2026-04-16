@@ -1,0 +1,47 @@
+{
+  "name": "shark-agent-plugin",
+  "version": "1.0.0",
+  "description": "Standalone Shark Agent plugin for vanilla OpenCode - Dual-brain architecture with mechanical safety enforcement",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm && tsc --emitDeclarationOnly --outDir dist 2>/dev/null || true",
+    "dev": "bun run --watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:unit": "bun test/unit",
+    "test:integration": "bun test/integration",
+    "test:performance": "bun test/performance"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "shark",
+    "dual-brain",
+    "safety",
+    "agent",
+    "ai"
+  ],
+  "author": "Shark Agent Team",
+  "license": "MIT",
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.3.6",
+    "@opencode-ai/sdk": "^1.3.6",
+    "axios": "^1.14.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.11",
+    "@types/node": "^22.19.15",
+    "typescript": "^5.9.3"
+  },
+  "oc-plugin": [
+    "tui"
+  ],
+  "opencode": {
+    "plugin": true,
+    "compatibility": ">=1.2.0",
+    "requires": []
+  }
+}

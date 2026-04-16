@@ -1,0 +1,19 @@
+{
+  "old_base": "/home/leviathan",
+  "new_base": "/home/leviathan/OPENCODE_WORKSPACE",
+  "mappings": {
+    "configs": {
+      "old": "/home/leviathan/.config/opencode",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/configs/opencode"
+    },
+    "shark": {
+      "old": "/home/leviathan/.shark-agent",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/configs/shark-agent"
+    },
+    "models": {
+      "old": "/home/leviathan/models",
+      "new": "/home/leviathan/OPENCODE_WORKSPACE/models"
+    }
+  },
+  "timestamp": "2026-03-26T01:48:49+04:00"
+}

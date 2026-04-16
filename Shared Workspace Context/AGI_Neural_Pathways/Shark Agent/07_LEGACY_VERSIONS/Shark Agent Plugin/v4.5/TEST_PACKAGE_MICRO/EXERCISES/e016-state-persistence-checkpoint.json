@@ -1,0 +1,47 @@
+{
+  "exercise_id": "e016",
+  "name": "State Persistence — Checkpoint on Compaction",
+  "component": "hooks",
+  "component_area": "experimental.session.compacting hook",
+  "mechanical_verification": "Trigger session compaction and verify gate state is saved to .shark/sessions/",
+  "difficulty": "P1",
+  "time_estimate": "30 seconds",
+
+  "prompt": "Advance through several gates, then check if .shark/sessions/ contains state snapshots after compaction event",
+
+  "expected_behavior": "experimental.session.compacting hook saves gate state to .shark/sessions/[sessionID]/gate-state.json",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Advance to build gate: call shark-gate action=advance gate=build",
+      "expected": "currentGate is 'build'",
+      "mechanical_pass": "Gate advanced"
+    },
+    {
+      "step": 2,
+      "action": "Check for .shark directory: ls .shark/",
+      "expected": ".shark directory exists with sessions/ subdirectory",
+      "mechanical_pass": "State directory created"
+    },
+    {
+      "step": 3,
+      "action": "Check sessions directory after compaction event",
+      "expected": "gate-state.json exists in .shark/sessions/[sessionID]/",
+      "mechanical_pass": "State persisted on compaction"
+    }
+  ],
+
+  "pass_criteria": {
+    "shark_dir_exists": ".shark/ directory created by session hook",
+    "sessions_subdir": ".shark/sessions/ exists",
+    "state_saved": "gate-state.json contains current gate state",
+    "json_valid": "gate-state.json is valid JSON with gateStatus, currentGate, iteration"
+  },
+
+  "failure_modes": {
+    "shark_dir_missing": ".shark/ directory not created",
+    "no_state_file": "No gate-state.json in sessions directory",
+    "state_invalid": "gate-state.json exists but not valid JSON"
+  }
+}

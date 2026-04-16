@@ -1,0 +1,20 @@
+{
+  "name": "kraken-agent-v2.0",
+  "version": "2.0.0",
+  "description": "Kraken V2.0 - Multi-brain orchestrator with dynamic context management",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm --bundle",
+    "dev": "bun build src/index.ts --outdir dist --target bun --format esm --bundle --watch",
+    "test": "node tests/run-tests.mjs"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.0",
+    "bun": "^1.1.0"
+  }
+}

@@ -1,0 +1,29 @@
+=== Environment Info ===
+Date: Tue Apr  7 10:51:41 PM +04 2026
+Hostname: LeviathanLocal
+User: leviathan
+Working Directory: /tmp
+OpenCode: [RUN /version IN OPENTCODE TO FILL]
+Node.js: v22.14.0
+Python: Python 3.12.3
+Git: git version 2.43.0
+
+=== Test Project ===
+Path: /tmp/hermes-test-project
+Contents:
+total 420
+drwxrwxr-x   6 leviathan leviathan   4096 Apr  7 22:51 .
+drwxrwxrwt 139 root      root      405504 Apr  7 22:51 ..
+drwxrwxr-x   2 leviathan leviathan   4096 Apr  7 22:51 config
+drwxrwxr-x   2 leviathan leviathan   4096 Apr  7 22:51 docs
+drwxrwxr-x   6 leviathan leviathan   4096 Apr  7 22:51 src
+drwxrwxr-x   2 leviathan leviathan   4096 Apr  7 22:51 tests
+
+=== Memory ===
+               total        used        free      shared  buff/cache   available
+Mem:            30Gi        19Gi       5.0Gi       3.4Gi        10Gi        11Gi
+Swap:          8.0Gi       8.0Gi       100Ki
+
+=== Disk ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  937G  609G  281G  69% /

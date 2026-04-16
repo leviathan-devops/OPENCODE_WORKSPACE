@@ -1,0 +1,33 @@
+{
+  "railway_token_env": "RAILWAY_TOKEN",
+  "github": {
+    "repo": "leviathan-devops/cloud-hermes",
+    "token_in": "~/.git-credentials"
+  },
+  "projects": {
+    "hermes_cloud": {
+      "id": "84255eda-87ac-4e98-81b6-c5a763099162",
+      "name": "Hermes Cloud",
+      "services": {
+        "telegram_bridge": {
+          "id": "3ab28d58-049f-4012-9a3c-2ee5aaa2075b",
+          "url": "https://telegram-bridge-production-2ab9.up.railway.app"
+        },
+        "cloud_hermes_v2": {
+          "id": "282da425-024c-45af-8236-9579636d36dc",
+          "status": "FAILED"
+        }
+      }
+    }
+  },
+  "docker_image": {
+    "working": "ghcr.io/leviathan-devops/cloud-hermes:build",
+    "verified_local": true
+  },
+  "hermes": {
+    "home": "/opt/data",
+    "binary": "/usr/local/bin/hermes",
+    "version": "v0.6.0",
+    "profile": "2nd-brain"
+  }
+}

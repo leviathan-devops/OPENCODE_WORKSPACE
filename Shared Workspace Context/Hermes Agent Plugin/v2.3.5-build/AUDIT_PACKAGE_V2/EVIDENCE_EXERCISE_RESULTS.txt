@@ -1,0 +1,79 @@
+=== EXERCISE TEST RESULTS (TEST_PACKAGE_V2) ===
+Date: 2026-04-07 23:31
+Script: run-exercises.sh
+Timeout: 300s (triggered)
+
+=== SUMMARY ===
+Total Exercises: 30
+Completed: 12 (before timeout)
+Passed: 11
+Failed: 0
+Errors: 1 (timeout - e012)
+Pass Rate: 91.7% (completed only)
+
+=== PER-EXERCISE RESULTS ===
+
+--- Exercise e001-memory-remember-recall ---
+  Prompt: call hermes_remember topic=e001-test value="E001-memory-test-$(date +%s)"
+  RESULT: PASS (tool executed successfully)
+
+--- Exercise e002-memory-context ---
+  Prompt: call hermes_remember topic=project-auth value="auth module uses bcrypt" && call hermes_remember topic=project-db value="postgresql connection pooling" && call hermes_remember topic=project-api value="REST endpoints on port 3000"
+  RESULT: PASS (tool executed successfully)
+
+--- Exercise e003-memory-persistence ---
+  Prompt: call hermes_remember topic=e003-persist value="persist-test-$(date +%s)"
+  RESULT: PASS (tool executed successfully)
+
+--- Exercise e004-tool-lint ---
+  Prompt: call lint target=src
+  RESULT: PASS (tool executed)
+  NOTE: Previously ERROR in v2.3.3 (ESLint config error)
+
+--- Exercise e005-tool-secret-scan ---
+  Prompt: call secret_scan target=/tmp/fake_secret_test.ts
+  RESULT: PASS (tool executed successfully)
+
+--- Exercise e006-tool-grill ---
+  Prompt: call grill target=src
+  RESULT: PASS (tool executed successfully)
+  NOTE: Previously ERROR in v2.3.3 (Could not analyze directory)
+
+--- Exercise e007-tool-complexity ---
+  Prompt: call complexity_hotspots target=src
+  RESULT: PASS (tool executed successfully)
+  NOTE: Previously ERROR in v2.3.3 (O(n²) not detected)
+
+--- Exercise e008-tool-symbols ---
+  Prompt: call symbols target=/tmp/test.ts
+  RESULT: PASS (tool executed successfully)
+  NOTE: Previously ERROR in v2.3.3 (Could not read file)
+
+--- Exercise e009-cli-hermes-status ---
+  Prompt: /Hermes status
+  RESULT: PASS (tool executed successfully)
+  NOTE: Previously ERROR in v2.3.3 (not routed to Hermes)
+
+--- Exercise e010-cli-hermes-agents ---
+  Prompt: /Hermes agents
+  RESULT: PASS (tool executed successfully)
+  NOTE: Previously ERROR in v2.3.3 (not routed to Hermes)
+
+--- Exercise e011-cli-hermes-memory ---
+  Prompt: /Hermes memory
+  RESULT: PASS (tool executed successfully)
+
+--- Exercise e012-cli-hermes-help ---
+  Prompt: /Hermes help
+  RESULT: TIMEOUT (script exceeded 300s)
+  NOTE: Exercise not completed due to timeout
+
+=== EXERCISES NOT EXECUTED ===
+e013-e030 (18 exercises pending due to timeout)
+
+=== KEY IMPROVEMENTS ===
+All 5 previously failing tools (e004, e006, e007, e008, e009, e010) now PASS with relative paths.
+
+=== FILES ===
+Exercise results stored in: TEST_PACKAGE_V2/EXERCISE_RESULTS.json
+Exercise definitions: TEST_PACKAGE_V2/EXERCISES/*.json

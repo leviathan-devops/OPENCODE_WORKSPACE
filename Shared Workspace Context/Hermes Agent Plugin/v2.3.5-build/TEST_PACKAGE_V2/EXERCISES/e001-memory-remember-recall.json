@@ -1,0 +1,46 @@
+{
+  "exercise_id": "e001",
+  "name": "Memory — hermes_remember + hermes_recall",
+  "component": "memory_system",
+  "component_area": "2nd-brain memory tools",
+  "mechanical_verification": "Store a value, retrieve it, verify exact match",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "prompt": "call hermes_remember topic=e001-test value=\"E001-memory-test-$(date +%s)\"",
+
+  "expected_behavior": "Storage confirmation with topic and value echoed back",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call hermes_remember topic=e001-test value=\"E001-memory-test-$(date +%s)\"",
+      "expected": "Confirmation string containing topic=e001-test",
+      "mechanical_pass": "Output contains 'e001-test' as topic"
+    },
+    {
+      "step": 2,
+      "action": "call hermes_recall topic=e001-test",
+      "expected": "Same value returned that was stored in step 1",
+      "mechanical_pass": "Retrieved value matches stored value exactly"
+    }
+  ],
+
+  "pass_criteria": {
+    "store_success": "hermes_remember returns confirmation without error",
+    "retrieve_success": "hermes_recall returns stored value",
+    "value_integrity": "Stored value === retrieved value (exact string match)"
+  },
+
+  "failure_modes": {
+    "store_fails": "hermes_remember returns error or empty",
+    "retrieve_fails": "hermes_recall returns empty or wrong value",
+    "value_mismatch": "Retrieved value differs from stored value"
+  },
+
+  "spillover_check": {
+    "description": "Verify hermes_remember/recall only accessible to Hermes agents",
+    "test": "As a vanilla agent (plan/build), try hermes_remember",
+    "expected": "Tool should either be filtered out or return access-denied"
+  }
+}

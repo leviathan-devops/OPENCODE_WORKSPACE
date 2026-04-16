@@ -1,0 +1,199 @@
+# 🚀 Multi-Agent Qwen Code Setup
+
+## Run Multiple Qwen Code Sessions Simultaneously
+
+You can now run **multiple independent Qwen Code agents** at the same time, each with different backends!
+
+---
+
+## 📋 Available Commands
+
+| Command | Backend | Model | Use Case |
+|---------|---------|-------|----------|
+| `qwen-free --yolo` | Alibaba OAuth (Free) | coder-model | Quick tasks, unlimited free usage |
+| `qwen-local --yolo` | Local llama.cpp | Qwen3.5-9B | Private, offline, no rate limits |
+| `qwen-deepseek --yolo` | DeepSeek API | deepseek-chat | Complex reasoning, high quality |
+
+---
+
+## 🎯 Multi-Agent Workflow
+
+### Terminal 1 - Free Alibaba:
+```bash
+qwen-free --yolo
+```
+
+### Terminal 2 - Local Qwen3.5-9B:
+```bash
+qwen-local --yolo
+```
+
+### Terminal 3 - DeepSeek:
+```bash
+qwen-deepseek --yolo
+```
+
+**All three can run simultaneously!** Each has its own isolated configuration.
+
+---
+
+## 💡 Example Multi-Agent Setup
+
+### Agent 1 (Free) - Research & Planning:
+```bash
+qwen-free --yolo
+# "Help me plan the architecture for a new web app..."
+```
+
+### Agent 2 (Local) - Code Implementation:
+```bash
+qwen-local --yolo
+# "Now implement the user authentication module..."
+```
+
+### Agent 3 (DeepSeek) - Code Review:
+```bash
+qwen-deepseek --yolo
+# "Review this code for security vulnerabilities..."
+```
+
+---
+
+## 🔧 How It Works
+
+Each command creates a **temporary isolated configuration** for that session:
+- Separate config files (in /tmp)
+- Independent API settings
+- No conflicts between sessions
+- Auto-cleanup when session ends
+
+---
+
+## 📊 Backend Comparison
+
+| Backend | Speed | Quality | Cost | Privacy |
+|---------|-------|---------|------|---------|
+| **qwen-free** | ⚡⚡⚡ | ⭐⭐⭐ | Free | Cloud |
+| **qwen-local** | ⚡⚡ | ⭐⭐⭐⭐ | Free | 100% Local |
+| **qwen-deepseek** | ⚡⚡ | ⭐⭐⭐⭐⭐ | Paid | Cloud |
+
+---
+
+## 🛠️ Server Management
+
+### Local Server Status:
+```bash
+# Check if running
+sudo systemctl status llama-qwen35
+
+# View logs
+sudo journalctl -u llama-qwen35 -f
+
+# Restart
+sudo systemctl restart llama-qwen35
+```
+
+### Health Check:
+```bash
+curl http://localhost:8000/health
+```
+
+---
+
+## ⚡ Quick Start
+
+### Single Agent (Local):
+```bash
+qwen-local --yolo
+```
+
+### Dual Agent (Free + Local):
+**Terminal 1:**
+```bash
+qwen-free --yolo
+```
+
+**Terminal 2:**
+```bash
+qwen-local --yolo
+```
+
+### Triple Agent (All Backends):
+**Terminal 1:**
+```bash
+qwen-free --yolo
+```
+
+**Terminal 2:**
+```bash
+qwen-local --yolo
+```
+
+**Terminal 3:**
+```bash
+qwen-deepseek --yolo
+```
+
+---
+
+## 🎯 Pro Tips
+
+1. **Use `qwen-free` for**: Quick questions, brainstorming, unlimited usage
+2. **Use `qwen-local` for**: Private code, heavy token usage, offline work
+3. **Use `qwen-deepseek` for**: Complex reasoning, final review, critical tasks
+
+### Efficient Workflow:
+```
+1. qwen-free --yolo    → Plan & brainstorm
+2. qwen-local --yolo   → Implement & iterate
+3. qwen-deepseek --yolo → Review & polish
+```
+
+---
+
+## 🔌 Configuration Details
+
+### qwen-free (Alibaba OAuth)
+- **API**: Free Qwen OAuth
+- **Model**: coder-model
+- **Context**: 8192 tokens
+- **Rate Limits**: Yes (free tier)
+
+### qwen-local (llama.cpp)
+- **API**: http://localhost:8000/v1
+- **Model**: Qwen3.5-9B-Q4_K_M
+- **Context**: 8192 tokens
+- **Rate Limits**: None (local)
+
+### qwen-deepseek (DeepSeek API)
+- **API**: https://api.deepseek.com/v1
+- **Model**: deepseek-chat
+- **Context**: 8192 tokens
+- **Rate Limits**: Based on account
+
+---
+
+## 📁 Script Locations
+
+| Script | Location |
+|--------|----------|
+| qwen-free | `/home/leviathan/qwen-free` |
+| qwen-local | `/home/leviathan/qwen-local` |
+| qwen-deepseek | `/home/leviathan/qwen-deepseek` |
+| Symlinks | `/usr/local/bin/qwen-*` |
+
+---
+
+## 🎉 Ready to Go!
+
+```bash
+# Single agent
+qwen-local --yolo
+
+# Multi-agent (open new terminals)
+qwen-free --yolo
+qwen-local --yolo
+qwen-deepseek --yolo
+```
+
+**Maximize your efficiency with parallel AI agents!** 🚀

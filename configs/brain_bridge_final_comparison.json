@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-03-19T16:05:28.920635",
+  "comparison": {
+    "sticky_browser": {
+      "name": "Brain Bridge Sticky Browser",
+      "type": "Web Dashboard + API",
+      "url": "http://localhost:3002",
+      "status": "error",
+      "advantages": [],
+      "disadvantages": []
+    },
+    "agent_brain": {
+      "name": "Agent Brain Bridge",
+      "type": "Terminal Python Module",
+      "path": "/home/leviathan/OPENCODE_WORKSPACE/agent-brain-bridge",
+      "status": "requires_auth",
+      "advantages": [
+        "MIT Licensed",
+        "Research agent integration"
+      ],
+      "disadvantages": [
+        "Requires manual authentication"
+      ]
+    }
+  },
+  "test_results": {},
+  "recommendation": "Use Agent Brain Bridge (requires authentication)"
+}

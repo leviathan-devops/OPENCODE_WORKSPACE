@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenViking Memory Server
+After=network.target
+
+[Service]
+Type=simple
+User=leviathan
+Group=leviathan
+WorkingDirectory=/home/leviathan
+ExecStart=/home/leviathan/.local/bin/openviking-server --config /home/leviathan/.openviking/ov.conf
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/openviking-stdout.log
+StandardError=append:/tmp/openviking-stderr.log
+
+[Install]
+WantedBy=multi-user.target

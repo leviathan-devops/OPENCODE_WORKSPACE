@@ -1,0 +1,27 @@
+{
+  "auditTimestamp": "2026-04-15T20:50:00Z",
+  "container": "shark-v483",
+  "pluginVersion": "v4.8.3",
+  "buildMD5": "65add5d2039fb3b5acd363002246fd2f",
+  "testResults": {
+    "build-succeeds": "PASS",
+    "dist-file-exists": "PASS",
+    "tools-registered-in-config": "PASS",
+    "hooks-have-agent-checks": "PASS",
+    "guardian-has-source-protection": "PASS",
+    "system-transform-has-ironclad": "PASS",
+    "delivery-gate-requires-tests": "PASS",
+    "no-manta-in-shark-hooks": "PASS"
+  },
+  "overallTestPassed": true,
+  "totalTests": 8,
+  "passedTests": 8,
+  "failedTests": 0,
+  "firewallTests": {
+    "L1_Theatrical_Counting": "BLOCKED",
+    "L2_Fake_Test_Runner": "BLOCKED",
+    "L4_Wrong_Container": "BLOCKED"
+  },
+  "evidenceGenerated": true,
+  "evidencePath": "/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent/Active Projects/Shark Agent v4.8.3/evidence/"
+}

@@ -1,0 +1,25 @@
+=== CHECKPOINT: pre-bundle-rebuild-20260414-2120 ===
+Date: 2026-04-14T21:20:00 UTC
+Phase: BUILD → pre-ship debugging
+Milestone: milestone-7c-zod-fix-verified
+
+STATUS:
+- What completed: Zod fix verified, hardcoded paths fixed in source
+- Current state: About to rebuild bundle
+- Working: Source files fixed, wrappers fixed
+
+NEXT:
+- Immediate: Rebuild bundle
+- Future: Update ship package, test container
+
+FILES:
+- Source: kraken-v2.0-proper-build/kraken-agent/src/ (FIXED)
+- Wrappers: v2.0-retry/kraken-agent-source/wrappers/ (FIXED)
+- Bundle: ABOUT TO REBUILD
+
+BUNDLE CHECKSUM (BEFORE):
+dad4fa54cec2ed6d7cf23df24d82ebc7 (526073 bytes)
+
+ERRORS:
+- Known: Bundle still has hardcoded paths (about to fix)
+- Outstanding: Container runtime verification

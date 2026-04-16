@@ -1,0 +1,42 @@
+{
+  "name": "plugin-agent-prototype-v4",
+  "version": "0.4.1.1",
+  "description": "OpenCode Plugin Agent V4.1 - Config-Driven Multi-Brain Architecture with Natural Language Elicitation Wizard",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm --bundle",
+    "build:watch": "bun build src/index.ts --outdir dist --target bun --format esm --bundle --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:unit": "bun test tests/unit",
+    "test:integration": "bun test tests/integration"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.3.6",
+    "@opencode-ai/sdk": "^1.3.6"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "zod": "4.1.8"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.3.6",
+    "@opencode-ai/sdk": "^1.3.6",
+    "@types/bun": "^1.3.11",
+    "@types/node": "^22.19.15",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "bun": ">=1.0.0"
+  }
+}

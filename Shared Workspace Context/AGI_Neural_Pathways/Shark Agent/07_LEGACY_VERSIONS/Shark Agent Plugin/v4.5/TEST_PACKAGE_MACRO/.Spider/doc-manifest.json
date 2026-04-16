@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "scanned_at": "2026-04-07T09:48:27.542Z",
+  "files": [
+    {
+      "path": "README.md",
+      "title": "Shark Macro Agent Test Package v1.0",
+      "summary": "Mechanical exercise package for testing shark-macro agent (Single Primary Brain: Execution Mode). **Agent:** shark-macro **Plugin:** shark-agent-v4.5 **Date:** 2026-04-07 | Category | Exercises | F...",
+      "lines": 57,
+      "mtime": 1775554477843.381
+    }
+  ]
+}

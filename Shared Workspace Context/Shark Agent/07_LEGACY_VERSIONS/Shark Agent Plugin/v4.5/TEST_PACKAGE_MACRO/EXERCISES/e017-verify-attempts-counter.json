@@ -1,0 +1,43 @@
+{
+  "exercise_id": "e017",
+  "name": "Verify Attempts Counter",
+  "component": "gates",
+  "component_area": "verifyAttempts tracking (0/3 to 3/3)",
+  "mechanical_verification": "Fail VERIFY gate 1-2 times, verifyAttempts increments each time",
+  "difficulty": "P0",
+  "time_estimate": "45 seconds",
+
+  "prompt": "call shark-gate action=advance gate=verify then fail verify once and check, fail again and check",
+
+  "expected_behavior": "verifyAttempts increments: 0 → 1 → 2, then 3rd failure triggers escalation",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Advance to verify: call shark-gate action=advance gate=verify",
+      "expected": "currentGate is 'verify'",
+      "mechanical_pass": "At verify gate"
+    },
+    {
+      "step": 2,
+      "action": "Fail verify once: call shark-gate action=evaluate gate=verify passed=false",
+      "expected": "verifyAttempts = 1",
+      "mechanical_pass": "Counter incremented"
+    },
+    {
+      "step": 3,
+      "action": "call shark-status to verify verifyAttempts",
+      "expected": "verifyAttempts = 1 or '1/3'",
+      "mechanical_pass": "State shows 1 failure"
+    }
+  ],
+
+  "pass_criteria": {
+    "attempt_tracking": "verifyAttempts increments on each failure",
+    "count_accurate": "verifyAttempts shows correct count (0, 1, 2, 3)"
+  },
+
+  "failure_modes": {
+    "counter_stays_zero": "verifyAttempts doesn't increment on failure"
+  }
+}

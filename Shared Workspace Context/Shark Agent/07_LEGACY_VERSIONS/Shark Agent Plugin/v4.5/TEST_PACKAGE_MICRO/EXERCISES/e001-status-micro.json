@@ -1,0 +1,54 @@
+{
+  "exercise_id": "e001",
+  "name": "Status — shark-status-micro",
+  "component": "tools",
+  "component_area": "shark-status tool (micro variant)",
+  "mechanical_verification": "Call shark-status tool, verify it returns structured JSON with variant=micro, gate, iteration, evidence status",
+  "difficulty": "P0",
+  "time_estimate": "15 seconds",
+
+  "prompt": "call shark-status tool",
+
+  "expected_behavior": "Returns JSON with variant=micro, brain, currentGate, iteration, gateStatuses, evidenceStatus, verifyAttempts",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call shark-status",
+      "expected": "JSON object with all required fields",
+      "mechanical_pass": "Output contains 'variant' with value 'micro'"
+    },
+    {
+      "step": 2,
+      "action": "inspect currentGate field",
+      "expected": "One of: plan, build, test, verify, audit, delivery",
+      "mechanical_pass": "currentGate is valid gate name"
+    },
+    {
+      "step": 3,
+      "action": "inspect iteration field",
+      "expected": "Format V1.0, V1.1, etc.",
+      "mechanical_pass": "iteration matches pattern V\\d+\\.\\d+"
+    },
+    {
+      "step": 4,
+      "action": "inspect evidenceStatus object",
+      "expected": "Has keys: plan, build, test, verify, audit, delivery",
+      "mechanical_pass": "All 6 gates present as keys"
+    }
+  ],
+
+  "pass_criteria": {
+    "status_returns": "shark-status returns JSON without error",
+    "variant_correct": "variant field = 'micro'",
+    "gate_valid": "currentGate is valid gate name",
+    "iteration_format": "iteration matches V\\d+\\.\\d+",
+    "evidence_complete": "evidenceStatus has 6 gate keys"
+  },
+
+  "failure_modes": {
+    "tool_not_found": "shark-status tool not accessible",
+    "wrong_variant": "variant shows 'macro' instead of 'micro'",
+    "missing_fields": "Response missing required fields"
+  }
+}

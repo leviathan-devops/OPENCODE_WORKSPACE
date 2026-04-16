@@ -1,0 +1,13 @@
+{
+  "gate": "build",
+  "timestamp": 1775948371347,
+  "passed": true,
+  "files": [
+    "index.html"
+  ],
+  "metadata": {
+    "tool": "write_file",
+    "sessionID": "test-session",
+    "workEvidence": "wrote:index.html (<!DOCTYPE html>\n<html>\nfunctio...)"
+  }
+}

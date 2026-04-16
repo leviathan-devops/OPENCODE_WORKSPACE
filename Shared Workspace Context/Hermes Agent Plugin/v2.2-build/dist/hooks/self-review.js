@@ -1,0 +1,19 @@
+export function createSelfReviewHook() {
+    return async (input, output) => {
+        const messages = output?.messages;
+        if (!messages || messages.length === 0)
+            return;
+        const lastMessage = messages[messages.length - 1];
+        if (!lastMessage?.parts)
+            return;
+        const parts = lastMessage.parts;
+        const content = JSON.stringify(parts);
+        if (content.includes("approved") || content.includes("looks good")) {
+            const textPartIndex = parts.findIndex((p) => p?.type === "text" && p.text !== undefined);
+            if (textPartIndex !== -1) {
+                const originalText = parts[textPartIndex].text ?? "";
+                parts[textPartIndex].text = `${originalText}\n\n[SELF-REVIEW CHECK] Did you verify this yourself? If so, please provide evidence (test output, command results). Agents cannot approve their own work without external verification.`;
+            }
+        }
+    };
+}

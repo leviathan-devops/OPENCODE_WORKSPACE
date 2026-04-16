@@ -1,0 +1,51 @@
+{
+  "exercise_id": "e013",
+  "name": "Iteration Escalation — Detect",
+  "component": "gates",
+  "component_area": "handleVerifyFailure iteration escalation",
+  "mechanical_verification": "Trigger 3 VERIFY failures and observe escalation from V1.0 to V1.1 with reset to plan gate",
+  "difficulty": "P2",
+  "time_estimate": "2 minutes",
+
+  "prompt": "call shark-gate action=advance gate=verify then fail verify 3 times using: call shark-gate action=evaluate gate=verify passed=false, then check iteration",
+
+  "expected_behavior": "After 3 failed VERIFY evaluations, iteration escalates from V1.0 to V1.1, currentGate resets to 'plan', verifyAttempts resets to 0",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Position at verify gate: call shark-gate action=advance gate=verify",
+      "expected": "currentGate is 'verify'",
+      "mechanical_pass": "At verify gate"
+    },
+    {
+      "step": 2,
+      "action": "Fail verify 3 times: call shark-gate action=evaluate gate=verify passed=false (x3)",
+      "expected": "After 3rd fail, handleVerifyFailure triggers escalation",
+      "mechanical_pass": "3 failures detected"
+    },
+    {
+      "step": 3,
+      "action": "Check iteration: call shark-status",
+      "expected": "iteration is now 'V1.1' (incremented from V1.0)",
+      "mechanical_pass": "Iteration escalated"
+    },
+    {
+      "step": 4,
+      "action": "Verify currentGate reset",
+      "expected": "currentGate is 'plan' (reset after escalation)",
+      "mechanical_pass": "Gate reset to plan after escalation"
+    }
+  ],
+
+  "pass_criteria": {
+    "escalation_triggers": "After 3 failures, iteration increments",
+    "iteration_v11": "iteration shows V1.1 after escalation",
+    "gate_resets": "currentGate is 'plan' after escalation"
+  },
+
+  "failure_modes": {
+    "no_escalation": "Iteration stays at V1.0 despite 3 failures",
+    "gate_not_reset": "currentGate stays at verify instead of resetting to plan"
+  }
+}

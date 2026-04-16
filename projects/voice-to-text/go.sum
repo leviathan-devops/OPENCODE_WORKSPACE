@@ -1,0 +1,10 @@
+github.com/alphacep/vosk-api/go v0.3.50 h1:2vSN41RCU1WdHEqBrhKtTggfKL6Yu5Dmj+urVszwiuw=
+github.com/alphacep/vosk-api/go v0.3.50/go.mod h1:9X8IJsHnFk/b1xyvjlZifo+ZL5VTAx3LW+JQce/eRcA=
+github.com/gordonklaus/portaudio v0.0.0-20260203164431-765aa7dfa631 h1:8TBHztmhDfAAg34yddptshinXBtDQwgKGlMfdtSFETw=
+github.com/gordonklaus/portaudio v0.0.0-20260203164431-765aa7dfa631/go.mod h1:esZFQEUwqC+l76f2R8bIWSwXMaPbp79PppwZ1eJhFco=
+github.com/robotn/gohook v0.42.3 h1:6Pm6q4gOn+CNjDpiBTWqPwbCJF4+0WD/Fdizlztua2U=
+github.com/robotn/gohook v0.42.3/go.mod h1:PYgH0f1EaxhCvNSqIVTfo+SIUh1MrM2Uhe2w7SvFJDE=
+github.com/vcaesar/keycode v0.10.1 h1:0DesGmMAPWpYTCYddOFiCMKCDKgNnwiQa2QXindVUHw=
+github.com/vcaesar/keycode v0.10.1/go.mod h1:JNlY7xbKsh+LAGfY2j4M3znVrGEm5W1R8s/Uv6BJcfQ=
+github.com/vcaesar/tt v0.20.1 h1:D/jUeeVCNbq3ad8M7hhtB3J9x5RZ6I1n1eZ0BJp7M+4=
+github.com/vcaesar/tt v0.20.1/go.mod h1:cH2+AwGAJm19Wa6xvEa+0r+sXDJBT0QgNQey6mwqLeU=

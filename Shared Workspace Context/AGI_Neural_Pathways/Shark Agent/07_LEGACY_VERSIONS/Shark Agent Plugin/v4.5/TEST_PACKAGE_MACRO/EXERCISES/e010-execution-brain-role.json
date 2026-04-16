@@ -1,0 +1,44 @@
+{
+  "exercise_id": "e010",
+  "name": "Execution Brain — Role and Behavior",
+  "component": "brains",
+  "component_area": "shark-macro single primary brain (Execution Brain)",
+  "mechanical_verification": "Query agent about Execution Brain role, verify it describes aggressive execution, fast workflow, no hesitation",
+  "difficulty": "P1",
+  "time_estimate": "15 seconds",
+
+  "prompt": "You are the Execution Brain. Explain your role and what behavior you exhibit.",
+
+  "expected_behavior": "Agent identifies as Execution Brain, describes aggressive execution, fast workflow, domain ownership (execution-state, quality-state)",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Ask: What is your role?",
+      "expected": "Response identifies as 'Execution Brain'",
+      "mechanical_pass": "Execution Brain identity confirmed"
+    },
+    {
+      "step": 2,
+      "action": "Ask: How do you work?",
+      "expected": "Mentions aggressive execution, fast workflow, no hesitation",
+      "mechanical_pass": "Execution behavior described"
+    },
+    {
+      "step": 3,
+      "action": "Ask: What do you own?",
+      "expected": "Mentions execution-state, quality-state",
+      "mechanical_pass": "Domain ownership known"
+    }
+  ],
+
+  "pass_criteria": {
+    "identifies_execution_brain": "Agent calls itself Execution Brain",
+    "aggressive_work": "Mentions steamroll behavior, fast execution",
+    "domain_ownership": "Knows about execution-state, quality-state"
+  },
+
+  "failure_modes": {
+    "no_brain_identity": "Agent does not identify as Execution Brain"
+  }
+}

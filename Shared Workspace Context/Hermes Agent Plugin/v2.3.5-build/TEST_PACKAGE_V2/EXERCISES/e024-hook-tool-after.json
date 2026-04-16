@@ -1,0 +1,26 @@
+{
+  "exercise_id": "e024",
+  "name": "Hooks — tool.execute.after fires",
+  "component": "hooks",
+  "component_area": "tool_lifecycle",
+  "mechanical_verification": "Run a tool, verify hook fires after execution",
+  "difficulty": "P2",
+  "time_estimate": "1 minute",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call lint target=/tmp",
+      "expected": "Tool output returned correctly (implies hook chain completed)",
+      "mechanical_pass": "lint tool returns output without error"
+    }
+  ],
+
+  "pass_criteria": {
+    "tool_runs": "lint tool executes and returns result"
+  },
+
+  "failure_modes": {
+    "tool_hangs": "Tool hangs (indicates hook after-chain not completing)"
+  }
+}

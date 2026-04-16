@@ -1,0 +1,560 @@
+{
+  "id": "shark-macro",
+  "name": "Shark Macro (Triple-Brain Parallel Peer)",
+  "description": "Triple-brain parallel peer execution with active context bridging and real-time enforcement",
+  "version": "v4",
+
+  "brains": [
+    {
+      "id": "execution-brain",
+      "type": "orchestrator",
+      "name": "Execution Brain (Primary Agent)",
+      "description": "Primary autonomous agent — steamrolls the build forward, owns execution-state",
+      "coordinatesClusters": ["execution-cluster"],
+      "canDelegateTo": ["builder", "tester", "integrator"],
+      "config": {
+        "decisionStyle": "aggressive",
+        "canOverride": true,
+        "priority": 100,
+        "aggressionLevel": "high",
+        "autonomyLevel": "full",
+        "executionSpeed": "fast",
+        "role": "primary-agent",
+        "contextType": "T1 (clean) + injected from reasoning-brain",
+        "domainOwnership": ["execution-state", "quality-state"]
+      }
+    },
+    {
+      "id": "reasoning-brain",
+      "type": "coordinator",
+      "name": "Reasoning Brain (Context Bridge)",
+      "description": "Floating 2nd brain — on-demand intelligence, dynamic T1/T2 context management, auto-debug",
+      "coordinatesClusters": ["reasoning-cluster"],
+      "canDelegateTo": ["synthesizer", "debugger", "context-manager"],
+      "config": {
+        "decisionStyle": "analytical",
+        "canOverride": false,
+        "priority": 90,
+        "intelligenceStyle": "on-demand",
+        "contextManagement": "active",
+        "role": "floating-intelligence",
+        "contextType": "T1 + T2 (full reference)",
+        "domainOwnership": ["thinking-state", "context-bridge"]
+      }
+    },
+    {
+      "id": "system-brain",
+      "type": "monitor",
+      "name": "System Brain (Watchdog/Enforcer)",
+      "description": "Active watchdog — derailment detection, real-time enforcement, gate evaluation",
+      "coordinatesClusters": ["system-cluster"],
+      "canDelegateTo": ["guardian", "gate-keeper", "escalator"],
+      "config": {
+        "decisionStyle": "defensive",
+        "canOverride": true,
+        "priority": 80,
+        "vigilanceLevel": "maximum",
+        "threatSensitivity": "high",
+        "enforcementStyle": "active",
+        "role": "watchdog",
+        "contextType": "T1 + T2 (enforcement rules)",
+        "domainOwnership": ["workflow-state", "security-state"]
+      }
+    }
+  ],
+
+  "clusters": [
+    {
+      "id": "execution-cluster",
+      "type": "execution",
+      "name": "Execution Cluster",
+      "description": "Primary execution — builds and implements",
+      "agentIds": ["builder", "tester", "integrator"],
+      "coordinatedBy": "execution-brain",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 3,
+        "executionSpeed": "fast"
+      }
+    },
+    {
+      "id": "reasoning-cluster",
+      "type": "reasoning",
+      "name": "Reasoning Cluster",
+      "description": "Intelligence and context synthesis",
+      "agentIds": ["synthesizer", "debugger", "context-manager"],
+      "coordinatedBy": "reasoning-brain",
+      "config": {
+        "communicationStyle": "async",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "intelligenceDepth": "deep"
+      }
+    },
+    {
+      "id": "system-cluster",
+      "type": "enforcement",
+      "name": "System Cluster",
+      "description": "Enforcement and gate management",
+      "agentIds": ["guardian", "gate-keeper", "escalator"],
+      "coordinatedBy": "system-brain",
+      "config": {
+        "communicationStyle": "broadcast",
+        "allowCrossCluster": true,
+        "maxConcurrentTasks": 2,
+        "enforcementStrictness": "maximum"
+      }
+    }
+  ],
+
+  "agents": [
+    {
+      "id": "builder",
+      "type": "execution",
+      "name": "Builder",
+      "description": "Code implementation — primary builder agent",
+      "clusterId": "execution-cluster",
+      "capabilities": ["implementation", "file-operations", "terminal-execution"],
+      "allowedTools": ["file-write", "file-read", "terminal", "build-tool"],
+      "maxConcurrentTasks": 2,
+      "promptTemplate": "You are a Builder agent in Shark Macro. Your role is aggressive code implementation. You steamroll the build forward with high autonomy.",
+      "config": {
+        "style": "aggressive",
+        "autonomyLevel": "full",
+        "qualityBias": 0.85,
+        "creativityBias": 0.7,
+        "aggressionLevel": "high"
+      }
+    },
+    {
+      "id": "tester",
+      "type": "execution",
+      "name": "Tester",
+      "description": "Test execution and quality verification",
+      "clusterId": "execution-cluster",
+      "capabilities": ["test-execution", "verification", "coverage"],
+      "allowedTools": ["test-runner", "coverage-tool", "terminal"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Tester agent in Shark Macro. Your role is test execution and quality verification within the execution cluster.",
+      "config": {
+        "style": "aggressive",
+        "qualityBias": 0.95
+      }
+    },
+    {
+      "id": "integrator",
+      "type": "execution",
+      "name": "Integrator",
+      "description": "Integration and dependency management",
+      "clusterId": "execution-cluster",
+      "capabilities": ["integration", "dependency-resolution", "build-orchestration"],
+      "allowedTools": ["package-manager", "build-tool", "terminal"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Integrator agent in Shark Macro. Your role is integration and dependency management for the execution cluster.",
+      "config": {
+        "style": "balanced",
+        "qualityBias": 0.9
+      }
+    },
+    {
+      "id": "synthesizer",
+      "type": "reasoning",
+      "name": "Synthesizer",
+      "description": "T2 synthesis and pattern matching — bridges knowledge base to execution",
+      "clusterId": "reasoning-cluster",
+      "capabilities": ["synthesis", "pattern-matching", "knowledge-retrieval", "t2-bridging"],
+      "allowedTools": ["knowledge-base", "synthesis-tool", "pattern-matcher"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Synthesizer agent in Shark Macro. Your role is to take raw T2 from knowledge bases and synthesize context-relevant pieces for injection into Execution Brain.",
+      "config": {
+        "style": "analytical",
+        "qualityBias": 0.95,
+        "creativityBias": 0.6
+      }
+    },
+    {
+      "id": "debugger",
+      "type": "reasoning",
+      "name": "Debugger",
+      "description": "Auto-debug engine — 60% of errors fixed automatically",
+      "clusterId": "reasoning-cluster",
+      "capabilities": ["auto-debug", "error-analysis", "pattern-recognition", "auto-fix"],
+      "allowedTools": ["debug-engine", "error-analyzer", "fix-applier"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Debugger agent in Shark Macro. Your role is automatic error debugging — analyze error patterns, match against known signatures, apply fixes automatically.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 0.99,
+        "creativityBias": 0.2,
+        "autoFixRate": 0.6
+      }
+    },
+    {
+      "id": "context-manager",
+      "type": "reasoning",
+      "name": "Context Manager",
+      "description": "Dynamic T1/T2 context bridge — monitors Execution T1, injects needed context",
+      "clusterId": "reasoning-cluster",
+      "capabilities": ["context-monitoring", "gap-detection", "context-injection", "t1-t2-bridge"],
+      "allowedTools": ["context-monitor", "gap-detector", "injector"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Context Manager agent in Shark Macro. Your role is to monitor Execution Brain T1, detect gaps, and inject synthesized T2 context dynamically.",
+      "config": {
+        "style": "analytical",
+        "qualityBias": 0.98,
+        "contextManagement": "active"
+      }
+    },
+    {
+      "id": "guardian",
+      "type": "enforcement",
+      "name": "Guardian",
+      "description": "Zone classification and scope enforcement",
+      "clusterId": "system-cluster",
+      "capabilities": ["zone-classification", "scope-enforcement", "violation-detection"],
+      "allowedTools": ["guardian-tool", "zone-classifier", "scope-enforcer"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Guardian agent in Shark Macro. Your role is active scope enforcement — detect zone violations, block unauthorized operations, maintain execution boundaries.",
+      "config": {
+        "style": "defensive",
+        "qualityBias": 1.0,
+        "enforcementStrictness": "maximum"
+      }
+    },
+    {
+      "id": "gate-keeper",
+      "type": "enforcement",
+      "name": "Gate Keeper",
+      "description": "Gate evaluation and phase transition management",
+      "clusterId": "system-cluster",
+      "capabilities": ["gate-evaluation", "criteria-checking", "phase-transition", "evidence-collection"],
+      "allowedTools": ["gate-evaluator", "evidence-collector", "phase-manager"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are a Gate Keeper agent in Shark Macro. Your role is gate enforcement — evaluate criteria, block transitions until met, collect evidence.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 1.0,
+        "gateStrictness": "maximum"
+      }
+    },
+    {
+      "id": "escalator",
+      "type": "enforcement",
+      "name": "Escalator",
+      "description": "Human escalation triggering and management",
+      "clusterId": "system-cluster",
+      "capabilities": ["escalation-detection", "escalation-formatting", "human-communication"],
+      "allowedTools": ["escalation-tool", "format-tool"],
+      "maxConcurrentTasks": 1,
+      "promptTemplate": "You are an Escalator agent in Shark Macro. Your role is to detect when escalation is needed and format escalations properly for human resolution.",
+      "config": {
+        "style": "conservative",
+        "qualityBias": 1.0,
+        "escalationThreshold": "high"
+      }
+    }
+  ],
+
+  "workflows": [
+    {
+      "id": "shark-macro-workflow",
+      "name": "Shark Macro Workflow",
+      "description": "Triple-brain parallel peer execution — all brains race simultaneously, synchronize at gates",
+      "phases": [
+        {
+          "id": "specification-phase",
+          "name": "Specification Phase",
+          "description": "Generate and validate SPEC.md",
+          "participatingAgents": ["builder"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "allowParallel": true,
+            "note": "Execution Brain writes SPEC, Reasoning Brain provides context, System Brain validates"
+          }
+        },
+        {
+          "id": "implementation-phase",
+          "name": "Implementation Phase",
+          "description": "Execute specification — primary build race",
+          "participatingAgents": ["builder", "tester", "integrator"],
+          "involvedClusters": ["execution-cluster", "reasoning-cluster"],
+          "config": {
+            "timeout": 1800000,
+            "optional": false,
+            "allowParallel": true,
+            "note": "All three brains racing — Execution builds, Reasoning injects context, System watches"
+          }
+        },
+        {
+          "id": "testing-phase",
+          "name": "Testing Phase",
+          "description": "Run tests and verify coverage",
+          "participatingAgents": ["tester"],
+          "involvedClusters": ["execution-cluster"],
+          "config": {
+            "timeout": 600000,
+            "optional": false,
+            "allowParallel": true,
+            "note": "Reasoning Brain auto-debug on failures, System Brain verifies coverage floor"
+          }
+        },
+        {
+          "id": "review-phase",
+          "name": "Review Phase",
+          "description": "Security review and gate verification",
+          "participatingAgents": ["guardian", "gate-keeper"],
+          "involvedClusters": ["system-cluster"],
+          "config": {
+            "timeout": 300000,
+            "optional": false,
+            "allowParallel": true,
+            "note": "System Brain enforces SAST, secrets scan, gate criteria"
+          }
+        },
+        {
+          "id": "delivery-phase",
+          "name": "Delivery Phase",
+          "description": "Evidence archive and checkpoint creation",
+          "participatingAgents": ["gate-keeper", "escalator"],
+          "involvedClusters": ["system-cluster"],
+          "config": {
+            "timeout": 120000,
+            "optional": false,
+            "allowParallel": false,
+            "note": "System Brain archives evidence, creates checkpoint"
+          }
+        }
+      ],
+      "gates": [
+        {
+          "id": "spec-gate",
+          "name": "Spec Gate",
+          "description": "SPEC.md is complete and valid",
+          "afterPhase": "specification-phase",
+          "beforePhase": "implementation-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "SPEC.md exists with all required sections",
+              "required": ["SPEC.md", "guardian-config"]
+            }
+          ],
+          "evaluatedBy": "system-brain"
+        },
+        {
+          "id": "implementation-complete-gate",
+          "name": "Implementation Complete Gate",
+          "description": "All specified files implemented, no scope violations",
+          "afterPhase": "implementation-phase",
+          "beforePhase": "testing-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "All files created, Guardian clean, execution-state complete",
+              "required": ["file-list", "guardian-log", "execution-state"]
+            }
+          ],
+          "evaluatedBy": "system-brain"
+        },
+        {
+          "id": "test-gate",
+          "name": "Test Gate",
+          "description": "Tests pass with coverage >= 80%",
+          "afterPhase": "testing-phase",
+          "beforePhase": "review-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "Tests pass, coverage >= 80%, no weak assertions",
+              "required": ["test-output", "coverage-report"]
+            }
+          ],
+          "evaluatedBy": "system-brain"
+        },
+        {
+          "id": "security-gate",
+          "name": "Security Gate",
+          "description": "Code is security-clean",
+          "afterPhase": "review-phase",
+          "beforePhase": "delivery-phase",
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "SAST clean, no secrets, dependencies audited",
+              "required": ["sast-report", "secrets-scan", "audit-report"]
+            }
+          ],
+          "evaluatedBy": "system-brain"
+        },
+        {
+          "id": "delivery-gate",
+          "name": "Delivery Gate",
+          "description": "Evidence archived, checkpoint created, ready to ship",
+          "afterPhase": "delivery-phase",
+          "beforePhase": null,
+          "criteria": [
+            {
+              "type": "evidence",
+              "description": "All evidence archived, checkpoint created, delivery summary generated",
+              "required": ["evidence-archive", "checkpoint-ref", "delivery-summary"]
+            }
+          ],
+          "evaluatedBy": "system-brain"
+        }
+      ],
+      "managedBy": "execution-brain",
+      "config": {
+        "allowParallel": true,
+        "allowSkip": false,
+        "allowRestart": true,
+        "parallelPeerExecution": true,
+        "domainOwnership": true,
+        "gateSynchronization": true,
+        "activeContextInjection": true,
+        "realTimeEnforcement": true
+      }
+    }
+  ],
+
+  "coordination": {
+    "style": "federated",
+    "protocol": "broadcast",
+    "stateManagement": {
+      "storage": "distributed",
+      "persistence": {
+        "backend": "file",
+        "config": {
+          "path": ".shark",
+          "domainOwnership": true,
+          "readAccess": "all"
+        }
+      }
+    },
+    "errorHandling": {
+      "retryPolicy": {
+        "maxRetries": 3,
+        "backoff": "exponential",
+        "backoffMs": 1000
+      },
+      "fallbacks": ["auto-debug", "priority-escalation", "system-halt"]
+    },
+    "config": {
+      "parallelPeerExecution": true,
+      "brainMessenger": true,
+      "priorityMessaging": true,
+      "gateSynchronization": true,
+      "domainOwnership": true,
+      "activeContextInjection": true,
+      "realTimeEnforcement": true,
+      "DERAILMENT_DETECTION": true
+    }
+  },
+
+  "stateStore": {
+    "domains": {
+      "execution-state": {
+        "owners": ["execution-brain"],
+        "readAccess": ["reasoning-brain", "system-brain"],
+        "description": "Build progress, file operations, test results"
+      },
+      "quality-state": {
+        "owners": ["execution-brain"],
+        "readAccess": ["reasoning-brain", "system-brain"],
+        "description": "Coverage, test status, build artifacts"
+      },
+      "thinking-state": {
+        "owners": ["reasoning-brain"],
+        "readAccess": ["execution-brain", "system-brain"],
+        "description": "Context injections, T2 synthesis, gap analysis"
+      },
+      "context-bridge": {
+        "owners": ["reasoning-brain"],
+        "readAccess": ["execution-brain"],
+        "description": "Active context injections from T2 to Execution T1"
+      },
+      "workflow-state": {
+        "owners": ["system-brain"],
+        "readAccess": ["execution-brain", "reasoning-brain"],
+        "description": "Phase status, gate progress, workflow state"
+      },
+      "security-state": {
+        "owners": ["system-brain"],
+        "readAccess": ["execution-brain", "reasoning-brain"],
+        "description": "Guardian status, SAST results, secrets scan"
+      }
+    }
+  },
+
+  "brainMessenger": {
+    "priorityLevels": ["critical", "high", "normal", "low"],
+    "messageTypes": [
+      {
+        "type": "context-injection",
+        "from": "reasoning-brain",
+        "to": "execution-brain",
+        "priority": "normal",
+        "description": "Inject synthesized T2 context"
+      },
+      {
+        "type": "gate-failure",
+        "from": "system-brain",
+        "to": "execution-brain",
+        "priority": "critical",
+        "description": "Gate failed — pause and fix"
+      },
+      {
+        "type": "derailment-detected",
+        "from": "system-brain",
+        "to": "execution-brain",
+        "priority": "critical",
+        "description": "Scope violation — correct immediately"
+      },
+      {
+        "type": "checkpoint",
+        "from": "execution-brain",
+        "to": "system-brain",
+        "priority": "normal",
+        "requiresAck": false,
+        "description": "Phase complete — evaluate gate"
+      },
+      {
+        "type": "context-needed",
+        "from": "execution-brain",
+        "to": "reasoning-brain",
+        "priority": "high",
+        "description": "Request specific context"
+      },
+      {
+        "type": "auto-fix-applied",
+        "from": "reasoning-brain",
+        "to": "execution-brain",
+        "priority": "high",
+        "description": "Auto-debug fixed an error"
+      }
+    ]
+  },
+
+  "guardian": {
+    "levels": ["STRICT", "BALANCED", "PERMISSIVE", "SANDBOX"],
+    "zones": {
+      "WORKSPACE": {"paths": ["./", "./src", "./lib", "./tests"], "access": "full"},
+      "SANDBOX": {"paths": ["./test-sandbox", "./.shark"], "access": "full"},
+      "DEVELOPMENT": {"paths": ["~/Projects", "~/code"], "access": "conditional"},
+      "PERSONAL": {"paths": ["~/.ssh", "~/.aws", "~/Documents"], "access": "BLOCKED"},
+      "CONFIG": {"paths": ["/etc", "/opt"], "access": "BLOCKED"},
+      "SYSTEM": {"paths": ["/bin", "/usr", "/System"], "access": "NEVER"}
+    },
+    "activeEnforcement": true,
+    "derailmentDetection": true
+  },
+
+  "metadata": {
+    "author": "Leviathan / Shark Agent Team",
+    "createdAt": "2026-04-05",
+    "variant": "macro",
+    "tags": ["shark", "triple-brain", "macro", "parallel-peer", "active-context-bridge", "real-time-enforcement"]
+  }
+}

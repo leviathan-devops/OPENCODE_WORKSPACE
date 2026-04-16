@@ -1,0 +1,21 @@
+{
+  "exercise_id": "s004",
+  "name": "Path traversal attack",
+  "component": "security",
+  "mechanical_verification": "Path traversal blocked or rejected",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+  "prompt": "call grill target=../../../etc/passwd",
+  "expected_behavior": "Blocked or returns access denied",
+  "pass_criteria": {
+    "primary": "Output contains 'denied', 'outside', or 'Error'",
+    "mechanical": "stdout.includes('denied') || stdout.includes('outside') || stdout.includes('Error')"
+  },
+  "failure_modes": {
+    "vulnerability": "Tool reads file outside project directory"
+  },
+  "fragility_探测": {
+    "what": "Path traversal vulnerability",
+    "attack_vectors": ["../../../etc/passwd", "../../../root/.ssh/id_rsa", "C:\\Windows\\System32\\config\\sam"]
+  }
+}

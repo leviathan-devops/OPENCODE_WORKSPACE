@@ -1,0 +1,17 @@
+{
+  "name": "hive-mind-plugin",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "copy": "cp dist/index.js ~/.config/opencode/plugins/hive-mind-plugin.js"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "workspace:*",
+    "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

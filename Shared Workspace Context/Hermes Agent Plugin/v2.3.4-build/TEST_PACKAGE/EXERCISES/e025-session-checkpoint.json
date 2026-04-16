@@ -1,0 +1,36 @@
+{
+  "exercise_id": "e025",
+  "name": "Session — checkpoint tool",
+  "component": "session_management",
+  "component_area": "state_checkpoint",
+  "mechanical_verification": "Run checkpoint tool, verify file created at expected location",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "prompt": "call checkpoint",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call checkpoint",
+      "expected": "Confirmation of checkpoint creation",
+      "mechanical_pass": "Returns non-empty confirmation string"
+    },
+    {
+      "step": 2,
+      "action": "ls ~/hermes-workspace/.state/checkpoints/*.json 2>/dev/null | tail -1",
+      "expected": "File exists with recent timestamp",
+      "mechanical_pass": "File exists, timestamp is within last 60 seconds"
+    }
+  ],
+
+  "pass_criteria": {
+    "returns_confirmation": "checkpoint tool returns confirmation",
+    "file_created": "Checkpoint file exists at ~/hermes-workspace/.state/checkpoints/"
+  },
+
+  "failure_modes": {
+    "no_confirmation": "checkpoint returns empty or error",
+    "file_not_created": "No checkpoint file written to expected directory"
+  }
+}

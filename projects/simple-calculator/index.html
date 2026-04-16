@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a2e;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .calculator {
+      background: #16213e;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .display {
+      background: #0f3460;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: right;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .display-value {
+      color: #eaeaea;
+      font-size: 2rem;
+      font-family: 'Courier New', monospace;
+      font-weight: 500;
+      word-break: break-all;
+      max-width: 100%;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .btn {
+      height: 64px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      color: #eaeaea;
+      background: #1f4068;
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn-op {
+      background: #e94560;
+    }
+
+    .btn-equals {
+      background: #ff6b35;
+    }
+
+    .btn-clear {
+      background: #c73e1d;
+    }
+
+    .btn-zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <span class="display-value" id="display">0</span>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-clear" data-action="clear">C</button>
+      <button class="btn" data-action="sign">±</button>
+      <button class="btn" data-action="percent">%</button>
+      <button class="btn btn-op" data-action="operator" data-value="/">÷</button>
+      
+      <button class="btn" data-action="number" data-value="7">7</button>
+      <button class="btn" data-action="number" data-value="8">8</button>
+      <button class="btn" data-action="number" data-value="9">9</button>
+      <button class="btn btn-op" data-action="operator" data-value="*">×</button>
+      
+      <button class="btn" data-action="number" data-value="4">4</button>
+      <button class="btn" data-action="number" data-value="5">5</button>
+      <button class="btn" data-action="number" data-value="6">6</button>
+      <button class="btn btn-op" data-action="operator" data-value="-">−</button>
+      
+      <button class="btn" data-action="number" data-value="1">1</button>
+      <button class="btn" data-action="number" data-value="2">2</button>
+      <button class="btn" data-action="number" data-value="3">3</button>
+      <button class="btn btn-op" data-action="operator" data-value="+">+</button>
+      
+      <button class="btn btn-zero" data-action="number" data-value="0">0</button>
+      <button class="btn" data-action="decimal">.</button>
+      <button class="btn btn-equals" data-action="equals">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    let currentValue = '0';
+    let previousValue = '';
+    let operation = null;
+    let shouldResetDisplay = false;
+
+    function updateDisplay() {
+      display.textContent = currentValue.length > 12 
+        ? parseFloat(currentValue).toExponential(6)
+        : currentValue;
+    }
+
+    function handleNumber(num) {
+      if (shouldResetDisplay) {
+        currentValue = num;
+        shouldResetDisplay = false;
+      } else {
+        currentValue = currentValue === '0' ? num : currentValue + num;
+      }
+      updateDisplay();
+    }
+
+    function handleDecimal() {
+      if (shouldResetDisplay) {
+        currentValue = '0.';
+        shouldResetDisplay = false;
+      } else if (!currentValue.includes('.')) {
+        currentValue += '.';
+      }
+      updateDisplay();
+    }
+
+    function handleOperator(op) {
+      if (operation && !shouldResetDisplay) {
+        calculate();
+      }
+      previousValue = currentValue;
+      operation = op;
+      shouldResetDisplay = true;
+    }
+
+    function calculate() {
+      if (!operation || previousValue === '') return;
+      
+      const prev = parseFloat(previousValue);
+      const curr = parseFloat(currentValue);
+      let result;
+
+      switch (operation) {
+        case '+':
+          result = prev + curr;
+          break;
+        case '-':
+          result = prev - curr;
+          break;
+        case '*':
+          result = prev * curr;
+          break;
+        case '/':
+          if (curr === 0) {
+            currentValue = 'Error';
+            updateDisplay();
+            reset();
+            return;
+          }
+          result = prev / curr;
+          break;
+      }
+
+      currentValue = result.toString();
+      operation = null;
+      previousValue = '';
+      shouldResetDisplay = true;
+      updateDisplay();
+    }
+
+    function handleClear() {
+      currentValue = '0';
+      previousValue = '';
+      operation = null;
+      shouldResetDisplay = false;
+      updateDisplay();
+    }
+
+    function handleSign() {
+      currentValue = (parseFloat(currentValue) * -1).toString();
+      updateDisplay();
+    }
+
+    function handlePercent() {
+      currentValue = (parseFloat(currentValue) / 100).toString();
+      updateDisplay();
+    }
+
+    function reset() {
+      currentValue = '0';
+      previousValue = '';
+      operation = null;
+      shouldResetDisplay = false;
+    }
+
+    document.querySelector('.buttons').addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn');
+      if (!btn) return;
+
+      const action = btn.dataset.action;
+      const value = btn.dataset.value;
+
+      switch (action) {
+        case 'number':
+          handleNumber(value);
+          break;
+        case 'decimal':
+          handleDecimal();
+          break;
+        case 'operator':
+          handleOperator(value);
+          break;
+        case 'equals':
+          calculate();
+          break;
+        case 'clear':
+          handleClear();
+          break;
+        case 'sign':
+          handleSign();
+          break;
+        case 'percent':
+          handlePercent();
+          break;
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key >= '0' && e.key <= '9') {
+        handleNumber(e.key);
+      } else if (e.key === '.') {
+        handleDecimal();
+      } else if (e.key === '+') {
+        handleOperator('+');
+      } else if (e.key === '-') {
+        handleOperator('-');
+      } else if (e.key === '*') {
+        handleOperator('*');
+      } else if (e.key === '/') {
+        handleOperator('/');
+      } else if (e.key === 'Enter' || e.key === '=') {
+        calculate();
+      } else if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') {
+        handleClear();
+      } else if (e.key === '%') {
+        handlePercent();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "exercise_id": "e027",
+  "name": "Session — create_snapshot tool",
+  "component": "session_management",
+  "component_area": "session_snapshots",
+  "mechanical_verification": "Run create_snapshot with a label, verify snapshot creation confirmed",
+  "difficulty": "P0",
+  "time_estimate": "30 seconds",
+
+  "prompt": "call create_snapshot label=\"e027-test-snapshot\"",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "call create_snapshot label=\"e027-test-snapshot\"",
+      "expected": "Snapshot creation confirmation",
+      "mechanical_pass": "Returns non-empty string confirming snapshot created"
+    }
+  ],
+
+  "pass_criteria": {
+    "returns_confirmation": "create_snapshot returns confirmation without error"
+  },
+
+  "failure_modes": {
+    "empty_response": "create_snapshot returns empty",
+    "crashes": "create_snapshot throws exception"
+  }
+}

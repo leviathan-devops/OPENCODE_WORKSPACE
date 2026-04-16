@@ -1,0 +1,9 @@
+{
+  "gate": "delivery",
+  "timestamp": 1776184397790,
+  "passed": true,
+  "files": [],
+  "metadata": {
+    "notes": "Evidence created: ContainerTestResult.json (2/2 TUI tests passed), DeliverySummary.md, EvidenceArchive.zip"
+  }
+}

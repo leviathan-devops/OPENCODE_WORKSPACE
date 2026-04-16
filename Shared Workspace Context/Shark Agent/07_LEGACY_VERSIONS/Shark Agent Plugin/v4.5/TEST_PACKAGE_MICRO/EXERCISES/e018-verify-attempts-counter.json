@@ -1,0 +1,59 @@
+{
+  "exercise_id": "e018",
+  "name": "Verify Attempts Counter",
+  "component": "gates",
+  "component_area": "verifyAttempts tracking (0/3 to 3/3)",
+  "mechanical_verification": "Fail VERIFY gate 1-2 times, verifyAttempts increments each time",
+  "difficulty": "P0",
+  "time_estimate": "45 seconds",
+
+  "prompt": "call shark-gate action=advance gate=verify then fail verify once and check, fail again and check, fail third time and observe escalation",
+
+  "expected_behavior": "verifyAttempts increments: 0 → 1 → 2 → 3, then escalation triggers and resets to 0",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "Advance to verify: call shark-gate action=advance gate=verify",
+      "expected": "currentGate is 'verify'",
+      "mechanical_pass": "At verify gate"
+    },
+    {
+      "step": 2,
+      "action": "Fail verify once: call shark-gate action=evaluate gate=verify passed=false",
+      "expected": "verifyAttempts = 1",
+      "mechanical_pass": "Counter incremented"
+    },
+    {
+      "step": 3,
+      "action": "call shark-status to verify verifyAttempts",
+      "expected": "verifyAttempts = 1 or '1/3'",
+      "mechanical_pass": "State shows 1 failure"
+    },
+    {
+      "step": 4,
+      "action": "Fail verify again",
+      "expected": "verifyAttempts = 2",
+      "mechanical_pass": "Counter incremented to 2"
+    },
+    {
+      "step": 5,
+      "action": "Fail verify a third time",
+      "expected": "Escalation triggers, iteration becomes V1.1, verifyAttempts resets to 0",
+      "mechanical_pass": "3rd failure causes escalation and reset"
+    }
+  ],
+
+  "pass_criteria": {
+    "attempt_tracking": "verifyAttempts increments on each failure",
+    "count_accurate": "verifyAttempts shows correct count (0, 1, 2, 3)",
+    "escalation_at_3": "3rd failure triggers escalation",
+    "reset_after_escalation": "verifyAttempts resets to 0 after escalation"
+  },
+
+  "failure_modes": {
+    "counter_stays_zero": "verifyAttempts doesn't increment on failure",
+    "wrong_count": "verifyAttempts shows wrong number",
+    "no_escalation": "3rd failure doesn't trigger escalation"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gate": "build",
+  "timestamp": 1775948371348,
+  "passed": true,
+  "files": [
+    "config.json"
+  ],
+  "metadata": {
+    "tool": "write_file",
+    "sessionID": "test-session",
+    "workEvidence": "wrote:config.json ({}...)"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "exercise_id": "e010",
+  "name": "CLI — /Hermes agents",
+  "component": "cli_commands",
+  "component_area": "/Hermes command handler",
+  "mechanical_verification": "Execute /Hermes agents, verify list of Hermes sub-agents returned",
+  "difficulty": "P0",
+  "time_estimate": "10 seconds",
+
+  "prompt": "/Hermes agents",
+
+  "verification_steps": [
+    {
+      "step": 1,
+      "action": "/Hermes agents",
+      "expected": "Output lists sub-agent names (analyst, builder, tdd, reviewer, etc.)",
+      "mechanical_pass": "Output contains at least 3 of the 19 Hermes agent names"
+    }
+  ],
+
+  "pass_criteria": {
+    "returns_agent_list": "Output lists Hermes sub-agents",
+    "mentions_subagents": "Contains agent names (analyst, builder, tdd, reviewer, grill, etc.)",
+    "no_vanilla_response": "Not a vanilla OpenCode agent response"
+  },
+
+  "failure_modes": {
+    "empty_list": "/Hermes agents returns empty",
+    "wrong_list": "Returns non-Hermes agents (plan, build, general, explore)",
+    "vanilla_response": "Returns generic OpenCode agent list"
+  }
+}

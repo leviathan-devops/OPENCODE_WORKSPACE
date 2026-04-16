@@ -1,0 +1,8 @@
+# Voice Dictation sxhkd config
+# Double-press either Ctrl key → toggle dictation
+
+Control_L ; Control_L
+    python3 -c 'import socket; s=socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); s.connect("/tmp/voice-dictation.sock"); s.sendall(b"toggle\n"); s.recv(1); s.close()'
+
+Control_R ; Control_R
+    python3 -c 'import socket; s=socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); s.connect("/tmp/voice-dictation.sock"); s.sendall(b"toggle\n"); s.recv(1); s.close()'
