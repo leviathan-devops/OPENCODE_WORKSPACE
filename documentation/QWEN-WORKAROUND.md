@@ -32,13 +32,13 @@ Use Ollama or another backend that handles Qwen tool calls better
 ## Quick Test:
 ```bash
 # Test basic completion (works):
-curl -H "Authorization: Bearer vllm-local-key" \
+curl -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{"model": "qwen-coder-14b", "messages": [{"role": "user", "content": "Hello"}], "max_tokens": 50}' \
      http://localhost:8000/v1/chat/completions
 
 # Test with tools (generates XML but not parsed):
-curl -H "Authorization: Bearer vllm-local-key" \
+curl -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{"model": "qwen-coder-14b", "messages": [{"role": "user", "content": "List files"}], "tools": [...], "tool_choice": "auto", "max_tokens": 100}' \
      http://localhost:8000/v1/chat/completions

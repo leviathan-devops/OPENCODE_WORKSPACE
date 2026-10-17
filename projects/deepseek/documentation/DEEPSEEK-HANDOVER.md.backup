@@ -181,16 +181,16 @@ OpenFang agents that don't receive messages for 210 seconds get marked as "Crash
 
 All stored in `~/.openfang/.env`:
 ```
-DISCORD_BOT_TOKEN=MTQ3OTA1ODU0MTAxMTUzNzk0MA.GDG_6P.lpDP6tk2yPCW8vbQEQ2aL1SoYAw3koEixmBiFE
-DEEPSEEK_API_KEY=Sk-e8e93e31b582423e9fdaa4ab8e9347e2
-GLM_API_KEY=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK
+DISCORD_BOT_TOKEN="<REDACTED_SET_VIA_ENV>"
+DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
+GLM_API_KEY="<REDACTED_SET_VIA_ENV>"
 TAVILY_API_KEY=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
-ZHIPU_API_KEY=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK
-GEMINI_API_KEY=AIzaSyBIIzyQA032RD0tmoFSW4cRW8WVyb50jAE
-OPENROUTER_API_KEY=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
+ZHIPU_API_KEY="<REDACTED_SET_VIA_ENV>"
+GEMINI_API_KEY="<REDACTED_SET_VIA_ENV>"
+OPENROUTER_API_KEY="<REDACTED_SET_VIA_ENV>"
 ```
 
-GitHub PAT: `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`
+GitHub PAT: `<REDACTED_SET_VIA_ENV>`
 Railway login: `cryptoforex36963@gmail.com` (logged in via `railway login`)
 
 Claude Code auth: Setup token in `~/.bashrc` as `CLAUDE_CODE_OAUTH_TOKEN` (Max subscription, ~1 year validity)

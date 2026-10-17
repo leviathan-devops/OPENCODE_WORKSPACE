@@ -23,7 +23,7 @@ cat ~/.qwen/settings.json | grep -A5 '"generationConfig"'
 echo ""
 
 echo "4. Testing vLLM directly with max_tokens=3072:"
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",

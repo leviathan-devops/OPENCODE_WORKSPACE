@@ -74,14 +74,14 @@ Anthropic API key is missing
 
 ### API Key Configuration
 
-**Key**: `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**Key**: `<REDACTED_SET_VIA_ENV>`
 **Provider**: Google AI (Gemini)
 **Model**: gemma-4-26b-it
 
 **Usage**:
 ```bash
 # Set in container environment
-export GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
+export GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 # Or pass to opencode run
 opencode run --provider=google "audit /path/to/code"

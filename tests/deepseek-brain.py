@@ -21,7 +21,7 @@ import shlex
 # Configuration
 # ----------------------------------------------------------------------
 API_ENDPOINT = "https://api.deepseek.com/v1/chat/completions"
-API_KEY = "sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+API_KEY = "<REDACTED_SET_VIA_ENV>"
 MODEL = "deepseek-reasoner"
 
 # Colors (matching Qwen Code terminal style)

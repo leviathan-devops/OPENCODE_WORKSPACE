@@ -7398,7 +7398,7 @@ Let me read the current opencode.json to see how plugins are registered
 191:       "npm": "@ai-sdk/google",
 192:       "name": "Google AI",
 193:       "options": {
-194:         "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+194:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 195:       },
 196:       "models": {
 197:         "gemma-3-27b-it": {
@@ -7466,7 +7466,7 @@ Let me read the current opencode.json to see how plugins are registered
 259:       "name": "OpenRouter",
 260:       "options": {
 261:         "baseURL": "https://openrouter.ai/api/v1",
-262:         "apiKey": "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"
+262:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 263:       },
 264:       "models": {
 265:         "deepseek/deepseek-chat": {
@@ -7511,7 +7511,7 @@ Let me read the current opencode.json to see how plugins are registered
 304:       "name": "OpenCode Zen",
 305:       "options": {
 306:         "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-307:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+307:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 308:       },
 309:       "models": {
 310:         "nemotron-3-super-free": {
@@ -7552,7 +7552,7 @@ Let me read the current opencode.json to see how plugins are registered
 345:       "name": "OpenCode Go",
 346:       "options": {
 347:         "baseURL": "https://opencode.ai/zen/go/v1",
-348:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+348:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 349:       },
 350:       "models": {
 351:         "glm-5": {
@@ -7587,7 +7587,7 @@ Let me read the current opencode.json to see how plugins are registered
 380:           "name": "MiniMax M2.5 (Go)",
 381:           "npm": "@ai-sdk/anthropic",
 382:           "baseURL": "https://opencode.ai/zen/go/v1",
-383:           "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+383:           "apiKey": "<REDACTED_SET_VIA_ENV>",
 384:           "limit": {
 385:             "context": 131072,
 386:             "output": 8192

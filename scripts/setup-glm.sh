@@ -12,7 +12,7 @@ pipx install aider-chat
 mkdir -p ~/.local/bin
 cat > ~/.local/bin/glm << 'LAUNCHER'
 #!/bin/bash
-export OPENAI_API_KEY="df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK"
+export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
 export OPENAI_API_BASE="https://open.bigmodel.cn/api/paas/v4"
 
 aider \

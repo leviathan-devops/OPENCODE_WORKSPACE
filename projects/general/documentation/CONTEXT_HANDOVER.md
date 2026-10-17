@@ -41,7 +41,7 @@ qwen--yolo        # Smart auto-select (working)
 ### 3. Environment Variables
 ```bash
 # GLM (set by qwen-glm wrapper)
-OPENAI_API_KEY="71cda1864f0f4e15b076b0f24d56753e.4SwmFzcRiWmT3r1"
+OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
 OPENAI_BASE_URL="https://api.z.ai/api/coding/paas/v4"
 OPENAI_MODEL="glm-4.5-flash"
 
@@ -248,7 +248,7 @@ DeepSeek R1   → $0.028/1K tokens (thinking/reasoning only)
 3. **DO** call DeepSeek R1 immediately:
    ```bash
    curl -X POST https://api.deepseek.com/v1/chat/completions \
-     -H "Authorization: Bearer sk-e8e93e31b582423e9fdaa4ab8e9347e2" \
+     -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{"model":"deepseek-reasoner","messages":[{"role":"user","content":"CRITICAL: System broken. Analyze and provide fix."}]}'
    ```

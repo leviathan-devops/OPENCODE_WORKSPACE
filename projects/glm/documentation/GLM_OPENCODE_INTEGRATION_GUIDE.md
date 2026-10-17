@@ -136,7 +136,7 @@ This document describes a fully integrated AI coding infrastructure that combine
     }
   },
   "macro": {
-    "glm_api_key": "71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1",
+    "glm_api_key": "<REDACTED_SET_VIA_ENV>",
     "glm_base_url": "https://api.z.ai/api/coding/paas/v4",
     "glm_model": "glm-4.5-flash",
     "deepseek_api_key": "your-deepseek-api-key-here"

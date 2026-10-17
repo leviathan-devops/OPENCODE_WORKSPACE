@@ -1,7 +1,7 @@
 #!/bin/bash
 # Start all Qwen Coder Agents on boot
 
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e-fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 echo "🚀 Starting Qwen Coder Agents (Dual-Brain Architecture)"
 

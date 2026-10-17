@@ -3204,7 +3204,7 @@ Now I need to revert the opencode.json to point to v4.7 instead of v4.8.1. Let m
 192:       "name": "Google AI",
 193:       "options": {
 194:         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai/",
-195:         "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+195:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 196:       },
 197:       "models": {
 198:         "gemma-4-31b-it": {
@@ -3286,7 +3286,7 @@ Now I need to revert the opencode.json to point to v4.7 instead of v4.8.1. Let m
 274:       "name": "OpenRouter",
 275:       "options": {
 276:         "baseURL": "https://openrouter.ai/api/v1",
-277:         "apiKey": "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"
+277:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 278:       },
 279:       "models": {
 280:         "deepseek/deepseek-chat": {
@@ -3331,7 +3331,7 @@ Now I need to revert the opencode.json to point to v4.7 instead of v4.8.1. Let m
 319:       "name": "OpenCode Zen",
 320:       "options": {
 321:         "baseURL": "https://opencode.ai/zen/v1",
-322:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+322:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 323:       },
 324:       "models": {
 325:         "nemotron-3-super-free": {
@@ -3372,7 +3372,7 @@ Now I need to revert the opencode.json to point to v4.7 instead of v4.8.1. Let m
 360:       "name": "OpenCode Go",
 361:       "options": {
 362:         "baseURL": "https://opencode.ai/zen/go/v1",
-363:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+363:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 364:       },
 365:       "models": {
 366:         "glm-5": {
@@ -3407,7 +3407,7 @@ Now I need to revert the opencode.json to point to v4.7 instead of v4.8.1. Let m
 395:           "name": "MiniMax M2.5 (Go)",
 396:           "npm": "@ai-sdk/anthropic",
 397:           "baseURL": "https://opencode.ai/zen/go/v1",
-398:           "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+398:           "apiKey": "<REDACTED_SET_VIA_ENV>",
 399:           "limit": {
 400:             "context": 131072,
 401:             "output": 8192

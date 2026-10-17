@@ -2,7 +2,7 @@
 
 ## Container Testing Configuration
 
-**API Key:** `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**API Key:** `<REDACTED_SET_VIA_ENV>`
 **Model:** `gemma-4-26b-it` (Gemma 4 26b)
 
 **Location:** `/home/leviathan/OPENCODE_WORKSPACE/Shared Workspace Context/Shark Agent/Master Context/Container Testing Context/CONTAINER_API_CONFIG.md`
@@ -14,7 +14,7 @@
 | Item | Value |
 |------|-------|
 | Container Image | `shark-agent-v4.8.3:test` |
-| API Key | Google: `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4` |
+| API Key | Google: `<REDACTED_SET_VIA_ENV>` |
 | Model | `gemma-4-26b-it` |
 | Container Name | `shark-v483` |
 
@@ -26,7 +26,7 @@
 # Start container with API key
 docker run -d --name shark-v483 \
   --entrypoint /bin/sh \
-  -e GOOGLE_API_KEY="AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4" \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   shark-agent-v4.8.3:test -c "sleep 3600"
 
 # Run tests

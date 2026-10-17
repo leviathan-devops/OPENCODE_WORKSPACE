@@ -2,7 +2,7 @@
 # Model Preparation Script
 # Run this once to prepare the model, then launch terminal agents
 
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e-fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 echo "🔧 DeepSeek Model Preparation"
 echo "============================"

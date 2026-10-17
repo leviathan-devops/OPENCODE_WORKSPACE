@@ -89,7 +89,7 @@ docker exec mattermost-postgres psql -U mmuser -d mattermost -c "UPDATE commands
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 CHANNEL_ID="qpe4m5rmwpbtimpznw7i6mqcnr"
 curl -s -X POST "http://localhost:9080/api/v4/posts" \
   -H "Authorization: Bearer $TOKEN" \
@@ -154,7 +154,7 @@ webfetch "https://developers.mattermost.com/integrate/slash-commands/custom/"
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 TEAM_ID="4horejwjktrofyra5ozsak7c1w"
 curl -s -X POST "http://localhost:9080/api/v4/commands" \
   -H "Authorization: Bearer $TOKEN" \
@@ -225,7 +225,7 @@ docker exec mattermost-postgres psql -U mmuser -d mattermost -c "UPDATE commands
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 TEAM_ID="4horejwjktrofyra5ozsak7c1w"
 curl -s -X POST "http://localhost:9080/api/v4/commands" \
   -H "Authorization: Bearer $TOKEN" \
@@ -258,7 +258,7 @@ curl -s -X POST "http://localhost:9080/api/v4/commands" \
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 TEAM_ID="4horejwjktrofyra5ozsak7c1w"
 curl -s -X GET "http://localhost:9080/api/v4/commands?team_id=$TEAM_ID" \
   -H "Authorization: Bearer $TOKEN" | jq '.[] | select(.trigger | contains("opencode"))'
@@ -277,7 +277,7 @@ curl -s -X GET "http://localhost:9080/api/v4/commands?team_id=$TEAM_ID" \
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 CHANNEL_ID="qpe4m5rmwpbtimpznw7i6mqcnr"
 curl -s -X POST "http://localhost:9080/api/v4/posts" \
   -H "Authorization: Bearer $TOKEN" \
@@ -436,7 +436,7 @@ curl -s http://localhost:9080/api/v4/system/ping
 
 **Action Taken**:
 ```bash
-TOKEN="yop8eyyx5iryjcw6967sm4wkay"
+TOKEN="<REDACTED_SET_VIA_ENV>"
 CHANNEL_ID="qpe4m5rmwpbtimpznw7i6mqcnr"
 curl -s -X POST "http://localhost:9080/api/v4/posts" \
   -H "Authorization: Bearer $TOKEN" \

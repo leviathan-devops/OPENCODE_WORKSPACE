@@ -56,7 +56,7 @@ This system uses *
 9. bash: docker ps -a --format "{{.Names}} {{.Image}} {{.Status}}" 2>/dev/null | head -20
 10. bash: git clone https://github.com/desplega-ai/agent-swarm.git /home/leviathan/OPENCODE_WORKSPACE/projects/agent-swarm 2>&1 | tail -5
 11. bash: cd /home/leviathan/OPENCODE_WORKSPACE/projects/agent-swarm && cp .env.example .env && openssl rand -hex 16 | tr -d '\n'
-12. bash: cd /home/leviathan/OPENCODE_WORKSPACE/projects/agent-swarm && sed -i 's/^API_KEY=$/API_KEY=9486c455892fc2292005f5e83d50e027/' .env && sed -i 's/^OPE
+12. bash: cd /home/leviathan/OPENCODE_WORKSPACE/projects/agent-swarm && sed -i 's/^API_KEY=$/API_KEY=<REDACTED_SET_VIA_ENV>' .env && sed -i 's/^OPE
 13. bash: which bun || echo "bun not installed"
 14. bash: bun install 2>&1 | tail -10
 15. bash: bun install 2>&1 | tail -10

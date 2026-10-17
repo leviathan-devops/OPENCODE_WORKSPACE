@@ -5,7 +5,7 @@ echo "=== Testing vLLM without tool calls ==="
 echo ""
 
 # Test without tools parameter
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",

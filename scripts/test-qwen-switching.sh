@@ -17,7 +17,7 @@ echo ""
 
 echo "2. Testing vLLM server..."
 echo "------------------------"
-curl -s -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models | python3 -c "
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models | python3 -c "
 import sys, json
 try:
     data = json.load(sys.stdin)

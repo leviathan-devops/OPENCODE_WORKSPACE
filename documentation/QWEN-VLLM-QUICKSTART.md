@@ -41,13 +41,13 @@ qwen-api-status
 - vLLM server: ✓ Running on port 8000
 - Model name: ✓ `deepseek-chat` 
 - API endpoint: ✓ `http://localhost:8000/v1`
-- Authentication: ✓ API key `vllm-local-key`
+- Authentication: ✓ API key `<REDACTED_SET_VIA_ENV>`
 - Completions: ✓ Working (tested with curl)
 
 ## Troubleshooting:
 If you still see "model deepseek-chat does not exist":
 1. Check vLLM is running: `systemctl --user status vllm-qwen.service`
-2. Verify model name: `curl -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models`
+2. Verify model name: `curl -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models`
 3. Make sure you ran `qwen-local` in that terminal
 
 ## Ready to Go!

@@ -51,7 +51,7 @@ except:
     deepseek)
         echo "Switching to DeepSeek API"
         export OPENAI_BASE_URL="https://api.deepseek.com/v1"
-        export OPENAI_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+        export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
         
         # Update Qwen Code settings (both files)
         if [ -f "$SETTINGS_FILE" ]; then
@@ -78,7 +78,7 @@ except:
     # Create config.json if it doesn't exist
     config = {
         'api_base': 'https://api.deepseek.com/v1',
-        'api_key': 'sk-e8e93e31b582423e9fdaa4ab8e9347e2',
+        'api_key': '<REDACTED_SET_VIA_ENV>',
         'model': 'deepseek-chat'
     }
     with open(config_file, 'w') as f:

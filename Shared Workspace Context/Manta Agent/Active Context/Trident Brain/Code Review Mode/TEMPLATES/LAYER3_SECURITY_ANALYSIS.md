@@ -97,7 +97,7 @@ Finds hardcoded credentials.
 ```
 
 **Severity:** BLOCKER  
-**Evidence:** `const apiKey = "sk-1234567890abcdef..."`
+**Evidence:** `const apiKey = "<REDACTED_SET_VIA_ENV>"`
 
 ### PathTraversalDetector
 Finds path traversal risks.

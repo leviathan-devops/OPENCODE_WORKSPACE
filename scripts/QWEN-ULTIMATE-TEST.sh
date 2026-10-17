@@ -16,7 +16,7 @@ if [ $? -eq 0 ]; then
     echo "✓ vLLM server is running"
     
     # Test API
-    curl -s -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models > /tmp/vllm-test.json 2>&1
+    curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models > /tmp/vllm-test.json 2>&1
     if grep -q "qwen-coder-14b" /tmp/vllm-test.json; then
         echo "✓ vLLM API responding with model: qwen-coder-14b"
     else
@@ -60,7 +60,7 @@ echo ""
 
 echo "3. Testing API completion..."
 echo "----------------------------"
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",

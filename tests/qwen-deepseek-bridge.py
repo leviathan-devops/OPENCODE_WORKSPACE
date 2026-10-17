@@ -21,7 +21,7 @@ DEEPSEEK_MODE_SCRIPT = """
 # Add to your shell config to enable
 
 export DEEPSEEK_BRAIN_MODE=1
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 # Alias to launch Qwen Code in DeepSeek mode
 alias qwen-deepseek='DEEPSEEK_BRAIN_MODE=1 qwen'

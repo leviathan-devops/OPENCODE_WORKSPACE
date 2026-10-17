@@ -26,7 +26,7 @@
    # Direct API test (bypasses Qwen Code overhead)
    curl http://localhost:8000/v1/chat/completions \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer llama-cpp-key" \
+     -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -d '{"messages":[{"role":"user","content":"hi"}],"max_tokens":100}'
    ```
 

@@ -94,7 +94,7 @@ bun test tests/hive-mind-plugin.test.ts
 ```bash
 # Test 1: temp_upload
 curl -s -X POST http://localhost:1933/content/upload \
-  -H "X-API-Key: hive-mind-key" \
+  -H "X-API-Key: <REDACTED_SET_VIA_ENV>" \
   -H "X-OpenViking-Account: default" \
   -H "X-OpenViking-User: hive-mind" \
   -H "Content-Type: application/json" \
@@ -103,7 +103,7 @@ curl -s -X POST http://localhost:1933/content/upload \
 
 # Test 2: resources/commit
 curl -s -X POST http://localhost:1933/resources/commit \
-  -H "X-API-Key: hive-mind-key" \
+  -H "X-API-Key: <REDACTED_SET_VIA_ENV>" \
   -H "X-OpenViking-Account: default" \
   -H "X-OpenViking-User: hive-mind" \
   -H "Content-Type: application/json" \
@@ -112,7 +112,7 @@ curl -s -X POST http://localhost:1933/resources/commit \
 
 # Test 3: Search
 curl -s -X POST http://localhost:1933/resources/search \
-  -H "X-API-Key: hive-mind-key" \
+  -H "X-API-Key: <REDACTED_SET_VIA_ENV>" \
   -H "X-OpenViking-Account: default" \
   -H "X-OpenViking-User: hive-mind" \
   -H "Content-Type: application/json" \

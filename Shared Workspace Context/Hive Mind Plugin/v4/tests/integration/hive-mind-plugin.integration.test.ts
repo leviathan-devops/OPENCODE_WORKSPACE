@@ -13,7 +13,7 @@ import { spawn } from 'child_process'
 
 const OPENVIKING_URL = 'http://localhost:1933'
 const EMBEDDING_URL = 'http://localhost:8001'
-const API_KEY = 'e01182bc96ec5dbf254bf4ac862747f535eb329c420f98da47a54e91f2d696f6'
+const API_KEY = '<REDACTED_SET_VIA_ENV>'
 const LOCAL_FALLBACK_DIR = '/home/leviathan/.local/share/opencode/hive-mind'
 
 // Helper to make authenticated requests to OpenViking

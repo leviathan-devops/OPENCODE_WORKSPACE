@@ -2,7 +2,7 @@
 # Qwen Code Local Agent Setup
 # Configures Qwen Code to use local Qwen Coder Agent by default
 
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e-fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 echo "🚀 Setting up Qwen Code with Local Qwen Coder Agent"
 echo "=================================================="
@@ -39,7 +39,7 @@ cat > ~/.local/bin/qwen-code-local << 'EOF'
 #!/bin/bash
 # Qwen Code with Local Agent
 
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e-fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 if [ $# -eq 0 ]; then
     echo "🚀 Qwen Code with Local Qwen Coder Agent"

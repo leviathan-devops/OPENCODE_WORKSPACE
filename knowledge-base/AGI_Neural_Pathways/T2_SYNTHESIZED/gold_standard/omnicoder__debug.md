@@ -45,10 +45,10 @@ with open('/home/leviathan/llama.cpp/models/templates/Qwen3.5-4B.jinja', 'r') as
     content = f.read()
 
 7. bash: curl -s -X POST http://localhost:3013/api/tasks \
-  -H "Authorization: Bearer 9486c455892fc2292005f5e83d50e027" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "
 8. bash: curl -s http://localhost:3013/api/tasks/schema \
-  -H "Authorization: Bearer 9486c455892fc2292005f5e83d50e027" 2>&1 | py
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" 2>&1 | py
 9. bash: curl -s http://localhost:8000/v1/models | python3 -c "import sys,json; d=json.load(sys.stdin); print('Context:', d['data
 10. bash: curl -s http://localhost:8000/v1/models | python3 -c "import sys,json; d=json.load(sys.stdin); m=d['data'][0]; print(f\"
 11. write: /home/leviathan/.hermes/context_length_cache.yaml

@@ -59,7 +59,7 @@ The Spider Agent UI was glitching with debug log popups on every message, and bu
   "name": "Google AI",
   "options": {
     "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
-    "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+    "apiKey": "<REDACTED_SET_VIA_ENV>"
   },
   "models": {
     "gemma-4-31b-it": { "name": "Gemma 4 31B IT (262K)", "limit": { "context": 262144, "output": 16384 } },
@@ -75,7 +75,7 @@ The Spider Agent UI was glitching with debug log popups on every message, and bu
   "name": "OpenCode Zen",
   "options": {
     "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-    "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+    "apiKey": "<REDACTED_SET_VIA_ENV>"
   },
   "models": {
     "nemotron-3-super-free": { "name": "Nemotron 3 Super Free (1M)", "limit": { "context": 1048576, "output": 16384 } },
@@ -253,19 +253,19 @@ The Spider Agent UI was glitching with debug log popups on every message, and bu
 ```bash
 # Test minimax-m2.7
 curl -X POST "https://opencode.ai/zen/go/v1/chat/completions" \
-  -H "Authorization: Bearer sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model":"minimax-m2.7","messages":[{"role":"user","content":"Hi"}],"max_tokens":10}'
 
 # Test nemotron-3-super-free  
 curl -X POST "https://opencode.ai/zen/v1/chat/completions" \
-  -H "Authorization: Bearer sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model":"nemotron-3-super-free","messages":[{"role":"user","content":"Hi"}],"max_tokens":10}'
 
 # Test gemini-2.5-flash via OpenRouter
 curl -X POST "https://openrouter.ai/api/v1/chat/completions" \
-  -H "Authorization: Bearer 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" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model":"google/gemini-2.5-flash","messages":[{"role":"user","content":"Hi"}],"max_tokens":10}'
 ```

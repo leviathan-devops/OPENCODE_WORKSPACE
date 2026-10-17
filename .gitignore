@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+*.key
+*.p12
+*.pfx
+*.pem
+id_rsa
+id_ed25519

@@ -127,10 +127,10 @@ Expected output: `=== ALL TESTS PASSED ===`
 For container TUI tests, use the Gemma model via Google API:
 
 ```bash
-export GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
+export GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 # Run audit in container
-docker run --rm -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+docker run --rm -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3 \
   opencode run "audit /path/to/code"
 ```

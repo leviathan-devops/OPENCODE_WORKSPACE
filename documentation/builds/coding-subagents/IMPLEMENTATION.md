@@ -74,7 +74,7 @@ npm run build       # bun build → dist/index.js
 ### Gemma (via proxy):
 ```bash
 curl -X POST "https://shark-gemini-proxy-production.up.railway.app/v1beta/models/gemma-4-31b-it:generateContent" \
-  -H "x-goog-api-key: AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4" \
+  -H "x-goog-api-key: <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"contents":[{"parts":[{"text":"Say hi in 3 words"}]}]}'
 ```

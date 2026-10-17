@@ -134,7 +134,7 @@ runAudit() → artifactWriter.generate() → fs.writeFileSync() → File saved t
 
 ## API KEYS (For Testing)
 
-**Google API (Gemma):** `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**Google API (Gemma):** `<REDACTED_SET_VIA_ENV>`
 
 ---
 
@@ -162,7 +162,7 @@ If compacted, read in order:
 
 **Name:** `trident-v32-test` (create fresh, dedicated)
 **Image:** `leviathan/opencode:python3-enabled-1.4.3`
-**API Key:** `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**API Key:** `<REDACTED_SET_VIA_ENV>`
 
 **Never pollute other project containers. Always use dedicated sandbox.**
 

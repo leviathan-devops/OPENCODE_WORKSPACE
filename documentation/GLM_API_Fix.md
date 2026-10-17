@@ -93,7 +93,7 @@ Multiple Qwen Code terminals running simultaneously cache settings in memory. Wh
 ```json
 {
   "api_base": "https://api.z.ai/api/coding/paas/v4",
-  "api_key": "71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1",
+  "api_key": "<REDACTED_SET_VIA_ENV>",
   "model": "glm-4.5-flash"
 }
 ```
@@ -105,7 +105,7 @@ Multiple Qwen Code terminals running simultaneously cache settings in memory. Wh
 
 ### 3. Added API Key to `~/.bashrc`
 ```bash
-export GLM_API_KEY="71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1"
+export GLM_API_KEY="<REDACTED_SET_VIA_ENV>"
 ```
 
 **Location:** Line 155 of `~/.bashrc`
@@ -137,7 +137,7 @@ bash -i -c 'qwen "Reply only: WORKING"'
 ### Direct API Test
 ```bash
 curl -s -X POST "https://api.z.ai/api/coding/paas/v4/chat/completions" \
-  -H "Authorization: Bearer 71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model": "glm-4.5-flash", "messages": [{"role": "user", "content": "test"}], "max_tokens": 50}'
 

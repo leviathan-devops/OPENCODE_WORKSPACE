@@ -25,7 +25,7 @@ The proxy will:
 ```bash
 # This should work through the proxy:
 curl -X POST http://localhost:8081/v1/chat/completions \
-  -H "Authorization: Bearer vllm-local-key" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model": "qwen-coder-14b", "messages": [{"role": "user", "content": "Hi"}], "max_tokens": 8192}'
 ```

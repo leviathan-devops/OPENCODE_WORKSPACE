@@ -100,7 +100,7 @@ tail -f /home/leviathan/.local/share/opencode/log/*.log
 ```bash
 # Check OpenViking health
 curl -s http://localhost:1933/health \
-  -H "X-API-Key: hive-mind-key"
+  -H "X-API-Key: <REDACTED_SET_VIA_ENV>"
 
 # Check Embedding server
 curl -s http://localhost:8001/v1/models | grep nomic

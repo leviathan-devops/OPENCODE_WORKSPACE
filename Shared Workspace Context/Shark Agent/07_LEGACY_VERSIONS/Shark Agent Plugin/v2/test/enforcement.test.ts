@@ -97,7 +97,7 @@ describe('🦈 SHARK v2 - BUILD VERIFICATION', () => {
     test('WARNS: hardcoded API key in file', () => {
       const result = safety.checkTool('write_file', {
         file_path: `${TEST_WORKSPACE}/config.js`,
-        content: 'const API_KEY = "sk-1234567890abcdefghijklmnopqrstuv"'
+        content: 'const API_KEY = "<REDACTED_SET_VIA_ENV>"'
       });
       expect(result.blocked).toBe(false);
       expect(result.warnings.length).toBeGreaterThan(0);

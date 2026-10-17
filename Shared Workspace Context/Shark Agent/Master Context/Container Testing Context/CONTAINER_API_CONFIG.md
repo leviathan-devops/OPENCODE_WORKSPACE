@@ -8,7 +8,7 @@
 ## API Configuration
 
 ```
-GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
+GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
 ```
 
 ---
@@ -25,7 +25,7 @@ GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
 Set `GOOGLE_API_KEY` environment variable when running container:
 ```bash
 docker run -d --name shark-v483 \
-  -e GOOGLE_API_KEY="AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4" \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   -e MODEL=gemma-4-26b-it \
   shark-agent-v4.8.3:test
 ```

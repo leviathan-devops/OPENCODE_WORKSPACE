@@ -1517,7 +1517,7 @@ Let's read it to see which plugin is being loaded.</thought>
       "name": "Google AI",
       "options": {
         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
-        "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+        "apiKey": "<REDACTED_SET_VIA_ENV>"
       },
       "models": {
         "gemma-4-31b-it": {
@@ -1599,7 +1599,7 @@ Let's read it to see which plugin is being loaded.</thought>
       "name": "OpenRouter",
       "options": {
         "baseURL": "https://openrouter.ai/api/v1",
-        "apiKey": "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"
+        "apiKey": "<REDACTED_SET_VIA_ENV>"
       },
       "models": {
         "deepseek/deepseek-chat": {
@@ -1644,7 +1644,7 @@ Let's read it to see which plugin is being loaded.</thought>
       "name": "OpenCode Zen",
       "options": {
         "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-        "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+        "apiKey": "<REDACTED_SET_VIA_ENV>"
       },
       "models": {
         "nemotron-3-super-free": {
@@ -1685,7 +1685,7 @@ Let's read it to see which plugin is being loaded.</thought>
       "name": "OpenCode Go",
       "options": {
         "baseURL": "https://opencode.ai/zen/go/v1",
-        "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+        "apiKey": "<REDACTED_SET_VIA_ENV>"
       },
       "models": {
         "glm-5": {
@@ -1720,7 +1720,7 @@ Let's read it to see which plugin is being loaded.</thought>
           "name": "MiniMax M2.5 (Go)",
           "npm": "@ai-sdk/anthropic",
           "baseURL": "https://opencode.ai/zen/go/v1",
-          "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+          "apiKey": "<REDACTED_SET_VIA_ENV>",
           "limit": {
             "context": 131072,
             "output": 8192
@@ -2065,7 +2065,7 @@ Let's read the config file.</thought>
 192:       "name": "Google AI",
 193:       "options": {
 194:         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
-195:         "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+195:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 196:       },
 197:       "models": {
 198:         "gemma-4-31b-it": {
@@ -2147,7 +2147,7 @@ Let's read the config file.</thought>
 274:       "name": "OpenRouter",
 275:       "options": {
 276:         "baseURL": "https://openrouter.ai/api/v1",
-277:         "apiKey": "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"
+277:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 278:       },
 279:       "models": {
 280:         "deepseek/deepseek-chat": {
@@ -2192,7 +2192,7 @@ Let's read the config file.</thought>
 319:       "name": "OpenCode Zen",
 320:       "options": {
 321:         "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-322:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+322:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 323:       },
 324:       "models": {
 325:         "nemotron-3-super-free": {
@@ -2233,7 +2233,7 @@ Let's read the config file.</thought>
 360:       "name": "OpenCode Go",
 361:       "options": {
 362:         "baseURL": "https://opencode.ai/zen/go/v1",
-363:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+363:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 364:       },
 365:       "models": {
 366:         "glm-5": {
@@ -2268,7 +2268,7 @@ Let's read the config file.</thought>
 395:           "name": "MiniMax M2.5 (Go)",
 396:           "npm": "@ai-sdk/anthropic",
 397:           "baseURL": "https://opencode.ai/zen/go/v1",
-398:           "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+398:           "apiKey": "<REDACTED_SET_VIA_ENV>",
 399:           "limit": {
 400:             "context": 131072,
 401:             "output": 8192
@@ -6036,7 +6036,7 @@ Let's read the `opencode.json` again to get its current content for editing.</th
 192:       "name": "Google AI",
 193:       "options": {
 194:         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
-195:         "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+195:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 196:       },
 197:       "models": {
 198:         "gemma-4-31b-it": {
@@ -6118,7 +6118,7 @@ Let's read the `opencode.json` again to get its current content for editing.</th
 274:       "name": "OpenRouter",
 275:       "options": {
 276:         "baseURL": "https://openrouter.ai/api/v1",
-277:         "apiKey": "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"
+277:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 278:       },
 279:       "models": {
 280:         "deepseek/deepseek-chat": {
@@ -6170,7 +6170,7 @@ Let's read the `opencode.json` again to get its current content for editing.</th
 326:       "name": "OpenCode Zen",
 327:       "options": {
 328:         "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-329:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+329:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 330:       },
 331:       "models": {
 332:         "nemotron-3-super-free": {
@@ -6211,7 +6211,7 @@ Let's read the `opencode.json` again to get its current content for editing.</th
 367:       "name": "OpenCode Go",
 368:       "options": {
 369:         "baseURL": "https://opencode.ai/zen/go/v1",
-370:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+370:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 371:       },
 372:       "models": {
 373:         "glm-5": {
@@ -6246,7 +6246,7 @@ Let's read the `opencode.json` again to get its current content for editing.</th
 402:           "name": "MiniMax M2.5 (Go)",
 403:           "npm": "@ai-sdk/anthropic",
 404:           "baseURL": "https://opencode.ai/zen/go/v1",
-405:           "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+405:           "apiKey": "<REDACTED_SET_VIA_ENV>",
 406:           "limit": {
 407:             "context": 131072,
 408:             "output": 8192

@@ -5,7 +5,7 @@ Ask Gemini how to fix Google automation detection for OAuth login
 import requests
 import json
 
-API_KEY = "AIzaSyBIIzyQA032RD0tmoFSW4cRW8WVyb50jAE"
+API_KEY = "<REDACTED_SET_VIA_ENV>"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={API_KEY}"
 
 question = """I'm building a brain bridge that allows AI agents to use DeepSeek's web chat interface via browser automation.

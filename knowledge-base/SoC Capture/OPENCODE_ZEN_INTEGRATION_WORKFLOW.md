@@ -439,8 +439,8 @@ shark --macro "complex task requiring multiple agents"
 export OPENCODE_ZEN_API_KEY="your-zen-api-key"
 
 # Existing providers
-export GLM_API_KEY="71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1"
-export DEEPSEEK_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+export GLM_API_KEY="<REDACTED_SET_VIA_ENV>"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 # Optional (for direct provider fallback)
 export MIMO_API_KEY=""

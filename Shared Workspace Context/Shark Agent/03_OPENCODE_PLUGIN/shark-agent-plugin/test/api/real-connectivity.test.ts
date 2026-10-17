@@ -10,8 +10,8 @@ import { GLMClient } from '../../src/shark-core/brain/glm';
 console.log('\n🦈 Testing Real API Connectivity...\n');
 
 // Set environment variables
-process.env.DEEPSEEK_API_KEY = 'sk-e8e93e31b582423e9fdaa4ab8e9347e2';
-process.env.GLM_API_KEY = '71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1';
+process.env.DEEPSEEK_API_KEY = '<REDACTED_SET_VIA_ENV>';
+process.env.GLM_API_KEY = '<REDACTED_SET_VIA_ENV>';
 
 async function testDeepSeek() {
   console.log('1. Testing DeepSeek API...');

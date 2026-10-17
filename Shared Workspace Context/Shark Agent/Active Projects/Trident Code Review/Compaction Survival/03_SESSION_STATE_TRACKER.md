@@ -41,7 +41,7 @@
 ### Entry 5: 2026-04-16T03:05 UTC
 **Phase:** BUILD
 **What:** Created CONTAINER_TESTING_KNOWLEDGE.md in Shark Master Context
-**Key info:** Google API key for Gemma: `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**Key info:** Google API key for Gemma: `<REDACTED_SET_VIA_ENV>`
 **Rule established:** NEVER pollute other project containers
 **Outcome:** ✅ Knowledge base updated
 

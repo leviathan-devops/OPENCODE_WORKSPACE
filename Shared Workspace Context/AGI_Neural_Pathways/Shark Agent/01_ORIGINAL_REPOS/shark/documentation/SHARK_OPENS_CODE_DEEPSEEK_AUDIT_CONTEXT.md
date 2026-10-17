@@ -52,13 +52,13 @@ A TypeScript CLI that combines multiple AI brains for autonomous coding:
 ## SECTION 2: API KEYS
 
 ```
-GITHUB_PAT=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
-RAILWAY_API_KEY=8190a045-3fbd-4c68-8c0f-772d7f10901f
+GITHUB_PAT="<REDACTED_SET_VIA_ENV>"
+RAILWAY_API_KEY="<REDACTED_SET_VIA_ENV>"
 RAILWAY_PROXY_URL=https://shark-gemini-proxy-production.up.railway.app
-GOOGLE_API_KEY=AIzaSyAZLu8LStbmyShaON6Xzjp_BO2i6AT54l0
+GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
 GEMMA_USE_PROXY=true
-DEEPSEEK_API_KEY=sk-e8e93e31b582423e9fdaa4ab8e9347e2
-GLM_API_KEY=71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1
+DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
+GLM_API_KEY="<REDACTED_SET_VIA_ENV>"
 ```
 
 ---
@@ -94,7 +94,7 @@ const GLM_MODEL = 'glm-4.7';
 **This is correct.** If GLM fails, test the endpoint directly:
 ```bash
 curl -s "https://api.z.ai/api/coding/paas/v4/chat/completions" \
-  -H "Authorization: Bearer 71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1" \
+  -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
   -H "Content-Type: application/json" \
   -d '{"model":"glm-4.7","messages":[{"role":"user","content":"hi"}]}'
 ```
@@ -136,13 +136,13 @@ All failure logs are in the repo:
 3. **Create .env** in shark-frankenstein with keys from Section 2:
    ```bash
    cat > .env << 'EOF'
-   GITHUB_PAT=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
-   RAILWAY_API_KEY=8190a045-3fbd-4c68-8c0f-772d7f10901f
+   GITHUB_PAT="<REDACTED_SET_VIA_ENV>"
+   RAILWAY_API_KEY="<REDACTED_SET_VIA_ENV>"
    RAILWAY_PROXY_URL=https://shark-gemini-proxy-production.up.railway.app
-   GOOGLE_API_KEY=AIzaSyAZLu8LStbmyShaON6Xzjp_BO2i6AT54l0
+   GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
    GEMMA_USE_PROXY=true
-   DEEPSEEK_API_KEY=sk-e8e93e31b582423e9fdaa4ab8e9347e2
-   GLM_API_KEY=71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1
+   DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
+   GLM_API_KEY="<REDACTED_SET_VIA_ENV>"
    EOF
    ```
 

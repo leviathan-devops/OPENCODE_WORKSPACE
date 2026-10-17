@@ -83,7 +83,7 @@
 #### cat > ~/.local/bin/glm << 'EOF'  
 #### #!/bin/bash  
 #### cd /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE  
-#### export OPENAI_API_KEY="df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK"  
+#### export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"  
 #### export OPENAI_API_BASE="https://open.bigmodel.cn/api/paas/v4"  
 #### aider --model openai/glm-z1-airx --auto-commits --no-suggest-shell-commands --no-show-model-warnings projects/discord-bot/bot.py projects/builds/ "$@"  
 #### EOF  
@@ -115,7 +115,7 @@ See https://aider.chat/docs/install/optional.html#enable-playwright for more inf
 > Git repo: none  
 > Repo-map: disabled  
 
-#### echo 'alias glm="OPENAI_API_KEY=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK OPENAI_API_BASE=https://open.bigmodel.cn/api/paas/v4 aider --model openai/glm-4.5-flash --no-show-model-warnings"' >> ~/.bashrc  
+#### echo 'alias glm="OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>" OPENAI_API_BASE=https://open.bigmodel.cn/api/paas/v4 aider --model openai/glm-4.5-flash --no-show-model-warnings"' >> ~/.bashrc  
 ####   
 #### source ~/.bashrc  
 > https://open.bigmodel.cn/api/paas/v4  
@@ -134,7 +134,7 @@ This translates to: "Authorization parameter not received in the header, authent
 This indicates that the API call is missing an Authorization header. Looking at the alias command they provided:
 
 ```
-alias glm="OPENAI_API_KEY=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK OPENAI_API_BASE=https://open.bigmodel.cn/api/paas/v4 aider --model openai/glm-4.5-flash --no-show-model-warnings"
+alias glm="OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>" OPENAI_API_BASE=https://open.bigmodel.cn/api/paas/v4 aider --model openai/glm-4.5-flash --no-show-model-warnings"
 ```
 
 It seems they're trying to set up an alias for the `aider` command with specific API credentials. The error suggests that the API key format might be incorrect or the API expects a different authentication method.
@@ -167,33 +167,33 @@ What would you like me to help you with regarding this error? Are you looking to
 
 # aider chat started at 2026-03-17 22:23:35
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-17 22:25:59
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-17 22:27:21
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-17 22:27:26
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-17 22:32:28
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-17 22:33:42
 
 > You should probably run aider in your project's directory, not your home dir.  
-> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model glm-4.5-flash --api-key openai=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK --yes-always --no-auto-commits  
+> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model glm-4.5-flash --api-key openai="<REDACTED_SET_VIA_ENV>" --yes-always --no-auto-commits  
 > Warning for glm-4.5-flash: Unknown context window size and costs, using sane defaults.  
 > Did you mean one of these?  
 > - zai/glm-4.5-flash  
@@ -222,7 +222,7 @@ What would you like me to help you with regarding this error? Are you looking to
 # aider chat started at 2026-03-17 22:35:09
 
 > You should probably run aider in your project's directory, not your home dir.  
-> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model openai/glm-4.5-flash --api-key openai=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK --yes-always --no-auto-commits  
+> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model openai/glm-4.5-flash --api-key openai="<REDACTED_SET_VIA_ENV>" --yes-always --no-auto-commits  
 > Warning for openai/glm-4.5-flash: Unknown context window size and costs, using sane defaults.  
 > Did you mean one of these?  
 > - zai/glm-4.5-flash  
@@ -269,7 +269,7 @@ SHARK HAS TEETH
 # aider chat started at 2026-03-17 22:44:37
 
 > You should probably run aider in your project's directory, not your home dir.  
-> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model openai/glm-4.5-flash --api-key openai=df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK --yes-always --no-auto-commits  
+> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/.local/bin/aider --model openai/glm-4.5-flash --api-key openai="<REDACTED_SET_VIA_ENV>" --yes-always --no-auto-commits  
 > Warning for openai/glm-4.5-flash: Unknown context window size and costs, using sane defaults.  
 > Did you mean one of these?  
 > - zai/glm-4.5-flash  
@@ -286,7 +286,7 @@ SHARK HAS TEETH
 # aider chat started at 2026-03-17 23:32:22
 
 > You should probably run aider in your project's directory, not your home dir.  
-> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark/venv/bin/aider --model openrouter/qwen/qwen-2.5-coder-32b --openai-api-base https://openrouter.ai/api/v1 --api-key openrouter=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 --yes-always --dark-mode  
+> /home/leviathan/OPENCODE_WORKSPACE/OPENCODE_WORKSPACE/shark/venv/bin/aider --model openrouter/qwen/qwen-2.5-coder-32b --openai-api-base https://openrouter.ai/api/v1 --api-key openrouter="<REDACTED_SET_VIA_ENV>" --yes-always --dark-mode  
 > Warning for openrouter/qwen/qwen-2.5-coder-32b: Unknown context window size and costs, using sane defaults.  
 > Did you mean one of these?  
 > - openrouter/qwen/qwen-2.5-coder-32b-instruct  
@@ -311,15 +311,15 @@ SHARK HAS TEETH
 
 # aider chat started at 2026-03-23 19:13:49
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-23 20:01:17
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  
 
 # aider chat started at 2026-03-23 20:29:30
 
-> Invalid --api-key format: df8b2de8bbe145a4b9f8c2620043822c.n9mchou1c2fErKsK  
+> Invalid --api-key format: "<REDACTED_SET_VIA_ENV>"  
 > Format should be: provider=key  

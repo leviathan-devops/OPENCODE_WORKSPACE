@@ -8,5 +8,5 @@ echo "🚀 Qwen Code → DeepSeek API (deepseek-chat)"
 
 # Launch Qwen Code with DeepSeek environment variables
 OPENAI_BASE_URL="https://api.deepseek.com/v1" \
-OPENAI_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2" \
+OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>" \
 qwen -m "deepseek-chat" "$@"

@@ -73,7 +73,7 @@ ls -la /home/leviathan/OPENCODE_WORKSPACE/projects/TRIDENT_CODE_REVIEW_CALCULATO
 
 ## API KEYS
 
-**Google Gemma:** `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+**Google Gemma:** `<REDACTED_SET_VIA_ENV>`
 
 ---
 

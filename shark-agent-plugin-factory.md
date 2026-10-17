@@ -3144,7 +3144,7 @@ The code looks correct. Let me check the OpenCode config to see which plugins ar
 192:       "name": "Google AI",
 193:       "options": {
 194:         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
-195:         "apiKey": "AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4"
+195:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 196:       },
 197:       "models": {
 198:         "gemma-4-31b-it": {
@@ -3226,7 +3226,7 @@ The code looks correct. Let me check the OpenCode config to see which plugins ar
 274:       "name": "OpenRouter",
 275:       "options": {
 276:         "baseURL": "https://openrouter.ai/api/v1",
-277:         "apiKey": "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"
+277:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 278:       },
 279:       "models": {
 280:         "deepseek/deepseek-chat": {
@@ -3271,7 +3271,7 @@ The code looks correct. Let me check the OpenCode config to see which plugins ar
 319:       "name": "OpenCode Zen",
 320:       "options": {
 321:         "baseURL": "https://opencode.ai/zen/v1/chat/completions",
-322:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+322:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 323:       },
 324:       "models": {
 325:         "nemotron-3-super-free": {
@@ -3312,7 +3312,7 @@ The code looks correct. Let me check the OpenCode config to see which plugins ar
 360:       "name": "OpenCode Go",
 361:       "options": {
 362:         "baseURL": "https://opencode.ai/zen/go/v1",
-363:         "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois"
+363:         "apiKey": "<REDACTED_SET_VIA_ENV>"
 364:       },
 365:       "models": {
 366:         "glm-5": {
@@ -3347,7 +3347,7 @@ The code looks correct. Let me check the OpenCode config to see which plugins ar
 395:           "name": "MiniMax M2.5 (Go)",
 396:           "npm": "@ai-sdk/anthropic",
 397:           "baseURL": "https://opencode.ai/zen/go/v1",
-398:           "apiKey": "sk-hzzyXqigLO0PVsBlzmiA1bTPXUor6TrpwlhBLVoSbO95gshcqKbJs0RgpGMBFois",
+398:           "apiKey": "<REDACTED_SET_VIA_ENV>",
 399:           "limit": {
 400:             "context": 131072,
 401:             "output": 8192
@@ -7094,7 +7094,7 @@ The push requires authentication. Let me see if there's a SSH option or if the u
 
 **Output:**
 ```
-https://leviathan-devops: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@github.com
+https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com
 
 ```
 
@@ -7140,7 +7140,7 @@ SSH key issue. Let me check if there's a deploy key set up or if the user needs 
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && GIT_ASKPASS=true git push -u origin master 2>&1 || git push https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git master 2>&1",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && GIT_ASKPASS=true git push -u origin master 2>&1 || git push https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git master 2>&1",
   "description": "Try HTTPS with token"
 }
 ```
@@ -7316,7 +7316,7 @@ I need to use the token in the URL directly. Let me try using the full HTTPS URL
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && GIT_ASKPASS=echo git fetch 'https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git' 2>&1 | head -5",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && GIT_ASKPASS=echo git fetch 'https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git' 2>&1 | head -5",
   "description": "Fetch with embedded token"
 }
 ```
@@ -7732,7 +7732,7 @@ Git push still failing. Let me try with the embedded token in the URL.
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git push 'https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git' master 2>&1",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git push 'https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git' master 2>&1",
   "description": "Push with embedded token"
 }
 ```
@@ -7762,7 +7762,7 @@ The remote has a commit we're missing. Let me pull first, re-apply my change, th
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git pull 'https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git' master 2>&1",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git pull 'https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git' master 2>&1",
   "description": "Pull remote changes"
 }
 ```
@@ -7800,7 +7800,7 @@ I need to either rebase or merge. Let me rebase onto the remote.
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git pull --rebase 'https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git' master 2>&1",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git pull --rebase 'https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git' master 2>&1",
   "description": "Rebase onto remote"
 }
 ```
@@ -7826,7 +7826,7 @@ Good, the rebase was successful. Now let me push.
 **Input:**
 ```json
 {
-  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git push 'https://leviathan-devops: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@github.com/leviathan-devops/manta-agent.git' master 2>&1",
+  "command": "cd /home/leviathan/OPENCODE_WORKSPACE/projects/manta-agent && git push 'https://leviathan-devops:"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-devops/manta-agent.git' master 2>&1",
   "description": "Push rebased commits"
 }
 ```

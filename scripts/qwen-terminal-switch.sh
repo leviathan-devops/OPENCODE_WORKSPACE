@@ -13,7 +13,7 @@ case "$SWITCH_TO" in
     deepseek)
         echo "Current terminal now using DeepSeek API"
         export OPENAI_BASE_URL="https://api.deepseek.com/v1"
-        export OPENAI_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+        export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
         ;;
     openrouter)
         echo "Current terminal now using OpenRouter API"

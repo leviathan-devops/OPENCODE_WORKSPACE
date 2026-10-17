@@ -19,7 +19,7 @@ cat ~/.qwen/settings.json
 echo ""
 
 echo "4. Testing vLLM API with max_tokens=4096..."
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",
@@ -37,7 +37,7 @@ fi
 echo ""
 
 echo "5. Testing vLLM API with max_tokens=8192..."
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",

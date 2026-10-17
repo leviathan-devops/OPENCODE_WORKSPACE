@@ -41,7 +41,7 @@ All protection layers are working in the container:
 # Run container
 docker run -d --name shark-v483 \
   --entrypoint /bin/sh \
-  -e GOOGLE_API_KEY="AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4" \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   shark-agent-v4.8.3:test -c "sleep 3600"
 
 # Verify tools

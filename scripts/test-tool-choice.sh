@@ -6,7 +6,7 @@ echo ""
 
 # Test 1: Simple completion (should work)
 echo "1. Testing simple completion..."
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",
@@ -28,7 +28,7 @@ echo ""
 
 # Test 2: With tool choice (what Qwen Code uses)
 echo "2. Testing with tool_choice='auto'..."
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d '{
        "model": "qwen-coder-14b",
@@ -83,7 +83,7 @@ echo ""
 
 # Test 3: Check vLLM configuration
 echo "3. Checking vLLM configuration..."
-curl -s -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models | python3 -c "
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models | python3 -c "
 import sys, json
 try:
     data = json.load(sys.stdin)

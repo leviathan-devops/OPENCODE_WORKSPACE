@@ -14,7 +14,7 @@ case "$SWITCH_TO" in
     deepseek)
         echo "Switching to DeepSeek API"
         OPENAI_BASE_URL="https://api.deepseek.com/v1"
-        OPENAI_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+        OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
         VLLM_ACTIVE=0
         ;;
     openrouter)

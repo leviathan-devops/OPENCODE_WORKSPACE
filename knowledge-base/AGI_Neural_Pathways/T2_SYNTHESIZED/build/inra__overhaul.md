@@ -51,7 +51,7 @@ import openvi
 import openvi
 14. bash: cd /home/leviathan/OPENCODE_WORKSPACE/projects/OpenViking && source .venv/bin/activate && python3 << 'EOF'
 import openvi
-15. bash: curl -s http://localhost:1933/openapi.json -H "X-API-Key: hive-mind-key" | python3 -c "import sys,json; d=json.load(sys.
+15. bash: curl -s http://localhost:1933/openapi.json -H "X-API-Key: <REDACTED_SET_VIA_ENV>" | python3 -c "import sys,json; d=json.load(sys.
 
 ---
 

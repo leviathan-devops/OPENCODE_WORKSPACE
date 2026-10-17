@@ -50,11 +50,11 @@ This document provides universal guidance for container-based testing of OpenCod
 
 | Key | Purpose | Model |
 |-----|---------|-------|
-| `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4` | Container testing | `gemma-4-26b-it` |
+| `<REDACTED_SET_VIA_ENV>` | Container testing | `gemma-4-26b-it` |
 
 **Usage:**
 ```bash
-export GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
+export GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>"
 ```
 
 ### Provider Selection
@@ -74,7 +74,7 @@ For container testing, **always prefer Gemma** over Claude/Anthropic because:
 ```bash
 # Use leviathan/opencode:python3-enabled-1.4.3
 docker run --rm \
-  -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3 \
   opencode run "your command here"
 ```
@@ -82,7 +82,7 @@ docker run --rm \
 **For TUI testing (interactive):**
 ```bash
 docker run -dit \
-  -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3
 docker exec <container-name> opencode
 ```
@@ -92,7 +92,7 @@ docker exec <container-name> opencode
 ```bash
 docker run --rm \
   -v /home/leviathan:/home/leviathan \
-  -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3 \
   opencode run "audit /home/leviathan/OPENCODE_WORKSPACE/projects/calculator"
 ```
@@ -101,7 +101,7 @@ docker run --rm \
 
 ```bash
 docker run --rm \
-  -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3 \
   opencode run "your test command"
 ```
@@ -201,7 +201,7 @@ cp -r /path/to/plugin/dist/* ~/.config/opencode/plugins/<plugin-name>/
 ```bash
 docker run --rm \
   -v ~/.config/opencode:/home/leviathan/.config/opencode \
-  -e GOOGLE_API_KEY=AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4 \
+  -e GOOGLE_API_KEY="<REDACTED_SET_VIA_ENV>" \
   leviathan/opencode:python3-enabled-1.4.3 \
   opencode run "test command"
 ```

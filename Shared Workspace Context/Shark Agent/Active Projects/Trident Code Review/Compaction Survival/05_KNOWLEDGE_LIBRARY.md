@@ -9,7 +9,7 @@
 
 ### Google Gemma (Container Testing)
 ```
-AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4
+"<REDACTED_SET_VIA_ENV>"
 ```
 **Usage:** Set `GOOGLE_API_KEY` environment variable in container
 **Model:** `gemma-4-26b-it`

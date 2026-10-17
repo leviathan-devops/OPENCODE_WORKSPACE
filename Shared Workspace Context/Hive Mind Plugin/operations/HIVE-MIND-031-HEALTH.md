@@ -12,7 +12,7 @@ LOG_FILE="/var/log/hive-mind/health-check.log"
 echo "$(date) - Starting health check" >> $LOG_FILE
 
 # Check OpenViking
-if curl -s http://localhost:1933/health -H "X-API-Key: hive-mind-key" | grep -q '"healthy":true'; then
+if curl -s http://localhost:1933/health -H "X-API-Key: <REDACTED_SET_VIA_ENV>" | grep -q '"healthy":true'; then
     echo "$(date) - OpenViking: OK" >> $LOG_FILE
 else
     echo "$(date) - OpenViking: FAILED" >> $LOG_FILE

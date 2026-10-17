@@ -11,7 +11,7 @@ echo "1. Waiting for vLLM to start..."
 sleep 5
 
 echo "2. Testing vLLM API..."
-curl -s -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models >/dev/null 2>&1
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     echo "✓ vLLM API responding"
 else

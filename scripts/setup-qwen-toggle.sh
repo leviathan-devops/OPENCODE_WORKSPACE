@@ -2,7 +2,7 @@
 # Qwen Model Toggle Setup
 # Sets up qwen-glm, qwen-local, and qwen--yolo commands
 
-export DEEPSEEK_API_KEY="sk-e8e93e31e-fdaa4ab8e9347e2"
+export DEEPSEEK_API_KEY="<REDACTED_SET_VIA_ENV>"
 
 echo "🎯 Setting up Qwen Model Toggle Commands"
 echo "======================================"

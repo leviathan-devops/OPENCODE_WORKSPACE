@@ -12,7 +12,7 @@ qwen-local
 echo ""
 
 echo "2. Testing vLLM API endpoint..."
-curl -s -H "Authorization: Bearer vllm-local-key" http://localhost:8000/v1/models | python3 -c "
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" http://localhost:8000/v1/models | python3 -c "
 import sys, json
 try:
     data = json.load(sys.stdin)
@@ -25,7 +25,7 @@ echo ""
 
 echo "3. Testing with curl (simple completion)..."
 curl -s -H "Content-Type: application/json" \
-     -H "Authorization: Bearer vllm-local-key" \
+     -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -d '{
        "model": "deepseek-chat",
        "messages": [{"role": "user", "content": "Say hello in Python"}],

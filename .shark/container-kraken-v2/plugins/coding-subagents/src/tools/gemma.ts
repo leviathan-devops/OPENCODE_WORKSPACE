@@ -10,7 +10,7 @@ import { GemmaArgsSchema, ERROR_CODES, type GemmaArgs, type GemmaResult } from '
 import { logger } from '../utils/logger.js';
 import https from 'https';
 
-const API_KEY = 'AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4';
+const API_KEY = '<REDACTED_SET_VIA_ENV>';
 
 export function createGemmaTool() {
   return toolFn({

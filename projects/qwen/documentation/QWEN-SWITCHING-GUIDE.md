@@ -45,7 +45,7 @@ qwen-api-status
 
 ### When you run `qwen-deepseek`:
 - Sets: `OPENAI_BASE_URL=https://api.deepseek.com/v1`
-- Sets: `OPENAI_API_KEY=sk-e8e93e31b582423e9fdaa4ab8e9347e2`
+- Sets: `OPENAI_API_KEY=<REDACTED_SET_VIA_ENV>`
 - Updates `~/.qwen/config.json` to use `deepseek-chat`
 - Updates `~/.qwen/settings.json` to use `deepseek-chat`
 

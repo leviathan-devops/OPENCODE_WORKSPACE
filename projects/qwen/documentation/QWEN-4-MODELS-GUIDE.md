@@ -17,7 +17,7 @@
 ### 2. **DeepSeek** (`qwen-deepseek`) 
 - Model: `deepseek-chat`
 - API: `https://api.deepseek.com/v1`
-- Key: `sk-e8e93e31b582423e9fdaa4ab8e9347e2`
+- Key: `<REDACTED_SET_VIA_ENV>`
 - Cloud API, reliable, good tool call support
 
 ### 3. **FREE Qwen API** (`qwen-free`)
@@ -30,7 +30,7 @@
 ### 4. **Healer-Alpha** (`qwen-healer-alpha`)
 - Model: `healer-alpha`
 - API: `https://openrouter.ai/api/v1`
-- Key: `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`
+- Key: `<REDACTED_SET_VIA_ENV>`
 - Specialized coding model on OpenRouter
 
 ## 🚀 How to Use:

@@ -48,7 +48,7 @@ REQUEST='{
 echo "Sending request to vLLM..."
 echo "$REQUEST" | python3 -m json.tool > /tmp/request.json
 
-curl -s -H "Authorization: Bearer vllm-local-key" \
+curl -s -H "Authorization: Bearer <REDACTED_SET_VIA_ENV>" \
      -H "Content-Type: application/json" \
      -d @/tmp/request.json \
      http://localhost:8000/v1/chat/completions > /tmp/response.json

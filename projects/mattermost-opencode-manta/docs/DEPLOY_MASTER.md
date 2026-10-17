@@ -38,9 +38,9 @@ railway init
 
 # Set environment variables
 railway env set MATTERMOST_URL=https://mattermost-production-a9b9.up.railway.app
-railway env set MATTERMOST_TOKEN=i8nxktjo5jy3pg36ywr6twtrjy
+railway env set MATTERMOST_TOKEN="<REDACTED_SET_VIA_ENV>"
 railway env set MATTERMOST_BOT_USERNAME=manta-bot
-railway env set MATTERMOST_BOT_USER_ID=s1oig6hehig79d9oem38nmjnzo
+railway env set MATTERMOST_BOT_USER_ID="<REDACTED_SET_VIA_ENV>"
 railway env set MATTERMOST_ALLOWED_USERS=*
 railway env set REDIS_HOST=localhost
 railway env set REDIS_PORT=6379

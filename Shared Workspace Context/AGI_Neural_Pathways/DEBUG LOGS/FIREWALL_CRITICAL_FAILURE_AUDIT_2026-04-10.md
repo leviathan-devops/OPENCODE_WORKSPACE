@@ -34,7 +34,7 @@
 
 **Correct approach:**
 - Use Google Gemma models (FREE) for container testing
-- API key: `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+- API key: `<REDACTED_SET_VIA_ENV>`
 - Model: `0-google/gemma-3-27b-it` (14k RPD free)
 
 ### 2. Firewalls Did NOT Fire on Derailment
@@ -100,7 +100,7 @@
 - Only minimax, google, opencode-zen, openrouter, local agents
 
 ### Step 2: Set Up Google Models for Container Testing
-- API key: `AIzaSyCdzysjAXh0vmzn4vOKuMSWx1dGIjP44Z4`
+- API key: `<REDACTED_SET_VIA_ENV>`
 - Test model: `0-google/gemma-3-27b-it`
 
 ### Step 3: Use TUI Approach for Container

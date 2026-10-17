@@ -5,7 +5,7 @@ Ask DeepSeek R1 how to fix Google login automation detection
 import requests
 import json
 
-API_KEY = "sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+API_KEY = "<REDACTED_SET_VIA_ENV>"
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 headers = {

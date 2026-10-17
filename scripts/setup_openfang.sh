@@ -25,7 +25,7 @@ cat > ~/.openfang/config.toml << 'EOF'
 
 [llm]
 provider = "deepseek"
-api_key = "sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+api_key = "<REDACTED_SET_VIA_ENV>"
 model = "deepseek-chat"
 reasoning_model = "deepseek-chat"
 fast_model = "deepseek-chat"
@@ -37,7 +37,7 @@ path = "~/.openfang/memory.db"
 
 [discord]
 enabled = true
-token = "MTQ3NzAzMTk1MTg2NDAzNzM5Ng.GSy3lB.M37ric87tHks7ij7Rc626rdQJ5C29rEk89S6wM"
+token = "<REDACTED_SET_VIA_ENV>"
 guild_id = ""
 intents = 33281
 

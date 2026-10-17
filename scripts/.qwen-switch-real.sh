@@ -110,13 +110,13 @@ with open('$SETTINGS_FILE', 'w') as f:
         
         # 1. Set environment variables (immediate effect)
         export OPENAI_BASE_URL="https://api.deepseek.com/v1"
-        export OPENAI_API_KEY="sk-e8e93e31b582423e9fdaa4ab8e9347e2"
+        export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
         
         # 2. Update config.json (Qwen Code reads this)
         cat > "$CONFIG_FILE" << EOF
 {
   "api_base": "https://api.deepseek.com/v1",
-  "api_key": "sk-e8e93e31b582423e9fdaa4ab8e9347e2",
+  "api_key": "<REDACTED_SET_VIA_ENV>",
   "model": "deepseek-chat"
 }
 EOF
@@ -205,13 +205,13 @@ with open('$SETTINGS_FILE', 'w') as f:
         
         # 1. Set environment variables (immediate effect)
         export OPENAI_BASE_URL="https://openrouter.ai/api/v1"
-        export OPENAI_API_KEY="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"
+        export OPENAI_API_KEY="<REDACTED_SET_VIA_ENV>"
         
         # 2. Update config.json (Qwen Code reads this)
         cat > "$CONFIG_FILE" << EOF
 {
   "api_base": "https://openrouter.ai/api/v1",
-  "api_key": "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",
+  "api_key": "<REDACTED_SET_VIA_ENV>",
   "model": "xiaomi/mimo-v2-omni"
 }
 EOF

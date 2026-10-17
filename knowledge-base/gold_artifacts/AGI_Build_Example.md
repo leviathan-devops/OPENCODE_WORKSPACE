@@ -331,8 +331,8 @@ $ shark "echo test verification"
 ### API Key Status Verification
 
 **Configured:**
-- ✅ GLM_API_KEY: `71cda1864f0f4e15b076b0f24d56753e.4SwmFVzcRiWmT3r1`
-- ✅ DEEPSEEK_API_KEY: `sk-e8e93e31b582423e9fdaa4ab8e9347e2`
+- ✅ GLM_API_KEY: `<REDACTED_SET_VIA_ENV>`
+- ✅ DEEPSEEK_API_KEY: `<REDACTED_SET_VIA_ENV>`
 
 **Not Configured (Template Only):**
 - ❌ OPENCODE_ZEN_API_KEY: Only template in `.bashrc`

@@ -43,9 +43,9 @@ Kraken Brain — a 7003-minute session with 1617 messages and 5962 parts.
 5. bash: cd /home/leviathan/shark-frankenstein && git add SHARK-MASTER-PROMPT.md SHARK_OPENCODE_INTEGRATION_BLUEPRINT.md SHARK_OP
 6. bash: cd /home/leviathan/shark-frankenstein && git commit -m "docs: add master prompt and integration blueprint"
 7. bash: cd /home/leviathan/shark-frankenstein && git remote get-url origin
-8. bash: cd /home/leviathan/shark-frankenstein && git push https://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@github.com/leviathan-
+8. bash: cd /home/leviathan/shark-frankenstein && git push https://"<REDACTED_SET_VIA_ENV>"@github.com/leviathan-
 9. bash: cd /home/leviathan/shark-frankenstein && git pull origin main
-10. bash: cd /home/leviathan/shark-frankenstein && git push -f https://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@github.com/leviath
+10. bash: cd /home/leviathan/shark-frankenstein && git push -f https://"<REDACTED_SET_VIA_ENV>"@github.com/leviath
 11. edit: /home/leviathan/shark-frankenstein/SHARK_OPENS_CODE_DEEPSEEK_AUDIT_CONTEXT.md
 12. edit: /home/leviathan/shark-frankenstein/SHARK_OPENS_CODE_DEEPSEEK_AUDIT_CONTEXT.md
 13. edit: /home/leviathan/shark-frankenstein/SHARK_OPENS_CODE_DEEPSEEK_AUDIT_CONTEXT.md
